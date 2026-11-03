@@ -544,6 +544,11 @@ img{max-width:100%}
 .tt-mute{position:absolute;left:11px;top:96px;z-index:4;background:rgba(0,0,0,.45);color:#fff;font-size:11px;padding:5px 10px;border-radius:13px;backdrop-filter:blur(6px)}
 .pv-vid{width:100%;flex:1;min-height:0;background:#000;object-fit:contain}
 .gauge-fire i{background:linear-gradient(90deg,#ff9500,#ff3b30)}
+
+/* v2 fix: IG header overflow guard */
+.ig-head{gap:8px}
+.ig-head .hic{flex:none}
+.ig-logo{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -638,7 +643,7 @@ img{max-width:100%}
 <!-- X -->
 <div class="view" id="v-x">
 <div class="x-head"><button class="back" data-back="home" style="font-size:24px">‹</button><span class="x-logo">𝕏</span><span class="hic">✨</span></div>
-<div class="x-tabs"><button class="on">おすすめ</button><button id="x-tab-trend">トレンド</button></div>
+<div class="x-tabs"><button class="on" id="x-tab-feed">おすすめ</button><button id="x-tab-trend">トレンド</button></div>
 <div class="abody" id="x-body"></div>
 </div>
 
@@ -977,14 +982,14 @@ const TT_POSTS=[
 const X_TRENDS_PRE=[["エンターテイメント","#NCTWISH","12.4万件のポスト"],["音楽","高尺スカイドーム","8.1万件のポスト"],["ジャパン","代々木 完売","5.6万件のポスト"],["音楽","#FaceOurWISH","4.2万件のポスト"],["ジャパン","GLION ARENA KOBE","3.3万件のポスト"]];
 const X_TRENDS_POST=[["ジャパンのトレンド1位","サクヤ 熱愛","48.2万件のポスト"],["エンターテイメント","NCT WISH 声明","31.5万件のポスト"],["ジャパン","サクヤ","27.9万件のポスト"],["音楽","神戸 密会","15.4万件のポスト"],["エンターテイメント","#SakuyaWeLoveYou","11.8万件のポスト"]];
 const X_POSTS_PRE=[
- {user:"NCT WISH 公式",handle:"@nctwish_jp",av:"assets/group.jpg",time:"2月28日",text:"『INTO THE WISH : Face Our WISH』代々木3日間、満員御礼ありがとうございました💫 次は神戸・GLION ARENA KOBE（3/5〜7）でお会いしましょう！ #NCTWISH #FaceOurWISH",img:"assets/stage1.jpg",rp:"4.2万",lk:"18.6万"},
- {user:"ウィッシュ速報",handle:"@wish_news_jp",av:"assets/stage-steady.jpg",time:"3月5日",text:"NCT WISH、神戸公演初日も完売の大盛況。2026年は『I SPY』初日120万枚など4作連続ミリオン、音楽番組通算12冠と破竹の勢い。",rp:"8,412",lk:"3.9万"},
- {user:"サクヤの言葉bot",handle:"@sakuya_words",av:"assets/av-sakuya.jpg",time:"3月6日",text:"今日のサクヤの言葉：「遠くて近い人がいます」…代々木MC。誰に向けた言葉なんだろう、ってずっと考えてる",rp:"1.1万",lk:"6.4万"}
+ {user:"NCT WISH 公式",handle:"@nctwish_jp",av:"assets/group.jpg",time:"2月28日",text:"『INTO THE WISH : Face Our WISH』代々木3日間、満員御礼ありがとうございました💫 次は神戸・GLION ARENA KOBE（3/5〜7）でお会いしましょう！ #NCTWISH #FaceOurWISH",img:"assets/stage1.jpg",rp:"4.2万",lk:"18.6万",cm:"1.2万"},
+ {user:"ウィッシュ速報",handle:"@wish_news_jp",av:"assets/stage-steady.jpg",time:"3月5日",text:"NCT WISH、神戸公演初日も完売の大盛況。2026年は『I SPY』初日120万枚など4作連続ミリオン、音楽番組通算12冠と破竹の勢い。",rp:"8,412",lk:"3.9万",cm:"964"},
+ {user:"サクヤの言葉bot",handle:"@sakuya_words",av:"assets/av-sakuya.jpg",time:"3月6日",text:"今日のサクヤの言葉：「遠くて近い人がいます」…代々木MC。誰に向けた言葉なんだろう、ってずっと考えてる",rp:"1.1万",lk:"6.4万",cm:"2,208"}
 ];
 const X_POSTS_POST=[
- {user:"芸能速報",handle:"@geino_sokuhou",av:"assets/kobe.jpg",time:"3月8日",text:"【熱愛報道】NCT WISHサクヤ（19）、神戸公演後に一般女性と海沿いデートか。週刊誌が写真付きで報道。事務所は「確認中」。 #サクヤ熱愛",img:"assets/kobe-night.jpg",rp:"12.8万",lk:"9.3万"},
- {user:"ウィッシュ速報",handle:"@wish_news_jp",av:"assets/stage-steady.jpg",time:"3月8日",text:"サクヤ熱愛報道を受け、公式IG最新投稿のコメントは擁護派と批判派で二分。事務所の声明発表待ちの状態が続いている。",rp:"3.6万",lk:"2.1万"},
- {user:"サクヤペンの日常",handle:"@sakuya_pen_life",av:"assets/sakuya-selca.jpg",time:"3月8日",text:"複雑な気持ちはある。でも神戸のアンコールで見せた顔が本物だったのも知ってる。本人の言葉を待ちます。 #SakuyaWeLoveYou",rp:"2.2万",lk:"11.4万"}
+ {user:"芸能速報",handle:"@geino_sokuhou",av:"assets/kobe.jpg",time:"3月8日",text:"【熱愛報道】NCT WISHサクヤ（19）、神戸公演後に一般女性と海沿いデートか。週刊誌が写真付きで報道。事務所は「確認中」。 #サクヤ熱愛",img:"assets/kobe-night.jpg",rp:"12.8万",lk:"9.3万",cm:"4.6万"},
+ {user:"ウィッシュ速報",handle:"@wish_news_jp",av:"assets/stage-steady.jpg",time:"3月8日",text:"サクヤ熱愛報道を受け、公式IG最新投稿のコメントは擁護派と批判派で二分。事務所の声明発表待ちの状態が続いている。",rp:"3.6万",lk:"2.1万",cm:"8,931"},
+ {user:"サクヤペンの日常",handle:"@sakuya_pen_life",av:"assets/sakuya-selca.jpg",time:"3月8日",text:"複雑な気持ちはある。でも神戸のアンコールで見せた顔が本物だったのも知ってる。本人の言葉を待ちます。 #SakuyaWeLoveYou",rp:"2.2万",lk:"11.4万",cm:"3,877"}
 ];
 const NEWS_PRE=[
  {k:"ツアー",t:"NCT WISH、2ndツアー日本公演が開幕 代々木・神戸は全日程完売",m:"スポルティバ芸能部 ・ 2月26日",body:"NCT WISHの2ndコンサートツアー『INTO THE WISH : Face Our WISH』日本公演が、国立代々木競技場第一体育館で開幕した。1月のソウル・高尺スカイドーム公演に続く日本編で、代々木3日間と神戸・GLION ARENA KOBE 3日間は全て完売。\n\n2026年は日本1stミニアルバム『WISHLIST』、韓国1stフル『Ode to Love』（累計約187万枚）、日本シングル『YO-I-DON!』のダブルプラチナ、韓国4thミニ『I SPY』（初日約120万枚）で4作連続ミリオンセラーを記録し、音楽番組1位は通算12冠。若手トップクラスの勢いそのままに、満員の観客を魅了した。\n\nツアーはこの後、福岡・北九州メッセ（3/13〜14）、愛知・ポートメッセなごや（3/21〜22）へと続く。"},
@@ -1038,12 +1043,12 @@ const FREE_DEFAULT=["うん、聞いてます","……そうですね。もう�
 const NOTIFS=[
  {after:1,ic:"💘",bg:"linear-gradient(135deg,#ff5c8a,#ff9e6d)",title:"マッチングアプリ",body:"ソウさんとLINEを交換しました",go:"line"},
  {after:3,ic:"📸",bg:"linear-gradient(45deg,#feda75,#d62976,#962fbf)",title:"Instagram",body:"nctwish_official が代々木公演の投稿をシェアしました",go:"ig"},
- {after:5,ic:"♪",bg:"#000",title:"TikTok",body:"nctwish_official の新着動画『I SPY』が公開されました",go:"tt"},
+ {after:6,ic:"♪",bg:"#000",title:"TikTok",body:"nctwish_official の新着動画『I SPY』が公開されました",go:"tt"},
  {after:7,ic:"🗞️",bg:"linear-gradient(180deg,#f43f5e,#be123c)",title:"ニュース速報",body:"『NCT WISHサクヤに熱愛報道』――ネットニュースが一斉配信",go:"news"}
 ];
 /* ================= STATE ================= */
 const KEY="sakuya_scandal_v1",EKEY="sakuya_scandal_ends_v1";
-function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,likedIG:{},likedTT:{},viewIG:"grid",notified:[]};}
+function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},viewIG:"grid",notified:[]};}
 let S=load();
 function load(){try{const j=JSON.parse(localStorage.getItem(KEY));if(j&&typeof j.scene==="number")return Object.assign(defState(),j);}catch(e){}return defState();}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
@@ -1112,7 +1117,7 @@ function msgHTML(st,tm){
  return `<div class="msg">${avHTML(st.f,38)}<div class="col"><div class="who">${esc(m.n)}</div><div class="bub">${esc(st.t)}</div></div><span class="tm">${esc(tm||"")}</span></div>`;}
 function renderChat(){const body=$("#chat-body");const sc=cur;let h="";const n=Math.min(S.shown,sc.steps.length);
  for(let i=0;i<n;i++){const st=sc.steps[i];
-  if(st.choice){if(st._me)h+=msgHTML({me:st._me},fmtMin(clockMin(S.scene,i)));if(st._resp)h+=st._resp.map(r=>msgHTML({f:r[0],t:r[1]},fmtMin(clockMin(S.scene,i)))).join("");continue;}
+  if(st.choice){const ai=(S.answers||{})[sc.id+":"+i];const ch=ai!==undefined?st.choice[ai]:null;const me=ch?ch.t:st._me;const resp=ch?(ch.r||[]):st._resp;if(me)h+=msgHTML({me:me},fmtMin(clockMin(S.scene,i)));if(resp)h+=resp.map(r=>msgHTML({f:r[0],t:r[1]},fmtMin(clockMin(S.scene,i)))).join("");continue;}
   h+=msgHTML(st,fmtMin(clockMin(S.scene,i)));}
  body.innerHTML=h;
  body.querySelectorAll(".msg.me .rd").forEach(rd=>{setTimeout(()=>{rd.style.opacity="1";},300+Math.random()*700);});
@@ -1131,10 +1136,10 @@ function advance(){if(busy)return;const sc=cur;if(!sc)return;const st=sc.steps[S
  setTimeout(()=>{const tp=$("#tp-row");if(tp)tp.remove();S.step++;S.shown=Math.max(S.shown,S.step);save();busy=false;renderChat();},typingDelay(sc,stp));}
 $("#chat-next").addEventListener("click",advance);
 $("#chat-body").addEventListener("click",advance);
-function pickChoice(i){const sc=cur;const st=sc.steps[S.step];const c=st.choice[i];applyE(c.e);if(c.act)S.act=c.act;st._me=c.t;st._resp=c.r||[];S.step++;S.shown=Math.max(S.shown,S.step);save();renderChat();setTimeout(()=>{const b=$("#chat-body");b.scrollTop=b.scrollHeight;},50);}
+function pickChoice(i){const sc=cur;const st=sc.steps[S.step];const c=st.choice[i];applyE(c.e);if(c.act)S.act=c.act;if(!S.answers)S.answers={};S.answers[sc.id+":"+S.step]=i;st._me=c.t;st._resp=c.r||[];S.step++;S.shown=Math.max(S.shown,S.step);save();renderChat();setTimeout(()=>{const b=$("#chat-body");b.scrollTop=b.scrollHeight;},50);}
 function finishScene(){const sc=cur;if(sc.memo&&!S.memos.includes(sc.id))S.memos.push(sc.id);if(sc.ig)S.ig=Math.max(S.ig,sc.ig);if(sc.tt)S.tt=Math.max(S.tt,sc.tt);S.scene++;S.step=0;S.shown=0;save();cur=null;
  if(S.scene>=SCENES.length){doEnding();return;}
- if(S.scene>=8){S.x=1;S.news=1;save();}
+ if(S.scene>=7){S.x=1;S.news=1;save();}
  toast("「"+SCENES[S.scene].title+"」が届いたよ");show("line");
  const n2=NOTIFS.find(n=>n.after===S.scene);if(n2&&!S.notified.includes(S.scene)){S.notified.push(S.scene);save();setTimeout(()=>pushNotif(n2),600);}}
 /* ================= CALL ================= */
@@ -1171,7 +1176,7 @@ function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);
  bindPostActs(el);}
 function postHTML(p){const liked=S.likedIG[p.id];const media=p.video?`<div class="post-vid"><video src="${p.video}" poster="${p.img}" autoplay muted loop playsinline></video><span class="vid-badge">▶ リール動画</span></div>`:`<img src="${p.img}">`;
  let cmts=p.cm.map(c=>`<div class="post-cmt"><b>${esc(c[0])}</b> ${esc(c[1])}</div>`).join("");
- if(S.scene>=8&&p.id===1)cmts+=`<div class="post-cmt"><b>匿名</b> サクヤの熱愛、公式は早く声明出して</div><div class="post-cmt"><b>wish_pen</b> 本人の言葉を待つって決めた</div>`;
+ if(S.scene>=7&&p.id===1)cmts+=`<div class="post-cmt"><b>匿名</b> サクヤの熱愛、公式は早く声明出して</div><div class="post-cmt"><b>wish_pen</b> 本人の言葉を待つって決めた</div>`;
  return `<div class="post" id="igpost-${p.id}"><div class="post-h"><span class="ring"><img src="assets/group.jpg"></span><span><b>${p.user}</b> ✔<div class="loc">${esc(p.loc)}</div></span><span class="dots">•••</span></div>
  <div class="post-img">${media}<div class="big-heart" data-heart="${p.id}">🤍</div></div>
  <div class="post-act"><button class="hrt ${liked?"liked":""}" data-like="${p.id}">${liked?"❤️":"♡"}</button><button data-cmt="${p.id}">💬</button><button>✈️</button><button class="save">🔖</button></div>
@@ -1205,14 +1210,15 @@ function renderTT(){const el=$("#tt-feed");const posts=TT_POSTS.slice(0,S.tt);
  clearInterval(window._ttProg);window._ttProg=setInterval(()=>{if(!$("#v-tt").classList.contains("on"))return;posts.forEach((p,i)=>{const v=$("#ttv-"+i),pg=$("#ttpg-"+i);if(v&&pg&&v.duration)pg.style.width=(v.currentTime/v.duration*100)+"%";});},250);}
 /* ================= X ================= */
 let xTab="feed";
-function renderX(){const el=$("#x-body");const post=S.scene>=8;
+function renderX(){const el=$("#x-body");const post=S.scene>=7;
  if(xTab==="trend"){const tr=post?X_TRENDS_POST:X_TRENDS_PRE;el.innerHTML=`<div style="padding:12px 16px 4px;font-size:16px;font-weight:900">トレンド</div>`+tr.map(t=>`<div class="trend ${post&&t[1].includes("熱愛")?"hot":""}"><div class="tk">${esc(t[0])} ・ トレンド</div><div class="tt2">${esc(t[1])}</div><div class="tc">${esc(t[2])}</div></div>`).join("");return;}
  const posts=post?X_POSTS_POST:X_POSTS_PRE;
- el.innerHTML=posts.map(p=>`<div class="xpost"><img class="xav" src="${p.av}"><div class="xb"><div class="xh"><b>${esc(p.user)}</b><span>${esc(p.handle)} ・ ${esc(p.time)}</span></div><div class="xt">${esc(p.text)}</div>${p.img?`<img class="ximg" src="${p.img}">`:""}<div class="xa"><span>💬 <b>${p.rp?Math.round(parseFloat(p.rp)/10):"―"}</b></span><span>🔁 <b>${esc(p.rp)}</b></span><span>❤️ <b>${esc(p.lk)}</b></span><span>📊</span></div></div></div>`).join("")+`<div class="locknote">${post?"炎上中 ― 数値はまだ増え続けている":"平和なタイムライン。……今のところは"}</div>`;}
-$("#x-tab-trend").addEventListener("click",()=>{xTab=xTab==="trend"?"feed":"trend";$$(".x-tabs button")[1].textContent=xTab==="trend"?"おすすめ":"トレンド";renderX();});
-$$(".x-tabs button")[0].addEventListener("click",()=>{xTab="feed";renderX();});
+ el.innerHTML=posts.map(p=>`<div class="xpost"><img class="xav" src="${p.av}"><div class="xb"><div class="xh"><b>${esc(p.user)}</b><span>${esc(p.handle)} ・ ${esc(p.time)}</span></div><div class="xt">${esc(p.text)}</div>${p.img?`<img class="ximg" src="${p.img}">`:""}<div class="xa"><span>💬 <b>${esc(p.cm||"―")}</b></span><span>🔁 <b>${esc(p.rp)}</b></span><span>❤️ <b>${esc(p.lk)}</b></span><span>📊</span></div></div></div>`).join("")+`<div class="locknote">${post?"炎上中 ― 数値はまだ増え続けている":"平和なタイムライン。……今のところは"}</div>`;}
+function setXTab(t){xTab=t;$("#x-tab-feed").classList.toggle("on",t==="feed");$("#x-tab-trend").classList.toggle("on",t==="trend");renderX();}
+$("#x-tab-trend").addEventListener("click",()=>setXTab("trend"));
+$("#x-tab-feed").addEventListener("click",()=>setXTab("feed"));
 /* ================= NEWS ================= */
-function renderNews(){const el=$("#news-body");const post=S.scene>=8;const done=S.ended||S.scene>=10;
+function renderNews(){const el=$("#news-body");const post=S.scene>=7;const done=S.ended;
  let items=NEWS_PRE.slice();
  let h=items.map((n,i)=>`<button class="news-item" data-news="${i}"><div class="nk">${esc(n.k)}</div><h4>${esc(n.t)}</h4><div class="nm">${esc(n.m)}</div></button>`).join("");
  if(post)h=`<button class="news-item scoop" data-scoop="1"><div class="nk">🔥 スクープ</div><h4>${esc(NEWS_SCOOP.t)}</h4><div class="nm">${esc(NEWS_SCOOP.m)}</div></button>`+h;
