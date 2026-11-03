@@ -1582,7 +1582,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v46.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v47.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -2098,8 +2098,29 @@ $("#v-home").addEventListener("pointerdown",e=>{if(!e.target.closest(".app"))ret
 ["pointerup","pointercancel","pointerleave"].forEach(ev=>$("#v-home").addEventListener(ev,()=>clearTimeout(_hLpT)));
 $("#v-home").addEventListener("click",e=>{if(_hLpFired){_hLpFired=false;e.stopPropagation();e.preventDefault();return;}if(!homeEdit)return;if(e.target.closest("#home-done")){setHomeEdit(false);e.stopPropagation();e.preventDefault();return;}if(e.target.closest(".app")){e.stopPropagation();e.preventDefault();toast("この端末ではアプリの削除・移動は固定だよ");}},true);
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){const t=g.dataset.go;if(t==="ig")S._igSeen=S.ig;if(t==="tt")S._ttSeen=S.tt;if(t==="notes")S._memoSeen=S.memos.length;if(t==="x")S.x=0;if(t==="news")S.news=0;save();}});
-$("#app-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();applyA11y();applyAir();updWifiVal();show("home");toast("リセットしたよ");}});
-$("#set-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();applyA11y();applyAir();updWifiVal();show("home");toast("リセットしたよ");}});
+/* v47: progress detection must cover pre-chapter-1 home-app activity too (photo favs, likes,
+   settings) — the old scene/step-only check let the title claim "no save" and skip the wipe
+   confirm while real saved interactions existed */
+function hasProgress(){if(S.scene>0||S.ended||S.step>0||S.shown>0||S.freeCount>0)return true;
+ if((S.memos&&S.memos.length)||(S.htfavs&&S.htfavs.length))return true;
+ if(S.ig>0||S.tt>0||S.x>0||S.news>0)return true;
+ const maps=["answers","callsDone","callDur","likedIG","likedTT","savedIG","savedTT","xbmk","newsBmk","newsCmts","newsLikes","favs","noff","moLike","moCmts","ttCmts","xLikes","xReposts","igCmts","igReposts"];
+ for(const k of maps){const v=S[k];if(v&&typeof v==="object"&&Object.keys(v).length)return true;}
+ if(S.wall||S.air||(S.wifi&&S.wifi!=="Home-5G"))return true;
+ if(S.igFol===false||S.ttFol===false||S.xFol===false)return true;
+ const a=S.a11y||{};if(a.fs||a.bold||a.contrast||a.rm)return true;
+ const sn=S.snd||{};if(sn.on===false||sn.vib===false||(typeof sn.vol==="number"&&sn.vol!==.6))return true;
+ return false;}
+/* v47: single reset path for all three entry points — also clears in-session residue the
+   save wipe cannot reach: free-chat DOM (its dataset.init one-time render kept the previous
+   run's greeting/history after a reset) and any queued/visible story notification banner */
+function doReset(){localStorage.removeItem(KEY);S=defState();save();
+ const fb=$("#free-body");if(fb){fb.innerHTML="";delete fb.dataset.init;}
+ try{_freeBusy=false;}catch(e){}
+ try{_nbQueue.length=0;clearTimeout(_nbTimer);_nbTimer=null;_nbShowing=false;$("#nbanner").classList.remove("show");}catch(e){}
+ cur=null;applyA11y();applyAir();updWifiVal();titleInit();}
+$("#app-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){doReset();show("home");toast("リセットしたよ");}});
+$("#set-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){doReset();show("home");toast("リセットしたよ");}});
 /* ================= SETTINGS DETAIL (v23) ================= */
 const WALLS=[{src:"",name:"デフォルト",th:"assets/sakuya-ig1.jpg"},{src:"assets/group.jpg",name:"グループ写真",th:"assets/group.jpg"},{src:"assets/kobe-night.jpg",name:"神戸の夜景",th:"assets/kobe-night.jpg"},{src:"assets/stage2.jpg",name:"GLION ARENA KOBE",th:"assets/stage2.jpg"}];
 function wallName(){const w=WALLS.find(w=>w.src===(S.wall||""));return w?w.name:"デフォルト";}
@@ -2811,9 +2832,9 @@ const _cvBtn=document.querySelector("#call-voice");if(_cvBtn)_cvBtn.addEventList
 function fitPhone(){const vv=window.visualViewport;const h=vv?vv.height:window.innerHeight;document.documentElement.style.setProperty("--vvh",h+"px");}
 if(window.visualViewport)window.visualViewport.addEventListener("resize",fitPhone);
 window.addEventListener("resize",fitPhone);window.addEventListener("orientationchange",fitPhone);fitPhone();
-function titleInit(){const has=(S.scene>0||S.ended||S.step>0);$("#title-continue").style.display=has?"block":"none";const _ts=$("#title-start");_ts.textContent=has?"はじめから（最初から）":"はじめから ▶";_ts.classList.toggle("primary",!has);_ts.classList.toggle("glass",has);}
+function titleInit(){const has=hasProgress();$("#title-continue").style.display=has?"block":"none";const _ts=$("#title-start");_ts.textContent=has?"はじめから（最初から）":"はじめから ▶";_ts.classList.toggle("primary",!has);_ts.classList.toggle("glass",has);}
 $("#title-continue").addEventListener("click",()=>show("home"));
-$("#title-start").addEventListener("click",()=>{const has=(S.scene>0||S.ended||S.step>0);if(has&&!confirm("セーブを消して最初からプレイしますか？"))return;if(has){localStorage.removeItem(KEY);S=defState();save();}show("lock");});
+$("#title-start").addEventListener("click",()=>{const has=hasProgress();if(has&&!confirm("セーブを消して最初からプレイしますか？"))return;if(has){doReset();}show("lock");});
 titleInit();
 /* ================= HT LONG-PRESS MENU / MISC (v16) ================= */
 let _htmTxt="";
