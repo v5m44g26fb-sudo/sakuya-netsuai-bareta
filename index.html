@@ -1121,6 +1121,68 @@ button.end-card{width:100%;text-align:left;font-family:inherit;border:none;curso
 .ch-row .ch-main b{display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ch-row .ch-main small{display:block;color:#8e8e93;font-size:11.5px;margin-top:2px}
 .ch-row .ch-memo{flex:none;color:#7b61c9;font-size:12px;font-weight:700;display:flex;align-items:center;gap:3px}
+/* ==== v34: accessibility (text size / bold text / contrast / reduce motion) ==== */
+body[data-fs="1"] .bub{font-size:15.5px}body[data-fs="2"] .bub{font-size:17.5px}
+body[data-fs="1"] .msg .who{font-size:12px}body[data-fs="2"] .msg .who{font-size:13px}
+body[data-fs="1"] .msg .tm{font-size:10.5px}body[data-fs="2"] .msg .tm{font-size:11.5px}
+body[data-fs="1"] .thread .tn{font-size:16px}body[data-fs="2"] .thread .tn{font-size:17.5px}
+body[data-fs="1"] .thread .tp{font-size:14px}body[data-fs="2"] .thread .tp{font-size:15.5px}
+body[data-fs="1"] .thread .tn time{font-size:11.5px}body[data-fs="2"] .thread .tn time{font-size:12.5px}
+body[data-fs="1"] .me-row .nm{font-size:16px}body[data-fs="2"] .me-row .nm{font-size:17.5px}
+body[data-fs="1"] .me-row .st{font-size:12.5px}body[data-fs="2"] .me-row .st{font-size:14px}
+body[data-fs="1"] .choice{font-size:15.5px}body[data-fs="2"] .choice{font-size:17.5px}
+body[data-fs="1"] .miss{font-size:15px}body[data-fs="2"] .miss{font-size:16.5px}
+body[data-fs="1"] .miss small{font-size:12.5px}body[data-fs="2"] .miss small{font-size:13.5px}
+body[data-fs="1"] .sys-line{font-size:12px}body[data-fs="2"] .sys-line{font-size:13.5px}
+body[data-fs="1"] .corr{font-size:14.5px}body[data-fs="2"] .corr{font-size:16px}
+body[data-fs="1"] .corr .cm{font-size:12.5px}body[data-fs="2"] .corr .cm{font-size:13.5px}
+body[data-fs="1"] .post-cap{font-size:15px}body[data-fs="2"] .post-cap{font-size:16.5px}
+body[data-fs="1"] .post-cmt{font-size:14.5px}body[data-fs="2"] .post-cmt{font-size:16px}
+body[data-fs="1"] .post-likes{font-size:15px}body[data-fs="2"] .post-likes{font-size:16.5px}
+body[data-fs="1"] .ig-bio{font-size:14.5px}body[data-fs="2"] .ig-bio{font-size:16px}
+body[data-fs="1"] .xpost .xt{font-size:15.5px}body[data-fs="2"] .xpost .xt{font-size:17.5px}
+body[data-fs="1"] .mo-body{font-size:15.5px}body[data-fs="2"] .mo-body{font-size:17.5px}
+body[data-fs="1"] .tt-info .cap{font-size:14.5px}body[data-fs="2"] .tt-info .cap{font-size:16px}
+body[data-fs="1"] .news-art p{font-size:15.5px}body[data-fs="2"] .news-art p{font-size:17.5px}
+body[data-fs="1"] .note-item p{font-size:14.5px}body[data-fs="2"] .note-item p{font-size:16.5px}
+body[data-fs="1"] .note-item .nt{font-size:15px}body[data-fs="2"] .note-item .nt{font-size:16.5px}
+body[data-fs="1"] #v-ending .et{font-size:15.5px}body[data-fs="2"] #v-ending .et{font-size:17.5px}
+body[data-fs="1"] .cal-item{font-size:14.5px}body[data-fs="2"] .cal-item{font-size:16px}
+body[data-fs="1"] .sheet-body .sc-row{font-size:14.5px}body[data-fs="2"] .sheet-body .sc-row{font-size:16px}
+body[data-fs="1"] .pv-cap{font-size:14.5px}body[data-fs="2"] .pv-cap{font-size:16.5px}
+body[data-fs="1"] .end-card{font-size:14.5px}body[data-fs="2"] .end-card{font-size:16px}
+body[data-fs="1"] #nbanner .nb-b{font-size:14.5px}body[data-fs="2"] #nbanner .nb-b{font-size:16px}
+body[data-fs="1"] .locknote{font-size:13px}body[data-fs="2"] .locknote{font-size:14px}
+body[data-fs="1"] .sec-t{font-size:12.5px}body[data-fs="2"] .sec-t{font-size:13.5px}
+body.a11y-bold .bub{font-weight:500}
+body.a11y-bold .thread .tp{font-weight:500}
+body.a11y-bold .post-cap,body.a11y-bold .post-cmt{font-weight:500}
+body.a11y-bold .note-item p{font-weight:600}
+body.a11y-bold .ig-bio,body.a11y-bold .xpost .xt,body.a11y-bold .mo-body,body.a11y-bold .news-art p,body.a11y-bold #v-ending .et{font-weight:500}
+body.a11y-bold .tt-info .cap,body.a11y-bold .sys-line{font-weight:600}
+body.a11y-bold .corr,body.a11y-bold .miss,body.a11y-bold .me-row .st,body.a11y-bold .cal-item,body.a11y-bold .pv-cap{font-weight:500}
+body.a11y-contrast{--sub:#636368}
+body.a11y-contrast .thread .tp{color:#4a4a50}
+body.a11y-contrast .post-cmt{color:#333338}
+body.a11y-contrast .post-h .loc{color:#3a3a40}
+body.a11y-contrast .sc-meta{color:#636368}
+body.a11y-contrast .miss small{color:#4f4f55}
+body.a11y-contrast .note-lock{color:#636368}
+body.a11y-contrast .cal-grid .dw{color:#737378}
+body.a11y-contrast .ig-cat{color:#4f4f55}
+body.a11y-contrast .corr .cm{color:#55555c}
+body.a11y-contrast .corr .ch{color:#6a6a71}
+body.a11y-contrast .xpost .xh span,body.a11y-contrast .xpost .xa{color:#3d5566}
+body.a11y-contrast .mo-head .ms{color:#68766f}
+body.a11y-contrast .mo-acts{color:#5f6f6c}
+body.a11y-contrast .news-art .nm,body.a11y-contrast .news-item .nm{color:#636368}
+body.a11y-contrast .lk-nm small{color:#636368}
+body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+.fs-seg{display:flex;background:#e9e9ee;border-radius:10px;padding:2px;gap:2px}
+.fs-seg button{flex:1;padding:7px 0;font-size:13.5px;font-weight:600;color:#3a3a3c;border-radius:8px;font-family:inherit;background:transparent;border:none;cursor:pointer}
+.fs-seg button.on{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.18);color:#111}
+.a11y-sec{font-size:12px;font-weight:700;color:#8e8e93;letter-spacing:.04em;margin:15px 2px 7px}
+.a11y-prev{background:#8fa9c8;border-radius:14px;padding:11px 11px 8px;margin-top:10px}
 /* ==== v24: sound settings ==== */
 .snd-volrow{display:flex;align-items:center;gap:11px;width:100%;padding:11px 2px;font-size:14px;color:#262626}
 .snd-volrow input{flex:1;accent-color:#ff2d55;height:24px;min-width:0}
@@ -1252,6 +1314,7 @@ button.end-card{width:100%;text-align:left;font-family:inherit;border:none;curso
 <symbol id="i-home" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></g></symbol>
 <symbol id="i-compass" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></g></symbol>
 <symbol id="i-inbox" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></g></symbol>
+<symbol id="i-a11y" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="12" cy="4.2" r="2"/><rect x="3.4" y="7.6" width="17.2" height="1.9" rx=".95"/><rect x="10.9" y="7.6" width="2.2" height="6.8" rx="1"/><rect x="9.15" y="13.1" width="2.1" height="7.5" rx="1.05" transform="rotate(13 10.2 16.85)"/><rect x="12.75" y="13.1" width="2.1" height="7.5" rx="1.05" transform="rotate(-13 13.8 16.85)"/></g></symbol>
 <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g></symbol>
 <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></g></symbol>
 <symbol id="i-userplus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></g></symbol>
@@ -1492,6 +1555,9 @@ button.end-card{width:100%;text-align:left;font-family:inherit;border:none;curso
 <div class="set-row2i"><span class="set-lab"><span class="set-ric" style="background:#0a84ff"><svg class="uic s14"><use href="#i-sun"/></svg></span>画面表示と明るさ</span><span>Liquid Glass</span></div>
 </div>
 <div class="ios-grp">
+<button class="set-row2i" id="set-a11y"><span class="set-lab"><span class="set-ric" style="background:#0a84ff"><svg class="uic s14"><use href="#i-a11y"/></svg></span>アクセシビリティ</span><span id="a11y-val">標準 ›</span></button>
+</div>
+<div class="ios-grp">
 <button class="set-row2i" id="set-wall"><span class="set-lab"><span class="set-ric" style="background:#5e5ce6"><svg class="uic s14"><use href="#i-photo"/></svg></span>壁紙</span><span id="wall-val">デフォルト ›</span></button>
 <button class="set-row2i" id="set-storage"><span class="set-lab"><span class="set-ric" style="background:#8e8e93"><svg class="uic s14"><use href="#i-chart"/></svg></span>iPhoneストレージ</span><span>256 GB ›</span></button>
 <div class="set-row2i"><span class="set-lab"><span class="set-ric" style="background:#34c759"><svg class="uic s14"><use href="#i-batt"/></svg></span>バッテリー</span><span>100%</span></div>
@@ -1503,7 +1569,7 @@ button.end-card{width:100%;text-align:left;font-family:inherit;border:none;curso
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v33.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v34.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -1911,9 +1977,10 @@ const NOTIFS=[
 ];
 /* ================= STATE ================= */
 const KEY="sakuya_scandal_v1",EKEY="sakuya_scandal_ends_v1";
-function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],chDates:{},ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{},favs:{},wall:"",noff:{},snd:{on:true,vol:.6,vib:true}};}
+function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],chDates:{},ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{},favs:{},wall:"",noff:{},snd:{on:true,vol:.6,vib:true},a11y:{fs:0,bold:false,contrast:false,rm:false}};}
 let S=load();
 S.snd=Object.assign({on:true,vol:.6,vib:true},S.snd||{});
+S.a11y=Object.assign({fs:0,bold:false,contrast:false,rm:false},S.a11y||{});
 S.chDates=S.chDates||{};
 /* v27: save hardening — validate/repair every known field so a damaged or partial save still boots and resumes */
 function sanitizeSave(j){
@@ -1935,6 +2002,7 @@ function sanitizeSave(j){
  o.ig=int(j.ig,0,0,999);o.tt=int(j.tt,0,0,999);o.x=int(j.x,0,0,999);o.news=int(j.news,0,0,999);o.freeCount=int(j.freeCount,0,0,1000000);
  o.ended=j.ended===true;o.endId=str(j.endId,"");o.act=str(j.act,"");o.viewIG=str(j.viewIG,"grid");o.wall=str(j.wall,"");
  const sj=obj(j.snd)||{};o.snd={on:typeof sj.on==="boolean"?sj.on:true,vol:num(sj.vol,.6,0,1),vib:typeof sj.vib==="boolean"?sj.vib:true};
+ const aj=obj(j.a11y)||{};o.a11y={fs:(aj.fs===1||aj.fs===2)?aj.fs:0,bold:aj.bold===true,contrast:aj.contrast===true,rm:aj.rm===true};
  return o;
 }
 function load(){try{const j=JSON.parse(localStorage.getItem(KEY));if(j&&typeof j==="object"&&!Array.isArray(j))return sanitizeSave(j);}catch(e){}return defState();}
@@ -2014,8 +2082,8 @@ $("#v-home").addEventListener("pointerdown",e=>{if(!e.target.closest(".app"))ret
 ["pointerup","pointercancel","pointerleave"].forEach(ev=>$("#v-home").addEventListener(ev,()=>clearTimeout(_hLpT)));
 $("#v-home").addEventListener("click",e=>{if(_hLpFired){_hLpFired=false;e.stopPropagation();e.preventDefault();return;}if(!homeEdit)return;if(e.target.closest("#home-done")){setHomeEdit(false);e.stopPropagation();e.preventDefault();return;}if(e.target.closest(".app")){e.stopPropagation();e.preventDefault();toast("この端末ではアプリの削除・移動は固定だよ");}},true);
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){const t=g.dataset.go;if(t==="ig")S._igSeen=S.ig;if(t==="tt")S._ttSeen=S.tt;if(t==="notes")S._memoSeen=S.memos.length;if(t==="x")S.x=0;if(t==="news")S.news=0;save();}});
-$("#app-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();show("home");toast("リセットしたよ");}});
-$("#set-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();show("home");toast("リセットしたよ");}});
+$("#app-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();applyA11y();show("home");toast("リセットしたよ");}});
+$("#set-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();applyA11y();show("home");toast("リセットしたよ");}});
 /* ================= SETTINGS DETAIL (v23) ================= */
 const WALLS=[{src:"",name:"デフォルト",th:"assets/sakuya-ig1.jpg"},{src:"assets/group.jpg",name:"グループ写真",th:"assets/group.jpg"},{src:"assets/kobe-night.jpg",name:"神戸の夜景",th:"assets/kobe-night.jpg"},{src:"assets/stage2.jpg",name:"GLION ARENA KOBE",th:"assets/stage2.jpg"}];
 function wallName(){const w=WALLS.find(w=>w.src===(S.wall||""));return w?w.name:"デフォルト";}
@@ -2045,6 +2113,23 @@ const vr=$("#snd-vol-r");if(vr){vr.addEventListener("input",()=>{S.snd.vol=(+vr.
 $$("#sheet-body [data-sndtest]").forEach(b=>b.addEventListener("click",()=>{if(!S.snd.on){toast("効果音がオフだよ");return;}sfx(b.dataset.sndtest);}));
 });
 updSndVal();
+
+/* ================= SETTINGS: ACCESSIBILITY (v34) ================= */
+const A11Y_FS=["標準","大","特大"];
+function updA11yVal(){const v=$("#a11y-val");if(v)v.textContent=A11Y_FS[S.a11y.fs]+" ›";}
+function applyA11y(){document.body.dataset.fs=String(S.a11y.fs);document.body.classList.toggle("a11y-bold",!!S.a11y.bold);document.body.classList.toggle("a11y-contrast",!!S.a11y.contrast);document.body.classList.toggle("a11y-rm",!!S.a11y.rm);updA11yVal();}
+$("#set-a11y").addEventListener("click",()=>{sheetList("アクセシビリティ",
+`<div class="a11y-sec" style="margin-top:2px">画面表示とテキストサイズ</div>`
++`<div class="sc-row" style="display:block"><b>文字サイズ</b><div class="fs-seg" style="margin-top:9px">${A11Y_FS.map((n,i)=>`<button data-afsize="${i}" class="${S.a11y.fs===i?"on":""}">${n}</button>`).join("")}</div><div class="a11y-prev"><div class="msg"><div class="col"><div class="who">サクヤ</div><div class="bub">言葉は、少なくていい。合う人には届くから。</div></div></div></div></div>`
++`<div class="a11y-sec">表示</div>`
++`<div class="sc-row ntog" data-a11ytog="bold"><div class="sc-main"><b>太字テキスト</b><div style="color:#8e8e93;font-size:12px;margin-top:1px">本文の文字を太くして、読みやすくするよ</div></div><span class="ios-sw ${S.a11y.bold?"on":""}"><i></i></span></div>`
++`<div class="sc-row ntog" data-a11ytog="contrast"><div class="sc-main"><b>コントラストを上げる</b><div style="color:#8e8e93;font-size:12px;margin-top:1px">補足の文字色を濃くして、見分けやすくするよ</div></div><span class="ios-sw ${S.a11y.contrast?"on":""}"><i></i></span></div>`
++`<div class="sc-row ntog" data-a11ytog="rm"><div class="sc-main"><b>視差効果を減らす</b><div style="color:#8e8e93;font-size:12px;margin-top:1px">画面の動きやアニメーションを抑えるよ。OSの「視差効果を減らす」設定にも連動してるよ</div></div><span class="ios-sw ${S.a11y.rm?"on":""}"><i></i></span></div>`
++`<div class="locknote">設定はこの端末に保存されて、次に開いたときもそのまま使えるよ</div>`);
+$$("#sheet-body [data-afsize]").forEach(b=>b.addEventListener("click",()=>{S.a11y.fs=+b.dataset.afsize;save();applyA11y();$$("#sheet-body [data-afsize]").forEach(x=>x.classList.toggle("on",+x.dataset.afsize===S.a11y.fs));}));
+$$("#sheet-body [data-a11ytog]").forEach(r=>r.addEventListener("click",()=>{const k=r.dataset.a11ytog;S.a11y[k]=!S.a11y[k];save();applyA11y();r.querySelector(".ios-sw").classList.toggle("on",!!S.a11y[k]);}));
+});
+applyA11y();
 
 /* ================= LINE LIST ================= */
 function renderLineList(){const el=$("#line-list");let h=`<div class="line-search">${ic("search")} 検索</div><button class="me-row" id="line-me"><img class="av" src="assets/nao-face.jpg" style="width:50px;height:50px" alt=""><span><span class="nm">なお</span><div class="st">サクヤペン💗 神戸公演が楽しみ</div></span></button><div class="sec-t">トーク</div>`;
