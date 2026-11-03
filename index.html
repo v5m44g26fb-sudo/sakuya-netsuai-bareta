@@ -1582,7 +1582,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v48.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v49.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -2400,7 +2400,9 @@ function ttDiscHTML(){const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g
 function ttCapHTML(p,ai){const bold=s=>esc(s).replace(/#([^\s#]+)/g,'<b class="hash">#$1</b>');if(p.cap.length<=56||TTCAPOPEN[ai])return `<div class="cap">${bold(p.cap)}</div>`;return `<div class="cap">${bold(p.cap.slice(0,56))} <button class="tt-more" data-ttmore="${ai}">もっと見る</button></div>`;}
 function openTTInbox(){const rows=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt).slice().reverse().map(x=>lkRow("assets/group.jpg","","nctwish_official","新しい動画を投稿しました",false)).join("");sheetList("受信箱",rows||`<div class="locknote">新しい通知はないよ</div>`);}
 let ttQuery="";
-function ttCopyLink(url,msg){const done=()=>toast(msg||"リンクをコピーしたよ");if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done).catch(done);}else done();}
+/* v49: コピーは実際に成功したときだけ成功表示にする（失敗時はexecCommandへフォールバックし、それも失敗したら正直に伝える） */
+function copyText(txt,okMsg){const done=()=>toast(okMsg);const fail=()=>{let ok=false;try{const ta=document.createElement("textarea");ta.value=txt;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();ok=document.execCommand("copy");ta.remove();}catch(e){}toast(ok?okMsg:"コピーできなかったよ");};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(fail);}else fail();}
+function ttCopyLink(url,msg){copyText(url,msg||"リンクをコピーしたよ");}
 function ttSearchResultsHTML(){
  const q=ttQuery.trim().toLowerCase().replace(/^#/,"");
  const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt).filter(x=>!q||((x.p.cap||"")+" "+(x.p.music||"")+" "+(x.p.user||"")).toLowerCase().includes(q));
@@ -2643,8 +2645,8 @@ $("#prof-vcall").addEventListener("click",()=>toast("ビデオ通話は物語で
 $$("#v-profile .prof-tabs span").forEach((s,i)=>s.addEventListener("click",()=>{if(i>0)toast("このプロフィールの"+(i===1?"投稿":"写真")+"は物語では開かないよ");}));
 /* ================= STORIES ================= */
 let storyIdx=0,storyTimer=null,storyData=STORIES;
-function openStory(i){storyData=STORIES;openStoryAt(i);}
-function openHL(i){const hl=HIGHLIGHTS[i];storyData=[{img:hl.img,av:"assets/group.jpg",name:"nctwish_official",h:"ハイライト ・ "+hl.t}];openStoryAt(0);}
+function openStory(i){storyData=STORIES;const _ri=$("#story-reply-in");if(_ri)_ri.value="";openStoryAt(i);}
+function openHL(i){const hl=HIGHLIGHTS[i];storyData=[{img:hl.img,av:"assets/group.jpg",name:"nctwish_official",h:"ハイライト ・ "+hl.t}];const _ri=$("#story-reply-in");if(_ri)_ri.value="";openStoryAt(0);}
 function openStoryAt(i){storyIdx=i;const st=storyData[i];const m=M[st.k];$("#story-img").src=st.img;$("#story-av").src=st.av||(m?m.av:"assets/group.jpg");$("#story-name").textContent=st.name||("nctwish_"+st.k);$("#story-time").textContent=st.h;
  $("#story-segs").innerHTML=storyData.map((x,j)=>`<i class="${j<i?"done":""}"><b id="seg-${j}"></b></i>`).join("");
  show("story");
@@ -2672,7 +2674,7 @@ $("#emo-bar").innerHTML=EMOQ.map(e=>`<button data-emo="${e}" aria-label="絵文�
 function lkRow(av,ini,name,sub,off){return `<div class="sc-row lk-row">${av?`<img class="av" src="${av}" style="width:38px;height:38px">`:`<span class="sil" style="width:38px;height:38px;background:#8e8e93;font-size:14px">${ini}</span>`}<span class="lk-nm"><b>${name}</b><small>${sub}</small></span><button class="lk-fol${off?" off":""}">${off?"フォローする":"フォロー中"}</button></div>`;}
 function openLikers(id){const fans=FAN_ACC.map((a,j)=>FAN_ACC[(j+(id||0))%FAN_ACC.length]);const rows=Object.keys(M).filter(k=>M[k].av).map(k=>lkRow(M[k].av,"",M[k].n,k==="sakuya"?"NCT WISH（本人）":"NCT WISH",false)).join("")+fans.map(a=>lkRow("","W",a[0],a[1],true)).join("");sheetList("いいね！した人",rows);}
 function openFollowers(){const rows=Object.keys(M).filter(k=>M[k].av).map(k=>lkRow(M[k].av,"",M[k].n,"NCT WISH",false)).join("")+FAN_ACC.map(a=>lkRow("",a[0][0].toUpperCase(),a[0],a[1],true)).join("")+`<div class="locknote">フォロワー${fmtNum(igFolNum())}人のうち、知っているアカウントを一部表示しています</div>`;sheetList("フォロワー",rows);}
-function openSheet(title,items,onSend){const _sh=$("#sheet");clearTimeout(_sh._ct);_sh.classList.remove("bye");$("#sheet").classList.remove("nopost");$("#sheet").classList.add("emo");const sh=$("#sheet-head");sh.childNodes[0].textContent=title;$("#sheet-body").innerHTML=items.map(sheetRow).join("");_sheetSend=onSend;$("#sheet").classList.add("on");$("#sheet-body").scrollTop=0;}
+function openSheet(title,items,onSend){const _sh=$("#sheet");clearTimeout(_sh._ct);_sh.classList.remove("bye");$("#sheet").classList.remove("nopost");$("#sheet").classList.add("emo");const sh=$("#sheet-head");sh.childNodes[0].textContent=title;$("#sheet-body").innerHTML=items.map(sheetRow).join("");_sheetSend=onSend;const _si=$("#sheet-input");if(_si)_si.value="";$("#sheet").classList.add("on");$("#sheet-body").scrollTop=0;}
 function closeSheet(){const sh=$("#sheet");if(!sh.classList.contains("on"))return;sh.classList.add("bye");clearTimeout(sh._ct);sh._ct=setTimeout(()=>{sh.classList.remove("on","bye");},190);}
 $("#sheet").addEventListener("click",e=>{if(e.target.id==="sheet")closeSheet();});
 $("#sheet-x").addEventListener("click",closeSheet);
@@ -2843,7 +2845,7 @@ function closeHTMenu(){$("#htmenu").classList.remove("on");}
 function speakHT(txt){if(!txt)return;try{const sy=window.speechSynthesis;if(!sy){toast("この端末では読み上げできないよ");return;}sy.cancel();const u=new SpeechSynthesisUtterance(txt);u.lang=/[가-힣]/.test(txt)?"ko-KR":"ja-JP";sy.speak(u);toast("読み上げ中だよ");}catch(e){toast("この端末では読み上げできないよ");}}
 $("#htmenu").addEventListener("click",e=>{if(e.target.id==="htmenu")closeHTMenu();});
 $$("#htmenu [data-htm]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.htm;closeHTMenu();
- if(k==="copy"){try{const pr=navigator.clipboard&&navigator.clipboard.writeText(_htmTxt);if(pr&&pr.catch)pr.catch(()=>{});}catch(e){}toast("コピーしたよ");}
+ if(k==="copy"){copyText(_htmTxt,"コピーしたよ");}
  else if(k==="speak")speakHT(_htmTxt);
  else if(k==="fav"){S.htfavs=S.htfavs||[];const fi=S.htfavs.indexOf(_htmTxt);if(fi>=0){S.htfavs.splice(fi,1);save();toast("お気に入りを取り消したよ");}else{S.htfavs.push(_htmTxt);save();toast("お気に入りに保存したよ");}}
  else if(k==="corr"){const c=$("#chat-body .corr");if(c){c.scrollIntoView({block:"center"});toast("訂正カードはこれだよ");}else toast("このメッセージへの訂正はないよ");}
