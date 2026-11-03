@@ -1067,6 +1067,32 @@ button{touch-action:manipulation}
 .call-grid .cb{cursor:pointer}
 .call-grid .cb.on i{background:#fff!important;color:#111;backdrop-filter:none;-webkit-backdrop-filter:none}
 #v-call.htcall .slide .knob{background:#6c4cf1}
+/* ===== v21: functional search/share/news actions, safe-area, reduced motion ===== */
+.ig-nav{padding-bottom:max(20px,env(safe-area-inset-bottom))}
+.tt-tabs{padding-bottom:max(22px,env(safe-area-inset-bottom))}
+.ht-tabs{padding-bottom:max(20px,env(safe-area-inset-bottom))}
+.sheet-in{padding-bottom:max(26px,env(safe-area-inset-bottom))}
+.igx-search{display:flex;align-items:center;gap:7px;margin:12px 16px 2px;background:#efefef;border-radius:10px;padding:4px 8px 4px 12px;color:#8e8e93;width:calc(100% - 32px)}
+.igx-search input{flex:1;border:none;background:transparent;outline:none;font-size:14px;font-family:inherit;color:#262626;padding:6px 0;min-width:0}
+.igx-clear{flex:none;width:24px;height:24px;border-radius:50%;background:#c7c7cc;color:#fff;font-size:13px;display:none;align-items:center;justify-content:center;padding:0}
+.igx-clear.show{display:flex}
+.igx-empty{grid-column:1/-1;text-align:center;font-size:12.5px;color:#8e8e93;padding:24px 12px;line-height:1.7}
+#ig-body .igx-empty{grid-column:auto}
+.notes-search input{flex:1;border:none;background:transparent;outline:none;font-size:13.5px;font-family:inherit;color:#262626;min-width:0}
+.tt-search-head{display:flex;align-items:center;gap:8px;padding:52px 14px 4px}
+.tt-search-head .xs-inwrap{background:rgba(255,255,255,.14);color:#cfcfe0}
+.tt-search-head .xs-inwrap input{color:#fff}
+.tt-search-head .xs-inwrap input::placeholder{color:#9a9ab0}
+.tts-back{font-size:26px;color:#fff;padding:0 4px;line-height:1}
+.tts-sec{font-size:13.5px;font-weight:800;color:#fff;padding:14px 16px 4px}
+.news-acts button{display:flex;align-items:center;gap:5px;font-size:12px;color:#555}
+.news-acts button.on{color:#0a84ff}
+.ncmt-form{display:flex;gap:8px;margin-top:12px}
+.ncmt-form input{flex:1;border:1px solid #e3e7e6;border-radius:19px;padding:8px 13px;font-size:14px;font-family:inherit;outline:none;min-width:0;color:#111}
+.ncmt-form button{flex:none;font-weight:800;color:#0a84ff;font-size:13.5px;padding:0 4px}
+.sh-row{display:flex;align-items:center;gap:11px;width:100%;padding:11px 2px;font-size:14px;color:#262626;text-align:left;font-family:inherit}
+.sh-row .ric{display:flex;width:38px;height:38px;border-radius:50%;background:#f2f2f5;align-items:center;justify-content:center;flex:none}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
@@ -1346,7 +1372,7 @@ button{touch-action:manipulation}
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v20.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v21.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp">
 <div class="set-row2i">通知 <span>バッジ・バナー オン</span></div>
@@ -1749,7 +1775,7 @@ const NOTIFS=[
 ];
 /* ================= STATE ================= */
 const KEY="sakuya_scandal_v1",EKEY="sakuya_scandal_ends_v1";
-function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{}};}
+function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{}};}
 let S=load();
 function load(){try{const j=JSON.parse(localStorage.getItem(KEY));if(j&&typeof j.scene==="number")return Object.assign(defState(),j);}catch(e){}return defState();}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
@@ -1890,15 +1916,23 @@ function igTile(p){let badge="";if(p.slides)badge='<span class="grid-multi">'+ic
 function igStoriesHTML(){return `<div class="stories">${Object.keys(M).filter(k=>M[k].av).map(k=>`<button class="story" data-story="${k}"><span class="ring ${S.ig>0?"":"seen"}"><img src="${M[k].av}"></span>${M[k].n}</button>`).join("")}<button class="story" data-story="me"><span class="ring seen"><img src="assets/nao-face.jpg"><span class="story-plus">＋</span></span>あなた</button></div>`;}
 function bindIGTiles(el){el.querySelectorAll("[data-post]").forEach(b=>b.addEventListener("click",()=>{S.viewIG="feed";save();renderIG();setTimeout(()=>{const t=$("#igpost-"+b.dataset.post);if(t)t.scrollIntoView({block:"start"});},60);}));el.querySelectorAll("[data-tpost]").forEach(b=>b.addEventListener("click",()=>{S.viewIG="tagfeed";save();renderIG();setTimeout(()=>{const t=$("#igpost-"+b.dataset.tpost);if(t)t.scrollIntoView({block:"start"});},60);}));}
 function bindIGStories(el){el.querySelectorAll("[data-story]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.story;const i=STORIES.findIndex(s=>s.k===k);if(i>=0)openStory(i);else toast("あなたのストーリーはまだないよ");}));}
+let igQuery="";
+function igExploreResultsHTML(posts){
+ const q=igQuery.trim().toLowerCase();
+ const mem=Object.keys(M).filter(k=>M[k].av).map(k=>({av:M[k].av,ini:"",n:M[k].n,sub:"NCT WISH",off:false}));
+ const fans=FAN_ACC.map(a=>({av:"",ini:a[0][0].toUpperCase(),n:a[0],sub:a[1],off:true}));
+ const accs=mem.concat(fans).filter(a=>!q||(a.n+" "+a.sub).toLowerCase().includes(q));
+ const tiles=posts.map(p=>({t:"post",p})).concat(TAGGED_POSTS.map(p=>({t:"tpost",p}))).filter(x=>!q||((x.p.user||"")+" "+(x.p.cap||"")+" "+(x.p.loc||"")+" "+(x.p.time||"")).toLowerCase().includes(q));
+ const sug=accs.length?accs.map(a=>lkRow(a.av,a.ini,a.n,a.sub,a.off)).join(""):`<div class="igx-empty" style="padding:14px 16px;text-align:left">「${esc(igQuery.trim())}」に一致するアカウントはないよ</div>`;
+ const grid=tiles.length?tiles.map(x=>{const p=x.p;const badge=p.slides?'<span class="grid-multi">'+ic("copy","s13")+'</span>':p.video?'<span class="pin">'+ic("play","s13")+'</span>':"";const views=p.video?`<span class="grid-views">${ic("play","s11")} ${fmtLikes(p.likes)}</span>`:"";return `<button data-${x.t}="${p.id}"><img src="${p.img}">${badge}${views}</button>`;}).join(""):`<div class="igx-empty">${q?"「"+esc(igQuery.trim())+"」に一致する投稿はないよ":ic("lock","s15")+" 物語を進めると投稿が解放されるよ"}</div>`;
+ return `<div class="igx-sec">${q?"アカウント":"おすすめアカウント"}${q?`（${accs.length}件）`:""}</div>${sug}<div class="igx-sec">${q?"投稿":"探索"}${q?`（${tiles.length}件）`:""}</div><div class="ig-grid">${grid}</div>`;}
 function igExploreHTML(posts){
- const sug=Object.keys(M).filter(k=>M[k].av).map(k=>lkRow(M[k].av,"",M[k].n,"NCT WISH",false)).join("")+FAN_ACC.map(a=>lkRow("",a[0][0].toUpperCase(),a[0],a[1],true)).join("");
- const tiles=posts.map(p=>({t:"post",p})).concat(TAGGED_POSTS.map(p=>({t:"tpost",p})));
- const grid=tiles.length?tiles.map(x=>{const p=x.p;const badge=p.slides?'<span class="grid-multi">'+ic("copy","s13")+'</span>':p.video?'<span class="pin">'+ic("play","s13")+'</span>':"";const views=p.video?`<span class="grid-views">${ic("play","s11")} ${fmtLikes(p.likes)}</span>`:"";return `<button data-${x.t}="${p.id}"><img src="${p.img}">${badge}${views}</button>`;}).join(""):`<div class="ig-lock">${ic("lock","s15")} 物語を進めると投稿が解放されるよ</div>`;
- return `<button class="igx-search" id="igx-search">${ic("search","s15")} 検索</button><div class="igx-sec">おすすめアカウント</div>${sug}<div class="igx-sec">探索</div><div class="ig-grid">${grid}</div>`;}
+ return `<label class="igx-search">${ic("search","s15")}<input id="igx-in" type="text" placeholder="検索" value="${esc(igQuery).replace(/"/g,"&quot;")}" autocomplete="off"><button class="igx-clear${igQuery?" show":""}" id="igx-clear" aria-label="クリア">✕</button></label><div id="igx-results">${igExploreResultsHTML(posts)}</div>`;}
+
 function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);const view=S.viewIG||"grid";
  const un=document.querySelector(".ig-uname");if(un)un.innerHTML=view==="feed"?"Instagram":view==="explore"?"検索":`nctwish_official ${VB}`;
  $$("#v-ig .ig-nav button").forEach(b=>b.classList.toggle("on",b.dataset.ignav===(view==="feed"?"feed":view==="explore"?"explore":view==="reels"?"reels":"grid")));
- if(view==="explore"){el.innerHTML=igExploreHTML(posts);const _sb=$("#igx-search");if(_sb)_sb.addEventListener("click",()=>toast("検索は物語では使わないよ"));bindIGTiles(el);igLiveStart();return;}
+ if(view==="explore"){el.innerHTML=igExploreHTML(posts);const _in=$("#igx-in");if(_in)_in.addEventListener("input",()=>{igQuery=_in.value;const r=$("#igx-results");if(r){r.innerHTML=igExploreResultsHTML(posts);bindIGTiles(r);}const c=$("#igx-clear");if(c)c.classList.toggle("show",!!igQuery);});const _cl=$("#igx-clear");if(_cl)_cl.addEventListener("click",ev=>{ev.preventDefault();igQuery="";renderIG();const i2=$("#igx-in");if(i2)i2.focus();});bindIGTiles(el);igLiveStart();return;}
  if(view==="feed"){el.innerHTML=igStoriesHTML()+(posts.length?posts.map(p=>postHTML(p)).join(""):`<div class="ig-lock">${ic("lock","s15")} 物語を進めると公式投稿が解放されるよ</div>`);bindIGStories(el);bindPostActs(el);igLiveStart();return;}
  let h="";
  h+=`<div class="ig-prof"><div class="ig-top"><span class="ring"><img src="assets/group.jpg"></span><div class="ig-stats"><div><b>${Math.max(S.ig,0)}</b><span>投稿</span></div><div data-followers style="cursor:pointer">${igFolHTML()}<span>フォロワー</span></div><div><b>12</b><span>フォロー中</span></div></div></div>
@@ -1985,20 +2019,40 @@ function ttProfHTML(){const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g
  <div class="ttp-grid">${grid}</div></div>`;}
 const TT_TRENDS=[["#NCTWISH","2,314万回再生"],["#ISPY","1,872万回再生"],["#FaceOurWISH","964万回再生"],["#poppop","842万回再生"],["#COLOR","517万回再生"],["#ダンスチャレンジ","1.2億回再生"]];
 function ttDiscHTML(){const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt);
- return `<div class="ttd"><button class="ttd-search" data-ttsearch>${ic("search","s16")} NCT WISH を検索</button><div class="ttd-sec">トレンド</div>${TT_TRENDS.map(t=>`<button class="ttd-tag" data-tttag><span class="tic">#</span><span><b>${t[0]}</b><small>${t[1]}</small></span></button>`).join("")}<div class="ttd-sec">動画</div><div class="ttp-grid">${posts.length?posts.map(ttGridBtn).join(""):`<div style="grid-column:1/-1;text-align:center;font-size:12px;color:#8e8e96;padding:22px 10px">${ic("lock","s15")} 物語を進めると動画が解放されるよ</div>`}</div></div>`;}
+ return `<div class="ttd"><button class="ttd-search" data-ttsearch>${ic("search","s16")} NCT WISH を検索</button><div class="ttd-sec">トレンド</div>${TT_TRENDS.map(t=>`<button class="ttd-tag" data-tttag="${t[0]}"><span class="tic">#</span><span><b>${t[0]}</b><small>${t[1]}</small></span></button>`).join("")}<div class="ttd-sec">動画</div><div class="ttp-grid">${posts.length?posts.map(ttGridBtn).join(""):`<div style="grid-column:1/-1;text-align:center;font-size:12px;color:#8e8e96;padding:22px 10px">${ic("lock","s15")} 物語を進めると動画が解放されるよ</div>`}</div></div>`;}
 function ttCapHTML(p,ai){const bold=s=>esc(s).replace(/#([^\s#]+)/g,'<b class="hash">#$1</b>');if(p.cap.length<=56||TTCAPOPEN[ai])return `<div class="cap">${bold(p.cap)}</div>`;return `<div class="cap">${bold(p.cap.slice(0,56))} <button class="tt-more" data-ttmore="${ai}">もっと見る</button></div>`;}
 function openTTInbox(){const rows=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt).slice().reverse().map(x=>lkRow("assets/group.jpg","","nctwish_official","新しい動画を投稿しました",false)).join("");sheetList("受信箱",rows||`<div class="locknote">新しい通知はないよ</div>`);}
+let ttQuery="";
+function ttCopyLink(url,msg){const done=()=>toast(msg||"リンクをコピーしたよ");if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done).catch(done);}else done();}
+function ttSearchResultsHTML(){
+ const q=ttQuery.trim().toLowerCase().replace(/^#/,"");
+ const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt).filter(x=>!q||((x.p.cap||"")+" "+(x.p.music||"")+" "+(x.p.user||"")).toLowerCase().includes(q));
+ const tags=TT_TRENDS.filter(t=>!q||t[0].toLowerCase().replace(/\s/g,"").includes(q.replace(/\s/g,"")));
+ return `<div class="tts-sec">トレンド</div>${tags.length?tags.map(t=>`<button class="ttd-tag" data-tttag="${esc(t[0])}"><span class="tic">#</span><span><b>${esc(t[0])}</b><small>${esc(t[1])}</small></span></button>`).join(""):`<div class="igx-empty" style="color:#9a9ab0">一致するトレンドはないよ</div>`}<div class="tts-sec">動画${q?`（${posts.length}件）`:""}</div><div class="ttp-grid">${posts.length?posts.map(ttGridBtn).join(""):`<div class="igx-empty" style="color:#9a9ab0">${q?"「"+esc(ttQuery.trim())+"」に一致する動画はないよ":"物語を進めると動画が解放されるよ"}</div>`}</div>`;}
+function ttSearchHTML(){
+ return `<div class="ttd"><div class="tt-search-head"><button class="tts-back" id="tts-back" aria-label="戻る">‹</button><label class="xs-inwrap">${ic("search","s15")}<input id="tts-in" type="text" placeholder="検索" value="${esc(ttQuery).replace(/"/g,"&quot;")}" autocomplete="off"></label></div><div id="tts-results">${ttSearchResultsHTML()}</div></div>`;}
+function bindTTSearchRes(root){root.querySelectorAll("[data-ttopen]").forEach(b=>b.addEventListener("click",()=>{ttView="feed";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="home"));renderTT();setTimeout(()=>{const t=$("#ttv-"+b.dataset.ttopen);if(t)t.scrollIntoView({block:"start"});},80);}));root.querySelectorAll("[data-tttag]").forEach(b=>b.addEventListener("click",()=>{ttQuery=b.dataset.tttag||"";const i2=$("#tts-in");if(i2)i2.value=ttQuery;const r=$("#tts-results");if(r){r.innerHTML=ttSearchResultsHTML();bindTTSearchRes(r);}}));}
+function openTTShare(ai){const p=TT_POSTS[ai];if(!p)return;const saved=S.savedTT&&S.savedTT[ai];
+ sheetList("シェア",`<button class="sh-row" data-shact="copy"><span class="ric">${ic("copy","s19")}</span>リンクをコピー</button><button class="sh-row" data-shact="save"><span class="ric">${ic(saved?"bmk-f":"bmk","s19")}</span>${saved?"保存を取り消す":"あとで見る（保存）"}</button><button class="sh-row" data-shact="cmt"><span class="ric">${ic("cmt","s19")}</span>コメントを見る（${fmtTT(p.cmts)}件）</button>`);
+ $$("#sheet-body [data-shact]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.shact;closeSheet();
+  if(k==="copy")ttCopyLink(location.href.split("#")[0]+"#tt-"+ai);
+  else if(k==="save"){S.savedTT=S.savedTT||{};S.savedTT[ai]=!S.savedTT[ai];save();toast(S.savedTT[ai]?"保存したよ":"保存を取り消したよ");renderTT();}
+  else if(k==="cmt")setTimeout(()=>openTTComments(ai),210);}));}
 function renderTT(){const el=$("#tt-feed");
+ if(ttView==="search"){el.style.scrollSnapType="none";el.innerHTML=ttSearchHTML();el.scrollTop=0;
+  $("#tts-back").addEventListener("click",()=>{ttView="disc";renderTT();});
+  const _ti=$("#tts-in");if(_ti)_ti.addEventListener("input",()=>{ttQuery=_ti.value;const r=$("#tts-results");if(r){r.innerHTML=ttSearchResultsHTML();bindTTSearchRes(r);}});
+  bindTTSearchRes(el);return;}
  if(ttView==="prof"){el.style.scrollSnapType="none";el.innerHTML=ttProfHTML();el.scrollTop=0;
   el.querySelectorAll("[data-ttopen]").forEach(b=>b.addEventListener("click",()=>{ttView="feed";renderTT();setTimeout(()=>{const t=$("#ttv-"+b.dataset.ttopen);if(t)t.scrollIntoView({block:"start"});},80);}));
   el.querySelectorAll("[data-ttptab]").forEach(b=>b.addEventListener("click",()=>{ttProfTab=b.dataset.ttptab;renderTT();}));
   const fb=el.querySelector("[data-ttpfol]");if(fb)fb.addEventListener("click",()=>{ttFollowing=!ttFollowing;toast(ttFollowing?"フォローしたよ":"フォローを外したよ");renderTT();});
-  const sh=el.querySelector("[data-ttshare]");if(sh)sh.addEventListener("click",()=>toast("シェアは物語では使わないよ"));
+  const sh=el.querySelector("[data-ttshare]");if(sh)sh.addEventListener("click",()=>{ttCopyLink("https://www.tiktok.com/@nctwish_official","プロフィールのリンクをコピーしたよ");});
   return;}
  if(ttView==="disc"){el.style.scrollSnapType="none";el.innerHTML=ttDiscHTML();el.scrollTop=0;
   el.querySelectorAll("[data-ttopen]").forEach(b=>b.addEventListener("click",()=>{ttView="feed";renderTT();setTimeout(()=>{const t=$("#ttv-"+b.dataset.ttopen);if(t)t.scrollIntoView({block:"start"});},80);}));
-  el.querySelectorAll("[data-ttsearch]").forEach(b=>b.addEventListener("click",()=>toast("検索は物語では使わないよ")));
-  el.querySelectorAll("[data-tttag]").forEach(b=>b.addEventListener("click",()=>toast("ハッシュタグのページは物語では開かないよ")));
+  el.querySelectorAll("[data-ttsearch]").forEach(b=>b.addEventListener("click",()=>{ttView="search";ttQuery="";renderTT();const i2=$("#tts-in");if(i2)i2.focus();}));
+  el.querySelectorAll("[data-tttag]").forEach(b=>b.addEventListener("click",()=>{ttView="search";ttQuery=b.dataset.tttag||"";renderTT();}));
   return;}
  el.style.scrollSnapType="";const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt);
  if(!posts.length){el.innerHTML=`<div class="tt-item"><img class="bg" src="assets/group.jpg"><div class="grad"></div><div class="tt-top"><span class="on">おすすめ</span><span>フォロー中</span></div><div class="tt-info"><div class="at">@nctwish_official</div><div class="cap">${ic("lock","s13")} 物語を進めると公式TikTokが解放されるよ</div></div></div>`;return;}
@@ -2010,7 +2064,7 @@ function renderTT(){const el=$("#tt-feed");
  <button class="rb" data-ttlike="${ai}"><span class="ric ${liked?"liked":""}">${ic("heart","s28")}</span><span class="rct">${fmtTT(likes)}</span></button>
  <button class="rb" data-ttcmt="${ai}"><span class="ric">${ic("cmt","s28")}</span>${fmtTT(p.cmts)}</button>
  <button class="rb" data-ttsave="${ai}"><span class="ric" style="${saved?"color:#facc15":""}">${ic(saved?"bmk-f":"bmk","s26")}</span>${fmtTT((p.saves||0)+(saved?1:0))}</button>
- <button class="rb" data-ttshare2><span class="ric">${ic("send","s26")}</span>${fmtTT(p.shares)}</button>
+ <button class="rb" data-ttshare2="${ai}"><span class="ric">${ic("send","s26")}</span>${fmtTT(p.shares)}</button>
  <span class="tt-disc" data-disc="${ai}"><img src="assets/group.jpg"></span></div>
  <div class="tt-info"><div class="at">@${p.user} ${VB}</div>${ttCapHTML(p,ai)}
  <div class="tt-music"><span>♪</span><span class="marq"><span>${esc(p.music)} ♪ ${esc(p.music)} ♪&nbsp;</span></span></div></div>
@@ -2020,8 +2074,8 @@ function renderTT(){const el=$("#tt-feed");
  el.querySelectorAll("[data-ttlike]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const i=b.dataset.ttlike;S.likedTT[i]=!S.likedTT[i];save();renderTT();}));
  el.querySelectorAll("[data-ttcmt]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();openTTComments(+b.dataset.ttcmt);}));
  el.querySelectorAll("[data-ttsave]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const i=b.dataset.ttsave;S.savedTT=S.savedTT||{};S.savedTT[i]=!S.savedTT[i];save();toast(S.savedTT[i]?"保存したよ":"保存を取り消したよ");renderTT();}));
- el.querySelectorAll("[data-ttsearch]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();toast("検索は物語では使わないよ");}));
- el.querySelectorAll("[data-ttshare2]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();toast("シェアは物語では使わないよ");}));
+ el.querySelectorAll("[data-ttsearch]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();ttView="search";ttQuery="";renderTT();const i2=$("#tts-in");if(i2)i2.focus();}));
+ el.querySelectorAll("[data-ttshare2]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();openTTShare(+b.dataset.ttshare2);}));
  el.querySelectorAll("[data-ttmore]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const ai=b.dataset.ttmore;TTCAPOPEN[ai]=true;renderTT();setTimeout(()=>{const t=$("#ttv-"+ai);if(t)t.scrollIntoView({block:"start"});},60);}));
  el.querySelectorAll("[data-mute]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const v=$("#ttv-"+b.dataset.mute);if(v){v.muted=!v.muted;b.innerHTML=ic(v.muted?"volx":"vol","s19");}}));
  el.querySelectorAll(".tt-item").forEach(it=>{it.addEventListener("click",()=>{const v=it.querySelector("video.bgv");if(!v)return;const ai=v.id.replace("ttv-","");if(v.paused){v.play();$("#ttp-"+ai).classList.remove("show");}else{v.pause();$("#ttp-"+ai).classList.add("show");}});
@@ -2081,9 +2135,9 @@ $("#x-bell").addEventListener("click",openXNotif);
 const NEWS_THUMB=["assets/group.jpg","assets/stage1.jpg","assets/stage2.jpg"];
 function renderNews(){const el=$("#news-body");const post=S.scene>=7;const done=S.ended;
  let items=NEWS_PRE.map((n,i)=>({n,i})).filter(x=>(x.n.after||0)<=S.scene).sort((a,b)=>(b.n.after||0)-(a.n.after||0));
- let h=items.map(({n,i})=>`<button class="news-item" data-news="${i}"><div class="ntx"><div class="nk">${esc(n.k)}</div><h4>${esc(n.t)}</h4><div class="nm">${esc(n.m)}</div></div><img class="nth" src="${NEWS_THUMB[i%NEWS_THUMB.length]}"></button>`).join("");
- if(post)h=`<button class="news-item scoop" data-scoop="1"><div class="ntx"><div class="nk">${ic("zap")} スクープ</div><h4>${esc(NEWS_SCOOP.t)}</h4><div class="nm">${esc(NEWS_SCOOP.m)}</div></div><img class="nth" src="assets/kobe-night.jpg"></button>`+h;
- if(done)h+=`<button class="news-item" data-stmt="1"><div class="ntx"><div class="nk">公式発表</div><h4>${esc(NEWS_STMT.t)}</h4><div class="nm">${esc(NEWS_STMT.m)}</div></div><img class="nth" src="assets/stage2.jpg"></button>`;
+ let h=items.map(({n,i})=>`<button class="news-item" data-news="${i}"><div class="ntx"><div class="nk">${esc(n.k)}</div><h4>${(S.newsBmk&&S.newsBmk["pre:"+i])?ic("bmk-f","s13")+" ":""}${esc(n.t)}</h4><div class="nm">${esc(n.m)}</div></div><img class="nth" src="${NEWS_THUMB[i%NEWS_THUMB.length]}"></button>`).join("");
+ if(post)h=`<button class="news-item scoop" data-scoop="1"><div class="ntx"><div class="nk">${ic("zap")} スクープ</div><h4>${(S.newsBmk&&S.newsBmk["scoop"])?ic("bmk-f","s13")+" ":""}${esc(NEWS_SCOOP.t)}</h4><div class="nm">${esc(NEWS_SCOOP.m)}</div></div><img class="nth" src="assets/kobe-night.jpg"></button>`+h;
+ if(done)h+=`<button class="news-item" data-stmt="1"><div class="ntx"><div class="nk">公式発表</div><h4>${(S.newsBmk&&S.newsBmk["stmt"])?ic("bmk-f","s13")+" ":""}${esc(NEWS_STMT.t)}</h4><div class="nm">${esc(NEWS_STMT.m)}</div></div><img class="nth" src="assets/stage2.jpg"></button>`;
  const rankItems=[];if(post)rankItems.push({k:"scoop",t:NEWS_SCOOP.t});if(done)rankItems.push({k:"stmt",t:NEWS_STMT.t});items.forEach(({n,i})=>rankItems.push({k:"pre",i,t:n.t}));
  if(rankItems.length)h+=`<div class="news-rank"><h5>${ic("zap")} 読まれている記事</h5>`+rankItems.slice(0,4).map((r,j)=>`<button class="nrank" data-${r.k==="pre"?`news="${r.i}"`:(r.k==="scoop"?'scoop="1"':'stmt="1"')}><b>${j+1}</b><span>${esc(r.t)}</span></button>`).join("")+`</div>`;
  el.innerHTML=h;
@@ -2092,10 +2146,16 @@ function renderNews(){const el=$("#news-body");const post=S.scene>=7;const done=
  el.querySelectorAll("[data-stmt]").forEach(b=>b.addEventListener("click",()=>openNews(NEWS_STMT)));}
 const NCMT_SCOOP=[["wish_pen","本人の言葉を待つ。それまでは何も言わない"],["元現場スタッフ","神戸の夜、あの辺は人通りが少ない。写真の距離も遠くて、切り取りの可能性はあると思う"],["sakuya_thoughts","言葉を大切にする人が、軽い気持ちで人に会うわけない"],["kobe_local","GLION最終日、会場で見たサクヤは本当に幸せそうだった。それで十分"],["保留の人","事務所の声明が出るまで拡散しない"]];
 const NCMT_STMT=[["wish_pen","本人たちの言葉で聞けてよかった"],["sakuya_thoughts","ソウルで交わした言葉は全部本当だった、って。泣いた"]];
+function newsKey(n){if(n===NEWS_SCOOP)return "scoop";if(n===NEWS_STMT)return "stmt";return "pre:"+NEWS_PRE.indexOf(n);}
 function newsAvail(){const arr=NEWS_PRE.filter(n=>(n.after||0)<=S.scene);if(S.scene>=7)arr.unshift(NEWS_SCOOP);if(S.ended)arr.push(NEWS_STMT);return arr;}
-function openNews(n){const cmts=n===NEWS_SCOOP?NCMT_SCOOP:(n===NEWS_STMT?NCMT_STMT:null);const views=42000+((n.t.length*1377)%380000);const cday=n===NEWS_STMT?"3月9日":"3月8日";const ctimes=["9:12","9:26","10:03","11:47","13:20"];const ccols=["#4a90d9","#d95f7b","#149990","#7b61c9","#f0a04b"];const rel=newsAvail().filter(a=>a!==n).slice(0,3);
- $("#news-body").innerHTML=`<div class="news-art"><button class="back" id="news-back" style="font-size:22px">‹ 戻る</button><div class="nk">${esc(n.k)}</div><h3>${esc(n.t)}</h3><div class="nm">${esc(n.m)}</div><div class="news-views">${ic("eye","s13")} ${fmtNum(views)}回表示${cmts?` ・ コメント ${cmts.length}件`:""}</div>${n.img?`<img src="${n.img}">`:""}<p>${esc(n.body)}</p><div class="news-acts"><button data-nact>${ic("upload","s19")}</button><button data-nact>${ic("bmk","s19")}</button><button data-nact>${ic("cmt","s19")}</button></div>${cmts?`<div class="ncmt-h">コメント ${cmts.length}件 <span style="font-weight:400;color:#9aa5a3;font-size:11.5px">― おすすめ順</span></div>`+cmts.map((c,i)=>`<div class="ncmt2"><span class="sc-av" style="background:${ccols[i%5]}">${esc(c[0][0].toUpperCase())}</span><div class="nc-b"><div class="nc-h"><b>${esc(c[0])}</b><time>${cday} ${ctimes[i%5]}</time></div>${esc(c[1])}<div class="nc-acts"><span>${ic("heart-o")} ${(c[0].length*53+i*97)%420}</span><span>${ic("cmt")} 返信する</span></div></div></div>`).join(""):""}${rel.length?`<div class="news-rel"><h5>関連記事</h5>${rel.map((a,j)=>`<button class="nrel" data-rel="${j}"><img src="${a.img||(NEWS_PRE.indexOf(a)>=0?NEWS_THUMB[NEWS_PRE.indexOf(a)%3]:"assets/stage2.jpg")}"><span>${esc(a.t)}<small>${esc(a.m)}</small></span></button>`).join("")}</div>`:""}</div>`;
- $("#news-back").addEventListener("click",renderNews);$("#news-body").querySelectorAll("[data-nact]").forEach(b=>b.addEventListener("click",()=>toast("記事の操作は物語では使わないよ")));$("#news-body").querySelectorAll("[data-rel]").forEach(b=>b.addEventListener("click",()=>openNews(rel[+b.dataset.rel])));$("#news-body").scrollTop=0;}
+function openNews(n){const key=newsKey(n);const baseCmts=n===NEWS_SCOOP?NCMT_SCOOP:(n===NEWS_STMT?NCMT_STMT:null);const mine=(S.newsCmts&&S.newsCmts[key])||[];const cmts=(baseCmts||mine.length)?(baseCmts||[]).concat(mine.map(t=>["なお",t])):null;const views=42000+((n.t.length*1377)%380000);const cday=n===NEWS_STMT?"3月9日":"3月8日";const ctimes=["9:12","9:26","10:03","11:47","13:20"];const ccols=["#4a90d9","#d95f7b","#149990","#7b61c9","#f0a04b"];const rel=newsAvail().filter(a=>a!==n).slice(0,3);
+ $("#news-body").innerHTML=`<div class="news-art"><button class="back" id="news-back" style="font-size:22px">‹ 戻る</button><div class="nk">${esc(n.k)}</div><h3>${esc(n.t)}</h3><div class="nm">${esc(n.m)}</div><div class="news-views">${ic("eye","s13")} ${fmtNum(views)}回表示${cmts?` ・ コメント ${cmts.length}件`:""}</div>${n.img?`<img src="${n.img}">`:""}<p>${esc(n.body)}</p><div class="news-acts"><button data-nshare>${ic("upload","s19")} シェア</button><button data-nbmk class="${(S.newsBmk&&S.newsBmk[key])?"on":""}">${ic((S.newsBmk&&S.newsBmk[key])?"bmk-f":"bmk","s19")} 保存</button><button data-ncmt>${ic("cmt","s19")} コメント</button></div>${cmts?`<div class="ncmt-h">コメント ${cmts.length}件 <span style="font-weight:400;color:#9aa5a3;font-size:11.5px">― おすすめ順</span></div>`+cmts.map((c,i)=>`<div class="ncmt2"><span class="sc-av" style="background:${ccols[i%5]}">${esc(c[0][0].toUpperCase())}</span><div class="nc-b"><div class="nc-h"><b>${esc(c[0])}</b><time>${(mine.length&&i>=(baseCmts?baseCmts.length:0))?"たった今":(cday+" "+ctimes[i%5])}</time></div>${esc(c[1])}<div class="nc-acts"><span>${ic("heart-o")} ${(c[0].length*53+i*97)%420}</span><span>${ic("cmt")} 返信する</span></div></div></div>`).join(""):""}${cmts?"":`<div class="ncmt-h">コメント</div>`}<div class="ncmt-form"><input id="ncmt-in" type="text" placeholder="コメントを書く…" autocomplete="off"><button id="ncmt-send">投稿</button></div>${rel.length?`<div class="news-rel"><h5>関連記事</h5>${rel.map((a,j)=>`<button class="nrel" data-rel="${j}"><img src="${a.img||(NEWS_PRE.indexOf(a)>=0?NEWS_THUMB[NEWS_PRE.indexOf(a)%3]:"assets/stage2.jpg")}"><span>${esc(a.t)}<small>${esc(a.m)}</small></span></button>`).join("")}</div>`:""}</div>`;
+ $("#news-back").addEventListener("click",renderNews);
+ const _nsh=$("#news-body [data-nshare]");if(_nsh)_nsh.addEventListener("click",()=>{ttCopyLink(location.href.split("#")[0],"記事のリンクをコピーしたよ");});
+ const _nbk=$("#news-body [data-nbmk]");if(_nbk)_nbk.addEventListener("click",()=>{S.newsBmk=S.newsBmk||{};if(S.newsBmk[key])delete S.newsBmk[key];else S.newsBmk[key]=1;save();openNews(n);toast(S.newsBmk[key]?"保存したよ":"保存を取り消したよ");});
+ const _ncm=$("#news-body [data-ncmt]");if(_ncm)_ncm.addEventListener("click",()=>{const t=document.querySelector(".ncmt-h")||$("#ncmt-in");if(t)t.scrollIntoView({block:"center"});const i2=$("#ncmt-in");if(i2)i2.focus();});
+ const _nsd=$("#ncmt-send");if(_nsd)_nsd.addEventListener("click",()=>{const i2=$("#ncmt-in");const v=i2?i2.value.trim():"";if(!v)return;S.newsCmts=S.newsCmts||{};(S.newsCmts[key]=S.newsCmts[key]||[]).push(v);save();openNews(n);setTimeout(()=>{const h=document.querySelector(".ncmt-h");if(h)h.scrollIntoView({block:"start"});},40);});
+ const _nin=$("#ncmt-in");if(_nin)_nin.addEventListener("keydown",e=>{if(e.key==="Enter"&&$("#ncmt-send"))$("#ncmt-send").click();});$("#news-body").querySelectorAll("[data-rel]").forEach(b=>b.addEventListener("click",()=>openNews(rel[+b.dataset.rel])));$("#news-body").scrollTop=0;}
 /* ================= CALENDAR ================= */
 function calMonth(y,m,events){const first=new Date(y,m-1,1).getDay(),days=new Date(y,m,0).getDate();let cells=["日","月","火","水","木","金","土"].map(d=>`<div class="dw">${d}</div>`).join("");for(let i=0;i<first;i++)cells+=`<div class="cd dim"></div>`;for(let d=1;d<=days;d++){const ev=events[d];cells+=`<div class="cd"><b>${d}</b>${ev?ev.map(e=>`<span class="ev ${e[1]}">${e[0]}</span>`).join(""):""}</div>`;}return `<div class="cal-grid">${cells}</div>`;}
 function renderCal(){$("#cal-wrap").innerHTML=`
@@ -2109,9 +2169,11 @@ function renderCal(){$("#cal-wrap").innerHTML=`
  <div class="cal-item"><div class="dt"><b>13</b><span>3月</span></div><div>福岡・北九州メッセ（〜14日）→ 愛知・ポートメッセなごや（21〜22日）へ</div></div>`;}
 /* ================= NOTES ================= */
 const ENDMETA={public:["heart","linear-gradient(135deg,#ff5c8a,#ff8fab)"],silent:["moon","linear-gradient(135deg,#7b61c9,#4fc3e8)"],bitter:["flower","linear-gradient(135deg,#8e8e93,#636366)"]};
-function renderNotes(){const el=$("#notes-body");const eg=endingsGot();let h=`<div class="notes-search">${ic("search","s15")}メモを検索</div>`+(S.memos.length?S.memos.map(id=>{const sc=SCENES.find(s=>s.id===id);return `<div class="note-item"><div class="nt">${esc(sc.memo.t)}<span>${esc(sc.date)}</span></div><p>${esc(sc.memo.b)}</p></div>`;}).join(""):`<div class="note-lock">${ic("lock")} 観察メモはまだないよ。物語を進めると「サクヤ観察メモ」が貯まっていく</div>`);
+let notesQuery="";
+function notesListHTML(){const q=notesQuery.trim();const list=S.memos.map(id=>SCENES.find(s=>s.id===id)).filter(sc=>sc&&(!q||(sc.memo.t+sc.memo.b+sc.date).includes(q)));return list.length?list.map(sc=>`<div class="note-item"><div class="nt">${esc(sc.memo.t)}<span>${esc(sc.date)}</span></div><p>${esc(sc.memo.b)}</p></div>`).join(""):(S.memos.length?`<div class="note-lock">${ic("search","s15")} 「${esc(q)}」に一致するメモはないよ</div>`:`<div class="note-lock">${ic("lock")} 観察メモはまだないよ。物語を進めると「サクヤ観察メモ」が貯まっていく</div>`);}
+function renderNotes(){const el=$("#notes-body");const eg=endingsGot();let h=`<label class="notes-search">${ic("search","s15")}<input id="notes-in" type="text" placeholder="メモを検索" value="${esc(notesQuery).replace(/"/g,"&quot;")}" autocomplete="off"></label><div id="notes-list">${notesListHTML()}</div>`;
  h+=`<div class="end-coll"><div style="font-size:13px;font-weight:800;margin-bottom:8px">エンディングコレクション</div>`+Object.keys(ENDINGS).map(id=>{const got=eg[id];const mt=ENDMETA[id];return got?`<div class="end-card" style="background:${mt[1]}"><b>${ic(mt[0],"s15")} ${esc(ENDINGS[id].t)}</b>到達済み ― おつかれさま${ic("heart","s13")}</div>`:`<div class="end-card lock"><b>？？？</b>未到達のエンディング</div>`;}).join("")+`</div>`;
- el.innerHTML=h;}
+ el.innerHTML=h;const _ni=$("#notes-in");if(_ni)_ni.addEventListener("input",()=>{notesQuery=_ni.value;const r=$("#notes-list");if(r)r.innerHTML=notesListHTML();});}
 /* ================= PHOTOS ================= */
 function renderPhotos(){const el=$("#ph-grid");const unlocked=PHOTOS.filter(p=>S.scene>p.unlock||S.ended||p.unlock===0);$("#ph-count").textContent=unlocked.length+" / "+PHOTOS.length+" 件";
  el.innerHTML=PHOTOS.map((p,i)=>{const un=S.scene>p.unlock||S.ended||p.unlock===0;return `<button data-ph="${i}">${un?(p.video?`<video src="${p.src}" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover"></video><span class="pin" style="position:absolute;top:5px;right:6px;color:#fff">▶</span>`:`<img src="${p.src}">`):`<span class="lk">${ic("lock","s20")}</span>`}</button>`;}).join("");
