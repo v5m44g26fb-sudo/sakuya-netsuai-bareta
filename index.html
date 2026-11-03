@@ -155,7 +155,7 @@ img{user-select:none;-webkit-user-drag:none}
 .chat-foot .plus{font-size:23px;color:#555}
 .chat-in{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#fff;border:1px solid #e2e2e8;border-radius:19px;padding:8px 13px;font-size:16px;color:#999}
 .send-b{background:var(--green);color:#fff;font-weight:700;font-size:13px;border-radius:16px;padding:8px 13px}
-.panel{flex:none;background:#fff;border-top:1px solid var(--line);padding:12px 14px 26px;animation:msgin .2s ease;max-height:46%;overflow-y:auto}
+.panel{flex:none;background:#fff;border-top:1px solid var(--line);padding:12px 14px 26px;animation:msgin .18s ease;max-height:46%;overflow-y:auto}
 .panel .pt{font-size:12px;color:var(--sub);font-weight:700;margin-bottom:8px;letter-spacing:.03em}
 .choice{display:block;width:100%;text-align:left;background:#f2f7ee;border:1.5px solid #bfe3a8;color:#1d3a12;font-size:14px;line-height:1.5;border-radius:14px;padding:10px 13px;margin:7px 0;font-weight:600}
 .choice:active{background:#dff2cd}
@@ -199,7 +199,7 @@ img{user-select:none;-webkit-user-drag:none}
 .ig-grid img{width:100%;height:100%;object-fit:cover;display:block}
 .ig-grid .pin{position:absolute;top:5px;right:6px;font-size:12px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 .ig-lock{grid-column:1/-1;text-align:center;font-size:12px;color:var(--sub);padding:20px 10px;line-height:1.7}
-.post{border-bottom:1px solid #f0f0f3;padding-bottom:10px;background:#fff;animation:vin .2s ease}
+.post{border-bottom:1px solid #f0f0f3;padding-bottom:10px;background:#fff;animation:vin .3s var(--spring)}
 .post-h{display:flex;align-items:center;gap:9px;padding:9px 12px}
 .post-h .ring{width:34px;height:34px;border-radius:50%;padding:2px;background:conic-gradient(from 210deg,#feda75,#d62976,#962fbf,#feda75);flex:none}
 .post-h .ring img{width:100%;height:100%;border-radius:50%;border:2px solid #fff;object-fit:cover;display:block}
@@ -800,7 +800,7 @@ img{max-width:100%}
 /* HT long-press menu */
 #htmenu{position:absolute;inset:0;z-index:345;background:rgba(10,8,20,.42);display:none;align-items:center;justify-content:center}
 #htmenu.on{display:flex}
-.htm-card{background:#fff;color:#111;width:82%;max-width:300px;border-radius:20px;padding:14px 12px 8px;animation:sheetup .3s cubic-bezier(.32,1.3,.36,1);box-shadow:0 18px 44px rgba(0,0,0,.3)}
+.htm-card{background:#fff;color:#111;width:82%;max-width:300px;border-radius:20px;padding:14px 12px 8px;animation:sheetup .38s cubic-bezier(.32,1.3,.36,1);box-shadow:0 18px 44px rgba(0,0,0,.3)}
 .htm-top{display:flex;justify-content:space-around;padding:2px 2px 10px;border-bottom:1px solid #f0f0f3}
 .htm-top button{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:10px;color:#444}
 .htm-ic{width:46px;height:46px;border-radius:50%;background:#f2f2f5;display:flex;align-items:center;justify-content:center;color:#333}
@@ -1503,7 +1503,7 @@ button.end-card{width:100%;text-align:left;font-family:inherit;border:none;curso
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v29.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v30.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -2181,7 +2181,7 @@ function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);co
  h+=`<div class="ig-prof"><div class="ig-top"><span class="ring"><img src="assets/group.jpg"></span><div class="ig-stats"><div><b>${Math.max(S.ig,0)}</b><span>投稿</span></div><div data-followers style="cursor:pointer">${igFolHTML()}<span>フォロワー</span></div><div><b>12</b><span>フォロー中</span></div></div></div>
  <div class="ig-cat">アーティスト</div>
  <div class="ig-bio"><b>nctwish_official</b> ${VB}<br>NCT WISH 公式アカウント<br>2nd TOUR『INTO THE WISH : Face Our WISH』開催中💫<br><span class="lnk">nctwish.jp/tour2027</span><br><span class="ig-threads"><i>🧵</i> nctwish_official</span></div>
- <div class="ig-btns"><button id="ig-fol">フォロー中 ▾</button><button id="ig-msg">メッセージ</button><button style="flex:none;padding:7px 11px;display:flex;align-items:center;justify-content:center" aria-label="おすすめ">${ic("userplus","s17")}</button></div>
+ <div class="ig-btns"><button id="ig-fol">フォロー中 ▾</button><button id="ig-msg">メッセージ</button><button id="ig-sug" style="flex:none;padding:7px 11px;display:flex;align-items:center;justify-content:center" aria-label="おすすめ">${ic("userplus","s17")}</button></div>
  <div class="hl-row">${HIGHLIGHTS.map((hl,i)=>`<button class="hl" data-hl="${i}"><span class="hlc"><img src="${hl.img}"></span>${hl.t}</button>`).join("")}</div></div>`;
  const savedPosts=posts.filter(p=>S.savedIG&&S.savedIG[p.id]);
  if(savedPosts.length)h+=`<button class="saved-row" id="ig-t-saved">${ic("bmk","s15")} 保存済み（${savedPosts.length}件）<span style="margin-left:auto;color:#8e8e93">›</span></button>`;
@@ -2196,6 +2196,7 @@ function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);co
  const bindTab=(id,v)=>{const b=$(id);if(b)b.addEventListener("click",()=>{S.viewIG=v;save();renderIG();});};
  bindTab("#ig-t-grid","grid");bindTab("#ig-t-reels","reels");bindTab("#ig-t-tagged","tagged");bindTab("#ig-t-saved","saved");
  const ms=$("#ig-msg");if(ms)ms.addEventListener("click",openIGDM);
+ const sg=$("#ig-sug");if(sg)sg.addEventListener("click",openIGSuggest);
  const fw=el.querySelector("[data-followers]");if(fw)fw.addEventListener("click",openFollowers);
  const fol=$("#ig-fol");if(fol)fol.addEventListener("click",()=>{const on=fol.textContent.indexOf("フォロー中")===0;fol.textContent=on?"フォローする":"フォロー中 ▾";fol.classList.toggle("fol",on);toast(on?"フォローを外したよ（公式は泣かない）":"フォローしたよ");});
  bindIGTiles(el);
@@ -2488,7 +2489,7 @@ function openStoryAt(i){storyIdx=i;const st=storyData[i];const m=M[st.k];$("#sto
  requestAnimationFrame(()=>requestAnimationFrame(()=>{const b=$("#seg-"+i);if(b){b.style.transition="width 5.2s linear";b.style.width="100%";}}));
  clearTimeout(storyTimer);storyTimer=setTimeout(()=>storyNav(1),5300);}
 function closeStory(){clearTimeout(storyTimer);show("ig");}
-function storyNav(d){const n=storyIdx+d;if(n<0)return;if(n>=storyData.length){closeStory();return;}openStoryAt(n);}
+function storyNav(d){const n=storyIdx+d;if(n<0){closeStory();return;}if(n>=storyData.length){closeStory();return;}openStoryAt(n);}
 $("#story-x").addEventListener("click",ev=>{ev.stopPropagation();closeStory();});
 $("#story-next").addEventListener("click",()=>storyNav(1));
 $("#story-prev").addEventListener("click",()=>storyNav(-1));
@@ -2520,6 +2521,7 @@ function igCapRow(post){const av=post.ini?`<span class="sc-av">${esc(post.ini)}<
 function openIGComments(id){const post=IG_POSTS.find(x=>x.id===id)||TAGGED_POSTS.find(x=>x.id===id);if(!post)return;const extra=IG_POSTS.indexOf(post)>=0?CMT_EXTRA:[];const items=post.cm.concat(extra);openSheet("コメント",items,v=>{post.cm.push(["nao",v]);$("#sheet-body").innerHTML=igCapRow(post)+post.cm.concat(extra).map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;});$("#sheet-body").insertAdjacentHTML("afterbegin",igCapRow(post));}
 function openTTComments(i){const post=TT_POSTS[i];if(!post)return;openSheet(fmtTT(post.cmts)+"件のコメント",post.cm,v=>{post.cm.push(["nao",v]);$("#sheet-body").innerHTML=post.cm.map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;});}
 function openIGActivity(){const posts=IG_POSTS.slice(0,S.ig);const rows=posts.slice().reverse().map(p=>lkRow(p.img,"","nctwish_official","新しい投稿をシェアしました ・ "+p.time,false)).join("");sheetList("アクティビティ",rows||`<div class="locknote">新しいアクティビティはないよ</div>`);}
+function openIGSuggest(){const rows=FAN_ACC.map(a=>lkRow("","W",a[0],a[1]+" ・ おすすめ",true)).join("")+`<div class="locknote">おすすめ＝フォロワーや投稿の傾向から表示されるアカウント（実物仕様）。物語の相手は公式アカウントだけだよ</div>`;sheetList("おすすめ",rows);}
 function openIGDM(){sheetList("メッセージ",`<div class="sc-row"><img class="av" src="assets/group.jpg" style="width:44px;height:44px"><div class="sc-main"><b>nctwish_official</b> ${VB}<div style="color:#8e8e93;font-size:12px;margin-top:1px">公式アカウント ・ DMは受け付けていません</div></div></div><div class="locknote">公式アカウントはDMを受け付けていないよ（物語の連絡はLINEだよ）</div>`);}
 const _igBell=$("#ig-bell");if(_igBell)_igBell.addEventListener("click",openIGActivity);
 /* ================= HELLOTALK ================= */
