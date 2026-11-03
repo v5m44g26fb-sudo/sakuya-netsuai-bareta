@@ -607,6 +607,19 @@ img{max-width:100%}
  #v-ending .ec{padding:44px 22px 22px}
  #v-ending .et{line-height:1.68}
 }
+
+/* v9: hiroto-standard app layer */
+#sheet.nopost .sheet-in{display:none}
+.sc-row .sc-heart{margin-left:auto;font-size:15px;padding:2px 4px}
+.lk-row{align-items:center}
+.lk-nm{display:flex;flex-direction:column;line-height:1.3}
+.lk-nm small{color:#8e8e93;font-size:11px}
+.lk-fol{margin-left:auto;flex:none;background:#0095f6;color:#fff;font-size:12px;font-weight:700;padding:6px 12px;border-radius:9px}
+.lk-fol.off{background:#efefef;color:#262626}
+.post-likes{display:block;text-align:left;font:inherit;color:inherit;width:100%}
+.ncmt-h{font-size:13px;font-weight:800;margin:18px 0 6px;padding-top:13px;border-top:1px solid #eee}
+.ncmt{padding:8px 0;border-bottom:1px solid #f2f2f5;font-size:13px;line-height:1.6}
+.ncmt b{margin-right:7px}
 </style>
 </head>
 <body>
@@ -785,7 +798,7 @@ img{max-width:100%}
 <div class="ahead"><button class="back" data-back="home">‹</button><h2>設定</h2></div>
 <div class="abody" style="background:#f2f2f7">
 <button class="set-row" id="set-reset">最初からプレイし直す <span>セーブ削除</span></button>
-<div class="set-row">バージョン <span>v8.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row">バージョン <span>v9.0（iOS 26 / Liquid Glass）</span></div>
 <div class="set-row">ボイス <span>未収録（通話はテキスト＋タイマー式）</span></div>
 <div style="padding:16px;font-size:12px;color:#888;line-height:1.8">『サクヤと熱愛バレた件』は実在の人物を題材にした創作フィクション（ファンメイド作品）です。登場人物の発言・交際等の出来事は全て創作であり、実在の内容とは関係ありません。ツアー日程・会場・リリース実績は公開されている史実に基づきます。<br>なおのアバターには本人の写真を使用していません（イニシャルアイコン）。<br>画像：Pinterest／Instagram系の掲載写真（2024〜2026年）、メディア掲載写真等。動画：NCT WISH公式ミュージックビデオの公式プレビュー（iTunes）から作成した縦型クリップ等（権利は各権利者に帰属します）。TikTok公式動画は取得環境の都合（IPブロック）で直接収録できませんでした。</div>
 </div>
@@ -1244,7 +1257,7 @@ $("#end-home").addEventListener("click",()=>show("home"));
 /* ================= IG ================= */
 function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);
  let h=`<div class="stories">${Object.keys(M).filter(k=>M[k].av).map(k=>`<button class="story" data-story="${k}"><span class="ring ${S.ig>0?"":"seen"}"><img src="${M[k].av}"></span>${M[k].n}</button>`).join("")}<button class="story" data-story="me"><span class="ring seen"><span style="width:100%;height:100%;border-radius:50%;background:#06c755;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;border:2.5px solid #fff">N</span></span>あなた</button></div>`;
- h+=`<div class="ig-prof"><div class="ig-top"><span class="ring"><img src="assets/group.jpg"></span><div class="ig-stats"><div><b>${Math.max(S.ig,0)}</b><span>投稿</span></div><div><b>486万</b><span>フォロワー</span></div><div><b>12</b><span>フォロー中</span></div></div></div>
+ h+=`<div class="ig-prof"><div class="ig-top"><span class="ring"><img src="assets/group.jpg"></span><div class="ig-stats"><div><b>${Math.max(S.ig,0)}</b><span>投稿</span></div><div data-followers style="cursor:pointer"><b>486万</b><span>フォロワー</span></div><div><b>12</b><span>フォロー中</span></div></div></div>
  <div class="ig-bio"><b>nctwish_official</b> ✔<br>NCT WISH 公式アカウント<br>2nd TOUR『INTO THE WISH : Face Our WISH』開催中💫<br><span class="lnk">nctwish.jp/tour2027</span></div>
  <div class="ig-btns"><button class="fol" id="ig-fol">フォロー中</button><button id="ig-msg">メッセージ</button><button style="flex:none;padding:7px 11px">👤＋</button></div></div>`;
  if(S.viewIG==="grid"||!S.viewIG){h+=`<div class="ig-tabs"><button class="on">▦</button><button id="ig-t-feed">🎬</button><button>👤</button></div><div class="ig-grid">${posts.length?posts.map(p=>`<button data-post="${p.id}"><img src="${p.img}">${p.video?'<span class="pin">▶</span>':""}</button>`).join(""):`<div class="ig-lock">🔒 物語を進めると公式投稿が解放されるよ</div>`}</div>`;}
@@ -1253,6 +1266,7 @@ function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);
  const gf=$("#ig-t-feed");if(gf)gf.addEventListener("click",()=>{S.viewIG="feed";save();renderIG();});
  const gg=$("#ig-t-grid");if(gg)gg.addEventListener("click",()=>{S.viewIG="grid";save();renderIG();});
  const ms=$("#ig-msg");if(ms)ms.addEventListener("click",()=>show("line"));
+ const fw=el.querySelector("[data-followers]");if(fw)fw.addEventListener("click",openFollowers);
  const fol=$("#ig-fol");if(fol)fol.addEventListener("click",()=>{const on=fol.textContent==="フォロー中";fol.textContent=on?"フォローする":"フォロー中";fol.classList.toggle("fol",!on);toast(on?"フォローを外したよ（公式は泣かない）":"フォローしたよ");});
  el.querySelectorAll("[data-post]").forEach(b=>b.addEventListener("click",()=>{S.viewIG="feed";save();renderIG();setTimeout(()=>{const t=$("#igpost-"+b.dataset.post);if(t)t.scrollIntoView({block:"start"});},60);}));
  el.querySelectorAll("[data-story]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.story;const i=STORIES.findIndex(s=>s.k===k);if(i>=0)openStory(i);else toast("あなたのストーリーはまだないよ");}));
@@ -1263,12 +1277,13 @@ function postHTML(p){const liked=S.likedIG[p.id];const media=p.video?`<div class
  return `<div class="post" id="igpost-${p.id}"><div class="post-h"><span class="ring"><img src="assets/group.jpg"></span><span><b>${p.user}</b> ✔<div class="loc">${esc(p.loc)}</div></span><span class="dots">•••</span></div>
  <div class="post-img">${media}<div class="big-heart" data-heart="${p.id}">🤍</div></div>
  <div class="post-act"><button class="hrt ${liked?"liked":""}" data-like="${p.id}">${liked?"❤️":"♡"}</button><button data-cmt="${p.id}">💬</button><button>✈️</button><button class="save">🔖</button></div>
- <div class="post-likes">いいね！${fmtLikes(p.likes)}件</div>
+ <button class="post-likes" data-likers="${p.id}">いいね！${fmtLikes(p.likes)}件</button>
  <div class="post-cap"><b>${p.user}</b>${esc(p.cap)}</div>${cmts}
  <button class="cmt-more" data-cmt="${p.id}">コメントをすべて見る</button>
  <div class="post-time">${p.time}</div></div>`;}
 function bindPostActs(root){root.querySelectorAll("[data-like]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.like;S.likedIG[id]=!S.likedIG[id];save();renderIG();}));
  root.querySelectorAll("[data-cmt]").forEach(b=>b.addEventListener("click",()=>openIGComments(+b.dataset.cmt)));
+ root.querySelectorAll("[data-likers]").forEach(b=>b.addEventListener("click",()=>openLikers(+b.dataset.likers)));
  root.querySelectorAll(".post-img").forEach(pi=>{pi.addEventListener("dblclick",()=>{const hrt=pi.querySelector(".big-heart");if(hrt){hrt.classList.remove("pop");void hrt.offsetWidth;hrt.classList.add("pop");}const id=pi.querySelector("[data-heart]").dataset.heart;if(!S.likedIG[id]){S.likedIG[id]=true;save();setTimeout(renderIG,350);}});});}
 /* ================= TIKTOK ================= */
 function renderTT(){const el=$("#tt-feed");const posts=TT_POSTS.slice(0,S.tt);
@@ -1296,10 +1311,12 @@ function renderTT(){const el=$("#tt-feed");const posts=TT_POSTS.slice(0,S.tt);
  el.querySelectorAll(".tt-item").forEach(it=>window._ttIO.observe(it));}
 /* ================= X ================= */
 let xTab="feed";
-function renderX(){const el=$("#x-body");const post=S.scene>=7;
+const XHEAT={};function parseCnt(s){if(!s)return 0;const v=parseFloat(String(s).replace(/,/g,""));return String(s).includes("万")?Math.round(v*10000):(v||0);}
+function renderX(){const el=$("#x-body");const post=S.scene>=7;if(window._xT){clearInterval(window._xT);window._xT=null;}
  if(xTab==="trend"){const tr=post?X_TRENDS_POST:(S.scene>=3?X_TRENDS_PRE:X_TRENDS_SEOUL);el.innerHTML=`<div style="padding:12px 16px 4px;font-size:16px;font-weight:900">トレンド</div>`+tr.map(t=>`<div class="trend ${post&&t[1].includes("熱愛")?"hot":""}"><div class="tk">${esc(t[0])} ・ トレンド</div><div class="tt2">${esc(t[1])}</div><div class="tc">${esc(t[2])}</div></div>`).join("");return;}
- const posts=post?X_POSTS_POST:X_POSTS_PRE.filter(p=>(p.after||0)<=S.scene).sort((a,b)=>(b.after||0)-(a.after||0));
- el.innerHTML=posts.map(p=>`<div class="xpost"><img class="xav" src="${p.av}"><div class="xb"><div class="xh"><b>${esc(p.user)}</b>${p.handle==="@nctwish_jp"?'<span style="color:#1d9bf0">✔</span>':""}<span>${esc(p.handle)} ・ ${esc(p.time)}</span></div><div class="xt">${esc(p.text)}</div>${p.img?`<img class="ximg" src="${p.img}">`:""}<div class="xa"><span>💬 <b>${esc(p.cm||"―")}</b></span><span>🔁 <b>${esc(p.rp)}</b></span><span>❤️ <b>${esc(p.lk)}</b></span><span>📊</span></div></div></div>`).join("")+`<div class="locknote">${post?"炎上中 ― 数値はまだ増え続けている":"平和なタイムライン。……今のところは"}</div>`;}
+ const posts=post?X_POSTS_POST:X_POSTS_PRE.filter(p=>(p.after||0)<=S.scene).sort((a,b)=>(b.after||0)-(a.after||0));const pidx=p=>posts.indexOf(p);
+ el.innerHTML=posts.map(p=>`<div class="xpost"><img class="xav" src="${p.av}"><div class="xb"><div class="xh"><b>${esc(p.user)}</b>${p.handle==="@nctwish_jp"?'<span style="color:#1d9bf0">✔</span>':""}<span>${esc(p.handle)} ・ ${esc(p.time)}</span></div><div class="xt">${esc(p.text)}</div>${p.img?`<img class="ximg" src="${p.img}">`:""}<div class="xa"><span>💬 <b>${esc(p.cm||"―")}</b></span><span>🔁 <b>${esc(p.rp)}</b></span><span>❤️ <b data-xlk="${pidx(p)}">${post?fmtLikes(parseCnt(p.lk)+(XHEAT[pidx(p)]||0)):esc(p.lk)}</b></span><span>📊</span></div></div></div>`).join("")+`<div class="locknote">${post?"炎上中 ― 数値はまだ増え続けている":"平和なタイムライン。……今のところは"}</div>`;
+ if(post){window._xT=setInterval(()=>{if(!document.querySelector("#v-x.on")){clearInterval(window._xT);window._xT=null;return;}const i=Math.floor(Math.random()*X_POSTS_POST.length);XHEAT[i]=(XHEAT[i]||0)+Math.floor(800+Math.random()*3400);const b=el.querySelector(`[data-xlk="${i}"]`);if(b)b.textContent=fmtLikes(parseCnt(X_POSTS_POST[i].lk)+XHEAT[i]);},2600);}}
 function setXTab(t){xTab=t;$("#x-tab-feed").classList.toggle("on",t==="feed");$("#x-tab-trend").classList.toggle("on",t==="trend");renderX();}
 $("#x-tab-trend").addEventListener("click",()=>setXTab("trend"));
 $("#x-tab-feed").addEventListener("click",()=>setXTab("feed"));
@@ -1313,7 +1330,9 @@ function renderNews(){const el=$("#news-body");const post=S.scene>=7;const done=
  el.querySelectorAll("[data-news]").forEach(b=>b.addEventListener("click",()=>openNews(NEWS_PRE[+b.dataset.news])));
  const sc=el.querySelector("[data-scoop]");if(sc)sc.addEventListener("click",()=>openNews(NEWS_SCOOP));
  const st=el.querySelector("[data-stmt]");if(st)st.addEventListener("click",()=>openNews(NEWS_STMT));}
-function openNews(n){$("#news-body").innerHTML=`<div class="news-art"><button class="back" id="news-back" style="font-size:22px">‹ 戻る</button><div class="nk">${esc(n.k)}</div><h3>${esc(n.t)}</h3><div class="nm">${esc(n.m)}</div>${n.img?`<img src="${n.img}">`:""}<p>${esc(n.body)}</p></div>`;$("#news-back").addEventListener("click",renderNews);$("#news-body").scrollTop=0;}
+const NCMT_SCOOP=[["wish_pen","本人の言葉を待つ。それまでは何も言わない"],["元現場スタッフ","神戸の夜、あの辺は人通りが少ない。写真の距離も遠くて、切り取りの可能性はあると思う"],["sakuya_thoughts","言葉を大切にする人が、軽い気持ちで人に会うわけない"],["kobe_local","GLION最終日、会場で見たサクヤは本当に幸せそうだった。それで十分"],["保留の人","事務所の声明が出るまで拡散しない"]];
+const NCMT_STMT=[["wish_pen","本人たちの言葉で聞けてよかった"],["sakuya_thoughts","ソウルで交わした言葉は全部本当だった、って。泣いた"]];
+function openNews(n){const cmts=n===NEWS_SCOOP?NCMT_SCOOP:(n===NEWS_STMT?NCMT_STMT:null);$("#news-body").innerHTML=`<div class="news-art"><button class="back" id="news-back" style="font-size:22px">‹ 戻る</button><div class="nk">${esc(n.k)}</div><h3>${esc(n.t)}</h3><div class="nm">${esc(n.m)}</div>${n.img?`<img src="${n.img}">`:""}<p>${esc(n.body)}</p>${cmts?`<div class="ncmt-h">コメント ${cmts.length}件</div>`+cmts.map(c=>`<div class="ncmt"><b>${esc(c[0])}</b>${esc(c[1])}</div>`).join(""):""}</div>`;$("#news-back").addEventListener("click",renderNews);$("#news-body").scrollTop=0;}
 /* ================= CALENDAR ================= */
 function calMonth(y,m,events){const first=new Date(y,m-1,1).getDay(),days=new Date(y,m,0).getDate();let cells=["日","月","火","水","木","金","土"].map(d=>`<div class="dw">${d}</div>`).join("");for(let i=0;i<first;i++)cells+=`<div class="cd dim"></div>`;for(let d=1;d<=days;d++){const ev=events[d];cells+=`<div class="cd"><b>${d}</b>${ev?ev.map(e=>`<span class="ev ${e[1]}">${e[0]}</span>`).join(""):""}</div>`;}return `<div class="cal-grid">${cells}</div>`;}
 function renderCal(){$("#cal-wrap").innerHTML=`
@@ -1355,8 +1374,14 @@ $("#story-next").addEventListener("click",()=>storyNav(1));
 $("#story-prev").addEventListener("click",()=>storyNav(-1));
 /* ================= COMMENT SHEET ================= */
 let _sheetSend=null;
-function sheetRow(c){return `<div class="sc-row"><b>${esc(c[0])}</b><span>${esc(c[1])}</span></div>`;}
-function openSheet(title,items,onSend){const sh=$("#sheet-head");sh.childNodes[0].textContent=title;$("#sheet-body").innerHTML=items.map(sheetRow).join("");_sheetSend=onSend;$("#sheet").classList.add("on");$("#sheet-body").scrollTop=0;}
+function sheetRow(c){return `<div class="sc-row"><b>${esc(c[0])}</b><span>${esc(c[1])}</span><button class="sc-heart" aria-label="いいね">♡</button></div>`;}
+document.addEventListener("click",e=>{const h=e.target.closest(".sc-heart");if(h){const on=h.textContent==="❤️";h.textContent=on?"♡":"❤️";return;}const f=e.target.closest(".lk-fol");if(f){const off=f.classList.toggle("off");f.textContent=off?"フォローする":"フォロー中";}});
+const FAN_ACC=[["wish_daily","ウィシズニ"],["sakuya_thoughts","サクヤの言葉を集める人"],["wish_archive","公演アーカイブ"],["ispy_fan","I SPY期から応援"],["color_fan","COLOR期ペン"],["dance_cover_jp","振りコピ勢"]];
+function sheetList(title,rows){$("#sheet-head").childNodes[0].textContent=title;$("#sheet-body").innerHTML=rows;$("#sheet").classList.add("on","nopost");$("#sheet-body").scrollTop=0;}
+function lkRow(av,ini,name,sub,off){return `<div class="sc-row lk-row">${av?`<img class="av" src="${av}" style="width:38px;height:38px">`:`<span class="sil" style="width:38px;height:38px;background:#8e8e93;font-size:14px">${ini}</span>`}<span class="lk-nm"><b>${name}</b><small>${sub}</small></span><button class="lk-fol${off?" off":""}">${off?"フォローする":"フォロー中"}</button></div>`;}
+function openLikers(id){const rows=Object.keys(M).filter(k=>M[k].av).map(k=>lkRow(M[k].av,"",M[k].n,k==="sakuya"?"NCT WISH（本人）":"NCT WISH",false)).join("")+FAN_ACC.map(a=>lkRow("","W",a[0],a[1],true)).join("");sheetList("いいね！した人",rows);}
+function openFollowers(){const rows=Object.keys(M).filter(k=>M[k].av).map(k=>lkRow(M[k].av,"",M[k].n,"NCT WISH",false)).join("")+FAN_ACC.map(a=>lkRow("",a[0][0].toUpperCase(),a[0],a[1],true)).join("")+`<div class="locknote">フォロワー486万人のうち、知っているアカウントを一部表示しています</div>`;sheetList("フォロワー",rows);}
+function openSheet(title,items,onSend){$("#sheet").classList.remove("nopost");const sh=$("#sheet-head");sh.childNodes[0].textContent=title;$("#sheet-body").innerHTML=items.map(sheetRow).join("");_sheetSend=onSend;$("#sheet").classList.add("on");$("#sheet-body").scrollTop=0;}
 function closeSheet(){$("#sheet").classList.remove("on");}
 $("#sheet").addEventListener("click",e=>{if(e.target.id==="sheet")closeSheet();});
 $("#sheet-x").addEventListener("click",closeSheet);
