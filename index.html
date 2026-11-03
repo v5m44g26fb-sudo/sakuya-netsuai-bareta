@@ -117,7 +117,9 @@ img{user-select:none;-webkit-user-drag:none}
 .thread .ub{background:var(--red);color:#fff;font-size:11px;font-weight:700;min-width:19px;height:19px;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:0 5px;flex:none}
 .thread .done{font-size:11px;color:var(--wish);font-weight:700;flex:none}
 .ll-tabs{flex:none;display:flex;border-top:1px solid var(--line);background:rgba(250,250,252,.96);padding:7px 6px 20px}
-.ll-tabs button{flex:1;font-size:19px;color:#111;display:flex;flex-direction:column;align-items:center;gap:1px}
+.ll-tabs button{flex:1;font-size:19px;color:#a3a3ab;display:flex;flex-direction:column;align-items:center;gap:2px}
+.ll-tabs button.on{color:#111}
+.ll-icons button{display:flex;color:#111;padding:2px}
 .ll-tabs button span{font-size:9px;color:#666}
 .locknote{padding:13px 16px;font-size:12px;color:var(--sub);text-align:center;line-height:1.6}
 /* LINE chat */
@@ -138,8 +140,8 @@ img{user-select:none;-webkit-user-drag:none}
 .bub{background:#fff;border-radius:16px;border-top-left-radius:4px;padding:8px 11px;font-size:14px;line-height:1.55;color:#111;box-shadow:0 1px 1px rgba(0,0,0,.06);white-space:pre-wrap;word-break:break-word}
 .msg .tm{font-size:9.5px;color:#33475e;align-self:flex-end;padding-bottom:2px;white-space:nowrap}
 .msg.me{flex-direction:row-reverse}
-.msg.me .bub{background:#a8e063;background:linear-gradient(180deg,#b5e48c,#9ede6a);border-radius:16px;border-top-right-radius:4px}
-.msg.me .rd{font-size:9.5px;color:#ffe45e;color:#f5d90a;font-weight:700;display:block;text-align:right}
+.msg.me .bub{background:#9ede6a;border-radius:16px;border-top-right-radius:4px}
+.msg.me .rd{font-size:9.5px;color:#2e4a66;font-weight:700;display:block;text-align:right}
 .msg.me .tm{text-align:right}
 .bub.imgb{padding:4px;background:#fff}
 .bub.imgb img{width:210px;max-width:60vw;border-radius:12px;display:block}
@@ -220,7 +222,8 @@ img{user-select:none;-webkit-user-drag:none}
 .post-time{padding:3px 12px;font-size:10.5px;color:var(--sub);letter-spacing:.02em}
 /* IG v13 real-spec */
 .ig-uname{flex:1;font-size:16.5px;font-weight:800;display:flex;align-items:center;gap:5px}
-.vbadge{display:inline-flex;align-items:center;justify-content:center;width:13.5px;height:13.5px;border-radius:50%;background:#0095f6;color:#fff;font-size:9px;font-weight:900;flex:none;vertical-align:middle}
+.vbadge{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;color:#0095f6;flex:none;vertical-align:middle}
+.vbadge .uic{width:100%;height:100%}
 .ig-cat{font-size:12px;color:#737373;margin-top:5px}
 .ig-threads{display:inline-flex;align-items:center;gap:5px;background:#f2f2f5;border-radius:13px;padding:3.5px 9px;font-size:11.5px;font-weight:600;margin-top:5px;color:#111}
 .ig-threads i{font-style:normal;font-size:12px}
@@ -298,22 +301,22 @@ img{user-select:none;-webkit-user-drag:none}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
 .cal-grid .dw{text-align:center;font-size:10.5px;color:#999;padding:3px 0;font-weight:600}
 .cal-grid .dw:first-child{color:#ff6b62}.cal-grid .dw:last-child{color:#5b8def}
-.cd{aspect-ratio:.86;border-radius:9px;background:#f6f6f9;font-size:12px;padding:4px 3px;position:relative;color:#333;overflow:hidden}
+.cd{aspect-ratio:.86;border-radius:0;background:#fff;border-top:1px solid #f0f0f3;font-size:12px;padding:4px 3px;position:relative;color:#333;overflow:hidden}
 .cd.dim{background:transparent;color:#c6c6cc}
 .cd.today{background:#111;color:#fff;font-weight:800}
-.cd .ev{font-size:7.6px;letter-spacing:-.02em;line-height:1.3;border-radius:3px;padding:1px 2px;margin-top:2px;color:#fff;font-weight:700;display:block}
-.ev-p{background:var(--wish)}.ev-r{background:#ff9500}.ev-b{background:#0a84ff}.ev-g{background:#34c759}
+.cd .ev{font-size:7.6px;letter-spacing:-.02em;line-height:1.35;border-radius:2.5px;padding:1px 2px 1px 3px;margin-top:2px;font-weight:600;display:block;border-left:2.5px solid}
+.ev-p{background:rgba(123,97,201,.13);border-color:#7b61c9;color:#4c3a86}.ev-r{background:rgba(255,149,0,.14);border-color:#ff9500;color:#8a5200}.ev-b{background:rgba(10,132,255,.12);border-color:#0a84ff;color:#0b4f9e}.ev-g{background:rgba(52,199,89,.13);border-color:#34c759;color:#176332}
 .cal-legend{font-size:11px;color:#666;line-height:1.9;margin-top:10px}
 .cal-item{display:flex;gap:10px;padding:10px 2px;border-bottom:1px solid #f0f0f3;font-size:13px;line-height:1.55}
 .cal-item .dt{flex:none;width:44px;text-align:center}
 .cal-item .dt b{font-size:17px;display:block}
 .cal-item .dt span{font-size:10px;color:var(--sub)}
 /* notes */
-.note-item{margin:11px 14px;background:#fffef4;border:1px solid #f0e6bd;border-radius:13px;padding:12px 14px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+.note-item{margin:0;background:#fff;border:none;border-bottom:1px solid #eee;border-radius:0;padding:13px 16px;box-shadow:none}
 .note-item .nt{font-size:13.5px;font-weight:800;display:flex;justify-content:space-between}
-.note-item .nt span{font-size:10.5px;color:#a4934f;font-weight:600}
-.note-item p{font-size:13px;line-height:1.7;color:#3d3823;margin-top:5px;white-space:pre-wrap}
-.note-lock{margin:11px 14px;background:#f4f4f7;border-radius:13px;padding:12px 14px;font-size:12.5px;color:#999;line-height:1.6}
+.note-item .nt span{font-size:10.5px;color:#8e8e93;font-weight:500}
+.note-item p{font-size:13px;line-height:1.7;color:#3a3a3c;margin-top:4px;white-space:pre-wrap}
+.note-lock{margin:0;background:#fff;border-bottom:1px solid #eee;padding:13px 16px;font-size:12.5px;color:#999;line-height:1.6}
 .end-coll{margin:14px}
 .end-card{border-radius:15px;padding:14px;color:#fff;margin-bottom:10px;line-height:1.65;font-size:13px}
 .end-card b{font-size:14.5px;display:block;margin-bottom:3px}
@@ -427,7 +430,7 @@ button:active{transform:scale(.965)}
 /* calendar / notes glass cards */
 .cd{min-width:0}
 .cd .ev{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.note-item{border-radius:17px;box-shadow:0 6px 18px rgba(80,64,10,.08),inset 0 1px 0 rgba(255,255,255,.8)}
+
 .note-item .nt{flex-wrap:wrap;gap:4px}
 .end-card{border-radius:18px}
 /* call: iOS 26 unified call UI */
@@ -451,7 +454,7 @@ img{max-width:100%}
 
 
 /* ================= v2.1 real-device details ================= */
-.fic{font-size:19px;color:#555;flex:none}
+.fic{font-size:19px;color:#555;flex:none;display:flex;align-items:center}
 .msg .tm{transition:opacity .3s}
 .msg.me .rd{transition:opacity .5s}
 /* notification banner */
@@ -647,31 +650,31 @@ img{max-width:100%}
 
 
 /* v14: HelloTalk (実物サンプリング: アイコン #149990 ティール / ピル紫 #744ff5) */
-:root{--ht:#149990;--ht-d:#0b7a71;--ht-pu:#744ff5}
+:root{--ht:#6c4cf1;--ht-d:#5a3ee0;--ht-pu:#6c4cf1}
 .ic-ht{background:linear-gradient(160deg,#1cb3a6,#0d8578);color:#fff}
 .langpair{display:none}
-#v-chat.htmode{background:#edf3f1}
-#v-chat.htmode .chat-head{background:rgba(255,255,255,.97);color:#173b36;border-bottom:1px solid #dde8e5}
-#v-chat.htmode .langpair{display:block;font-size:10px;color:#7d8b89;font-weight:500;margin-top:1px}
-#v-chat.htmode .msg .who{color:#45605c}
-#v-chat.htmode .bub{border:1px solid #e0eae7;border-top-left-radius:16px;box-shadow:none}
-#v-chat.htmode .msg.me .bub{background:linear-gradient(180deg,#1db3a7,#119184);color:#fff;border:none;border-top-right-radius:4px}
-#v-chat.htmode .msg .tm{color:#7d8b89}
-#v-chat.htmode .msg.me .rd{color:#4f8a84;font-weight:600}
-#v-chat.htmode .day-pill span{background:rgba(20,153,144,.18);color:#2f5f59}
-#v-chat.htmode .sys-line{background:rgba(255,255,255,.8);color:#46655f}
-#v-chat.htmode .typing{border:1px solid #e0eae7}
-#v-chat.htmode .choice{background:#eefaf7;border-color:#a9ddd4;color:#0d3f39}
-#v-chat.htmode .choice:active{background:#d9f2ec}
-#v-chat.htmode .next-hint{color:#5b8f8a}
+#v-chat.htmode{background:#f6f6f9}
+#v-chat.htmode .chat-head{background:rgba(255,255,255,.97);color:#1c1c22;border-bottom:1px solid #e8e8ee}
+#v-chat.htmode .langpair{display:block;font-size:10px;color:#8e8e99;font-weight:500;margin-top:1px}
+#v-chat.htmode .msg .who{color:#6a6a75}
+#v-chat.htmode .bub{border:1px solid #e6e6ee;border-top-left-radius:16px;box-shadow:none}
+#v-chat.htmode .msg.me .bub{background:linear-gradient(180deg,#8266ff,#6c4cf1);color:#fff;border:none;border-top-right-radius:4px}
+#v-chat.htmode .msg .tm{color:#a2a2ab}
+#v-chat.htmode .msg.me .rd{color:#8e8e99;font-weight:500}
+#v-chat.htmode .day-pill span{background:transparent;color:#9a9aa5;font-size:11px;padding:2px 8px}
+#v-chat.htmode .sys-line{background:rgba(30,20,80,.06);color:#74747e}
+#v-chat.htmode .typing{border:1px solid #e6e6ee}
+#v-chat.htmode .choice{background:#f1edff;border-color:#c9bcff;color:#2d1a78}
+#v-chat.htmode .choice:active{background:#e3dbff}
+#v-chat.htmode .next-hint{color:#8f86b8}
 #v-chat.htmode .send-b{background:var(--ht)}
-.corr{margin:3px 0 3px 45px;max-width:79%;background:#fff;border:1.5px solid #f6cfc9;border-radius:13px;padding:9px 11px;font-size:13px;line-height:1.62;color:#333;animation:msgin .18s ease}
+.corr{margin:3px 0 3px 45px;max-width:79%;background:#fff;border:1px solid #e9e9ef;border-radius:13px;padding:9px 11px;font-size:13px;line-height:1.62;color:#333;animation:msgin .18s ease;box-shadow:0 1px 3px rgba(30,20,80,.06)}
 .corr.mine{margin-left:auto;margin-right:2px;border-color:#bfe6cf}
-.corr .ch{font-size:10.5px;font-weight:800;color:#e5484d;letter-spacing:.05em;margin-bottom:3px}
-.corr.mine .ch{color:#1d9d63}
-.corr .orig{color:#8a8a8f;font-size:12.5px}
-.corr del{color:#e5484d;text-decoration:line-through;font-weight:700}
-.corr ins{color:#0f9d58;text-decoration:none;font-weight:700}
+.corr .ch{font-size:10.5px;font-weight:800;color:#8a8a92;letter-spacing:.05em;margin-bottom:3px}
+.corr.mine .ch{color:#8a8a92}
+.corr .orig{color:#55555e;font-size:12.5px;display:block}
+.corr del{color:#e5484d;text-decoration:none;font-weight:700;background:rgba(229,72,77,.09);border-radius:3px;padding:0 1px}
+.corr ins{color:#0aa06e;text-decoration:none;font-weight:700;background:rgba(10,160,110,.09);border-radius:3px;padding:0 1px}
 .corr .cm{margin-top:6px;padding-top:6px;border-top:1px dashed #e8e8e8;font-size:11.5px;color:#777;line-height:1.55}
 .vmsg{display:flex;align-items:center;gap:9px;min-width:138px}
 .vmsg .pl{width:27px;height:27px;border-radius:50%;background:var(--ht);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;flex:none;padding-left:2px}
@@ -679,13 +682,13 @@ img{max-width:100%}
 .vmsg .wave i{width:3px;background:#93c7c1;border-radius:2px;display:block}
 .vmsg .vdur{font-size:11px;color:#7d8b89}
 .tsc{margin-top:6px;font-size:12px;color:#555;border-top:1px dashed #e4e4e4;padding-top:5px;line-height:1.55}
-.tsc b{display:block;color:#4f8a84;font-size:9.5px;letter-spacing:.08em;margin-bottom:1px}
+.tsc b{display:block;color:#7a68c9;font-size:9.5px;letter-spacing:.08em;margin-bottom:1px}
 #call-sil{border-radius:50%}
 /* HelloTalk app shell */
 .ht-head{padding:54px 14px 7px;display:flex;align-items:center;gap:8px;background:#fff;z-index:6;flex:none;border-bottom:1px solid #eef1f0}
 .ht-head .back{font-size:25px;padding:0 4px;color:#222;line-height:1}
-.ht-logo{font-size:19px;font-weight:900;color:#173b36;letter-spacing:-.01em;flex:1}
-.ht-logo b{color:var(--ht)}
+.ht-logo{font-size:18.5px;font-weight:800;color:#111;letter-spacing:-.01em;flex:1;text-align:center}
+
 .ht-vip{font-size:10px;font-weight:900;background:linear-gradient(90deg,#ffb52e,#ff8a3d);color:#fff;border-radius:8px;padding:3px 7px;font-style:italic;flex:none}
 .ht-head .hic{font-size:18px;padding:2px 3px}
 .ht-tools{display:flex;gap:4px;padding:10px 12px 5px;background:#fff}
@@ -695,42 +698,42 @@ img{max-width:100%}
 .ht-row{display:flex;gap:11px;padding:10px 14px;align-items:center;width:100%;text-align:left;background:#fff;border-bottom:1px solid #f4f6f5}
 .ht-row:active{background:#f4faf8}
 .ht-avw{position:relative;flex:none;display:inline-block}
-.ht-avw .flg{position:absolute;right:-3px;bottom:-3px;font-size:10px;background:#fff;border-radius:50%;width:17px;height:17px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.25);z-index:2}
+.ht-avw .flg{position:absolute;left:-3px;bottom:-3px;font-size:10px;background:#fff;border-radius:50%;width:17px;height:17px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.25);z-index:2}
 .ht-avw .ond{position:absolute;left:-1px;top:-1px;width:11px;height:11px;border-radius:50%;background:#2fd35f;border:2px solid #fff;z-index:2}
 .ht-row .tt2{flex:1;min-width:0}
-.ht-row .tn2{font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:baseline;color:#173b36}
+.ht-row .tn2{font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:baseline;color:#1c1c22}
 .ht-row .tn2 time{font-size:10.5px;color:#9aa5a3;font-weight:400;flex:none;margin-left:8px}
 .ht-row .tp2{display:block;font-size:12.5px;color:#8a9491;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
 .ht-row .ubp{background:var(--ht-pu);color:#fff;font-size:11px;font-weight:700;min-width:19px;height:19px;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:0 5px;flex:none}
-.myturn{flex:none;background:var(--ht-pu);color:#fff;font-size:10px;font-weight:700;border-radius:9px;padding:4px 8px}
-.openpill{flex:none;background:#e6f4f2;color:#0b7a71;font-size:10.5px;font-weight:700;border-radius:9px;padding:4px 9px}
+.myturn{flex:none;background:#efeaff;color:var(--ht);font-size:10px;font-weight:700;border-radius:10px;padding:4.5px 9px}
+.openpill{flex:none;background:#efeaff;color:var(--ht);font-size:10.5px;font-weight:700;border-radius:10px;padding:4.5px 9px}
 .ht-tabs{flex:none;display:flex;border-top:1px solid #e8eceb;background:#fff;padding:6px 4px 20px}
 .ht-tabs button{flex:1;font-size:17px;color:#b3bebb;display:flex;flex-direction:column;align-items:center;gap:1px}
 .ht-tabs button span{font-size:9px}
 .ht-tabs button.on{color:var(--ht-d);font-weight:700}
-.ht-chip{font-size:11.5px;font-weight:700;color:#5f6f6c;background:#eef3f1;border-radius:13px;padding:5px 11px}
+.ht-chip{font-size:11.5px;font-weight:700;color:#5b5b66;background:#eef0f4;border-radius:13px;padding:5px 11px;white-space:nowrap}
 .ht-chip.on{background:var(--ht);color:#fff}
 .lg-row{display:flex;align-items:center;gap:8px;font-size:12.5px;margin:6px 0;color:#333}
 .lg-row .flg2{font-size:15px}
 .lg-row .lgn{width:54px;font-weight:600;flex:none}
-.lg-bar{flex:1;height:6px;background:#e7efed;border-radius:3px;overflow:hidden}
-.lg-bar i{display:block;height:100%;background:linear-gradient(90deg,#57c7bd,#149990);border-radius:3px}
-.lg-lv{font-size:10.5px;color:#fff;background:#149990;border-radius:7px;padding:2px 7px;font-weight:700;flex:none}
+.lg-bar{flex:1;height:6px;background:#eceaf4;border-radius:3px;overflow:hidden}
+.lg-bar i{display:block;height:100%;background:linear-gradient(90deg,#a78bff,#6c4cf1);border-radius:3px}
+.lg-lv{font-size:10.5px;color:#fff;background:var(--ht);border-radius:7px;padding:2px 7px;font-weight:700;flex:none}
 .gauge-sec{background:#fff;padding:13px 16px;margin-top:9px}
-.gauge-sec .gs-t{font-size:11px;font-weight:800;color:#7d8b89;letter-spacing:.05em}
+.gauge-sec .gs-t{font-size:11px;font-weight:800;color:#8a8a92;letter-spacing:.05em}
 .gauge-sec .gs-s{font-size:10.5px;color:#9aa5a3;margin-top:1px}
 .ht-pb{flex:1;border-radius:12px;padding:11px 0;font-size:14px;font-weight:700}
 .ht-pb.main{background:var(--ht);color:#fff}
-.ht-pb.sub{background:#e8efed;color:#33655f}
-.ht-pb.sub.on{background:#cfe9e4;color:#0b7a71}
+.ht-pb.sub{background:#efedfb;color:#43307a}
+.ht-pb.sub.on{background:#ddd2ff;color:#43307a}
 .mo-card{background:#fff;border-bottom:8px solid #f2f5f4;padding:13px 14px}
 .mo-head{display:flex;gap:10px;align-items:center}
 .mo-head .mn{font-size:13.5px;font-weight:700;color:#173b36}
 .mo-head .ms{font-size:10.5px;color:#9aa5a3;margin-top:1px}
-.langtag{margin-left:auto;font-size:10px;font-weight:700;color:#0b7a71;background:#e6f4f2;border-radius:7px;padding:3px 7px;flex:none}
+.langtag{margin-left:auto;font-size:10px;font-weight:700;color:var(--ht-d);background:#efeaff;border-radius:7px;padding:3px 7px;flex:none}
 .mo-body{font-size:14px;line-height:1.65;margin-top:9px;color:#222}
-.tr-btn{margin-top:8px;font-size:11px;color:#0b7a71;font-weight:700;background:#e6f4f2;border-radius:8px;padding:4px 10px}
-.tr-box{margin-top:6px;font-size:12.5px;color:#33655f;background:#f2faf8;border-radius:9px;padding:7px 10px;line-height:1.6;display:none}
+.tr-btn{margin-top:8px;font-size:11px;color:var(--ht-d);font-weight:700;background:#efeaff;border-radius:8px;padding:4px 10px}
+.tr-box{margin-top:6px;font-size:12.5px;color:#43307a;background:#f4f1ff;border-radius:9px;padding:7px 10px;line-height:1.6;display:none}
 .tr-box.on{display:block}
 .mo-acts{display:flex;gap:19px;margin-top:10px;font-size:12.5px;color:#8a9491;align-items:center}
 .mo-acts b{font-weight:600;color:#5f6f6c}
@@ -763,10 +766,153 @@ img{max-width:100%}
 .app .ic{border-radius:22.5%;box-shadow:0 2px 7px rgba(10,6,30,.28),0 1px 2px rgba(10,6,30,.18)}
 .app .ic::after{display:none}
 .icsvg{display:block;width:100%;height:100%}
+.uic{width:22px;height:22px;display:block}
+.uic.s15{width:15px;height:15px}.uic.s17{width:17px;height:17px}.uic.s19{width:19px;height:19px}.uic.s21{width:21px;height:21px}.uic.s24{width:24px;height:24px}.uic.s26{width:26px;height:26px}.uic.s28{width:28px;height:28px}
 #nbanner .nb-ic{background:transparent;border-radius:22.5%;overflow:hidden;padding:0;box-shadow:0 1px 3px rgba(0,0,0,.3)}
 .ln-ic{background:transparent;border-radius:22.5%;overflow:hidden;padding:0;box-shadow:0 1px 3px rgba(0,0,0,.25)}
 .ic-cal .cwd{font-size:10.5px;letter-spacing:.05em;margin-top:6px}
 .ic-cal .cd2{font-size:31px;font-weight:300;color:#1c1c1e;line-height:1.04}
+
+/* ================= v16: app interiors real-spec ================= */
+.x-logo{display:flex;color:#0f1419}
+.x-head .hic{display:flex;color:#0f1419}
+.ig-head .hic{display:flex;color:#262626}
+.ht-head .hic{display:flex;color:#333}
+.httab-av{width:24px;height:24px;border-radius:50%;object-fit:cover;display:block}
+.ht-tabs button img.httab-av{margin:0 auto}
+/* chat tools row (HelloTalk mode) */
+#chat-tools{display:none;gap:20px;align-items:center;background:#fff;border-top:1px solid #eee;padding:7px 14px 22px;color:#111}
+#v-chat.htmode #chat-tools{display:flex}
+#v-chat.htmode .chat-foot{border-top:none;padding-bottom:6px}
+#v-chat.htmode [data-fic="cam"],#v-chat.htmode [data-fic="img"]{display:none}
+#chat-tools .ct-ic{display:flex;align-items:center}
+/* HT voice-message bubble: brand purple component */
+#v-chat.htmode .bub.vmb{background:linear-gradient(180deg,#8266ff,#6c4cf1);border:none;color:#fff}
+#v-chat.htmode .bub.vmb .vmsg .pl{background:rgba(255,255,255,.30)}
+#v-chat.htmode .bub.vmb .wave i{background:rgba(255,255,255,.9)}
+#v-chat.htmode .bub.vmb .vdur{color:rgba(255,255,255,.88)}
+#v-chat.htmode .bub.vmb .tsc{border-top-color:rgba(255,255,255,.32);color:#fff}
+#v-chat.htmode .bub.vmb .tsc b{color:#cfc2ff}
+.corr .cline{display:flex;align-items:flex-start;gap:6px}
+.corr .cline .cx{margin-left:auto;flex:none;font-size:12px;font-weight:800;padding-top:1px}
+.corr .cx.bad{color:#e5484d}.corr .cx.ok{color:#0aa06e}
+/* HT long-press menu */
+#htmenu{position:absolute;inset:0;z-index:345;background:rgba(10,8,20,.42);display:none;align-items:center;justify-content:center}
+#htmenu.on{display:flex}
+.htm-card{background:#fff;color:#111;width:82%;max-width:300px;border-radius:20px;padding:14px 12px 8px;animation:sheetup .3s cubic-bezier(.32,1.3,.36,1);box-shadow:0 18px 44px rgba(0,0,0,.3)}
+.htm-top{display:flex;justify-content:space-around;padding:2px 2px 10px;border-bottom:1px solid #f0f0f3}
+.htm-top button{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:10px;color:#444}
+.htm-ic{width:46px;height:46px;border-radius:50%;background:#f2f2f5;display:flex;align-items:center;justify-content:center;color:#333}
+.htm-rows button{display:flex;align-items:center;width:100%;padding:11px 6px;font-size:13.5px;color:#222;border-bottom:1px solid #f5f5f7;text-align:left}
+.htm-rows button:last-child{border-bottom:none}
+.htm-rows button .uic{margin-left:auto;color:#8a8a92}
+.htm-tx{margin-left:auto;font-size:12px;font-weight:800;color:#8a8a92}
+/* moments extras */
+.mo-chips{display:flex;gap:7px;padding:10px 12px 4px;background:#f7f7fa;overflow-x:auto;scrollbar-width:none}
+.mo-chips::-webkit-scrollbar{display:none}
+.mo-chips span{flex:none;font-size:12.5px;color:#555;background:transparent;border-radius:14px;padding:5px 12px;font-weight:600}
+.mo-chips span.on{background:#e9e9ee;color:#111;font-weight:700}
+.mo-chips .flt{margin-left:auto;display:flex;align-items:center;color:#555;position:sticky;right:0;background:#f7f7fa;padding-left:8px;flex:none}
+.mo-pair{display:flex;align-items:center;gap:5px;font-size:10px;color:#8a8a92;margin-top:2.5px;font-weight:600}
+.lvbar{display:inline-block;width:26px;height:4px;background:#e8e8ee;border-radius:2px;overflow:hidden;vertical-align:middle}
+.lvbar i{display:block;height:100%;background:var(--ht);border-radius:2px}
+.mo-acts .uic{vertical-align:-5px}
+.mo-acts span{display:inline-flex;align-items:center;gap:5px}
+/* voiceroom */
+.vr-card{margin:10px 12px 0;border-radius:18px;padding:14px;color:#fff;background:linear-gradient(140deg,#3b1d78,#6c4cf1);box-shadow:0 8px 22px rgba(80,50,180,.28)}
+.vr-top{display:flex;align-items:center;gap:8px}
+.vr-live{background:#fe2c55;font-size:10px;font-weight:800;border-radius:6px;padding:2.5px 7px;letter-spacing:.05em}
+.vr-cnt{margin-left:auto;font-size:11.5px;display:inline-flex;align-items:center;gap:4px;opacity:.92}
+.vr-t{font-size:15.5px;font-weight:800;margin-top:9px;line-height:1.45}
+.vr-sub{font-size:11.5px;opacity:.85;margin-top:3px}
+.vr-join{margin-top:11px;background:#fff;color:#5a3ee0;font-weight:800;font-size:13px;border-radius:11px;padding:8px 18px}
+/* IG post actions svg */
+.post-act{gap:16px}
+.post-act button{display:flex;color:#262626;padding:1px}
+.post-act .hrt.liked{color:#ff3040}
+.post-act .save.liked{color:#262626}
+/* X extras */
+.xbadge{display:inline-flex;width:15px;height:15px;color:#1d9bf0;vertical-align:-2px}
+.xbadge .uic{width:100%;height:100%}
+.xpost .xh .xbadge.gold,.xprof-name .xbadge.gold{color:#d9a400}
+.xpost .xa span{display:inline-flex;align-items:center;gap:4px}
+.xpost .xa .uic{width:16.5px;height:16.5px}
+.xprof-back{display:flex;align-items:center;gap:6px;padding:10px 14px 2px;font-size:13px;font-weight:700;color:#1d9bf0;width:100%;text-align:left}
+.xprof-banner{width:100%;height:118px;object-fit:cover;display:block}
+.xprof-main{padding:0 16px 10px;border-bottom:1px solid #eff3f4;background:#fff}
+.xprof-av{width:72px;height:72px;border-radius:50%;border:3.5px solid #fff;object-fit:cover;margin-top:-36px;background:#ddd}
+.xprof-name{font-size:18px;font-weight:800;margin-top:5px;display:flex;align-items:center;gap:5px}
+.xprof-handle{font-size:13px;color:#536471}
+.xprof-bio{font-size:13.5px;line-height:1.6;margin-top:7px}
+.xprof-meta{font-size:12.5px;color:#536471;margin-top:6px}
+.xprof-fol{font-size:13px;margin-top:8px;color:#536471}
+.xprof-fol b{color:#0f1419}
+.xprof-tabs{display:flex;background:#fff;border-bottom:1px solid #eff3f4}
+.xprof-tabs span{flex:1;text-align:center;padding:10px 0;font-size:13px;font-weight:700;color:#536471;position:relative}
+.xprof-tabs span.on{color:#0f1419}
+.xprof-tabs span.on::after{content:'';position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:46px;height:3.5px;border-radius:3px;background:#1d9bf0}
+/* TikTok profile */
+.ttp{background:#000;color:#fff;min-height:100%;padding-bottom:16px}
+.ttp-head{display:flex;align-items:center;padding:54px 14px 8px;gap:8px}
+.ttp-head .ttu{flex:1;text-align:center;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:5px}
+.ttp-av{width:96px;height:96px;border-radius:50%;object-fit:cover;display:block;margin:8px auto 0}
+.ttp-id{text-align:center;font-size:17px;font-weight:700;margin-top:9px}
+.ttp-stats{display:flex;justify-content:center;gap:38px;margin-top:13px;text-align:center}
+.ttp-stats b{font-size:16.5px;display:block}
+.ttp-stats span{font-size:12px;color:#b9b9be}
+.ttp-btns{display:flex;gap:7px;justify-content:center;margin-top:13px}
+.ttp-btns button{background:#2a2a30;color:#fff;font-size:13.5px;font-weight:600;border-radius:4px;padding:9px 22px}
+.ttp-btns .fol2{background:#2f3036}
+.ttp-bio{text-align:center;font-size:12.5px;color:#d8d8de;margin-top:11px;line-height:1.6;padding:0 30px}
+.ttp-tabs{display:flex;margin-top:13px;border-bottom:1px solid rgba(255,255,255,.12)}
+.ttp-tabs span{flex:1;display:flex;justify-content:center;padding:8px 0;color:#8e8e96;border-bottom:2px solid transparent}
+.ttp-tabs span.on{color:#fff;border-bottom-color:#fff}
+.ttp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;margin-top:1.5px}
+.ttp-grid button{padding:0;position:relative;aspect-ratio:3/4;overflow:hidden;background:#16161a}
+.ttp-grid img,.ttp-grid video{width:100%;height:100%;object-fit:cover;display:block}
+.ttp-grid .gv{position:absolute;left:6px;bottom:5px;font-size:11px;font-weight:700;color:#fff;display:inline-flex;align-items:center;gap:3px;text-shadow:0 1px 4px rgba(0,0,0,.8)}
+.tt-mute{width:37px;height:37px;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:0;left:11px;top:auto;bottom:216px;background:rgba(0,0,0,.45)}
+.tt-top .live{position:absolute;left:14px;font-size:12.5px;font-weight:800;letter-spacing:.05em}
+.tt-rail .rb .ric svg{filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+.rb .ric{display:flex}
+/* news list w/ thumbs */
+.news-item{display:flex;gap:12px;align-items:flex-start}
+.news-item .ntx{flex:1;min-width:0}
+.news-item img.nth{width:78px;height:78px;border-radius:10px;object-fit:cover;flex:none;background:#eee}
+.news-acts{display:flex;gap:22px;padding:13px 2px 2px;border-top:1px solid #eee;margin-top:16px;color:#555}
+.news-acts button{display:flex;color:#555}
+/* settings iOS groups */
+.set-prof{display:flex;gap:12px;align-items:center;background:#fff;margin:14px 16px 0;border-radius:16px;padding:12px 14px}
+.set-prof img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.set-prof b{font-size:16.5px;display:block;color:#111}
+.set-prof small{font-size:12px;color:#8e8e93}
+.ios-grp{background:#fff;margin:14px 16px 0;border-radius:16px;overflow:hidden}
+.set-row2i{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding:12.5px 14px;font-size:14px;color:#111;border-bottom:1px solid #f0f0f3;text-align:left;background:#fff}
+.set-row2i:last-child{border-bottom:none}
+.set-row2i span{color:#8e8e93;font-size:12.5px;text-align:right}
+.set-row2i.danger{color:#ff3b30}
+/* notes search */
+.notes-search{margin:12px 16px 2px;background:#f2f2f5;color:#8e8e93;border-radius:10px;padding:8px 12px;font-size:13px;display:flex;align-items:center;gap:6px}
+/* photoview tools */
+.pv-tools{display:flex;justify-content:space-around;padding:10px 34px 28px;background:#000;color:#fff}
+.pv-tools button{display:flex;color:#fff}
+/* profile talk btn icon align */
+.prof-btns .pb{display:inline-flex;align-items:center;gap:6px;justify-content:center}
+/* story icons */
+.story-ic{display:flex;color:#fff}
+.story-ic.liked{color:#ff3040}
+/* call grid svg */
+.call-grid .cb i svg{margin:auto}
+.call-mini span svg{margin:0 auto}
+.slide .knob svg{margin:auto}
+.cbtn i svg{margin:auto}
+.call-end i svg{margin:auto}
+.uic.s13{width:13px;height:13px}.uic.s16{width:16px;height:16px}.uic.s18{width:18px;height:18px}.uic.s20{width:20px;height:20px}
+.xdots{margin-left:auto;color:#536471;flex:none}
+.tt-rail .rb .ric .uic{width:29px;height:29px}
+.ig-grid .pin .uic,.ig-grid .grid-multi .uic{width:13px;height:13px;color:#fff}
+.tt-top .srch{display:flex}
+.ht-search{display:flex;align-items:center;gap:6px}
 </style>
 </head>
 <body>
@@ -793,6 +939,62 @@ img{max-width:100%}
 <symbol id="icn-news" viewBox="0 0 60 60"><rect width="60" height="60" fill="url(#gNews)"/><rect x="18" y="12.5" width="31" height="31" rx="3" fill="#fff" opacity=".45"/><rect x="12" y="16" width="31" height="31" rx="3" fill="#fff"/><rect x="16" y="20.5" width="10.5" height="8.5" rx="1.2" fill="#f43f5e"/><g fill="#a8a8b3"><rect x="29" y="21" width="10" height="2.4" rx="1.2"/><rect x="29" y="25.4" width="10" height="2.4" rx="1.2"/><rect x="16" y="32.5" width="23" height="2.4" rx="1.2"/><rect x="16" y="37" width="23" height="2.4" rx="1.2"/><rect x="16" y="41.5" width="15" height="2.4" rx="1.2"/></g></symbol>
 <symbol id="icn-reset" viewBox="0 0 60 60"><rect width="60" height="60" fill="url(#gReset)"/><path d="M30 15.5a14.5 14.5 0 1 1-10.25 4.25" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round"/><path d="M29 10v11l9-5.5z" fill="#fff"/></symbol>
 <symbol id="icn-end" viewBox="0 0 60 60"><rect width="60" height="60" fill="url(#gEnd)"/><path d="M30 48.6C19.2 40 13.4 32.3 13.4 24.9c0-5.6 4-9.9 9.3-9.9 3 0 5.9 1.6 7.3 4.1 1.4-2.5 4.3-4.1 7.3-4.1 5.3 0 9.3 4.3 9.3 9.9 0 7.4-5.8 15.1-16.6 23.7z" fill="#fff"/></symbol>
+
+<symbol id="i-heart" viewBox="0 0 24 24"><path fill="currentColor" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+<symbol id="i-heart-o" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+<symbol id="i-cmt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></g></symbol>
+<symbol id="i-bmk" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></symbol>
+<symbol id="i-bmk-f" viewBox="0 0 24 24"><path fill="currentColor" d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></g></symbol>
+<symbol id="i-camera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="3.6"/></g></symbol>
+<symbol id="i-image" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></g></symbol>
+<symbol id="i-mic" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v4M8 23h8"/></g></symbol>
+<symbol id="i-micoff" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/><path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.21"/><path d="M12 19v4M8 23h8"/><path d="M2 2l20 20"/></g></symbol>
+<symbol id="i-smile" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></g><circle cx="9" cy="9" r="1.15" fill="currentColor"/><circle cx="15" cy="9" r="1.15" fill="currentColor"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-phone-f" viewBox="0 0 24 24"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></symbol>
+<symbol id="i-video" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></g></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></g></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></g></symbol>
+<symbol id="i-compass" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></g></symbol>
+<symbol id="i-inbox" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></g></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></g></symbol>
+<symbol id="i-userplus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></g></symbol>
+<symbol id="i-repeat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></g></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 20V10M18 20V4M6 20v-4"/></g></symbol>
+<symbol id="i-upload" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></g></symbol>
+<symbol id="i-badge" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.2 12.4l2.5 2.5 5.1-5.4" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13l11-6.5z"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+<symbol id="i-planet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.6"/><ellipse cx="12" cy="12" rx="10.5" ry="3.9" transform="rotate(-18 12 12)"/></g></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></g></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></g></symbol>
+<symbol id="i-film" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.2"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 17h5M17 7h5"/></g></symbol>
+<symbol id="i-tag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/></g><circle cx="12" cy="10" r="3.1" fill="currentColor"/><path d="M5.8 19.2c1-2.9 3.3-4.4 6.2-4.4s5.2 1.5 6.2 4.4" fill="currentColor"/></symbol>
+<symbol id="i-sparkle" viewBox="0 0 24 24"><path fill="currentColor" d="M11 4l1.8 4.9L17.7 10.7l-4.9 1.8L11 17.4l-1.8-4.9L4.3 10.7l4.9-1.8z"/><path fill="currentColor" d="M18.6 15.2l.9 2.4 2.4.9-2.4.9-.9 2.4-.9-2.4-2.4-.9 2.4-.9z"/></symbol>
+<symbol id="i-vol" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></g></symbol>
+<symbol id="i-volx" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M23 9l-6 6M17 9l6 6"/></g></symbol>
+<symbol id="i-keypad" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="5" cy="5" r="1.7"/><circle cx="12" cy="5" r="1.7"/><circle cx="19" cy="5" r="1.7"/><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/><circle cx="5" cy="19" r="1.7"/><circle cx="12" cy="19" r="1.7"/><circle cx="19" cy="19" r="1.7"/></g></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></g></symbol>
+<symbol id="i-flash" viewBox="0 0 24 24"><path fill="currentColor" d="M10 1.8h4a1 1 0 0 1 1 1V6a3.6 3.6 0 0 1-1.05 2.55V21a1.5 1.5 0 0 1-1.5 1.5h-.9A1.5 1.5 0 0 1 10.05 21V8.55A3.6 3.6 0 0 1 9 6V2.8a1 1 0 0 1 1-1z"/></symbol>
+<symbol id="i-pencil" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></symbol>
+<symbol id="i-recall" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></g></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></g></symbol>
+<symbol id="i-reply" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5v.5"/></g></symbol>
+<symbol id="i-sliders" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></g></symbol>
+<symbol id="i-filter" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></g></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><path fill="currentColor" d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/></g><circle cx="12" cy="8" r="1.2" fill="currentColor"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M10 11v6M14 11v6"/></g></symbol>
+<symbol id="i-card" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></g></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></g></symbol>
+<symbol id="i-chatplus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path d="M12 8v6M9 11h6"/></g></symbol>
+<symbol id="i-translate" viewBox="0 0 24 24"><text x="1.5" y="13.5" font-size="10.5" font-weight="700" fill="currentColor">文</text><text x="13" y="21" font-size="10" font-weight="700" fill="currentColor">A</text><path d="M14.5 5.5h6M17.5 3v2.5c0 2.4-1.7 4.9-3.7 6.2M15.8 7.6c.9 2 2.6 3.9 4.7 5.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-xlogo" viewBox="0 0 24 24"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H4.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></symbol>
+<symbol id="i-plusc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/></symbol>
 </defs></svg>
 <div class="page-head">
 <h1>💗 サクヤと熱愛バレた件</h1>
@@ -825,14 +1027,14 @@ img{max-width:100%}
 <div class="view" id="v-lock">
 <img class="wallbg" src="assets/sakuya-ig1.jpg" alt="">
 <div class="shade"></div>
-<div class="lock-top">🔒</div>
+<div class="lock-top"><svg class="uic s19" style="margin:0 auto"><use href="#i-lock"/></svg></div>
 <div class="lock-clock"><div class="lock-date" id="lock-date">1月10日 土曜日</div><div class="lock-time" id="lock-time">9:41</div></div>
 <div class="lock-notifs">
 <button class="lnotif" data-go="ht"><span class="ln-ic"><svg class="icsvg"><use href="#icn-ht"/></svg></span><span style="flex:1"><span class="ln-h">HelloTalk <span>今</span></span><span class="ln-t"><b>빵돌이</b> さんとのチャットが始まっています。最初のメッセージを送ってみましょう</span></span></button>
 <button class="lnotif" data-go="ig"><span class="ln-ic"><svg class="icsvg"><use href="#icn-ig"/></svg></span><span style="flex:1"><span class="ln-h">INSTAGRAM <span>3時間前</span></span><span class="ln-t"><b>nctwish_official</b>：INTO THE WISH : Face Our WISH ― SEOULまであと5日💫</span></span></button>
 <div class="lnotif stack"><span class="ln-ic"><svg class="icsvg"><use href="#icn-x"/></svg></span><span style="flex:1"><span class="ln-h">X <span>5時間前</span></span><span class="ln-t">トレンド：<b>#NCTWISH</b> ・ <b>高尺スカイドーム</b></span></span></div>
 </div>
-<div class="lock-btns"><span class="lk-btn">🔦</span><span class="lk-btn">📷</span></div>
+<div class="lock-btns"><span class="lk-btn"><svg class="uic s21"><use href="#i-flash"/></svg></span><span class="lk-btn"><svg class="uic s21"><use href="#i-camera"/></svg></span></div>
 <div class="lock-hint">タップしてロック解除</div>
 </div>
 
@@ -874,35 +1076,35 @@ img{max-width:100%}
 
 <!-- LINE LIST -->
 <div class="view" id="v-line">
-<div class="ll-head"><h2>トーク</h2><div class="ll-icons"><span>🔍</span><span>👤＋</span><span>⚙️</span></div></div>
+<div class="ll-head"><h2>トーク</h2><div class="ll-icons"><button aria-label="検索"><svg class="uic s21"><use href="#i-search"/></svg></button><button aria-label="新規トーク"><svg class="uic s22"><use href="#i-chatplus"/></svg></button></div></div>
 <div class="abody" id="line-list"></div>
-<div class="ll-tabs"><button>🏠<span>ホーム</span></button><button style="font-weight:800">💬<span>トーク</span></button><button>📰<span>ニュース</span></button><button>👛<span>ウォレット</span></button></div>
+<div class="ll-tabs"><button><svg class="uic s23"><use href="#i-home"/></svg><span>ホーム</span></button><button class="on"><svg class="uic s23"><use href="#i-cmt"/></svg><span>トーク</span></button><button><svg class="uic s23"><use href="#i-file"/></svg><span>ニュース</span></button><button><svg class="uic s23"><use href="#i-card"/></svg><span>ウォレット</span></button></div>
 </div>
 
 <!-- CHAT -->
 <div class="view" id="v-chat">
-<div class="chat-head"><button class="back" data-back="line">‹</button><h2 id="chat-title">トーク<span class="langpair" id="chat-sub"></span></h2><span class="hic">🔍</span><span class="hic" id="chat-call" style="display:none">📞</span><span class="hic">☰</span></div>
+<div class="chat-head"><button class="back" data-back="line">‹</button><h2 id="chat-title">トーク<span class="langpair" id="chat-sub"></span></h2><span class="hic"><svg class="uic s20"><use href="#i-search"/></svg></span><span class="hic" id="chat-call" style="display:none"><svg class="uic s20"><use href="#i-phone"/></svg></span><span class="hic" id="chat-menuic"><svg class="uic s21"><use href="#i-menu"/></svg></span></div>
 <div class="chat-body" id="chat-body"></div>
 <div id="chat-panel"></div>
-<div class="chat-foot" id="chat-foot"><span class="plus">＋</span><span class="fic">📷</span><span class="fic">🖼️</span><div class="chat-in">メッセージを入力</div><span class="fic">😊</span><span class="fic">🎤</span><button class="send-b" id="chat-next">▶ 進む</button></div>
+<div class="chat-foot" id="chat-foot"><span class="plus">＋</span><span class="fic" data-fic="cam"><svg class="uic s23"><use href="#i-camera"/></svg></span><span class="fic" data-fic="img"><svg class="uic s23"><use href="#i-image"/></svg></span><div class="chat-in">メッセージを入力</div><span class="fic" data-fic="smile"><svg class="uic s23"><use href="#i-smile"/></svg></span><span class="fic" data-fic="mic"><svg class="uic s23"><use href="#i-mic"/></svg></span><button class="send-b" id="chat-next">▶ 進む</button></div><div id="chat-tools"><span class="ct-ic"><svg class="uic s27"><use href="#i-plusc"/></svg></span><span class="ct-ic"><svg class="uic s24"><use href="#i-image"/></svg></span><span class="ct-ic"><svg class="uic s24"><use href="#i-smile"/></svg></span><span class="ct-ic"><svg class="uic s24"><use href="#i-translate"/></svg></span><span class="ct-ic"><svg class="uic s23"><use href="#i-bmk"/></svg></span></div>
 </div>
 
 <!-- FREE CHAT -->
 <div class="view" id="v-free">
-<div class="chat-head"><button class="back" data-back="line">‹</button><h2>サクヤ（フリーチャット）</h2><span class="hic">📞</span></div>
+<div class="chat-head"><button class="back" data-back="line">‹</button><h2>サクヤ（フリーチャット）</h2><span class="hic"><svg class="uic s20"><use href="#i-phone"/></svg></span></div>
 <div class="chat-body" id="free-body"></div>
 <div class="chat-foot"><span class="plus">＋</span><input class="free-in" id="free-input" type="text" placeholder="サクヤに話しかける…" autocomplete="off"><button class="send-b" id="free-send">送信</button></div>
 </div>
 
 <!-- IG -->
 <div class="view" id="v-ig">
-<div class="ig-head"><button class="back" data-back="home" style="font-size:24px">‹</button><span class="ig-uname">nctwish_official <span class="vbadge">✓</span></span><span class="hic">🔔</span><span class="hic" style="font-weight:800;letter-spacing:1px">•••</span></div>
+<div class="ig-head"><button class="back" data-back="home" style="font-size:24px">‹</button><span class="ig-uname">nctwish_official <span class="vbadge"><svg class="uic "><use href="#i-badge"/></svg></span></span><span class="hic"><svg class="uic s22"><use href="#i-bell"/></svg></span><span class="hic" style="font-weight:800;letter-spacing:1px">•••</span></div>
 <div class="abody" id="ig-body"></div>
 </div>
 
 <!-- X -->
 <div class="view" id="v-x">
-<div class="x-head"><button class="back" data-back="home" style="font-size:24px">‹</button><span class="x-logo">𝕏</span><span class="hic">✨</span></div>
+<div class="x-head"><button class="back" data-back="home" style="font-size:24px">‹</button><span class="x-logo"><svg class="uic s21"><use href="#i-xlogo"/></svg></span><span class="hic"><svg class="uic s21"><use href="#i-sparkle"/></svg></span></div>
 <div class="x-tabs"><button class="on" id="x-tab-feed">おすすめ</button><button id="x-tab-trend">トレンド</button></div>
 <div class="abody" id="x-body"></div>
 </div>
@@ -916,7 +1118,7 @@ img{max-width:100%}
 <!-- TIKTOK -->
 <div class="view" id="v-tt">
 <div class="tt-feed" id="tt-feed"></div>
-<div class="tt-tabs"><button class="on">🏠<span>ホーム</span></button><button>🧭<span>見つける</span></button><button class="mk"><span class="tt-create">＋</span></button><button>📥<span>受信箱</span></button><button>👤<span>プロフィール</span></button></div>
+<div class="tt-tabs"><button class="on" data-tttab="home"><svg class="uic s23"><use href="#i-home"/></svg><span>ホーム</span></button><button data-tttab="discover"><svg class="uic s23"><use href="#i-compass"/></svg><span>見つける</span></button><button class="mk" data-tttab="create"><span class="tt-create">＋</span></button><button data-tttab="inbox"><svg class="uic s23"><use href="#i-inbox"/></svg><span>受信箱</span></button><button data-tttab="prof"><svg class="uic s23"><use href="#i-user"/></svg><span>プロフィール</span></button></div>
 </div>
 
 <!-- CALENDAR -->
@@ -928,7 +1130,7 @@ img{max-width:100%}
 <!-- NOTES -->
 <div class="view" id="v-notes">
 <div class="ahead"><button class="back" data-back="home">‹</button><h2>サクヤ観察メモ <span class="sub">記録＆ENDコレクション</span></h2></div>
-<div class="abody" id="notes-body" style="background:#fdf3f6"></div>
+<div class="abody" id="notes-body" style="background:#fff"></div>
 </div>
 
 <!-- PHOTOS -->
@@ -939,7 +1141,7 @@ img{max-width:100%}
 <div class="view" id="v-photoview">
 <div class="ahead" style="background:#000;color:#fff;border-color:#222"><button class="back" data-back="photos" style="color:#fff">‹</button><h2 id="pv-title">写真</h2></div>
 <div id="pv-media" style="display:flex;flex-direction:column;flex:1;min-height:0"></div>
-<div class="pv-cap" id="pv-cap"></div>
+<div class="pv-cap" id="pv-cap"></div><div class="pv-tools"><button data-pvtool><svg class="uic s22"><use href="#i-upload"/></svg></button><button data-pvtool><svg class="uic s22"><use href="#i-heart-o"/></svg></button><button data-pvtool><svg class="uic s22"><use href="#i-info"/></svg></button><button data-pvtool><svg class="uic s22"><use href="#i-trash"/></svg></button></div>
 </div>
 
 <!-- CALL -->
@@ -952,11 +1154,11 @@ img{max-width:100%}
 <div class="csub" id="call-sub"></div>
 <button id="call-voice" style="display:none">▶ ボイスで聞く</button>
 <div class="call-grid" id="call-grid" style="display:none">
-<div class="cb"><i>🔇</i>消音</div><div class="cb"><i>⌨️</i>キーパッド</div><div class="cb"><i>🔊</i>スピーカー</div>
-<div class="cb"><i>➕</i>追加</div><div class="cb"><i>📹</i>FaceTime</div><div class="cb"><i>👤</i>連絡先</div></div>
-<div class="call-mini" id="call-mini"><span>🔔<small>リマインド</small></span><span>💬<small>メッセージ</small></span></div>
-<div class="call-btns" id="call-btns"><button class="cbtn" id="call-dec"><i class="dec">📞</i>拒否</button><div class="slide" id="call-acc" role="button"><span class="knob">📞</span><span class="slide-tx">スライドで応答</span></div></div>
-<div class="call-end" id="call-end" style="display:none"><button id="call-hang"><i>📞</i></button><div style="font-size:11.5px;margin-top:5px">タップで次へ／終了</div></div>
+<div class="cb"><i><svg class="uic s24"><use href="#i-micoff"/></svg></i>消音</div><div class="cb"><i><svg class="uic s24"><use href="#i-keypad"/></svg></i>キーパッド</div><div class="cb"><i><svg class="uic s24"><use href="#i-vol"/></svg></i>スピーカー</div>
+<div class="cb"><i><svg class="uic s24"><use href="#i-plusc"/></svg></i>追加</div><div class="cb"><i><svg class="uic s24"><use href="#i-video"/></svg></i>FaceTime</div><div class="cb"><i><svg class="uic s24"><use href="#i-user"/></svg></i>連絡先</div></div>
+<div class="call-mini" id="call-mini"><span><svg class="uic s22"><use href="#i-bell"/></svg><small>リマインド</small></span><span><svg class="uic s22"><use href="#i-cmt"/></svg><small>メッセージ</small></span></div>
+<div class="call-btns" id="call-btns"><button class="cbtn" id="call-dec"><i class="dec"><svg class="uic s26"><use href="#i-phone-f"/></svg></i>拒否</button><div class="slide" id="call-acc" role="button"><span class="knob"><svg class="uic s26"><use href="#i-phone-f"/></svg></span><span class="slide-tx">スライドで応答</span></div></div>
+<div class="call-end" id="call-end" style="display:none"><button id="call-hang"><i><svg class="uic s26"><use href="#i-phone-f"/></svg></i></button><div style="font-size:11.5px;margin-top:5px">タップで次へ／終了</div></div>
 </div>
 
 <!-- ENDING -->
@@ -971,9 +1173,13 @@ img{max-width:100%}
 <div class="view" id="v-set">
 <div class="ahead"><button class="back" data-back="home">‹</button><h2>設定</h2></div>
 <div class="abody" style="background:#f2f2f7">
-<button class="set-row" id="set-reset">最初からプレイし直す <span>セーブ削除</span></button>
-<div class="set-row">バージョン <span>v14.0（iOS 26 / Liquid Glass）</span></div>
-<div class="set-row">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
+<div class="set-prof"><img src="assets/nao-face.jpg" alt=""><span><b>なお</b><small>サクヤペン💗 ― プレイヤー</small></span></div>
+<div class="ios-grp">
+<div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
+<div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
+<div class="set-row2i">バージョン <span>v16.0（iOS 26 / Liquid Glass）</span></div>
+</div>
+<div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px;font-size:12px;color:#888;line-height:1.8">『サクヤと熱愛バレた件』は実在の人物を題材にした創作フィクション（ファンメイド作品）です。登場人物の発言・交際等の出来事は全て創作であり、実在の内容とは関係ありません。ツアー日程・会場・リリース実績は公開されている史実に基づきます。<br>なおのプロフィール写真・アルバムには、本人の許可済み写真（5枚セット）を使用しています（本作のみの許可です）。<br>画像：Pinterest／Instagram系の掲載写真（2024〜2026年）、メディア掲載写真等。動画：NCT WISH公式ミュージックビデオの公式プレビュー（iTunes）から作成した縦型クリップ等（権利は各権利者に帰属します）。TikTok公式動画は取得環境の都合（IPブロック）で直接収録できませんでした。</div>
 </div>
 </div>
@@ -981,14 +1187,14 @@ img{max-width:100%}
 
 <!-- HELLOTALK -->
 <div class="view" id="v-ht">
-<div class="ht-head"><button class="back" data-back="home">‹</button><span class="ht-logo">Hello<b>Talk</b></span><span class="ht-vip">VIP</span><span class="hic">☰</span></div>
+<div class="ht-head"><button class="back" data-back="home">‹</button><span class="ht-vip">VIP</span><span class="ht-logo">HelloTalk</span><button class="hic" id="ht-filter" aria-label="絞り込み"><svg class="uic s20"><use href="#i-filter"/></svg></button></div>
 <div class="abody" id="ht-body" style="background:#f7f9f8"></div>
 <div class="ht-tabs" id="ht-tabs">
-<button data-httab="chat" class="on">💬<span>HelloTalk</span></button>
-<button data-httab="moments">🌐<span>モーメンツ</span></button>
-<button data-httab="search">🔍<span>検索</span></button>
-<button data-httab="learn">📚<span>学習</span></button>
-<button data-httab="me">👤<span>本人</span></button>
+<button data-httab="chat" class="on"><svg class="uic s23"><use href="#i-cmt"/></svg><span>HelloTalk</span></button>
+<button data-httab="moments"><svg class="uic s23"><use href="#i-planet"/></svg><span>Moments</span></button>
+<button data-httab="search"><svg class="uic s23"><use href="#i-users"/></svg><span>Connect</span></button>
+<button data-httab="learn"><svg class="uic s23"><use href="#i-mic"/></svg><span>VoiceRoom</span></button>
+<button data-httab="me"><img class="httab-av" src="assets/nao-face.jpg" alt=""><span>Me</span></button>
 </div>
 </div>
 
@@ -1007,7 +1213,7 @@ img{max-width:100%}
 <span class="prof-avwrap"><img class="prof-av" id="prof-av" alt=""><span class="prof-av sil" id="prof-avsil" style="display:none">N</span></span>
 <div class="prof-name" id="prof-name"></div>
 <div class="prof-status" id="prof-status"></div>
-<div class="prof-btns"><button class="pb main" id="prof-talk">💬 トーク</button><button class="pb" data-back="home">ホーム</button></div>
+<div class="prof-btns"><button class="pb main" id="prof-talk"><svg class="uic s17"><use href="#i-cmt"/></svg> トーク</button><button class="pb" data-back="home">ホーム</button></div>
 </div>
 </div>
 
@@ -1017,9 +1223,26 @@ img{max-width:100%}
 <div class="story-shade"></div>
 <div class="story-top"><div class="story-segs" id="story-segs"></div>
 <div class="story-head"><img id="story-av" alt=""><span id="story-name"></span><span id="story-time"></span><button id="story-x">✕</button></div></div>
-<div class="story-foot"><input class="story-reply" id="story-reply-in" type="text" placeholder="メッセージを送信…" autocomplete="off"><button class="story-ic" id="story-heart">♡</button><button class="story-ic" id="story-send">✈️</button></div>
+<div class="story-foot"><input class="story-reply" id="story-reply-in" type="text" placeholder="メッセージを送信…" autocomplete="off"><button class="story-ic" id="story-heart"><svg class="uic s26"><use href="#i-heart-o"/></svg></button><button class="story-ic" id="story-send"><svg class="uic s24"><use href="#i-send"/></svg></button></div>
 <button class="story-zone l" id="story-prev" aria-label="前へ"></button><button class="story-zone r" id="story-next" aria-label="次へ"></button>
 </div>
+
+<!-- HELLOTALK LONG-PRESS MENU -->
+<div id="htmenu"><div class="htm-card">
+<div class="htm-top">
+<button data-htm="reply"><span class="htm-ic"><svg class="uic s21"><use href="#i-reply"/></svg></span>返信</button>
+<button data-htm="copy"><span class="htm-ic"><svg class="uic s21"><use href="#i-copy"/></svg></span>コピー</button>
+<button data-htm="speak"><span class="htm-ic"><svg class="uic s21"><use href="#i-vol"/></svg></span>読み上げ</button>
+<button data-htm="fav"><span class="htm-ic"><svg class="uic s21"><use href="#i-bmk"/></svg></span>お気に入り</button>
+</div>
+<div class="htm-rows">
+<button data-htm="recall"><span>Recall（取り消し）</span><svg class="uic s19"><use href="#i-recall"/></svg></button>
+<button data-htm="v2t"><span>Voice to Text</span><span class="htm-tx">音声→T</span></button>
+<button data-htm="trans"><span>Translation（翻訳）</span><svg class="uic s20"><use href="#i-translate"/></svg></button>
+<button data-htm="corr"><span>Correction（訂正）</span><span class="htm-tx">Abc✓</span></button>
+<button data-htm="ai"><span>AI Grammar</span><span class="htm-tx">AI</span></button>
+</div>
+</div></div>
 
 <!-- COMMENT SHEET -->
 <div id="sheet"><div class="sheet-card"><div class="sheet-grip"></div><div class="sheet-head"><span id="sheet-head">コメント</span><button id="sheet-x" aria-label="閉じる">✕</button></div><div class="sheet-body" id="sheet-body"></div><div class="sheet-in"><input id="sheet-input" type="text" placeholder="コメントを追加…" autocomplete="off"><button id="sheet-send">投稿</button></div></div></div>
@@ -1351,7 +1574,7 @@ const NOTIFS=[
 ];
 /* ================= STATE ================= */
 const KEY="sakuya_scandal_v1",EKEY="sakuya_scandal_ends_v1";
-function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},viewIG:"grid",notified:[]};}
+function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[]};}
 let S=load();
 function load(){try{const j=JSON.parse(localStorage.getItem(KEY));if(j&&typeof j.scene==="number")return Object.assign(defState(),j);}catch(e){}return defState();}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
@@ -1366,9 +1589,12 @@ function applyE(e){if(!e)return;for(const k in e){if(S.gauges[k]!==undefined)S.g
 function renderGauges(){const g=S.gauges;$("#g-trust").style.width=g.trust+"%";$("#g-fire").style.width=g.fire+"%";$("#g-fan").style.width=g.fan+"%";$("#g-trust-v").textContent=g.trust;$("#g-fire-v").textContent=g.fire;$("#g-fan-v").textContent=g.fan;}
 function fmtLikes(v){const n=parseInt(String(v).replace(/[^0-9]/g,""),10)||0;if(n>=10000){const w=n/10000;return (w>=100?String(Math.round(w)):(Math.round(w*10)/10).toString().replace(/\.0$/,""))+"万";}return n.toLocaleString();}
 function fmtNum(n){return (n||0).toLocaleString();}
+function ic(n,c){return '<svg class="uic '+(c||'')+'"><use href="#i-'+n+'"/></svg>';}
+const VB='<span class="vbadge"><svg class="uic"><use href="#i-badge"/></svg></span>';
+function tmDisp(tm){if(!tm)return "";if(typeof cur!=="undefined"&&cur&&cur.thread==="ht")return tm;const m=/^(\d{1,2}):(\d{2})$/.exec(tm);if(!m)return tm;let h=+m[1];const ap=h<12?"午前":"午後";const hh=h%12===0?12:h%12;return ap+hh+":"+m[2];}
 /* ================= NAV ================= */
 function syncVideos(){setTimeout(()=>{$$("video").forEach(v=>{const view=v.closest(".view");if(view&&view.classList.contains("on")){if(v.closest(".post-vid")||v.classList.contains("pv-vid")){v.play().catch(()=>{});}}else{v.pause();}});},90);}
-function show(id){if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set","ht","htprof"].includes(id));window.scrollTo(0,0);if(id==="home")renderHome();if(id==="ht")renderHT();if(id==="line")renderLineList();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();}
+function show(id){if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set","ht","htprof"].includes(id));window.scrollTo(0,0);if(id==="tt")ttView="feed";if(id==="x")xView="feed";if(id==="home")renderHome();if(id==="ht")renderHT();if(id==="line")renderLineList();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();}
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){show(g.dataset.go);return;}const b=e.target.closest("[data-back]");if(b)show(b.dataset.back);});
 $("#homebar").addEventListener("click",()=>show("home"));
 $("#v-lock").addEventListener("click",()=>show("home"));
@@ -1381,7 +1607,7 @@ document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g
 $("#app-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();show("home");toast("リセットしたよ");}});
 $("#set-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();show("home");toast("リセットしたよ");}});
 /* ================= LINE LIST ================= */
-function renderLineList(){const el=$("#line-list");let h=`<button class="me-row"><img class="avsq" src="assets/nao-face.jpg" style="width:50px;height:50px" alt=""><span><span class="nm">なお</span><div class="st">サクヤペン💗 神戸公演が楽しみ</div></span></button><div class="sec-t">トーク</div>`;
+function renderLineList(){const el=$("#line-list");let h=`<button class="me-row"><img class="av" src="assets/nao-face.jpg" style="width:50px;height:50px" alt=""><span><span class="nm">なお</span><div class="st">サクヤペン💗 神戸公演が楽しみ</div></span></button><div class="sec-t">トーク</div>`;
  const order=["sakuya","members","yui","mgr"];
  const curSc=!S.ended?SCENES[S.scene]:null;
  order.forEach(tid=>{const th=THREADS[tid];
@@ -1393,7 +1619,7 @@ function renderLineList(){const el=$("#line-list");let h=`<button class="me-row"
   else if(curSc&&curSc.thread===tid){badge=`<span class="ub">1</span>`;prev=curSc.title+" ― タップで開く";time=curSc.date;}
   else if(lastDone){badge=`<span class="done">✓ 済</span>`;prev=lastDone.title+"（完了）";time=lastDone.date;}
   else{prev="（まだ届いていないトーク）";}
-  const av=th.av?`<img class="avsq" src="${th.av}" style="width:50px;height:50px" alt="">`:`<span class="sil" style="width:50px;height:50px;border-radius:38%;background:${th.c};font-size:18px">${th.ini}</span>`;
+  const av=th.av?`<img class="av" src="${th.av}" style="width:50px;height:50px" alt="">`:`<span class="sil" style="width:50px;height:50px;background:${th.c};font-size:18px">${th.ini}</span>`;
   h+=`<button class="thread" data-thread="${tid}">${av}<span class="tt"><span class="tn"><span>${th.title}</span><time>${time}</time></span><span class="tp">${prev}</span></span>${badge}</button>`;});
  h+=`<div class="locknote">${curSc&&curSc.thread==="ht"?"いまの章はHelloTalkでのやり取りだよ（ホーム画面から開いてね）。<br>":""}物語はトークを開くと進むよ。バッジのあるトークが現在の章。<br>友達とのトークは短め設計（本編優先）。</div>`;
  el.innerHTML=h;
@@ -1411,20 +1637,20 @@ function stepInc(st){if(!st)return 1;if(st.choice)return 4;if(st.sys||st.day)ret
 function clockMin(si,upto){let m=T0[Math.min(si,T0.length-1)];const sc=SCENES[si];if(!sc)return m;const n=Math.min(upto,sc.steps.length);for(let i=0;i<n;i++)m+=stepInc(sc.steps[i]);return m;}
 function fmtMin(m){m=((m%1440)+1440)%1440;return Math.floor(m/60)+":"+String(m%60).padStart(2,"0");}
 function nowTimeStr(){const d=new Date();return d.getHours()+":"+String(d.getMinutes()).padStart(2,"0");}
-function openChat(sc){cur=sc;const ct=$("#chat-title");ct.childNodes[0].textContent=THREADS[sc.thread].title;$("#chat-sub").textContent=sc.thread==="ht"?"🇯🇵 日本語 · 🇰🇷 한국어":"";ct.onclick=()=>openProfile(sc.thread);const _vc=$("#v-chat");_vc.classList.toggle("htmode",sc.thread==="ht");_vc.querySelector(".chat-head .back").dataset.back=sc.thread==="ht"?"ht":"line";$("#chat-call").style.display=sc.thread==="ht"?"":"none";show("chat");renderChat();}
+function openChat(sc){cur=sc;const ct=$("#chat-title");ct.childNodes[0].textContent=THREADS[sc.thread].title;$("#chat-sub").textContent=sc.thread==="ht"?"🇯🇵 日本語 · 🇰🇷 한국어":"";ct.onclick=()=>openProfile(sc.thread);const _vc=$("#v-chat");_vc.classList.toggle("htmode",sc.thread==="ht");_vc.querySelector(".chat-head .back").dataset.back=sc.thread==="ht"?"ht":"line";$("#chat-call").style.display=sc.thread==="ht"?"":"none";const _mi=$("#chat-menuic");if(_mi)_mi.innerHTML=sc.thread==="ht"?ic("sliders","s21"):ic("menu","s21");show("chat");renderChat();}
 function segHTML(segs){return segs.map(s=>s[1]===2?`<del>${esc(s[0])}</del>`:s[1]===1?`<ins>${esc(s[0])}</ins>`:esc(s[0])).join("");}
 function msgHTML(st,tm){
  if(typeof st.day==="string")return `<div class="day-pill"><span>${esc(st.day)}</span></div>`;
  if(typeof st.sys==="string")return `<div class="sys-line">${esc(st.sys)}</div>`;
- if(st.corr){const c=st.corr;return `<div class="corr ${c.from==="nao"?"mine":""}"><div class="ch">✎ ${c.from==="nao"?"なお の訂正":"빵돌이 の訂正"}</div><div class="orig">${segHTML(c.orig)}</div><div>${segHTML(c.fixed)}</div>${c.memo?`<div class="cm">${esc(c.memo)}</div>`:""}</div>`;}
- if(typeof st.me==="string"||st.me===true){const txt=typeof st.me==="string"?st.me:st.t;return `<div class="msg me"><span class="tm"><span class="rd" style="opacity:0">既読</span>${esc(tm||"")}</span><div class="bub">${esc(txt)}</div></div>`;}
+ if(st.corr){const c=st.corr;return `<div class="corr ${c.from==="nao"?"mine":""}"><div class="ch">✎ ${c.from==="nao"?"なお の訂正":"빵돌이 の訂正"}</div><div class="orig cline"><span>${segHTML(c.orig)}</span><span class="cx bad">✕</span></div><div class="cline"><span>${segHTML(c.fixed)}</span><span class="cx ok">✓</span></div>${c.memo?`<div class="cm">${esc(c.memo)}</div>`:""}</div>`;}
+ if(typeof st.me==="string"||st.me===true){const txt=typeof st.me==="string"?st.me:st.t;return `<div class="msg me"><span class="tm"><span class="rd" style="opacity:0">既読</span>${esc(tmDisp(tm))}</span><div class="bub">${esc(txt)}</div></div>`;}
  const m=M[st.f];if(!m)return "";
  const htM=(typeof cur!=="undefined"&&cur&&cur.thread==="ht");
  const dk=(htM&&st.f==="sakuya")?"saku":st.f;const dm=M[dk];
- if(st.img)return `<div class="msg">${avHTML(dk,38)}<div class="col"><div class="who">${esc(dm.n)}</div><div class="bub imgb"><img src="${st.img}" alt=""></div>${st.cap?`<div class="bub" style="margin-top:4px">${esc(st.cap)}</div>`:""}</div><span class="tm">${esc(tm||"")}</span></div>`;
+ if(st.img)return `<div class="msg">${avHTML(dk,38)}<div class="col"><div class="who">${esc(dm.n)}</div><div class="bub imgb"><img src="${st.img}" alt=""></div>${st.cap?`<div class="bub" style="margin-top:4px">${esc(st.cap)}</div>`:""}</div><span class="tm">${esc(tmDisp(tm))}</span></div>`;
  const vc=(st.f==="sakuya"&&typeof cur!=="undefined"&&cur&&VOICE_CHAT[cur.id])?VOICE_CHAT[cur.id][st.t]:null;
- if(st.vm)return `<div class="msg">${avHTML(dk,38)}<div class="col"><div class="who">${esc(dm.n)}</div><div class="bub"><div class="vmsg"><span class="pl">▶</span><span class="wave">${[6,10,14,9,16,12,7,13,10,15,8,12].map(h=>`<i style="height:${h}px"></i>`).join("")}</span><span class="vdur">${esc(st.vm)}</span></div><div class="tsc"><b>文字起こし</b>${esc(st.t)}</div></div></div><span class="tm">${esc(tm||"")}</span></div>`;
- return `<div class="msg">${avHTML(dk,38)}<div class="col"><div class="who">${esc(dm.n)}</div><div class="bub">${esc(st.t)}</div>${vc&&VOICE_OK[vc]?`<button class="vbtn" data-v="${vc}">▶ ボイス</button>`:""}</div><span class="tm">${esc(tm||"")}</span></div>`;}
+ if(st.vm)return `<div class="msg">${avHTML(dk,38)}<div class="col"><div class="who">${esc(dm.n)}</div><div class="bub vmb"><div class="vmsg"><span class="pl">▶</span><span class="wave">${[6,10,14,9,16,12,7,13,10,15,8,12].map(h=>`<i style="height:${h}px"></i>`).join("")}</span><span class="vdur">${esc(st.vm)}</span></div><div class="tsc"><b>文字起こし</b>${esc(st.t)}</div></div></div><span class="tm">${esc(tmDisp(tm))}</span></div>`;
+ return `<div class="msg">${avHTML(dk,38)}<div class="col"><div class="who">${esc(dm.n)}</div><div class="bub">${esc(st.t)}</div>${vc&&VOICE_OK[vc]?`<button class="vbtn" data-v="${vc}">▶ ボイス</button>`:""}</div><span class="tm">${esc(tmDisp(tm))}</span></div>`;}
 function renderChat(){const body=$("#chat-body");const sc=cur;let h="";const n=Math.min(S.shown,sc.steps.length);
  for(let i=0;i<n;i++){const st=sc.steps[i];
   if(st.choice){const ai=(S.answers||{})[sc.id+":"+i];const ch=ai!==undefined?st.choice[ai]:null;const me=ch?ch.t:st._me;const resp=ch?(ch.r||[]):st._resp;if(me)h+=msgHTML({me:me},fmtMin(clockMin(S.scene,i)));if(resp)h+=resp.map(r=>msgHTML({f:r[0],t:r[1]},fmtMin(clockMin(S.scene,i)))).join("");continue;}
@@ -1432,6 +1658,7 @@ function renderChat(){const body=$("#chat-body");const sc=cur;let h="";const n=M
  body.innerHTML=h;
  body.querySelectorAll(".msg.me .rd").forEach(rd=>{setTimeout(()=>{rd.style.opacity="1";},300+Math.random()*700);});
  if(sc.thread==="ht"){body.querySelectorAll(".msg.me .rd").forEach((rd,i)=>{rd.textContent="送信しました";setTimeout(()=>{rd.textContent="既読";},1500+i*150);});}
+ if(sc.thread==="ht"){body.querySelectorAll(".bub,.corr").forEach(bub=>{let t=null;bub.addEventListener("pointerdown",()=>{t=setTimeout(()=>{window._lpSup=true;openHTMenu(bub.textContent.trim());},560);});["pointerup","pointerleave","pointercancel"].forEach(ev=>bub.addEventListener(ev,()=>{if(t)clearTimeout(t);}));});}
  renderPanel();body.scrollTop=body.scrollHeight;}
 function renderPanel(){const p=$("#chat-panel");const sc=cur;const st=sc.steps[S.step];
  if(S.shown<S.step){p.innerHTML="";return;}
@@ -1439,7 +1666,7 @@ function renderPanel(){const p=$("#chat-panel");const sc=cur;const st=sc.steps[S
   p.querySelectorAll("[data-ci]").forEach(b=>b.addEventListener("click",()=>pickChoice(+b.dataset.ci)));return;}
  if(st)p.innerHTML=`<div class="panel"><div class="next-hint">タップで次へ ▶</div></div>`;else p.innerHTML=`<div class="panel"><div class="next-hint">タップで章を終える ▶</div></div>`;}
 function typingDelay(sc,stp){if(!stp)return 60;if(stp.f){const L=(stp.t||"").length;let d=Math.min(2000,550+L*20);const h=Math.floor(clockMin(SCENES.indexOf(sc),S.step)/60);if(h>=22||h<5)d*=1.7;if(L>=70)d+=450;return Math.round(d);}if(typeof stp.me==="string")return 130;return 150;}
-function advance(){if(busy)return;const sc=cur;if(!sc)return;const st=sc.steps[S.step];
+function advance(){if(window._lpSup){window._lpSup=false;return;}if(busy)return;const sc=cur;if(!sc)return;const st=sc.steps[S.step];
  if(st&&st.choice&&S.shown>=S.step){return;}
  if(S.step>=sc.steps.length){finishScene();return;}
  busy=true;const body=$("#chat-body");const stp=sc.steps[S.step];
@@ -1480,13 +1707,13 @@ const TAGGED_POSTS=[
 const CARIDX={};const CAPOPEN={};
 function igLiveId(){return S.ig>0?IG_POSTS[Math.min(S.ig,IG_POSTS.length)-1].id:0;}
 function igFolHTML(){if(S.scene>=7)return `<b id="ig-fol-num">${fmtNum(4862314+IGHEAT.fol)}</b>`;return `<b>486万</b>`;}
-function igTabsHTML(view){const on=v=>(view===v||(view==="feed"&&v==="grid")||(view==="tagfeed"&&v==="tagged"))?"on":"";return `<div class="ig-tabs"><button class="${on("grid")}" id="ig-t-grid">▦</button><button class="${on("reels")}" id="ig-t-reels">🎬</button><button class="${on("tagged")}" id="ig-t-tagged">👤</button></div>`;}
-function igTile(p){let badge="";if(p.slides)badge='<span class="grid-multi">❏</span>';else if(p.video)badge='<span class="pin">▶</span>';else if(p.id===1)badge='<span class="pin">📌</span>';const views=p.video?`<span class="grid-views">▶ ${fmtLikes(p.likes)}</span>`:"";return `<button data-post="${p.id}"><img src="${p.img}">${badge}${views}</button>`;}
+function igTabsHTML(view){const on=v=>(view===v||(view==="feed"&&v==="grid")||(view==="tagfeed"&&v==="tagged"))?"on":"";return `<div class="ig-tabs"><button class="${on("grid")}" id="ig-t-grid">${ic("grid","s21")}</button><button class="${on("reels")}" id="ig-t-reels">${ic("film","s21")}</button><button class="${on("tagged")}" id="ig-t-tagged">${ic("tag","s21")}</button></div>`;}
+function igTile(p){let badge="";if(p.slides)badge='<span class="grid-multi">'+ic("copy","s13")+'</span>';else if(p.video)badge='<span class="pin">'+ic("play","s13")+'</span>';else if(p.id===1)badge='<span class="pin">'+ic("bmk-f","s13")+'</span>';const views=p.video?`<span class="grid-views">▶ ${fmtLikes(p.likes)}</span>`:"";return `<button data-post="${p.id}"><img src="${p.img}">${badge}${views}</button>`;}
 function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);const view=S.viewIG||"grid";
  let h=`<div class="stories">${Object.keys(M).filter(k=>M[k].av).map(k=>`<button class="story" data-story="${k}"><span class="ring ${S.ig>0?"":"seen"}"><img src="${M[k].av}"></span>${M[k].n}</button>`).join("")}<button class="story" data-story="me"><span class="ring seen"><img src="assets/nao-face.jpg"></span>あなた</button></div>`;
  h+=`<div class="ig-prof"><div class="ig-top"><span class="ring"><img src="assets/group.jpg"></span><div class="ig-stats"><div><b>${Math.max(S.ig,0)}</b><span>投稿</span></div><div data-followers style="cursor:pointer">${igFolHTML()}<span>フォロワー</span></div><div><b>12</b><span>フォロー中</span></div></div></div>
  <div class="ig-cat">アーティスト</div>
- <div class="ig-bio"><b>nctwish_official</b> <span class="vbadge">✓</span><br>NCT WISH 公式アカウント<br>2nd TOUR『INTO THE WISH : Face Our WISH』開催中💫<br><span class="lnk">nctwish.jp/tour2027</span><br><span class="ig-threads"><i>🧵</i> nctwish_official</span></div>
+ <div class="ig-bio"><b>nctwish_official</b> ${VB}<br>NCT WISH 公式アカウント<br>2nd TOUR『INTO THE WISH : Face Our WISH』開催中💫<br><span class="lnk">nctwish.jp/tour2027</span><br><span class="ig-threads"><i>🧵</i> nctwish_official</span></div>
  <div class="ig-btns"><button class="fol" id="ig-fol">フォロー中</button><button id="ig-msg">メッセージ</button><button style="flex:none;padding:7px 11px">👤＋</button></div>
  <div class="hl-row">${HIGHLIGHTS.map((hl,i)=>`<button class="hl" data-hl="${i}"><span class="hlc"><img src="${hl.img}"></span>${hl.t}</button>`).join("")}</div></div>`;
  const savedPosts=posts.filter(p=>S.savedIG&&S.savedIG[p.id]);
@@ -1501,7 +1728,7 @@ function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);co
  el.innerHTML=h;
  const bindTab=(id,v)=>{const b=$(id);if(b)b.addEventListener("click",()=>{S.viewIG=v;save();renderIG();});};
  bindTab("#ig-t-grid","grid");bindTab("#ig-t-reels","reels");bindTab("#ig-t-tagged","tagged");bindTab("#ig-t-saved","saved");
- const ms=$("#ig-msg");if(ms)ms.addEventListener("click",()=>show("line"));
+ const ms=$("#ig-msg");if(ms)ms.addEventListener("click",()=>toast("DMは使っていないみたい（連絡はLINEだよ）"));
  const fw=el.querySelector("[data-followers]");if(fw)fw.addEventListener("click",openFollowers);
  const fol=$("#ig-fol");if(fol)fol.addEventListener("click",()=>{const on=fol.textContent==="フォロー中";fol.textContent=on?"フォローする":"フォロー中";fol.classList.toggle("fol",!on);toast(on?"フォローを外したよ（公式は泣かない）":"フォローしたよ");});
  el.querySelectorAll("[data-post]").forEach(b=>b.addEventListener("click",()=>{S.viewIG="feed";save();renderIG();setTimeout(()=>{const t=$("#igpost-"+b.dataset.post);if(t)t.scrollIntoView({block:"start"});},60);}));
@@ -1521,9 +1748,9 @@ function postHTML(p){const liked=S.likedIG[p.id];const saved=S.savedIG&&S.savedI
  const capLong=p.cap.length>64&&!CAPOPEN[p.id];
  const capHTML=capLong?esc(p.cap.slice(0,64))+` <button class="cap-more" data-cap="${p.id}">…その他</button>`:esc(p.cap);
  const avh=p.ini?`<span style="width:100%;height:100%;border-radius:50%;background:#8e8e93;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;border:2px solid #fff;font-size:13px">${p.ini}</span>`:`<img src="assets/group.jpg">`;
- return `<div class="post" id="igpost-${p.id}"><div class="post-h"><span class="ring">${avh}</span><span><b>${esc(p.user)}</b>${p.ini?"":' <span class="vbadge">✓</span>'}<div class="loc">${esc(p.loc||"")}</div></span><span class="dots">•••</span></div>
+ return `<div class="post" id="igpost-${p.id}"><div class="post-h"><span class="ring">${avh}</span><span><b>${esc(p.user)}</b>${p.ini?"":" "+VB}<div class="loc">${esc(p.loc||"")}</div></span><span class="dots">•••</span></div>
  <div class="post-img">${media}<div class="big-heart" data-heart="${p.id}">🤍</div></div>
- <div class="post-act"><button class="hrt ${liked?"liked":""}" data-like="${p.id}">${liked?"❤️":"♡"}</button><button data-cmt="${p.id}">💬</button><button>✈️</button><button class="save" data-save="${p.id}"><span style="${saved?"":"opacity:.4;filter:grayscale(1)"}">🔖</span></button></div>
+ <div class="post-act"><button class="hrt ${liked?"liked":""}" data-like="${p.id}">${liked?ic("heart","s26"):ic("heart-o","s26")}</button><button data-cmt="${p.id}">${ic("cmt","s24")}</button><button>${ic("send","s24")}</button><button class="save ${saved?"liked":""}" data-save="${p.id}">${saved?ic("bmk-f","s23"):ic("bmk","s23")}</button></div>
  <button class="post-likes" data-likers="${p.id}"${live?` data-livelikes="${p.id}"`:""}>いいね！${fmtNum(likesN)}件</button>
  <div class="post-cap"><b>${esc(p.user)}</b>${capHTML}</div><div class="post-cmts" id="cmts-${p.id}">${cmts}</div>
  <button class="cmt-more" data-cmt="${p.id}">コメントをすべて見る</button>
@@ -1545,53 +1772,83 @@ function igLiveStart(){if(window._igT){clearInterval(window._igT);window._igT=nu
   if(!S.ended&&IGHEAT.added<IG_FLOOD.length&&Math.random()<0.65){const c=IG_FLOOD[IGHEAT.added++];post.cm.push(c);const box=document.getElementById("cmts-"+pid);if(box){const d=document.createElement("div");d.className="post-cmt";d.innerHTML=`<b>${esc(c[0])}</b> ${esc(c[1])}`;box.appendChild(d);}}
  },2800);}
 /* ================= TIKTOK ================= */
-function renderTT(){const el=$("#tt-feed");const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt);
+let ttView="feed";
+function ttProfHTML(){const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt);const totLikes=posts.reduce((a,x)=>a+x.p.likes,0);
+ return `<div class="ttp"><div class="ttp-head"><span style="width:24px"></span><span class="ttu">@nctwish_official ${VB}</span><span style="display:flex;gap:14px">${ic("bell","s21")}${ic("menu","s21")}</span></div>
+ <img class="ttp-av" src="assets/group.jpg" alt="">
+ <div class="ttp-id">@nctwish_official</div>
+ <div class="ttp-stats"><div><b>12</b><span>フォロー中</span></div><div><b>${fmtLikes(4862314)}</b><span>フォロワー</span></div><div><b>${fmtLikes(totLikes)}</b><span>いいね</span></div></div>
+ <div class="ttp-btns"><button class="fol2">フォロー中</button><button data-ttshare>シェア</button></div>
+ <div class="ttp-bio">NCT WISH 公式アカウント💫<br>2nd TOUR『INTO THE WISH : Face Our WISH』開催中</div>
+ <div class="ttp-tabs"><span class="on">${ic("grid","s21")}</span><span>${ic("lock","s20")}</span></div>
+ <div class="ttp-grid">${posts.length?posts.map(({p,ai})=>`<button data-ttopen="${ai}"><video src="${p.video}" poster="${p.poster}" muted playsinline preload="metadata"></video><span class="gv">${ic("play","s13")} ${fmtLikes(p.likes)}</span></button>`).join(""):`<div style="grid-column:1/-1;text-align:center;font-size:12px;color:#8e8e96;padding:22px 10px">🔒 物語を進めると動画が解放されるよ</div>`}</div></div>`;}
+function renderTT(){const el=$("#tt-feed");
+ if(ttView==="prof"){el.style.scrollSnapType="none";el.innerHTML=ttProfHTML();el.scrollTop=0;
+  el.querySelectorAll("[data-ttopen]").forEach(b=>b.addEventListener("click",()=>{ttView="feed";renderTT();setTimeout(()=>{const t=$("#ttv-"+b.dataset.ttopen);if(t)t.scrollIntoView({block:"start"});},80);}));
+  const sh=el.querySelector("[data-ttshare]");if(sh)sh.addEventListener("click",()=>toast("シェアは物語では使わないよ"));
+  return;}
+ el.style.scrollSnapType="";const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt);
  if(!posts.length){el.innerHTML=`<div class="tt-item"><img class="bg" src="assets/group.jpg"><div class="grad"></div><div class="tt-top"><span class="on">おすすめ</span><span>フォロー中</span></div><div class="tt-info"><div class="at">@nctwish_official</div><div class="cap">🔒 物語を進めると公式TikTokが解放されるよ</div></div></div>`;return;}
- el.innerHTML=posts.map(({p,ai})=>{const liked=S.likedTT[ai];const likes=p.likes+(liked?1:0);return `<div class="tt-item">
+ el.innerHTML=posts.map(({p,ai})=>{const liked=S.likedTT[ai];const saved=S.savedTT&&S.savedTT[ai];const likes=p.likes+(liked?1:0);return `<div class="tt-item">
  <video class="bgv${p.wide?" wide":""}" id="ttv-${ai}" src="${p.video}" poster="${p.poster}" muted loop playsinline preload="auto"></video>
- <div class="grad"></div><div class="tt-top"><span>フォロー中</span><span class="on">おすすめ</span><span class="srch">🔍</span></div>
- <button class="tt-mute" data-mute="${ai}">🔇 タップで音ON</button>
+ <div class="grad"></div><div class="tt-top"><span class="live">LIVE</span><span>フォロー中</span><span class="on">おすすめ</span><span class="srch" data-ttsearch>${ic("search","s21")}</span></div>
+ <button class="tt-mute" data-mute="${ai}" aria-label="ミュート切替">${ic("volx","s19")}</button>
  <div class="tt-rail"><span><img class="tav" src="assets/group.jpg"><span class="plus" style="display:flex">＋</span></span>
- <button class="rb" data-ttlike="${ai}"><span class="ric ${liked?"liked":""}">${liked?"❤️":"🤍"}</span>${fmtLikes(likes)}</button>
- <button class="rb" data-ttcmt="${ai}"><span class="ric">💬</span>${fmtNum(p.cmts)}</button>
- <button class="rb"><span class="ric">↗️</span>${fmtNum(p.shares)}</button>
+ <button class="rb" data-ttlike="${ai}"><span class="ric ${liked?"liked":""}">${ic("heart","s28")}</span>${fmtLikes(likes)}</button>
+ <button class="rb" data-ttcmt="${ai}"><span class="ric">${ic("cmt","s28")}</span>${fmtLikes(p.cmts)}</button>
+ <button class="rb" data-ttsave="${ai}"><span class="ric" style="${saved?"color:#facc15":""}">${ic(saved?"bmk-f":"bmk","s26")}</span>${saved?"保存済":"保存"}</button>
+ <button class="rb"><span class="ric">${ic("send","s26")}</span>${fmtLikes(p.shares)}</button>
  <span class="tt-disc"><img src="assets/group.jpg"></span></div>
- <div class="tt-info"><div class="at">@${p.user} <span class="vbadge">✓</span></div><div class="cap">${esc(p.cap)}</div>
+ <div class="tt-info"><div class="at">@${p.user} ${VB}</div><div class="cap">${esc(p.cap)}</div>
  <div class="tt-music"><span>♪</span><span class="marq"><span>${esc(p.music)} ♪ ${esc(p.music)} ♪&nbsp;</span></span></div></div>
  <div class="tt-play" id="ttp-${ai}">▶</div>
  <div class="tt-prog"><i id="ttpg-${ai}"></i></div></div>`;}).join("");
  el.querySelectorAll("[data-ttlike]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const i=b.dataset.ttlike;S.likedTT[i]=!S.likedTT[i];save();renderTT();}));
  el.querySelectorAll("[data-ttcmt]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();openTTComments(+b.dataset.ttcmt);}));
- el.querySelectorAll("[data-mute]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const v=$("#ttv-"+b.dataset.mute);if(v){v.muted=!v.muted;b.textContent=v.muted?"🔇 タップで音ON":"🔊 再生中";}}));
+ el.querySelectorAll("[data-ttsave]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const i=b.dataset.ttsave;S.savedTT=S.savedTT||{};S.savedTT[i]=!S.savedTT[i];save();toast(S.savedTT[i]?"保存したよ":"保存を取り消したよ");renderTT();}));
+ el.querySelectorAll("[data-ttsearch]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();toast("検索は物語では使わないよ");}));
+ el.querySelectorAll("[data-mute]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const v=$("#ttv-"+b.dataset.mute);if(v){v.muted=!v.muted;b.innerHTML=ic(v.muted?"volx":"vol","s19");}}));
  el.querySelectorAll(".tt-item").forEach(it=>{it.addEventListener("click",()=>{const v=it.querySelector("video.bgv");if(!v)return;const ai=v.id.replace("ttv-","");if(v.paused){v.play();$("#ttp-"+ai).classList.remove("show");}else{v.pause();$("#ttp-"+ai).classList.add("show");}});});
  clearInterval(window._ttProg);window._ttProg=setInterval(()=>{if(!$("#v-tt").classList.contains("on"))return;posts.forEach(({ai})=>{const v=$("#ttv-"+ai),pg=$("#ttpg-"+ai);if(v&&pg&&v.duration)pg.style.width=(v.currentTime/v.duration*100)+"%";});},250);
  if(window._ttIO)window._ttIO.disconnect();
  window._ttIO=new IntersectionObserver(es=>{es.forEach(en=>{const v=en.target.querySelector("video.bgv");if(!v)return;if(en.intersectionRatio>=0.6){v.play().catch(()=>{});}else{v.pause();}});},{root:el,threshold:[0,0.6,1]});
  el.querySelectorAll(".tt-item").forEach(it=>window._ttIO.observe(it));}
+$$("#v-tt .tt-tabs button").forEach(b=>b.addEventListener("click",()=>{const t=b.dataset.tttab;
+ if(t==="home"||t==="prof"){$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x===b));ttView=t==="prof"?"prof":"feed";renderTT();}
+ else toast("そのタブは物語では使わないよ");}));
 /* ================= X ================= */
-let xTab="feed";
+let xTab="feed";let xView="feed";
 const XHEAT={};function parseCnt(s){if(!s)return 0;const v=parseFloat(String(s).replace(/,/g,""));return String(s).includes("万")?Math.round(v*10000):(v||0);}
+function xBadge(){return '<span class="xbadge gold">'+ic("badge")+'</span>';}
+function xPostHTML(p,idx,post,heat){return `<div class="xpost"><img class="xav" src="${p.av}" data-xav="${esc(p.handle)}"><div class="xb"><div class="xh"><b>${esc(p.user)}</b>${p.handle==="@nctwish_jp"?xBadge():""}<span>${esc(p.handle)} ・ ${esc(p.time)}</span><span class="xdots">•••</span></div><div class="xt">${esc(p.text)}</div>${p.img?`<img class="ximg" src="${p.img}">`:""}<div class="xa"><span>${ic("cmt","s17")} <b>${esc(p.cm||"―")}</b></span><span>${ic("repeat","s17")} <b>${esc(p.rp)}</b></span><span>${ic("heart-o","s17")} <b ${heat?`data-xlk="${idx}"`:""}>${heat?fmtLikes(parseCnt(p.lk)+(XHEAT[idx]||0)):esc(p.lk)}</b></span><span>${ic("chart","s17")}</span><span>${ic("upload","s17")}</span></div></div></div>`;}
 function renderX(){const el=$("#x-body");const post=S.scene>=7;if(window._xT){clearInterval(window._xT);window._xT=null;}
+ if(xView==="prof"){const offs=X_POSTS_PRE.filter(p=>p.handle==="@nctwish_jp");
+  el.innerHTML=`<button class="xprof-back" id="xprof-back">‹ タイムラインへ</button><img class="xprof-banner" src="assets/stage2.jpg"><div class="xprof-main"><img class="xprof-av" src="assets/group.jpg" alt=""><div class="xprof-name">NCT WISH 公式 ${xBadge()}</div><div class="xprof-handle">@nctwish_jp</div><div class="xprof-bio">NCT WISH 公式アカウント💫<br>2nd TOUR『INTO THE WISH : Face Our WISH』開催中</div><div class="xprof-meta">日本 ・ nctwish.jp</div><div class="xprof-fol"><b>12</b> フォロー中　<b>486万</b> フォロワー</div></div><div class="xprof-tabs"><span class="on">投稿</span><span>返信</span><span>メディア</span><span>いいね</span></div>`+offs.map(p=>xPostHTML(p,0,false,false)).join("");
+  $("#xprof-back").addEventListener("click",()=>{xView="feed";renderX();});
+  el.querySelectorAll("[data-xav]").forEach(a=>a.addEventListener("click",()=>{}));
+  el.scrollTop=0;return;}
  if(xTab==="trend"){const tr=post?X_TRENDS_POST:(S.scene>=3?X_TRENDS_PRE:X_TRENDS_SEOUL);el.innerHTML=`<div style="padding:12px 16px 4px;font-size:16px;font-weight:900">トレンド</div>`+tr.map(t=>`<div class="trend ${post&&t[1].includes("熱愛")?"hot":""}"><div class="tk">${esc(t[0])} ・ トレンド</div><div class="tt2">${esc(t[1])}</div><div class="tc">${esc(t[2])}</div></div>`).join("");return;}
  const posts=post?X_POSTS_POST:X_POSTS_PRE.filter(p=>(p.after||0)<=S.scene).sort((a,b)=>(b.after||0)-(a.after||0));const pidx=p=>posts.indexOf(p);
- el.innerHTML=posts.map(p=>`<div class="xpost"><img class="xav" src="${p.av}"><div class="xb"><div class="xh"><b>${esc(p.user)}</b>${p.handle==="@nctwish_jp"?'<span style="color:#1d9bf0">✔</span>':""}<span>${esc(p.handle)} ・ ${esc(p.time)}</span></div><div class="xt">${esc(p.text)}</div>${p.img?`<img class="ximg" src="${p.img}">`:""}<div class="xa"><span>💬 <b>${esc(p.cm||"―")}</b></span><span>🔁 <b>${esc(p.rp)}</b></span><span>❤️ <b data-xlk="${pidx(p)}">${post?fmtLikes(parseCnt(p.lk)+(XHEAT[pidx(p)]||0)):esc(p.lk)}</b></span><span>📊</span></div></div></div>`).join("")+`<div class="locknote">${post?"炎上中 ― 数値はまだ増え続けている":"平和なタイムライン。……今のところは"}</div>`;
+ el.innerHTML=posts.map(p=>xPostHTML(p,pidx(p),post,post)).join("")+`<div class="locknote">${post?"炎上中 ― 数値はまだ増え続けている":"平和なタイムライン。……今のところは"}</div>`;
+ el.querySelectorAll("[data-xav]").forEach(a=>a.addEventListener("click",()=>{if(a.dataset.xav==="@nctwish_jp"){xView="prof";xTab="feed";renderX();}else toast("このアカウントのプロフィールは物語では開かないよ");}));
  if(post){window._xT=setInterval(()=>{if(!document.querySelector("#v-x.on")){clearInterval(window._xT);window._xT=null;return;}const i=Math.floor(Math.random()*X_POSTS_POST.length);XHEAT[i]=(XHEAT[i]||0)+Math.floor(800+Math.random()*3400);const b=el.querySelector(`[data-xlk="${i}"]`);if(b)b.textContent=fmtLikes(parseCnt(X_POSTS_POST[i].lk)+XHEAT[i]);},2600);}}
 function setXTab(t){xTab=t;$("#x-tab-feed").classList.toggle("on",t==="feed");$("#x-tab-trend").classList.toggle("on",t==="trend");renderX();}
 $("#x-tab-trend").addEventListener("click",()=>setXTab("trend"));
 $("#x-tab-feed").addEventListener("click",()=>setXTab("feed"));
 /* ================= NEWS ================= */
+const NEWS_THUMB=["assets/group.jpg","assets/stage1.jpg","assets/stage2.jpg"];
 function renderNews(){const el=$("#news-body");const post=S.scene>=7;const done=S.ended;
  let items=NEWS_PRE.map((n,i)=>({n,i})).filter(x=>(x.n.after||0)<=S.scene).sort((a,b)=>(b.n.after||0)-(a.n.after||0));
- let h=items.map(({n,i})=>`<button class="news-item" data-news="${i}"><div class="nk">${esc(n.k)}</div><h4>${esc(n.t)}</h4><div class="nm">${esc(n.m)}</div></button>`).join("");
- if(post)h=`<button class="news-item scoop" data-scoop="1"><div class="nk">🔥 スクープ</div><h4>${esc(NEWS_SCOOP.t)}</h4><div class="nm">${esc(NEWS_SCOOP.m)}</div></button>`+h;
- if(done)h+=`<button class="news-item" data-stmt="1"><div class="nk">公式発表</div><h4>${esc(NEWS_STMT.t)}</h4><div class="nm">${esc(NEWS_STMT.m)}</div></button>`;
+ let h=items.map(({n,i})=>`<button class="news-item" data-news="${i}"><div class="ntx"><div class="nk">${esc(n.k)}</div><h4>${esc(n.t)}</h4><div class="nm">${esc(n.m)}</div></div><img class="nth" src="${NEWS_THUMB[i%NEWS_THUMB.length]}"></button>`).join("");
+ if(post)h=`<button class="news-item scoop" data-scoop="1"><div class="ntx"><div class="nk">🔥 スクープ</div><h4>${esc(NEWS_SCOOP.t)}</h4><div class="nm">${esc(NEWS_SCOOP.m)}</div></div><img class="nth" src="assets/kobe-night.jpg"></button>`+h;
+ if(done)h+=`<button class="news-item" data-stmt="1"><div class="ntx"><div class="nk">公式発表</div><h4>${esc(NEWS_STMT.t)}</h4><div class="nm">${esc(NEWS_STMT.m)}</div></div><img class="nth" src="assets/stage2.jpg"></button>`;
  el.innerHTML=h;
  el.querySelectorAll("[data-news]").forEach(b=>b.addEventListener("click",()=>openNews(NEWS_PRE[+b.dataset.news])));
  const sc=el.querySelector("[data-scoop]");if(sc)sc.addEventListener("click",()=>openNews(NEWS_SCOOP));
  const st=el.querySelector("[data-stmt]");if(st)st.addEventListener("click",()=>openNews(NEWS_STMT));}
 const NCMT_SCOOP=[["wish_pen","本人の言葉を待つ。それまでは何も言わない"],["元現場スタッフ","神戸の夜、あの辺は人通りが少ない。写真の距離も遠くて、切り取りの可能性はあると思う"],["sakuya_thoughts","言葉を大切にする人が、軽い気持ちで人に会うわけない"],["kobe_local","GLION最終日、会場で見たサクヤは本当に幸せそうだった。それで十分"],["保留の人","事務所の声明が出るまで拡散しない"]];
 const NCMT_STMT=[["wish_pen","本人たちの言葉で聞けてよかった"],["sakuya_thoughts","ソウルで交わした言葉は全部本当だった、って。泣いた"]];
-function openNews(n){const cmts=n===NEWS_SCOOP?NCMT_SCOOP:(n===NEWS_STMT?NCMT_STMT:null);$("#news-body").innerHTML=`<div class="news-art"><button class="back" id="news-back" style="font-size:22px">‹ 戻る</button><div class="nk">${esc(n.k)}</div><h3>${esc(n.t)}</h3><div class="nm">${esc(n.m)}</div>${n.img?`<img src="${n.img}">`:""}<p>${esc(n.body)}</p>${cmts?`<div class="ncmt-h">コメント ${cmts.length}件</div>`+cmts.map(c=>`<div class="ncmt"><b>${esc(c[0])}</b>${esc(c[1])}</div>`).join(""):""}</div>`;$("#news-back").addEventListener("click",renderNews);$("#news-body").scrollTop=0;}
+function openNews(n){const cmts=n===NEWS_SCOOP?NCMT_SCOOP:(n===NEWS_STMT?NCMT_STMT:null);$("#news-body").innerHTML=`<div class="news-art"><button class="back" id="news-back" style="font-size:22px">‹ 戻る</button><div class="nk">${esc(n.k)}</div><h3>${esc(n.t)}</h3><div class="nm">${esc(n.m)}</div>${n.img?`<img src="${n.img}">`:""}<p>${esc(n.body)}</p><div class="news-acts"><button data-nact>${ic("upload","s19")}</button><button data-nact>${ic("bmk","s19")}</button><button data-nact>${ic("cmt","s19")}</button></div>${cmts?`<div class="ncmt-h">コメント ${cmts.length}件</div>`+cmts.map(c=>`<div class="ncmt"><b>${esc(c[0])}</b>${esc(c[1])}</div>`).join(""):""}</div>`;$("#news-back").addEventListener("click",renderNews);$("#news-body").querySelectorAll("[data-nact]").forEach(b=>b.addEventListener("click",()=>toast("記事の操作は物語では使わないよ")));$("#news-body").scrollTop=0;}
 /* ================= CALENDAR ================= */
 function calMonth(y,m,events){const first=new Date(y,m-1,1).getDay(),days=new Date(y,m,0).getDate();let cells=["日","月","火","水","木","金","土"].map(d=>`<div class="dw">${d}</div>`).join("");for(let i=0;i<first;i++)cells+=`<div class="cd dim"></div>`;for(let d=1;d<=days;d++){const ev=events[d];cells+=`<div class="cd"><b>${d}</b>${ev?ev.map(e=>`<span class="ev ${e[1]}">${e[0]}</span>`).join(""):""}</div>`;}return `<div class="cal-grid">${cells}</div>`;}
 function renderCal(){$("#cal-wrap").innerHTML=`
@@ -1605,7 +1862,7 @@ function renderCal(){$("#cal-wrap").innerHTML=`
  <div class="cal-item"><div class="dt"><b>13</b><span>3月</span></div><div>福岡・北九州メッセ（〜14日）→ 愛知・ポートメッセなごや（21〜22日）へ</div></div>`;}
 /* ================= NOTES ================= */
 const ENDMETA={public:["💗","linear-gradient(135deg,#ff5c8a,#ff8fab)"],silent:["🌙","linear-gradient(135deg,#7b61c9,#4fc3e8)"],bitter:["🥀","linear-gradient(135deg,#8e8e93,#636366)"]};
-function renderNotes(){const el=$("#notes-body");const eg=endingsGot();let h=S.memos.length?S.memos.map(id=>{const sc=SCENES.find(s=>s.id===id);return `<div class="note-item"><div class="nt">${esc(sc.memo.t)}<span>${esc(sc.date)}</span></div><p>${esc(sc.memo.b)}</p></div>`;}).join(""):`<div class="note-lock">🔒 観察メモはまだないよ。物語を進めると「サクヤ観察メモ」が貯まっていく</div>`;
+function renderNotes(){const el=$("#notes-body");const eg=endingsGot();let h=`<div class="notes-search">${ic("search","s15")}メモを検索</div>`+(S.memos.length?S.memos.map(id=>{const sc=SCENES.find(s=>s.id===id);return `<div class="note-item"><div class="nt">${esc(sc.memo.t)}<span>${esc(sc.date)}</span></div><p>${esc(sc.memo.b)}</p></div>`;}).join(""):`<div class="note-lock">🔒 観察メモはまだないよ。物語を進めると「サクヤ観察メモ」が貯まっていく</div>`);
  h+=`<div class="end-coll"><div style="font-size:13px;font-weight:800;margin-bottom:8px">エンディングコレクション</div>`+Object.keys(ENDINGS).map(id=>{const got=eg[id];const mt=ENDMETA[id];return got?`<div class="end-card" style="background:${mt[1]}"><b>${mt[0]} ${esc(ENDINGS[id].t)}</b>到達済み ― おつかれさま💗</div>`:`<div class="end-card lock"><b>？？？</b>未到達のエンディング</div>`;}).join("")+`</div>`;
  el.innerHTML=h;}
 /* ================= PHOTOS ================= */
@@ -1634,7 +1891,7 @@ function storyNav(d){const n=storyIdx+d;if(n<0)return;if(n>=storyData.length){cl
 $("#story-x").addEventListener("click",ev=>{ev.stopPropagation();closeStory();});
 $("#story-next").addEventListener("click",()=>storyNav(1));
 $("#story-prev").addEventListener("click",()=>storyNav(-1));
-$("#story-heart").addEventListener("click",ev=>{ev.stopPropagation();const b=$("#story-heart");const on=b.textContent==="❤️";b.textContent=on?"♡":"❤️";if(!on)toast("いいねを送ったよ");});
+$("#story-heart").addEventListener("click",ev=>{ev.stopPropagation();const b=$("#story-heart");const on=b.classList.toggle("liked");b.innerHTML=on?ic("heart","s26"):ic("heart-o","s26");if(on)toast("いいねを送ったよ");});
 function storySendMsg(){const inp=$("#story-reply-in");if(inp&&inp.value.trim()){inp.value="";toast("メッセージを送信したよ");}else toast("メッセージを送信したよ");}
 $("#story-send").addEventListener("click",ev=>{ev.stopPropagation();storySendMsg();});
 $("#story-reply-in").addEventListener("keydown",e=>{if(e.key==="Enter")storySendMsg();});
@@ -1669,8 +1926,8 @@ function openHTChat(){const sc=!S.ended?SCENES[S.scene]:null;
  openChat(sc);}
 function renderHT(){const el=$("#ht-body");$$("#ht-tabs button").forEach(b=>b.classList.toggle("on",b.dataset.httab===htTab));
  if(htTab==="chat"){const cs=SCENES[S.scene];const curHt=!S.ended&&cs&&cs.thread==="ht";
-  el.innerHTML=`<div class="ht-tools">${[["📚","#744ff5","Courses"],["📗","#12b76a","HelloWords"],["🗣️","#149990","Translate"],["🤖","#f79009","AI Grammar"]].map(t=>`<span class="ht-tool"><i style="background:${t[1]}22">${t[0]}</i>${t[2]}</span>`).join("")}<span class="ht-tool"><i style="background:#eef1f0">⌄</i>More</span></div>
-  <div class="ht-search">🔍 Search</div>
+  el.innerHTML=`<div class="ht-tools">${[[ic("book","s20"),"#7b61c9","Courses"],['<b style="font-size:14.5px">Aa</b>',"#12b76a","HelloWords"],[ic("translate","s20"),"#0ea5b4","Translate"],[ic("sparkle","s20"),"#9dc41c","AI Grammar"]].map(t=>`<span class="ht-tool"><i style="background:${t[1]}22">${t[0]}</i>${t[2]}</span>`).join("")}<span class="ht-tool"><i style="background:#eef1f0">⌄</i>More</span></div>
+  <div class="ht-search">${ic("search","s15")} Search</div>
   <button class="ht-row" id="ht-open-chat">${htAvHTML(50)}<span class="tt2"><span class="tn2"><span>빵돌이</span><time>${S.ended?"3月9日":(cs?cs.date:"")}</time></span><span class="tp2">${S.ended?"LINEに移行済み ― ありがとうございました":curHt?(cs.title+" ― タップで開く"):(S.scene>2?"いまはLINEでのやり取りの時期":"モーメンツで見つけた人")}</span></span>${curHt?`<span class="ubp">1</span>`:`<span class="openpill">開く</span>`}</button>
   <button class="ht-row" data-htdeco><span class="ht-avw"><span class="sil" style="width:50px;height:50px;background:#149990;font-size:15px">HT</span></span><span class="tt2"><span class="tn2"><span>HelloTalk公式</span><time>1月9日</time></span><span class="tp2">ようこそHelloTalkへ！ 最初のパートナーを見つけましょう</span></span></button>
   <button class="ht-row" data-htdeco><span class="ht-avw"><span class="sil" style="width:50px;height:50px;background:#7b61c9;font-size:17px">지</span><span class="flg">🇰🇷</span></span><span class="tt2"><span class="tn2"><span>지수</span><time>1月8日</time></span><span class="tp2">日本語を勉強しています。よろしくお願いします！</span></span><span class="myturn">私の番</span></button>
@@ -1678,31 +1935,33 @@ function renderHT(){const el=$("#ht-body");$$("#ht-tabs button").forEach(b=>b.cl
   $("#ht-open-chat").addEventListener("click",openHTChat);
   el.querySelectorAll("[data-htdeco]").forEach(b=>b.addEventListener("click",()=>toast("物語の相手は 빵돌이 だけだよ")));}
  else if(htTab==="moments"){
-  el.innerHTML=`<div class="mo-card"><div class="mo-head">${htAvHTML(40)}<span><div class="mn">빵돌이</div><div class="ms">ソウル · 1月9日</div></span><span class="langtag">한국어</span></div>
+  el.innerHTML=`<div class="mo-chips"><span class="on">Recent</span><span>Recommend</span><span>Learning</span><span>Following</span><span class="flt">${ic("filter","s17")}</span></div><div class="mo-card"><div class="mo-head">${htAvHTML(40)}<span><div class="mn">빵돌이</div><div class="ms">ソウル · 1月9日</div></span><span class="langtag">한국어</span></div>
+  <div class="mo-pair">🇰🇷 KR <span class="lvbar"><i style="width:100%"></i></span> ⇄ 🇯🇵 JP <span class="lvbar"><i style="width:92%"></i></span></div>
   <div class="mo-body">서울의 아침. 동네 빵집에서 갓 구운 빵을 사면 하루가 조금 다정해진다. 오늘은 소금빵이 특히 좋았다.</div>
   <button class="tr-btn" data-trm>🌐 翻訳を見る</button><div class="tr-box">ソウルの朝。近所のパン屋で焼きたてのパンを買うと、一日が少し優しくなる。今日は塩パンが特に良かった。</div>
-  <div class="mo-acts"><span>♡ <b>23</b></span><span>💬 <b>4</b></span><span>👁 <b>312</b></span><span style="margin-left:auto">✎ 訂正する</span></div>
-  <button class="ht-send" id="ht-mo-msg">✉️ メッセージを送る</button></div>
+  <div class="mo-acts"><span>${ic("heart-o","s18")} <b>23</b></span><span>${ic("cmt","s18")} <b>4</b></span><span>${ic("eye","s18")} <b>312</b></span><span style="margin-left:auto">${ic("pencil","s15")} 訂正する</span></div>
+  <button class="ht-send" id="ht-mo-msg">メッセージを送る</button></div>
   <div class="mo-card"><div class="mo-head"><span class="ht-avw"><img class="av" src="assets/nao-face.jpg" style="width:40px;height:40px"><span class="flg">🇯🇵</span></span><span><div class="mn">なお</div><div class="ms">ソウル · 1月10日</div></span><span class="langtag">한국어</span></div>
+  <div class="mo-pair">🇯🇵 JP <span class="lvbar"><i style="width:100%"></i></span> ⇄ 🇰🇷 KR <span class="lvbar"><i style="width:55%"></i></span></div>
   <img class="mo-img" src="assets/nao-jacket.jpg" alt="">
   <div class="mo-body">오늘은 한강에 갔어요. 날씨가 너무 좋았어요! 한국어를 더 공부하고 싶어요.</div>
-  <div class="mo-acts"><span>♡ <b>8</b></span><span>💬 <b>2</b></span><span>👁 <b>96</b></span><span style="margin-left:auto;color:#0b7a71;font-weight:700">✎ 빵돌이 が訂正しました</span></div></div>
+  <div class="mo-acts"><span>${ic("heart-o","s18")} <b>8</b></span><span>${ic("cmt","s18")} <b>2</b></span><span>${ic("eye","s18")} <b>96</b></span><span style="margin-left:auto;color:#5a3ee0;font-weight:700">${ic("pencil","s15")} 빵돌이 が訂正しました</span></div></div>
   <div class="locknote">モーメンツ＝HelloTalkのタイムライン。投稿には言語タグが付き、翻訳・訂正がその場で使える（実物仕様）。<br>なおは彼のこの投稿を見つけて、メッセージを送った。</div>`;
   const tb=el.querySelector("[data-trm]");if(tb)tb.addEventListener("click",()=>{const box=el.querySelector(".tr-box");const on=box.classList.toggle("on");tb.textContent=on?"🌐 翻訳を隠す":"🌐 翻訳を見る";});
   const mb=$("#ht-mo-msg");if(mb)mb.addEventListener("click",openHTChat);}
  else if(htTab==="search"){
-  el.innerHTML=`<div style="display:flex;gap:6px;padding:11px 12px 5px;background:#f7f9f8">${["真剣な学習者","近く","都市","性別"].map((c,i)=>`<span class="ht-chip${i===0?" on":""}">${c}</span>`).join("")}</div>
-  <button class="ht-row" id="ht-srch-prof">${htAvHTML(50)}<span class="tt2"><span class="tn2"><span>빵돌이</span><span style="font-size:15px">👋</span></span><span class="tp2">🇯🇵 日本語 → 🇰🇷 韓国語 ｜ ソウル在住</span><span class="tp2">言葉は、少なくていい。合う人には届くから</span></span></button>
+  el.innerHTML=`<div style="display:flex;gap:6px;padding:11px 12px 5px;background:#f7f9f8">${["韓国語 🇰🇷","日本語 🇯🇵","＋ 言語を追加"].map((c,i)=>`<span class="ht-chip${i===0?" on":""}">${c}</span>`).join("")}</div>
+  <button class="ht-row" id="ht-srch-prof">${htAvHTML(50)}<span class="tt2"><span class="tn2"><span>빵돌이</span><span style="font-size:15px">👋</span></span><span class="tp2">🇯🇵 日本語 <span class="lvbar"><i style="width:100%"></i></span> → 🇰🇷 韓国語 <span class="lvbar"><i style="width:92%"></i></span> ｜ ソウル在住</span><span class="tp2">言葉は、少なくていい。合う人には届くから</span></span></button>
   <button class="ht-row" data-htdeco><span class="ht-avw"><span class="sil" style="width:50px;height:50px;background:#4a90d9;font-size:17px">민</span><span class="flg">🇰🇷</span></span><span class="tt2"><span class="tn2"><span>민준</span><span style="font-size:15px">👋</span></span><span class="tp2">🇰🇷 한국어 → 🇯🇵 日本語 ｜ ソウル在住</span><span class="tp2">일본어를 공부 중입니다. 도쿄에 가보고 싶어요</span></span></button>
   <button class="ht-row" data-htdeco><span class="ht-avw"><span class="sil" style="width:50px;height:50px;background:#d95f7b;font-size:17px">서</span><span class="flg">🇰🇷</span></span><span class="tt2"><span class="tn2"><span>서연</span><span style="font-size:15px">👋</span></span><span class="tp2">🇰🇷 한국어 → 🇯🇵 日本語 ｜ 釜山在住</span><span class="tp2">アニメが好きで日本語を始めました</span></span></button>
-  <div class="locknote">検索タブは「自分の学習言語を母語とし、自分の母語を学ぶ人」が並ぶ設計（実物仕様）。<br>彼は「ソウル在住の日本人」という、少し珍しい登録だった。</div>`;
+  <div class="locknote">Connectタブは「自分の学習言語を母語とし、自分の母語を学ぶ人」が並ぶ設計（実物仕様）。<br>彼は「ソウル在住の日本人」という、少し珍しい登録だった。</div>`;
   $("#ht-srch-prof").addEventListener("click",()=>{show("htprof");renderHTProf();});
   el.querySelectorAll("[data-htdeco]").forEach(b=>b.addEventListener("click",()=>toast("物語の相手は 빵돌이 だけだよ")));}
  else if(htTab==="learn"){
-  el.innerHTML=[["📗","#12b76a","HelloWords","単語フラッシュカードで今日の10語"],["🎧","#744ff5","ポッドキャスト","ネイティブの会話を聞いて学ぶ"],["🤖","#f79009","AIチューター","AIと会話練習・文法チェック"],["🎙️","#149990","Voiceroom","音声ライブで世界と話す"]].map(t=>`<button class="learn-card" data-htdeco><i style="background:${t[1]}22">${t[0]}</i><span><b>${t[2]}</b><small>${t[3]}</small></span></button>`).join("")+`<div class="locknote">学習タブは物語では使わないよ（実物にはHelloWordsやポッドキャスト等がある）。</div>`;
-  el.querySelectorAll("[data-htdeco]").forEach(b=>b.addEventListener("click",()=>toast("学習タブは物語では使わないよ")));}
+  el.innerHTML=[["한국어 프리토킹 🇰🇷","日常会話をゆっくり話す部屋","128"],["Japanese ⇄ Korean 言語交換","お互いの言葉を教え合う部屋","86"],["서울 일상 토크","ソウルの日常を話す部屋","57"]].map(r=>`<div class="vr-card"><div class="vr-top"><span class="vr-live">LIVE</span><span class="vr-cnt">${ic("users","s15")} ${r[2]}</span></div><div class="vr-t">${r[0]}</div><div class="vr-sub">${r[1]}</div><button class="vr-join" data-htdeco>入室する</button></div>`).join("")+`<div class="locknote">VoiceRoom＝音声ライブで世界中の学習者と話せる場所（実物仕様）。物語では使わないよ。</div>`;
+  el.querySelectorAll("[data-htdeco]").forEach(b=>b.addEventListener("click",()=>toast("VoiceRoomは物語では使わないよ")));}
  else{
-  el.innerHTML=`<div style="background:#fff;padding:18px 16px 14px;display:flex;gap:13px;align-items:center"><span class="ht-avw"><img class="av" src="assets/nao-face.jpg" style="width:60px;height:60px"><span class="flg">🇯🇵</span></span><span><div style="font-size:17px;font-weight:800;color:#173b36">なお</div><div style="font-size:12px;color:#8a9491;margin-top:1px">@nao_study · HelloTalk歴 21日</div><div style="font-size:11.5px;color:#0b7a71;font-weight:700;margin-top:2px">ソウル旅行中 🇰🇷</div></span></div>
+  el.innerHTML=`<div style="background:#fff;padding:18px 16px 14px;display:flex;gap:13px;align-items:center"><span class="ht-avw"><img class="av" src="assets/nao-face.jpg" style="width:60px;height:60px"><span class="flg">🇯🇵</span></span><span><div style="font-size:17px;font-weight:800;color:#1c1c22">なお</div><div style="font-size:12px;color:#8a9491;margin-top:1px">@nao_study · HelloTalk歴 21日</div><div style="font-size:11.5px;color:#0b7a71;font-weight:700;margin-top:2px">ソウル旅行中 🇰🇷</div></span></div>
   <div class="gauge-sec"><div class="gs-t">話せる言語</div>${gaugeHTML("🇯🇵","日本語",100,"堪能")}<div class="gs-t" style="margin-top:11px">学習中の言語</div>${gaugeHTML("🇰🇷","韓国語",55,"中級")}</div>
   <div class="gauge-sec"><div class="gs-t">自己紹介</div><p style="font-size:13.5px;line-height:1.7;margin-top:4px;color:#333">韓国語勉強中です。1月にソウルへ旅行します。現地の人と話してみたいです🙏</p></div>
   <div class="gauge-sec"><div class="gs-t">プロフィール写真</div><img src="assets/nao-wink.jpg" style="width:100%;border-radius:13px;margin-top:8px;display:block" alt=""></div>
@@ -1716,7 +1975,7 @@ function renderHT(){const el=$("#ht-body");$$("#ht-tabs button").forEach(b=>b.cl
 $$("#ht-tabs button").forEach(b=>b.addEventListener("click",()=>{htTab=b.dataset.httab;renderHT();}));
 $("#chat-call").addEventListener("click",()=>{if(cur&&cur.call&&!S.callsDone[cur.id]){startCall(cur);return;}toast("まだ通話は解放されていないみたい（何通かやり取りすると解放される仕様だよ）");});
 function renderHTProf(){const el=$("#htprof-body");
- el.innerHTML=`<div style="background:linear-gradient(150deg,#1cb3a6,#0b6e66);padding:28px 16px 20px;color:#fff;text-align:center">
+ el.innerHTML=`<div style="background:linear-gradient(150deg,#8266ff,#5a3ee0);padding:28px 16px 20px;color:#fff;text-align:center">
  <span class="ht-avw"><span class="sil" style="width:88px;height:88px;background:#b08968;font-size:32px">빵</span><span class="flg" style="width:23px;height:23px;font-size:13px">🇯🇵</span><span class="ond" style="width:15px;height:15px"></span></span>
  <div style="font-size:20px;font-weight:800;margin-top:10px">빵돌이</div>
  <div style="font-size:12px;opacity:.88;margin-top:2px">@ppang_dori · ソウル（韓国）在住 · HelloTalk歴 32日</div>
@@ -1724,7 +1983,7 @@ function renderHTProf(){const el=$("#htprof-body");
  <div class="gauge-sec"><div class="gs-t">話せる言語</div>${gaugeHTML("🇯🇵","日本語",100,"堪能")}<div class="gs-t" style="margin-top:11px">学習中の言語</div>${gaugeHTML("🇰🇷","韓国語",92,"堪能")}<div style="font-size:11px;color:#9aa5a3;margin-top:5px">※日本語ネイティブ。ソウル在住で、韓国語も堪能寄り</div></div>
  <div class="gauge-sec"><div class="gs-t">自己紹介</div><p style="font-size:14px;line-height:1.75;margin-top:4px;color:#333">言葉は、少なくていい。合う人には届くから。<br><span style="color:#888;font-size:12.5px">ソウルのパン屋に詳しいです。韓国語の練習相手を探しています。</span></p></div>
  <div class="gauge-sec" style="display:flex;text-align:center"><div style="flex:1"><b style="font-size:16px">3</b><div class="gs-s">モーメンツ</div></div><div style="flex:1"><b style="font-size:16px">12</b><div class="gs-s">フォロー中</div></div><div style="flex:1"><b style="font-size:16px">48</b><div class="gs-s">フォロワー</div></div></div>
- <div style="display:flex;gap:8px;padding:13px 14px 4px"><button class="ht-pb sub" id="htp-fol">フォローする</button><button class="ht-pb main" id="htp-msg">✉️ 送信する</button></div>
+ <div style="display:flex;gap:8px;padding:13px 14px 4px"><button class="ht-pb sub" id="htp-fol">フォローする</button><button class="ht-pb main" id="htp-msg">送信する</button></div>
  <div class="locknote">顔写真なし・自己紹介は一言だけ。人気者なのに、このアプリの中では無名――それが 빵돌이 。</div>`;
  $("#htp-msg").addEventListener("click",openHTChat);
  const f=$("#htp-fol");f.addEventListener("click",()=>{const on=f.textContent==="フォローする";f.textContent=on?"フォロー中":"フォローする";f.classList.toggle("on",on);toast(on?"フォローしたよ":"フォローを外したよ");});}
@@ -1753,6 +2012,20 @@ function titleInit(){const has=(S.scene>0||S.ended||S.step>0);$("#title-continue
 $("#title-continue").addEventListener("click",()=>show("home"));
 $("#title-start").addEventListener("click",()=>{const has=(S.scene>0||S.ended||S.step>0);if(has&&!confirm("セーブを消して最初からプレイしますか？"))return;if(has){localStorage.removeItem(KEY);S=defState();save();}show("lock");});
 titleInit();
+/* ================= HT LONG-PRESS MENU / MISC (v16) ================= */
+let _htmTxt="";
+function openHTMenu(txt){_htmTxt=txt||"";$("#htmenu").classList.add("on");}
+function closeHTMenu(){$("#htmenu").classList.remove("on");}
+$("#htmenu").addEventListener("click",e=>{if(e.target.id==="htmenu")closeHTMenu();});
+$$("#htmenu [data-htm]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.htm;closeHTMenu();
+ if(k==="copy"){try{navigator.clipboard&&navigator.clipboard.writeText(_htmTxt);}catch(e){}toast("コピーしたよ");}
+ else if(k==="fav")toast("お気に入りに保存したよ");
+ else if(k==="corr"){const c=$("#chat-body .corr");if(c){c.scrollIntoView({block:"center"});toast("訂正カードはこれだよ");}else toast("このメッセージへの訂正はないよ");}
+ else if(k==="trans")toast("翻訳は吹き出しの下に展開されるよ");
+ else toast("その機能は物語では使わないよ");}));
+$("#chat-body").addEventListener("contextmenu",e=>{if(cur&&cur.thread==="ht")e.preventDefault();});
+$$("[data-pvtool]").forEach(b=>b.addEventListener("click",()=>toast("写真の操作は物語では使わないよ")));
+const _hf=$("#ht-filter");if(_hf)_hf.addEventListener("click",()=>toast("絞り込みは物語では使わないよ"));
 /* ================= INIT ================= */
 renderGauges();save();
 </script>
