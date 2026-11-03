@@ -709,7 +709,7 @@ img{max-width:100%}
 <div class="ahead"><button class="back" data-back="home">‹</button><h2>設定</h2></div>
 <div class="abody" style="background:#f2f2f7">
 <button class="set-row" id="set-reset">最初からプレイし直す <span>セーブ削除</span></button>
-<div class="set-row">バージョン <span>v1.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row">バージョン <span>v4.0（iOS 26 / Liquid Glass）</span></div>
 <div class="set-row">ボイス <span>未収録（通話はテキスト＋タイマー式）</span></div>
 <div style="padding:16px;font-size:12px;color:#888;line-height:1.8">『サクヤと熱愛バレた件』は実在の人物を題材にした創作フィクション（ファンメイド作品）です。登場人物の発言・交際等の出来事は全て創作であり、実在の内容とは関係ありません。ツアー日程・会場・リリース実績は公開されている史実に基づきます。<br>なおのアバターには本人の写真を使用していません（イニシャルアイコン）。<br>画像：Pinterest／Instagram系の掲載写真（2024〜2026年）、メディア掲載写真等。動画：NCT WISH公式ミュージックビデオの公式プレビュー（iTunes）から作成した縦型クリップ等（権利は各権利者に帰属します）。TikTok公式動画は取得環境の都合（IPブロック）で直接収録できませんでした。</div>
 </div>
@@ -1064,7 +1064,8 @@ function renderGauges(){const g=S.gauges;$("#g-trust").style.width=g.trust+"%";$
 function fmtLikes(v){const n=parseInt(String(v).replace(/[^0-9]/g,""),10)||0;if(n>=10000){const w=n/10000;return (w>=100?String(Math.round(w)):(Math.round(w*10)/10).toString().replace(/\.0$/,""))+"万";}return n.toLocaleString();}
 function fmtNum(n){return (n||0).toLocaleString();}
 /* ================= NAV ================= */
-function show(id){$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set"].includes(id));window.scrollTo(0,0);if(id==="home")renderHome();if(id==="line")renderLineList();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();}
+function syncVideos(){setTimeout(()=>{$$("video").forEach(v=>{const view=v.closest(".view");if(view&&view.classList.contains("on")){if(v.closest(".post-vid")||v.classList.contains("pv-vid")){v.play().catch(()=>{});}}else{v.pause();}});},90);}
+function show(id){$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set"].includes(id));window.scrollTo(0,0);if(id==="home")renderHome();if(id==="line")renderLineList();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();}
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){show(g.dataset.go);return;}const b=e.target.closest("[data-back]");if(b)show(b.dataset.back);});
 $("#homebar").addEventListener("click",()=>show("home"));
 $("#v-lock").addEventListener("click",()=>show("home"));
@@ -1191,7 +1192,7 @@ function bindPostActs(root){root.querySelectorAll("[data-like]").forEach(b=>b.ad
 function renderTT(){const el=$("#tt-feed");const posts=TT_POSTS.slice(0,S.tt);
  if(!posts.length){el.innerHTML=`<div class="tt-item"><img class="bg" src="assets/group.jpg"><div class="grad"></div><div class="tt-top"><span class="on">おすすめ</span><span>フォロー中</span></div><div class="tt-info"><div class="at">@nctwish_official</div><div class="cap">🔒 物語を進めると公式TikTokが解放されるよ</div></div></div>`;return;}
  el.innerHTML=posts.map((p,i)=>{const liked=S.likedTT[i];const likes=p.likes+(liked?1:0);return `<div class="tt-item">
- <video class="bgv" id="ttv-${i}" src="${p.video}" poster="${p.poster}" autoplay muted loop playsinline></video>
+ <video class="bgv" id="ttv-${i}" src="${p.video}" poster="${p.poster}" muted loop playsinline preload="auto"></video>
  <div class="grad"></div><div class="tt-top"><span>フォロー中</span><span class="on">おすすめ</span><span class="srch">🔍</span></div>
  <button class="tt-mute" data-mute="${i}">🔇 タップで音ON</button>
  <div class="tt-rail"><span><img class="tav" src="assets/group.jpg"><span class="plus" style="display:flex">＋</span></span>
@@ -1207,13 +1208,16 @@ function renderTT(){const el=$("#tt-feed");const posts=TT_POSTS.slice(0,S.tt);
  el.querySelectorAll("[data-ttcmt]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();openTTComments(+b.dataset.ttcmt);}));
  el.querySelectorAll("[data-mute]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const v=$("#ttv-"+b.dataset.mute);if(v){v.muted=!v.muted;b.textContent=v.muted?"🔇 タップで音ON":"🔊 再生中";}}));
  el.querySelectorAll(".tt-item").forEach((it,i)=>{it.addEventListener("click",()=>{const v=$("#ttv-"+i);if(!v)return;if(v.paused){v.play();$("#ttp-"+i).classList.remove("show");}else{v.pause();$("#ttp-"+i).classList.add("show");}});});
- clearInterval(window._ttProg);window._ttProg=setInterval(()=>{if(!$("#v-tt").classList.contains("on"))return;posts.forEach((p,i)=>{const v=$("#ttv-"+i),pg=$("#ttpg-"+i);if(v&&pg&&v.duration)pg.style.width=(v.currentTime/v.duration*100)+"%";});},250);}
+ clearInterval(window._ttProg);window._ttProg=setInterval(()=>{if(!$("#v-tt").classList.contains("on"))return;posts.forEach((p,i)=>{const v=$("#ttv-"+i),pg=$("#ttpg-"+i);if(v&&pg&&v.duration)pg.style.width=(v.currentTime/v.duration*100)+"%";});},250);
+ if(window._ttIO)window._ttIO.disconnect();
+ window._ttIO=new IntersectionObserver(es=>{es.forEach(en=>{const v=en.target.querySelector("video.bgv");if(!v)return;if(en.intersectionRatio>=0.6){v.play().catch(()=>{});}else{v.pause();}});},{root:el,threshold:[0,0.6,1]});
+ el.querySelectorAll(".tt-item").forEach(it=>window._ttIO.observe(it));}
 /* ================= X ================= */
 let xTab="feed";
 function renderX(){const el=$("#x-body");const post=S.scene>=7;
  if(xTab==="trend"){const tr=post?X_TRENDS_POST:X_TRENDS_PRE;el.innerHTML=`<div style="padding:12px 16px 4px;font-size:16px;font-weight:900">トレンド</div>`+tr.map(t=>`<div class="trend ${post&&t[1].includes("熱愛")?"hot":""}"><div class="tk">${esc(t[0])} ・ トレンド</div><div class="tt2">${esc(t[1])}</div><div class="tc">${esc(t[2])}</div></div>`).join("");return;}
  const posts=post?X_POSTS_POST:X_POSTS_PRE;
- el.innerHTML=posts.map(p=>`<div class="xpost"><img class="xav" src="${p.av}"><div class="xb"><div class="xh"><b>${esc(p.user)}</b><span>${esc(p.handle)} ・ ${esc(p.time)}</span></div><div class="xt">${esc(p.text)}</div>${p.img?`<img class="ximg" src="${p.img}">`:""}<div class="xa"><span>💬 <b>${esc(p.cm||"―")}</b></span><span>🔁 <b>${esc(p.rp)}</b></span><span>❤️ <b>${esc(p.lk)}</b></span><span>📊</span></div></div></div>`).join("")+`<div class="locknote">${post?"炎上中 ― 数値はまだ増え続けている":"平和なタイムライン。……今のところは"}</div>`;}
+ el.innerHTML=posts.map(p=>`<div class="xpost"><img class="xav" src="${p.av}"><div class="xb"><div class="xh"><b>${esc(p.user)}</b>${p.handle==="@nctwish_jp"?'<span style="color:#1d9bf0">✔</span>':""}<span>${esc(p.handle)} ・ ${esc(p.time)}</span></div><div class="xt">${esc(p.text)}</div>${p.img?`<img class="ximg" src="${p.img}">`:""}<div class="xa"><span>💬 <b>${esc(p.cm||"―")}</b></span><span>🔁 <b>${esc(p.rp)}</b></span><span>❤️ <b>${esc(p.lk)}</b></span><span>📊</span></div></div></div>`).join("")+`<div class="locknote">${post?"炎上中 ― 数値はまだ増え続けている":"平和なタイムライン。……今のところは"}</div>`;}
 function setXTab(t){xTab=t;$("#x-tab-feed").classList.toggle("on",t==="feed");$("#x-tab-trend").classList.toggle("on",t==="trend");renderX();}
 $("#x-tab-trend").addEventListener("click",()=>setXTab("trend"));
 $("#x-tab-feed").addEventListener("click",()=>setXTab("feed"));
