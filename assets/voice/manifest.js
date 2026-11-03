@@ -1,1 +1,1 @@
-window.VOICE_FILES=[];
+window.VOICE_FILES=["sk1","sk2","sk3","sk4","sk5","sk6","sk7"];
