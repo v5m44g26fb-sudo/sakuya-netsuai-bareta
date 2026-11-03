@@ -1569,7 +1569,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v35.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v36.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -1950,11 +1950,11 @@ const FREE=[
  {k:["おはよう"],r:"おはようございます。なおさんの朝は、こっちより少し早いですね"},
  {k:["おやすみ"],r:"おやすみなさい。……夢で会えたら、近いですね"},
  {k:["仕事","会社","復職"],r:"なおさんのペースでいいと思います。言葉と同じで、急ぐと大事なものが落ちるので"},
+ {k:["サクヤ","さくや","빵돌이","パンドリ"],r:"はい、빵돌이 です。……どっちの名前で呼ばれても、嬉しいですよ"},
  {k:["パン","ぱん"],r:"パンの話、しましょう。ソウルのあの店の、朝の匂いがするやつ"},
  {k:["エビ","えび","カンジャンセウ"],r:"カンジャンセウ。……ソウルの味ですね。次は一緒に食べましょう"},
  {k:["韓国語","ぼごしぽ","보고"],r:"보고 싶어요。……発音、だいぶ上手くなりましたね"},
  {k:["歌","ライブ","公演","ステージ"],r:"ステージの僕は、客席のなおさんを探してます。見つけるの、得意なので"},
- {k:["サクヤ","さくや","빵돌이","パンドリ"],r:"はい、빵돌이 です。……どっちの名前で呼ばれても、嬉しいですよ"},
  {k:["炎上","記事","スクープ","声明"],r:{public:"終わりました。言葉で説明するって決めて、よかったです",silent:"まだ静かにしてる途中です。でも、手は離してません",bitter:"……あの日のことは、僕の言葉でいつか話します。待っててください",def:"……静かに見守ってください。お願いします"}},
  {k:["神戸","海"],r:"神戸の海、きれいでしたね。……いろいろあったけど、あの10分は僕の宝物です"},
  {k:["ソウル"],r:"ソウルは始まりの街ですね。カフェの紅茶、覚えてますか"},
@@ -2707,14 +2707,14 @@ $("#nbanner").addEventListener("click",()=>{$("#nbanner").classList.remove("show
 /* ================= FREE CHAT ================= */
 function openFree(){show("free");const b=$("#free-body");if(!b.dataset.init){const greet={public:"なおさん。……隠さなくていいって、やっぱり嬉しいですね",silent:"なおさん、お疲れさまです。……少しだけ、話せますか",bitter:"……久しぶりですね。元気でしたか"}[S.endId]||"なおさん、お疲れさまです";b.innerHTML=`<div class="day-pill"><span>エンディング後 ― フリーチャット</span></div>`+msgHTML({f:"sakuya",t:greet},nowTimeStr());b.dataset.init="1";}}
 let _freeBusy=false;
-function freeRespond(v){let r=null;for(const f of FREE){if(f.k.some(k=>(v||"").includes(k))){r=typeof f.r==="string"?f.r:(f.r[S.endId]||f.r.def);break;}}if(!r)r=FREE_DEFAULT[S.freeCount%FREE_DEFAULT.length];S.freeCount++;save();const b=$("#free-body");const tp=document.createElement("div");tp.className="msg";tp.innerHTML=avHTML("sakuya",38)+`<div class="col"><div class="who">サクヤ</div><span class="typing"><i></i><i></i><i></i></span></div>`;b.appendChild(tp);b.scrollTop=b.scrollHeight;_freeBusy=true;setTimeout(()=>{_freeBusy=false;tp.remove();b.innerHTML+=msgHTML({f:"sakuya",t:r},nowTimeStr());b.scrollTop=b.scrollHeight;sfx("recv");},800);}
-function freeSend(){const inp=$("#free-input");const v=inp.value.trim();if(!v)return;inp.value="";const b=$("#free-body");b.innerHTML+=msgHTML({me:true,t:v},nowTimeStr());b.scrollTop=b.scrollHeight;sfx("send");freeRespond(v);}
+function freeRespond(v){let r=null;for(const f of FREE){if(f.k.some(k=>(v||"").includes(k))){r=typeof f.r==="string"?f.r:(f.r[S.endId]||f.r.def);break;}}if(!r)r=FREE_DEFAULT[S.freeCount%FREE_DEFAULT.length];S.freeCount++;save();const b=$("#free-body");const tp=document.createElement("div");tp.className="msg";tp.innerHTML=avHTML("sakuya",38)+`<div class="col"><div class="who">サクヤ</div><span class="typing"><i></i><i></i><i></i></span></div>`;b.appendChild(tp);b.scrollTop=b.scrollHeight;_freeBusy=true;setTimeout(()=>{_freeBusy=false;const _d=document.createElement("div");_d.innerHTML=msgHTML({f:"sakuya",t:r},nowTimeStr());const _node=_d.firstElementChild;if(_node){if(tp.isConnected)tp.replaceWith(_node);else b.appendChild(_node);}tp.remove();$$("#free-body .msg.me .rd").forEach(rd=>{rd.style.opacity="1";});b.scrollTop=b.scrollHeight;sfx("recv");},800);}
+function freeSend(){const inp=$("#free-input");const v=inp.value.trim();if(!v)return;inp.value="";const b=$("#free-body");b.insertAdjacentHTML("beforeend",msgHTML({me:true,t:v},nowTimeStr()));b.scrollTop=b.scrollHeight;sfx("send");freeRespond(v);}
 function freeStamp(e){if(_freeBusy)return;const b=$("#free-body");const d=document.createElement("div");d.className="msg me";d.innerHTML=`<span class="stamp-bub">${e}</span>`;b.appendChild(d);b.scrollTop=b.scrollHeight;$("#stamp-wrap").classList.remove("on");sfx("send");freeRespond("");}
 $("#free-send").addEventListener("click",freeSend);
 const _freeCallIc=document.querySelector("#v-free .chat-head .hic");if(_freeCallIc)_freeCallIc.addEventListener("click",()=>toast("通話は物語の中だけだよ"));
 $("#free-stamp").addEventListener("click",()=>$("#stamp-wrap").classList.toggle("on"));
 $$("#stamp-wrap [data-stamp]").forEach(b=>b.addEventListener("click",()=>freeStamp(b.dataset.stamp)));
-$("#free-input").addEventListener("keydown",e=>{if(e.key==="Enter")freeSend();});
+$("#free-input").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing&&e.keyCode!==229)freeSend();});
 /* ================= VOICE (AnyVoice サクヤ) ================= */
 const VOICE_CHAT={"s2":{"はい。……なおさんの好きなグループの、サクヤです":"sk1"},"s7":{"……今の、見ましたか":"sk5","帰りましょう。別々に。……ごめんなさい、なおさん":"sk6"},"s10":{"どの道でも、一つだけ。ソウルで交わした言葉は、全部本当でした":"sk7"}};
 const CALL_VOICE={"s3":{0:"sk2",3:"sk3",4:"sk4"}};
