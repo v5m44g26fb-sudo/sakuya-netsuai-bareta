@@ -645,6 +645,107 @@ img{max-width:100%}
  #v-ending .et{line-height:1.68}
 }
 
+
+/* v14: HelloTalk (実物サンプリング: アイコン #149990 ティール / ピル紫 #744ff5) */
+:root{--ht:#149990;--ht-d:#0b7a71;--ht-pu:#744ff5}
+.ic-ht{background:linear-gradient(160deg,#1cb3a6,#0d8578);color:#fff}
+.langpair{display:none}
+#v-chat.htmode{background:#edf3f1}
+#v-chat.htmode .chat-head{background:rgba(255,255,255,.97);color:#173b36;border-bottom:1px solid #dde8e5}
+#v-chat.htmode .langpair{display:block;font-size:10px;color:#7d8b89;font-weight:500;margin-top:1px}
+#v-chat.htmode .msg .who{color:#45605c}
+#v-chat.htmode .bub{border:1px solid #e0eae7;border-top-left-radius:16px;box-shadow:none}
+#v-chat.htmode .msg.me .bub{background:linear-gradient(180deg,#1db3a7,#119184);color:#fff;border:none;border-top-right-radius:4px}
+#v-chat.htmode .msg .tm{color:#7d8b89}
+#v-chat.htmode .msg.me .rd{color:#4f8a84;font-weight:600}
+#v-chat.htmode .day-pill span{background:rgba(20,153,144,.18);color:#2f5f59}
+#v-chat.htmode .sys-line{background:rgba(255,255,255,.8);color:#46655f}
+#v-chat.htmode .typing{border:1px solid #e0eae7}
+#v-chat.htmode .choice{background:#eefaf7;border-color:#a9ddd4;color:#0d3f39}
+#v-chat.htmode .choice:active{background:#d9f2ec}
+#v-chat.htmode .next-hint{color:#5b8f8a}
+#v-chat.htmode .send-b{background:var(--ht)}
+.corr{margin:3px 0 3px 45px;max-width:79%;background:#fff;border:1.5px solid #f6cfc9;border-radius:13px;padding:9px 11px;font-size:13px;line-height:1.62;color:#333;animation:msgin .18s ease}
+.corr.mine{margin-left:auto;margin-right:2px;border-color:#bfe6cf}
+.corr .ch{font-size:10.5px;font-weight:800;color:#e5484d;letter-spacing:.05em;margin-bottom:3px}
+.corr.mine .ch{color:#1d9d63}
+.corr .orig{color:#8a8a8f;font-size:12.5px}
+.corr del{color:#e5484d;text-decoration:line-through;font-weight:700}
+.corr ins{color:#0f9d58;text-decoration:none;font-weight:700}
+.corr .cm{margin-top:6px;padding-top:6px;border-top:1px dashed #e8e8e8;font-size:11.5px;color:#777;line-height:1.55}
+.vmsg{display:flex;align-items:center;gap:9px;min-width:138px}
+.vmsg .pl{width:27px;height:27px;border-radius:50%;background:var(--ht);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;flex:none;padding-left:2px}
+.vmsg .wave{display:flex;gap:2px;align-items:center}
+.vmsg .wave i{width:3px;background:#93c7c1;border-radius:2px;display:block}
+.vmsg .vdur{font-size:11px;color:#7d8b89}
+.tsc{margin-top:6px;font-size:12px;color:#555;border-top:1px dashed #e4e4e4;padding-top:5px;line-height:1.55}
+.tsc b{display:block;color:#4f8a84;font-size:9.5px;letter-spacing:.08em;margin-bottom:1px}
+#call-sil{border-radius:50%}
+/* HelloTalk app shell */
+.ht-head{padding:54px 14px 7px;display:flex;align-items:center;gap:8px;background:#fff;z-index:6;flex:none;border-bottom:1px solid #eef1f0}
+.ht-head .back{font-size:25px;padding:0 4px;color:#222;line-height:1}
+.ht-logo{font-size:19px;font-weight:900;color:#173b36;letter-spacing:-.01em;flex:1}
+.ht-logo b{color:var(--ht)}
+.ht-vip{font-size:10px;font-weight:900;background:linear-gradient(90deg,#ffb52e,#ff8a3d);color:#fff;border-radius:8px;padding:3px 7px;font-style:italic;flex:none}
+.ht-head .hic{font-size:18px;padding:2px 3px}
+.ht-tools{display:flex;gap:4px;padding:10px 12px 5px;background:#fff}
+.ht-tool{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9.5px;color:#555}
+.ht-tool i{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;font-style:normal}
+.ht-search{margin:8px 12px 4px;background:#f1f3f2;border-radius:11px;padding:8px 12px;font-size:13px;color:#9aa5a3}
+.ht-row{display:flex;gap:11px;padding:10px 14px;align-items:center;width:100%;text-align:left;background:#fff;border-bottom:1px solid #f4f6f5}
+.ht-row:active{background:#f4faf8}
+.ht-avw{position:relative;flex:none;display:inline-block}
+.ht-avw .flg{position:absolute;right:-3px;bottom:-3px;font-size:10px;background:#fff;border-radius:50%;width:17px;height:17px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.25);z-index:2}
+.ht-avw .ond{position:absolute;left:-1px;top:-1px;width:11px;height:11px;border-radius:50%;background:#2fd35f;border:2px solid #fff;z-index:2}
+.ht-row .tt2{flex:1;min-width:0}
+.ht-row .tn2{font-size:14.5px;font-weight:700;display:flex;justify-content:space-between;align-items:baseline;color:#173b36}
+.ht-row .tn2 time{font-size:10.5px;color:#9aa5a3;font-weight:400;flex:none;margin-left:8px}
+.ht-row .tp2{display:block;font-size:12.5px;color:#8a9491;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.ht-row .ubp{background:var(--ht-pu);color:#fff;font-size:11px;font-weight:700;min-width:19px;height:19px;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:0 5px;flex:none}
+.myturn{flex:none;background:var(--ht-pu);color:#fff;font-size:10px;font-weight:700;border-radius:9px;padding:4px 8px}
+.openpill{flex:none;background:#e6f4f2;color:#0b7a71;font-size:10.5px;font-weight:700;border-radius:9px;padding:4px 9px}
+.ht-tabs{flex:none;display:flex;border-top:1px solid #e8eceb;background:#fff;padding:6px 4px 20px}
+.ht-tabs button{flex:1;font-size:17px;color:#b3bebb;display:flex;flex-direction:column;align-items:center;gap:1px}
+.ht-tabs button span{font-size:9px}
+.ht-tabs button.on{color:var(--ht-d);font-weight:700}
+.ht-chip{font-size:11.5px;font-weight:700;color:#5f6f6c;background:#eef3f1;border-radius:13px;padding:5px 11px}
+.ht-chip.on{background:var(--ht);color:#fff}
+.lg-row{display:flex;align-items:center;gap:8px;font-size:12.5px;margin:6px 0;color:#333}
+.lg-row .flg2{font-size:15px}
+.lg-row .lgn{width:54px;font-weight:600;flex:none}
+.lg-bar{flex:1;height:6px;background:#e7efed;border-radius:3px;overflow:hidden}
+.lg-bar i{display:block;height:100%;background:linear-gradient(90deg,#57c7bd,#149990);border-radius:3px}
+.lg-lv{font-size:10.5px;color:#fff;background:#149990;border-radius:7px;padding:2px 7px;font-weight:700;flex:none}
+.gauge-sec{background:#fff;padding:13px 16px;margin-top:9px}
+.gauge-sec .gs-t{font-size:11px;font-weight:800;color:#7d8b89;letter-spacing:.05em}
+.gauge-sec .gs-s{font-size:10.5px;color:#9aa5a3;margin-top:1px}
+.ht-pb{flex:1;border-radius:12px;padding:11px 0;font-size:14px;font-weight:700}
+.ht-pb.main{background:var(--ht);color:#fff}
+.ht-pb.sub{background:#e8efed;color:#33655f}
+.ht-pb.sub.on{background:#cfe9e4;color:#0b7a71}
+.mo-card{background:#fff;border-bottom:8px solid #f2f5f4;padding:13px 14px}
+.mo-head{display:flex;gap:10px;align-items:center}
+.mo-head .mn{font-size:13.5px;font-weight:700;color:#173b36}
+.mo-head .ms{font-size:10.5px;color:#9aa5a3;margin-top:1px}
+.langtag{margin-left:auto;font-size:10px;font-weight:700;color:#0b7a71;background:#e6f4f2;border-radius:7px;padding:3px 7px;flex:none}
+.mo-body{font-size:14px;line-height:1.65;margin-top:9px;color:#222}
+.tr-btn{margin-top:8px;font-size:11px;color:#0b7a71;font-weight:700;background:#e6f4f2;border-radius:8px;padding:4px 10px}
+.tr-box{margin-top:6px;font-size:12.5px;color:#33655f;background:#f2faf8;border-radius:9px;padding:7px 10px;line-height:1.6;display:none}
+.tr-box.on{display:block}
+.mo-acts{display:flex;gap:19px;margin-top:10px;font-size:12.5px;color:#8a9491;align-items:center}
+.mo-acts b{font-weight:600;color:#5f6f6c}
+.ht-send{display:block;width:100%;margin-top:11px;background:var(--ht);color:#fff;font-weight:700;font-size:13.5px;border-radius:12px;padding:10px 0}
+.mo-img{width:100%;border-radius:12px;margin-top:9px;display:block}
+.nao-alb{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:8px}
+.nao-alb button{padding:0;border-radius:10px;overflow:hidden;aspect-ratio:1;background:#eee}
+.nao-alb img{width:100%;height:100%;object-fit:cover;display:block}
+.learn-card{display:flex;gap:12px;align-items:center;background:#fff;margin:9px 12px 0;border-radius:15px;padding:13px 14px;width:calc(100% - 24px);text-align:left}
+.learn-card i{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:21px;font-style:normal;flex:none}
+.learn-card b{font-size:14px;display:block;color:#173b36}
+.learn-card small{font-size:11.5px;color:#8a9491;line-height:1.5;display:block;margin-top:1px}
+.set-row2{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:13px 16px;font-size:13.5px;border-bottom:1px solid #f2f4f3;color:#333;width:100%;text-align:left}
+.set-row2 span{color:#9aa5a3;font-size:12px}
+
 /* v9: hiroto-standard app layer */
 #sheet.nopost .sheet-in{display:none}
 .sc-row .sc-heart{margin-left:auto;font-size:15px;padding:2px 4px}
@@ -662,7 +763,7 @@ img{max-width:100%}
 <body>
 <div class="page-head">
 <h1>💗 サクヤと熱愛バレた件</h1>
-<p>ソウル旅行でマッチングアプリで出会った相手は、NCT WISHのサクヤだった――。秘密の遠距離恋愛と、神戸の夜のスクープを描くスマホ風SNSファンゲーム。</p>
+<p>ソウル旅行の前にHelloTalk（言語交換アプリ）で出会った相手は、NCT WISHのサクヤだった――。秘密の遠距離恋愛と、神戸の夜のスクープを描くスマホ風SNSファンゲーム。</p>
 <p class="src">※これは実在の人物を題材にした創作フィクション（ファンメイド作品）です。登場人物の発言・出来事は創作であり、実在の内容とは関係ありません。ツアー日程・会場・リリース実績等の史実データは公開情報に基づきます。</p>
 </div>
 <div class="phone"><span class="action-btn" aria-hidden="true"></span><div class="screen">
@@ -678,7 +779,7 @@ img{max-width:100%}
 <div class="title-kick">NCT WISH ― FANMADE STORY</div>
 <img class="title-av" src="assets/av-sakuya.jpg" alt="">
 <div class="title-logo"><div class="l1">サクヤと</div><div class="l2">熱愛バレた件</div></div>
-<div class="title-sub">ソウルでマッチした相手は、推しのサクヤだった。<br>秘密の遠距離と、神戸の夜のスクープ。</div>
+<div class="title-sub">HelloTalkで知り合った相手は、推しのサクヤだった。<br>秘密の遠距離と、神戸の夜のスクープ。</div>
 <div class="title-btns">
 <button class="tbtn primary" id="title-continue" style="display:none">つづきから ▶</button>
 <button class="tbtn glass" id="title-start">はじめから</button>
@@ -694,7 +795,7 @@ img{max-width:100%}
 <div class="lock-top">🔒</div>
 <div class="lock-clock"><div class="lock-date" id="lock-date">1月10日 土曜日</div><div class="lock-time" id="lock-time">9:41</div></div>
 <div class="lock-notifs">
-<button class="lnotif" data-go="line"><span class="ln-ic" style="background:linear-gradient(135deg,#ff5c8a,#ff9e6d)">💘</span><span style="flex:1"><span class="ln-h">マッチングアプリ <span>今</span></span><span class="ln-t"><b>ソウさん</b>とマッチしました！ 最初のメッセージを送ってみましょう</span></span></button>
+<button class="lnotif" data-go="ht"><span class="ln-ic" style="background:#149990">💬</span><span style="flex:1"><span class="ln-h">HelloTalk <span>今</span></span><span class="ln-t"><b>빵돌이</b> さんとのチャットが始まっています。最初のメッセージを送ってみましょう</span></span></button>
 <button class="lnotif" data-go="ig"><img src="assets/group.jpg" alt=""><span style="flex:1"><span class="ln-h">INSTAGRAM <span>3時間前</span></span><span class="ln-t"><b>nctwish_official</b>：INTO THE WISH : Face Our WISH ― SEOULまであと5日💫</span></span></button>
 <div class="lnotif stack"><span class="ln-ic" style="background:#000">𝕏</span><span style="flex:1"><span class="ln-h">X <span>5時間前</span></span><span class="ln-t">トレンド：<b>#NCTWISH</b> ・ <b>高尺スカイドーム</b></span></span></div>
 </div>
@@ -708,19 +809,20 @@ img{max-width:100%}
 <div class="shade"></div>
 <div class="home-scroll">
 <div class="wid-row">
-<div class="wid wid-count"><div class="k">💗 SECRET STORY</div><div class="big" id="cd-num">ソウル編</div><div class="s" id="cd-sub">2027年1月 ― 韓国旅行で<br>マッチした相手は…</div></div>
+<div class="wid wid-count"><div class="k">💗 SECRET STORY</div><div class="big" id="cd-num">ソウル編</div><div class="s" id="cd-sub">2027年1月 ― HelloTalkで<br>知り合った相手は…</div></div>
 <div class="wid wid-photo"><img src="assets/stage2.jpg" alt=""><span>INTO THE WISH : Face Our WISH</span></div>
 </div>
 <div class="wid-wide"><b>💗 ふたりのステータス</b><div style="margin-top:7px">
 <div class="grow"><span>信頼度</span><span id="g-trust-v">45</span></div><div class="gbar"><i id="g-trust" style="width:45%;background:linear-gradient(90deg,#ff5c8a,#ff8fab)"></i></div>
 <div class="grow"><span>炎上度</span><span id="g-fire-v">10</span></div><div class="gbar"><i id="g-fire" style="width:10%;background:linear-gradient(90deg,#ff9500,#ff3b30)"></i></div>
 <div class="grow"><span>ファンの温度</span><span id="g-fan-v">55</span></div><div class="gbar"><i id="g-fan" style="width:55%;background:linear-gradient(90deg,#7b61c9,#4fc3e8)"></i></div>
-</div><div id="home-prog" style="font-size:11.5px;color:#888;margin-top:2px">第1話から始まるよ。LINEを開いてね</div></div>
+</div><div id="home-prog" style="font-size:11.5px;color:#888;margin-top:2px">第1話から始まるよ。HelloTalkを開いてね</div></div>
 <div class="apps">
 <button class="app" data-go="ig"><span class="ic ic-ig">📸</span>Instagram<span class="bdg" data-bdg="ig" style="display:none"></span></button>
 <button class="app" data-go="x"><span class="ic ic-x">𝕏</span>X<span class="bdg" data-bdg="x" style="display:none"></span></button>
 <button class="app" data-go="news"><span class="ic ic-news">🗞️</span>ニュース<span class="bdg" data-bdg="news" style="display:none"></span></button>
 <button class="app" data-go="tt"><span class="ic ic-tt">♪</span>TikTok<span class="bdg" data-bdg="tt" style="display:none"></span></button>
+<button class="app" data-go="ht"><span class="ic ic-ht">💬</span>HelloTalk<span class="bdg" data-bdg="ht" style="display:none"></span></button>
 <button class="app" data-go="cal"><span class="ic ic-cal"><span class="cwd" id="cal-wd">SAT</span><span class="cd2" id="cal-d">10</span></span>カレンダー</button>
 <button class="app" data-go="notes"><span class="ic ic-note"><span class="nb"></span><span class="nl"></span><span class="nl"></span></span>観察メモ<span class="bdg" data-bdg="notes" style="display:none"></span></button>
 <button class="app" data-go="photos"><span class="ic ic-photo">🌼</span>写真</button>
@@ -746,7 +848,7 @@ img{max-width:100%}
 
 <!-- CHAT -->
 <div class="view" id="v-chat">
-<div class="chat-head"><button class="back" data-back="line">‹</button><h2 id="chat-title">トーク</h2><span class="hic">🔍</span><span class="hic">☰</span></div>
+<div class="chat-head"><button class="back" data-back="line">‹</button><h2 id="chat-title">トーク<span class="langpair" id="chat-sub"></span></h2><span class="hic">🔍</span><span class="hic" id="chat-call" style="display:none">📞</span><span class="hic">☰</span></div>
 <div class="chat-body" id="chat-body"></div>
 <div id="chat-panel"></div>
 <div class="chat-foot" id="chat-foot"><span class="plus">＋</span><span class="fic">📷</span><span class="fic">🖼️</span><div class="chat-in">メッセージを入力</div><span class="fic">😊</span><span class="fic">🎤</span><button class="send-b" id="chat-next">▶ 進む</button></div>
@@ -810,8 +912,10 @@ img{max-width:100%}
 <!-- CALL -->
 <div class="view" id="v-call">
 <img class="cav" id="call-av" src="assets/av-sakuya.jpg" alt="">
+<div class="cav" id="call-sil" style="display:none;background:#b08968;font-size:38px;align-items:center;justify-content:center;color:#fff;font-weight:800">빵</div>
 <div class="cnm" id="call-name">サクヤ</div>
 <div class="cst" id="call-status">着信中…</div>
+<div id="call-app" style="font-size:11px;color:#8f89ad;letter-spacing:.16em;margin-top:2px;min-height:14px"></div>
 <div class="csub" id="call-sub"></div>
 <button id="call-voice" style="display:none">▶ ボイスで聞く</button>
 <div class="call-grid" id="call-grid" style="display:none">
@@ -835,10 +939,30 @@ img{max-width:100%}
 <div class="ahead"><button class="back" data-back="home">‹</button><h2>設定</h2></div>
 <div class="abody" style="background:#f2f2f7">
 <button class="set-row" id="set-reset">最初からプレイし直す <span>セーブ削除</span></button>
-<div class="set-row">バージョン <span>v13.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row">バージョン <span>v14.0（iOS 26 / Liquid Glass）</span></div>
 <div class="set-row">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
-<div style="padding:16px;font-size:12px;color:#888;line-height:1.8">『サクヤと熱愛バレた件』は実在の人物を題材にした創作フィクション（ファンメイド作品）です。登場人物の発言・交際等の出来事は全て創作であり、実在の内容とは関係ありません。ツアー日程・会場・リリース実績は公開されている史実に基づきます。<br>なおのアバターには本人の写真を使用していません（イニシャルアイコン）。<br>画像：Pinterest／Instagram系の掲載写真（2024〜2026年）、メディア掲載写真等。動画：NCT WISH公式ミュージックビデオの公式プレビュー（iTunes）から作成した縦型クリップ等（権利は各権利者に帰属します）。TikTok公式動画は取得環境の都合（IPブロック）で直接収録できませんでした。</div>
+<div style="padding:16px;font-size:12px;color:#888;line-height:1.8">『サクヤと熱愛バレた件』は実在の人物を題材にした創作フィクション（ファンメイド作品）です。登場人物の発言・交際等の出来事は全て創作であり、実在の内容とは関係ありません。ツアー日程・会場・リリース実績は公開されている史実に基づきます。<br>なおのプロフィール写真・アルバムには、本人の許可済み写真（5枚セット）を使用しています（本作のみの許可です）。<br>画像：Pinterest／Instagram系の掲載写真（2024〜2026年）、メディア掲載写真等。動画：NCT WISH公式ミュージックビデオの公式プレビュー（iTunes）から作成した縦型クリップ等（権利は各権利者に帰属します）。TikTok公式動画は取得環境の都合（IPブロック）で直接収録できませんでした。</div>
 </div>
+</div>
+
+
+<!-- HELLOTALK -->
+<div class="view" id="v-ht">
+<div class="ht-head"><button class="back" data-back="home">‹</button><span class="ht-logo">Hello<b>Talk</b></span><span class="ht-vip">VIP</span><span class="hic">☰</span></div>
+<div class="abody" id="ht-body" style="background:#f7f9f8"></div>
+<div class="ht-tabs" id="ht-tabs">
+<button data-httab="chat" class="on">💬<span>HelloTalk</span></button>
+<button data-httab="moments">🌐<span>モーメンツ</span></button>
+<button data-httab="search">🔍<span>検索</span></button>
+<button data-httab="learn">📚<span>学習</span></button>
+<button data-httab="me">👤<span>本人</span></button>
+</div>
+</div>
+
+<!-- HELLOTALK PROFILE -->
+<div class="view" id="v-htprof">
+<div class="ahead"><button class="back" data-back="ht">‹</button><h2>プロフィール</h2></div>
+<div class="abody" id="htprof-body" style="background:#f2f5f4"></div>
 </div>
 
 <!-- PROFILE -->
@@ -883,12 +1007,12 @@ const M={
  jaehee:{n:"ジェヒ",av:"assets/av-jaehee.jpg",c:"#3aa655"},
  ryo:{n:"リョウ",av:"assets/av-ryo.jpg",c:"#d95f7b"},
  sakuya:{n:"サクヤ",av:"assets/av-sakuya.jpg",c:"#ff5c8a"},
- saku:{n:"ソウ",av:"",c:"#a3a3ad"},
+ saku:{n:"빵돌이",av:"",c:"#b08968"},
  mgr:{n:"マネージャー佐伯",av:"",c:"#666"},
  yui:{n:"ゆい",av:"",c:"#f0a04b"}
 };
 const THREADS={
- app:{title:"ソウ（マッチングアプリ）",av:"",c:"#a3a3ad",ini:"ソ"},
+ ht:{title:"빵돌이",av:"",c:"#b08968",ini:"빵"},
  sakuya:{title:"サクヤ",av:"assets/av-sakuya.jpg",c:"#ff5c8a",ini:"サ"},
  members:{title:"WISH メンバー",av:"assets/group.jpg",c:"#7b61c9",ini:"W"},
  mgr:{title:"マネージャー佐伯",av:"",c:"#666",ini:"佐"},
@@ -896,11 +1020,11 @@ const THREADS={
 };
 /* step形式: {f:相手キー,t:本文} / {me:"自分の本文"} / {sys:"ナレーション"} / {day:"日付"} / {img:src,cap,f} / {choice:[{t,e:{trust,fire,fan},act,r:[[key,text]]}]} ― レンダラは必ずこの形式どおりに読む */
 const SCENES=[
-{id:"s1",thread:"app",date:"1月10日(土)",title:"第1話 ― ソウルでマッチ",ig:0,tt:0,photo:0,memo:{t:"観察メモ① アプリの「ソウ」",b:"マッチングアプリで出会った相手。顔写真なし、プロフィールは一言だけ『言葉は、少なくていい。合う人には届くから』。……詩人？ それとも変な人？ 返信は遅いけど、一文一文が丁寧。"},steps:[
+{id:"s1",thread:"ht",date:"1月10日(土)",title:"第1話 ― ハロートークの빵돌이",ig:0,tt:0,photo:0,memo:{t:"観察メモ① HelloTalkの「빵돌이」",b:"HelloTalkで出会った、ソウル在住の日本人。顔写真なし、自己紹介は一言だけ『言葉は、少なくていい。合う人には届くから』。ソウルのパン屋に異常に詳しい。……詩人？ それとも変な人？ 返信は遅いけど、一文一文が丁寧で、添削が的確。声も、想像よりずっと良かった。"},steps:[
  {day:"2027年1月10日（土）― ソウル旅行2日目"},
- {sys:"韓国旅行でソウルに来ている なお。友達に勧められて入れたマッチングアプリで、顔写真のないプロフィールの人とマッチした"},
+ {sys:"韓国旅行でソウルに来ている なお。韓国語の勉強で始めたHelloTalkで見つけたのは、ソウル在住の日本人「빵돌이」。モーメンツの文章がきれいで、思い切ってメッセージを送った"},
  {me:"はじめまして。日本から旅行で来てます、なおです"},
- {f:"saku",t:"はじめまして、ソウです。旅行、楽しんでますか"},
+ {f:"saku",t:"はじめまして、빵돌이 です。旅行、楽しんでますか"},
  {f:"saku",t:"返信遅くなったらごめんなさい。仕事の波があって"},
  {me:"全然大丈夫です。ソウル、初めて来たんですけどごはんが全部おいしくて"},
  {f:"saku",t:"それがいちばんの感想だと思います。……何が一番おいしかったですか"},
@@ -915,13 +1039,17 @@ const SCENES=[
  {day:"1月11日（日）"},
  {f:"saku",t:"今日、空がきれいでした。なおさんも見ましたか"},
  {me:"見た！ 漢江のほう歩いてた。寒すぎて耳ちぎれるかと思ったけど"},
+ {me:"韓国語で書いてみます。어제 한강에 갔어요. 날씨가 너무 좋다！"},
+ {corr:{from:"saku",orig:[["어제 한강에 갔어요. 날씨가 너무 ",0],["좋다",2],["！",0]],fixed:[["어제 한강에 갔어요. 날씨가 너무 ",0],["좋았어요",1],["！",0]],memo:"「좋다」は辞書の形で、話すときはそのまま使いません。「좋았어요」＝『よかった』です。……でも、もう文が作れてますね"}},
  {f:"saku",t:"耳は大事にしてください。……あの、変なこと聞いていいですか。人は、言葉と声、どっちを先に好きになりますか"},
  {me:"え、急に哲学的。……私は言葉かな。声はそのあと付いてくる感じ"},
  {f:"saku",t:"僕もそう思います。だから、この文面のままの僕を、少し信じてもらえたら嬉しい"},
  {day:"1月13日（火）"},
+ {f:"saku",t:"（日本語の練習で書きます）ソウルの冬は、とても寒いなります。でも空は、きれいです"},
+ {corr:{from:"nao",orig:[["ソウルの冬は、とても",0],["寒いなります",2],["。でも空は、きれいです",0]],fixed:[["ソウルの冬は、とても",0],["寒くなります",1],["。でも空は、きれいです",0]],memo:"「寒い」みたいな“い形容詞”は「く」が入って「寒くなります」です。それ以外は完璧（なお）"}},
  {f:"saku",t:"なおさんはいつまでソウルにいますか"},
  {me:"14日の夜まで。15日から仕事の都合で……じゃなくて私の帰国が17日で、その前に予定があって"},
- {f:"saku",t:"14日。……その日、夕方だけ空いてます。よかったら、お茶だけでも。顔を見て話せたら、僕は嬉しいです"},
+ {f:"saku",vm:"0:09",t:"14日。……その日、夕方だけ空いてます。よかったら、お茶だけでも。顔を見て話せたら、僕は嬉しいです"},
  {choice:[
   {t:"「会いたい。場所は任せる」と即答",e:{trust:5},r:[["saku","……ありがとうございます。じゃあ、静かなところを選びますね"]]},
   {t:"「正直ちょっと怖い。でも会いたい」と本音で",e:{trust:6},r:[["saku","怖がらせてごめんなさい。……でも、本音を言ってくれる人でよかった。無理のない場所にします"]]},
@@ -929,27 +1057,27 @@ const SCENES=[
  ]},
  {sys:"翌日。指定されたのは、観光客の少ない裏通りの小さなカフェだった"}
 ]},
-{id:"s2",thread:"sakuya",date:"1月14日(水)",title:"第2話 ― 初めて会う日",ig:1,tt:0,photo:1,memo:{t:"観察メモ② 正体",b:"カフェで待っていたのは、帽子を深く被った同い年くらいの男の子。顔を上げた瞬間、息が止まった。NCT WISHのサクヤ。私の推しが、アプリの「ソウ」だった。動揺する私に彼は言った。『驚かせたかったわけじゃない。ただ、先に言葉で知ってほしかった』。"},steps:[
+{id:"s2",thread:"ht",date:"1月14日(水)",title:"第2話 ― 初めて会う日",ig:1,tt:0,photo:1,memo:{t:"観察メモ② 正体",b:"カフェで待っていたのは、帽子を深く被った同い年くらいの男の子。顔を上げた瞬間、息が止まった。NCT WISHのサクヤ。私の推しが、빵돌이 だった。動揺する私に彼は言った。『驚かせたかったわけじゃない。ただ、先に言葉で知ってほしかった』。"},steps:[
  {day:"2027年1月14日（水）― 初めて会った日"},
- {sys:"カフェの奥の席。マスクを外した「ソウ」の顔は――何度も画面で見てきた、NCT WISHのサクヤだった"},
+ {sys:"カフェの奥の席。マスクを外した「빵돌이」の顔は――何度も画面で見てきた、NCT WISHのサクヤだった"},
  {f:"sakuya",t:"……ごめんなさい。驚かせるつもりは、なかったんです"},
  {f:"sakuya",t:"先に顔を知られたら、言葉が届かなくなる気がして。それでも、嘘をついたのは僕です"},
  {me:"まって、頭が追いつかない。本物……だよね？ NCT WISHの、サクヤ"},
  {f:"sakuya",t:"はい。……なおさんの好きなグループの、サクヤです"},
  {choice:[
   {t:"「ファンだって先に言う。隠したくない」と正直に",e:{trust:6},r:[["sakuya","……ありがとうございます。そう言ってもらえると、僕も隠さなくていい"]]},
-  {t:"「ファンとか関係なく、ソウとして会いに来た」と伝える",e:{trust:5},r:[["sakuya","ソウとして。……その言い方、すごく嬉しいです"]]},
+  {t:"「ファンとか関係なく、빵돌이 として会いに来た」と伝える",e:{trust:5},r:[["sakuya","빵돌이 として。……その言い方、すごく嬉しいです"]]},
   {t:"「ごめん、やっぱり無理かも」と席を立とうとする",e:{trust:-4},r:[["sakuya","無理に止めません。……でも一つだけ。今日の紅茶、飲んでからでもいいですか。温かいうちが、おいしいので"]]}
  ]},
  {sys:"結局、閉店まで話した。公演のこと、パンのこと、言葉のこと。彼は画面の中よりずっと静かで、ずっと丁寧だった"},
  {f:"sakuya",t:"明日と明後日、高尺スカイドームでツアーが始まります。……よかったら、来ませんか。チケットは完売してるけど、僕から渡せる分があって"},
  {me:"え、いいの……？ 私、ただのファンだよ"},
  {f:"sakuya",t:"ただの、じゃないです。言葉で知り合った人です。……ステージの僕も、見てほしい"},
- {f:"sakuya",t:"連絡先、交換してもいいですか。アプリは、もう卒業したいので"},
+ {f:"sakuya",t:"連絡先、交換してもいいですか。HelloTalkは、もう卒業したいので"},
  {img:"assets/sakuya-selca.jpg",f:"sakuya",cap:"帰り際、彼が送ってきた写真。「今日の僕、ちゃんと普通の顔でしたか」"},
  {sys:"――こうして、内緒のLINEが始まった"}
 ]},
-{id:"s3",thread:"sakuya",date:"1月17日(土)",title:"第3話 ― 帰国と遠距離",ig:1,tt:1,photo:1,call:{who:"sakuya",lines:["……もしもし。声、聞こえますか","関空に着いたって聞いて。飛行機、揺れませんでしたか","僕は今、公演終わりでホテルです。ソウルの2日間、終わりました。……なおさんが見てくれた初日、忘れません","距離って、数字じゃない気がします。声が届くなら、近いほうです","……もう少しだけ、起きててもいいですか。なおさんの声を聞いてると、眠くならないんです"]},memo:{t:"観察メモ③ 遠距離のルール",b:"決めたルール3つ。①写真は撮らない、残さない ②会うのは公演の前後だけ、短く ③嘘はつかない、隠しごとはしても。……③が一番難しい顔を、彼はしていた。"},steps:[
+{id:"s3",thread:"ht",date:"1月17日(土)",title:"第3話 ― 帰国と遠距離",ig:1,tt:1,photo:1,call:{who:"sakuya",lines:["……もしもし。声、聞こえますか","関空に着いたって聞いて。飛行機、揺れませんでしたか","僕は今、公演終わりでホテルです。ソウルの2日間、終わりました。……なおさんが見てくれた初日、忘れません","距離って、数字じゃない気がします。声が届くなら、近いほうです","……もう少しだけ、起きててもいいですか。なおさんの声を聞いてると、眠くならないんです"]},memo:{t:"観察メモ③ 遠距離のルール",b:"決めたルール3つ。①写真は撮らない、残さない ②会うのは公演の前後だけ、短く ③嘘はつかない、隠しごとはしても。……③が一番難しい顔を、彼はしていた。"},steps:[
  {day:"2027年1月17日（土）― 帰国の日"},
  {f:"sakuya",t:"飛行機、無事に着きましたか"},
  {me:"着いたよ関空。……ソウル公演2日間、本当にお疲れさま。初日、泣きそうだった"},
@@ -993,7 +1121,7 @@ const SCENES=[
  {me:"うん。GLION ARENA KOBE、3日間とも行くよ。……大阪から近いから、なんだか実感ある"},
  {f:"sakuya",t:"神戸では、海が見えます。……海のそばで、少し長く話せたらいいな"}
 ]},
-{id:"s5",thread:"sakuya",date:"3月4日(木)",title:"第5話 ― 神戸前夜",ig:4,tt:2,photo:4,memo:{t:"観察メモ⑤ 神戸前夜の手紙",b:"公演前夜、彼に手紙を書いた。ファンレターじゃない、ソウ宛の手紙。『言葉で知り合ったこと、後悔してない』とだけ。返事は短かった。『僕の宝物が増えました』。"},steps:[
+{id:"s5",thread:"sakuya",date:"3月4日(木)",title:"第5話 ― 神戸前夜",ig:4,tt:2,photo:4,memo:{t:"観察メモ⑤ 神戸前夜の手紙",b:"公演前夜、彼に手紙を書いた。ファンレターじゃない、빵돌이 宛の手紙。『言葉で知り合ったこと、後悔してない』とだけ。返事は短かった。『僕の宝物が増えました』。"},steps:[
  {day:"2027年3月4日（木）― 神戸公演前夜"},
  {f:"sakuya",t:"神戸に着きました。ホテルの窓から、海が見えます"},
  {me:"いらっしゃい神戸。明日からの3日間、GLION ARENAだね"},
@@ -1003,7 +1131,7 @@ const SCENES=[
  {me:"読んだ？ ファンレターの箱、すごい量だったのに"},
  {f:"sakuya",t:"字で分かりました。なおさんの字、丸くて丁寧なので"},
  {choice:[
-  {t:"「あの手紙、ファンとしてじゃなく、ソウへの手紙だよ」と伝える",e:{trust:6},r:[["sakuya","……分かってます。だから、楽屋の誰にも見せてません。僕だけの場所にあります"]]},
+  {t:"「あの手紙、ファンとしてじゃなく、빵돌이 への手紙だよ」と伝える",e:{trust:6},r:[["sakuya","……分かってます。だから、楽屋の誰にも見せてません。僕だけの場所にあります"]]},
   {t:"「宝物だなんて、大げさだよ」と照れる",e:{trust:4},r:[["sakuya","大げさじゃないです。言葉をもらうって、そういうことだと思うので"]]},
   {t:"「最終日、終わったら少し会える？」と聞く",e:{trust:5,fire:3},r:[["sakuya","……会いましょう。最終日の夜。海のそばで、短く"]]}
  ]},
@@ -1135,6 +1263,11 @@ const NEWS_PRE=[
 const NEWS_SCOOP={k:"スクープ",t:"NCT WISHサクヤ、神戸の夜に一般女性と「密会」 週刊誌が写真掲載",m:"週刊スコープ ・ 3月8日",img:"assets/kobe-night.jpg",body:"人気グループNCT WISHのサクヤ（19）が、神戸公演最終日の夜、一般女性と海沿いを歩く姿を週刊スコープが捉えた。\n\n関係者によれば、女性は以前から公演に通うファンとみられ、ふたりは人目を避けるように帽子とマスク姿。短時間の逢瀬ののち、別々に帰路についたという。\n\n所属事務所は本誌の取材に「事実関係を確認中」とコメント。SNSでは「サクヤ 熱愛」がトレンド1位となり、ファンの間では動揺と擁護の声が交錯している。\n\n※本記事は創作フィクション内の架空記事です。"};
 const NEWS_STMT={k:"公式発表",t:"NCT WISHサクヤ熱愛報道、所属事務所が声明を発表",m:"スポルティバ芸能部 ・ 3月9日",body:"所属事務所は9日午後、サクヤの熱愛報道について声明を発表した。声明の詳細と全文は公式サイトに掲載されている。\n\n事務所は「アーティストの活動に影響のないよう、温かく見守っていただければ」とし、ツアーの福岡・愛知公演は予定通り開催される。\n\n※本記事は創作フィクション内の架空記事です。"};
 const PHOTOS=[
+ {src:"assets/nao-wink.jpg",cap:"なおのプロフィール写真（白ニット・ウインク）",unlock:0},
+ {src:"assets/nao-jacket.jpg",cap:"ソウル旅行の街角で（1月10日）",unlock:0},
+ {src:"assets/nao-cafe.jpg",cap:"ソウルのカフェで（cafe murmur）",unlock:1},
+ {src:"assets/nao-cat.jpg",cap:"留守番中の相棒と（帰国後）",unlock:2},
+ {src:"assets/nao-shirt.jpg",cap:"白シャツでピース",unlock:3},
  {src:"assets/sakuya-selca.jpg",cap:"ソウルで彼が送ってきた写真（1月14日）",unlock:1},
  {src:"assets/group.jpg",cap:"公式写真：ツアー開幕ビジュアル",unlock:0},
  {src:"assets/stage-steady.jpg",cap:"『Steady』ショーケース（SM公式掲載）",unlock:0},
@@ -1146,7 +1279,7 @@ const PHOTOS=[
 ];
 const STORIES=[{k:"sion",img:"assets/stage2.jpg",h:"2時間前"},{k:"yushi",img:"assets/group.jpg",h:"3時間前"},{k:"riku",img:"assets/stage1.jpg",h:"5時間前"},{k:"jaehee",img:"assets/kobe.jpg",h:"6時間前"},{k:"ryo",img:"assets/av-ryo.jpg",h:"8時間前"},{k:"sakuya",img:"assets/sakuya-selca.jpg",h:"9時間前"}];
 const PROF={
- app:{name:"ソウ",av:"",sil:["ソ","#a3a3ad"],status:"言葉は、少なくていい。合う人には届くから。（マッチングアプリのプロフィール）",cover:"assets/group.jpg"},
+ ht:{name:"빵돌이",av:"",sil:["빵","#b08968"],status:"言葉は、少なくていい。合う人には届くから。（HelloTalkのプロフィール）",cover:"assets/group.jpg"},
  sakuya:{name:"サクヤ",av:"assets/av-sakuya.jpg",status:"遠くて近い、が合言葉。言葉は丁寧に、選んで出す人。",cover:"assets/stage2.jpg"},
  members:{name:"WISH メンバー",av:"assets/group.jpg",status:"NCT WISH 6人のグループトーク。シオンがまとめ役。",cover:"assets/group.jpg"},
  mgr:{name:"マネージャー佐伯",av:"",sil:["佐","#666"],status:"所属事務所 マネージャー。対応は迅速、言葉は慎重。",cover:"assets/stage1.jpg"},
@@ -1162,7 +1295,7 @@ const FREE=[
  {k:["エビ","えび","カンジャンセウ"],r:"カンジャンセウ。……ソウルの味ですね。次は一緒に食べましょう"},
  {k:["韓国語","ぼごしぽ","보고"],r:"보고 싶어요。……発音、だいぶ上手くなりましたね"},
  {k:["歌","ライブ","公演","ステージ"],r:"ステージの僕は、客席のなおさんを探してます。見つけるの、得意なので"},
- {k:["サクヤ","さくや","ソウ"],r:"はい、ソウです。……どっちの名前で呼ばれても、嬉しいですよ"},
+ {k:["サクヤ","さくや","빵돌이","パンドリ"],r:"はい、빵돌이 です。……どっちの名前で呼ばれても、嬉しいですよ"},
  {k:["炎上","記事","スクープ","声明"],r:{public:"終わりました。言葉で説明するって決めて、よかったです",silent:"まだ静かにしてる途中です。でも、手は離してません",bitter:"……あの日のことは、僕の言葉でいつか話します。待っててください",def:"……静かに見守ってください。お願いします"}},
  {k:["神戸","海"],r:"神戸の海、きれいでしたね。……いろいろあったけど、あの10分は僕の宝物です"},
  {k:["ソウル"],r:"ソウルは始まりの街ですね。カフェの紅茶、覚えてますか"},
@@ -1178,7 +1311,7 @@ const FREE=[
 ];
 const FREE_DEFAULT=["うん、聞いてます","……そうですね。もう少しだけ、聞かせてください","ふふ、なおさんらしいですね","その話、覚えておきます","言葉って、届く順番が大事ですね"];
 const NOTIFS=[
- {after:1,ic:"💘",bg:"linear-gradient(135deg,#ff5c8a,#ff9e6d)",title:"マッチングアプリ",body:"ソウさんとLINEを交換しました",go:"line"},
+ {after:1,ic:"💬",bg:"#06c755",title:"LINE",body:"サクヤとLINEを交換しました",go:"line"},
  {after:3,ic:"📸",bg:"linear-gradient(45deg,#feda75,#d62976,#962fbf)",title:"Instagram",body:"nctwish_official が代々木公演の投稿をシェアしました",go:"ig"},
  {after:6,ic:"♪",bg:"#000",title:"TikTok",body:"nctwish_official の新着動画『I SPY』が公開されました",go:"tt"},
  {after:7,ic:"🗞️",bg:"linear-gradient(180deg,#f43f5e,#be123c)",title:"ニュース速報",body:"『NCT WISHサクヤに熱愛報道』――ネットニュースが一斉配信",go:"news"}
@@ -1202,21 +1335,21 @@ function fmtLikes(v){const n=parseInt(String(v).replace(/[^0-9]/g,""),10)||0;if(
 function fmtNum(n){return (n||0).toLocaleString();}
 /* ================= NAV ================= */
 function syncVideos(){setTimeout(()=>{$$("video").forEach(v=>{const view=v.closest(".view");if(view&&view.classList.contains("on")){if(v.closest(".post-vid")||v.classList.contains("pv-vid")){v.play().catch(()=>{});}}else{v.pause();}});},90);}
-function show(id){if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set"].includes(id));window.scrollTo(0,0);if(id==="home")renderHome();if(id==="line")renderLineList();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();}
+function show(id){if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set","ht","htprof"].includes(id));window.scrollTo(0,0);if(id==="home")renderHome();if(id==="ht")renderHT();if(id==="line")renderLineList();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();}
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){show(g.dataset.go);return;}const b=e.target.closest("[data-back]");if(b)show(b.dataset.back);});
 $("#homebar").addEventListener("click",()=>show("home"));
 $("#v-lock").addEventListener("click",()=>show("home"));
 function tick(){const d=new Date(),h=d.getHours(),m=String(d.getMinutes()).padStart(2,"0");$("#sb-time").textContent=h+":"+m;$("#lock-time").textContent=h+":"+m;const wd=["日","月","火","水","木","金","土"][d.getDay()];$("#lock-date").textContent=(d.getMonth()+1)+"月"+d.getDate()+"日 "+wd+"曜日";const wde=["SUN","MON","TUE","WED","THU","FRI","SAT"][d.getDay()];$("#cal-wd").textContent=wde;$("#cal-d").textContent=d.getDate();}
 tick();setInterval(tick,20000);
 const PHASES=["ソウル編","ソウル編","遠距離編","代々木編","神戸編","神戸編","神戸編","炎上編","炎上編","声明編"];
-function renderHome(){renderGauges();$("#cd-num").textContent=S.ended?"完走🎉":PHASES[Math.min(S.scene,PHASES.length-1)];$("#cd-sub").innerHTML=S.ended?"お疲れさまでした。<br>フリーチャット解放中💗":"2027年1〜3月 ― ソウルで<br>マッチした相手は…";$("#home-prog").textContent=S.ended?("エンディング到達："+(ENDINGS[S.endId]?ENDINGS[S.endId].t:"")):(SCENES[S.scene]?SCENES[S.scene].title+" が待ってるよ。LINEを開いてね":"");setBdg("line",S.ended?0:1);setBdg("ig",Math.max(0,S.ig-(S._igSeen||0)));setBdg("tt",Math.max(0,S.tt-(S._ttSeen||0)));setBdg("notes",S.memos.length-(S._memoSeen||0));setBdg("x",S.x?1:0);setBdg("news",S.news?1:0);}
+function renderHome(){renderGauges();$("#cd-num").textContent=S.ended?"完走🎉":PHASES[Math.min(S.scene,PHASES.length-1)];$("#cd-sub").innerHTML=S.ended?"お疲れさまでした。<br>フリーチャット解放中💗":"2027年1〜3月 ― HelloTalkで<br>知り合った相手は…";const _cs=SCENES[S.scene];const _ht=!S.ended&&_cs&&_cs.thread==="ht";$("#home-prog").textContent=S.ended?("エンディング到達："+(ENDINGS[S.endId]?ENDINGS[S.endId].t:"")):(_cs?_cs.title+" が待ってるよ。"+(_ht?"HelloTalk":"LINE")+"を開いてね":"");setBdg("line",(!S.ended&&!_ht)?1:0);setBdg("ht",_ht?1:0);setBdg("ig",Math.max(0,S.ig-(S._igSeen||0)));setBdg("tt",Math.max(0,S.tt-(S._ttSeen||0)));setBdg("notes",S.memos.length-(S._memoSeen||0));setBdg("x",S.x?1:0);setBdg("news",S.news?1:0);}
 function setBdg(k,n){$$('[data-bdg="'+k+'"]').forEach(b=>{b.style.display=n>0?"flex":"none";b.textContent=n;});}
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){const t=g.dataset.go;if(t==="ig")S._igSeen=S.ig;if(t==="tt")S._ttSeen=S.tt;if(t==="notes")S._memoSeen=S.memos.length;if(t==="x")S.x=0;if(t==="news")S.news=0;save();}});
 $("#app-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();show("home");toast("リセットしたよ");}});
 $("#set-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();show("home");toast("リセットしたよ");}});
 /* ================= LINE LIST ================= */
-function renderLineList(){const el=$("#line-list");let h=`<button class="me-row"><span class="sil" style="width:50px;height:50px;background:#06c755;font-size:19px">N</span><span><span class="nm">なお</span><div class="st">サクヤペン💗 神戸公演が楽しみ</div></span></button><div class="sec-t">トーク</div>`;
- const order=["app","sakuya","members","yui","mgr"];
+function renderLineList(){const el=$("#line-list");let h=`<button class="me-row"><img class="avsq" src="assets/nao-face.jpg" style="width:50px;height:50px" alt=""><span><span class="nm">なお</span><div class="st">サクヤペン💗 神戸公演が楽しみ</div></span></button><div class="sec-t">トーク</div>`;
+ const order=["sakuya","members","yui","mgr"];
  const curSc=!S.ended?SCENES[S.scene]:null;
  order.forEach(tid=>{const th=THREADS[tid];
   const mine=SCENES.map((s,i)=>[s,i]).filter(x=>x[0].thread===tid);
@@ -1229,7 +1362,7 @@ function renderLineList(){const el=$("#line-list");let h=`<button class="me-row"
   else{prev="（まだ届いていないトーク）";}
   const av=th.av?`<img class="avsq" src="${th.av}" style="width:50px;height:50px" alt="">`:`<span class="sil" style="width:50px;height:50px;border-radius:38%;background:${th.c};font-size:18px">${th.ini}</span>`;
   h+=`<button class="thread" data-thread="${tid}">${av}<span class="tt"><span class="tn"><span>${th.title}</span><time>${time}</time></span><span class="tp">${prev}</span></span>${badge}</button>`;});
- h+=`<div class="locknote">物語はトークを開くと進むよ。バッジのあるトークが現在の章。<br>友達とのトークは短め設計（本編優先）。</div>`;
+ h+=`<div class="locknote">${curSc&&curSc.thread==="ht"?"いまの章はHelloTalkでのやり取りだよ（ホーム画面から開いてね）。<br>":""}物語はトークを開くと進むよ。バッジのあるトークが現在の章。<br>友達とのトークは短め設計（本編優先）。</div>`;
  el.innerHTML=h;
  el.querySelectorAll("[data-thread]").forEach(b=>b.addEventListener("click",()=>openThread(b.dataset.thread)));}
 function openThread(tid){
@@ -1245,21 +1378,27 @@ function stepInc(st){if(!st)return 1;if(st.choice)return 4;if(st.sys||st.day)ret
 function clockMin(si,upto){let m=T0[Math.min(si,T0.length-1)];const sc=SCENES[si];if(!sc)return m;const n=Math.min(upto,sc.steps.length);for(let i=0;i<n;i++)m+=stepInc(sc.steps[i]);return m;}
 function fmtMin(m){m=((m%1440)+1440)%1440;return Math.floor(m/60)+":"+String(m%60).padStart(2,"0");}
 function nowTimeStr(){const d=new Date();return d.getHours()+":"+String(d.getMinutes()).padStart(2,"0");}
-function openChat(sc){cur=sc;const ct=$("#chat-title");ct.textContent=THREADS[sc.thread].title;ct.onclick=()=>openProfile(sc.thread);$("#v-chat").classList.toggle("appmode",sc.thread==="app");show("chat");renderChat();}
+function openChat(sc){cur=sc;const ct=$("#chat-title");ct.childNodes[0].textContent=THREADS[sc.thread].title;$("#chat-sub").textContent=sc.thread==="ht"?"🇯🇵 日本語 · 🇰🇷 한국어":"";ct.onclick=()=>openProfile(sc.thread);const _vc=$("#v-chat");_vc.classList.toggle("htmode",sc.thread==="ht");_vc.querySelector(".chat-head .back").dataset.back=sc.thread==="ht"?"ht":"line";$("#chat-call").style.display=sc.thread==="ht"?"":"none";show("chat");renderChat();}
+function segHTML(segs){return segs.map(s=>s[1]===2?`<del>${esc(s[0])}</del>`:s[1]===1?`<ins>${esc(s[0])}</ins>`:esc(s[0])).join("");}
 function msgHTML(st,tm){
  if(typeof st.day==="string")return `<div class="day-pill"><span>${esc(st.day)}</span></div>`;
  if(typeof st.sys==="string")return `<div class="sys-line">${esc(st.sys)}</div>`;
+ if(st.corr){const c=st.corr;return `<div class="corr ${c.from==="nao"?"mine":""}"><div class="ch">✎ ${c.from==="nao"?"なお の訂正":"빵돌이 の訂正"}</div><div class="orig">${segHTML(c.orig)}</div><div>${segHTML(c.fixed)}</div>${c.memo?`<div class="cm">${esc(c.memo)}</div>`:""}</div>`;}
  if(typeof st.me==="string"||st.me===true){const txt=typeof st.me==="string"?st.me:st.t;return `<div class="msg me"><span class="tm"><span class="rd" style="opacity:0">既読</span>${esc(tm||"")}</span><div class="bub">${esc(txt)}</div></div>`;}
  const m=M[st.f];if(!m)return "";
- if(st.img)return `<div class="msg">${avHTML(st.f,38)}<div class="col"><div class="who">${esc(m.n)}</div><div class="bub imgb"><img src="${st.img}" alt=""></div>${st.cap?`<div class="bub" style="margin-top:4px">${esc(st.cap)}</div>`:""}</div><span class="tm">${esc(tm||"")}</span></div>`;
+ const htM=(typeof cur!=="undefined"&&cur&&cur.thread==="ht");
+ const dk=(htM&&st.f==="sakuya")?"saku":st.f;const dm=M[dk];
+ if(st.img)return `<div class="msg">${avHTML(dk,38)}<div class="col"><div class="who">${esc(dm.n)}</div><div class="bub imgb"><img src="${st.img}" alt=""></div>${st.cap?`<div class="bub" style="margin-top:4px">${esc(st.cap)}</div>`:""}</div><span class="tm">${esc(tm||"")}</span></div>`;
  const vc=(st.f==="sakuya"&&typeof cur!=="undefined"&&cur&&VOICE_CHAT[cur.id])?VOICE_CHAT[cur.id][st.t]:null;
- return `<div class="msg">${avHTML(st.f,38)}<div class="col"><div class="who">${esc(m.n)}</div><div class="bub">${esc(st.t)}</div>${vc&&VOICE_OK[vc]?`<button class="vbtn" data-v="${vc}">▶ ボイス</button>`:""}</div><span class="tm">${esc(tm||"")}</span></div>`;}
+ if(st.vm)return `<div class="msg">${avHTML(dk,38)}<div class="col"><div class="who">${esc(dm.n)}</div><div class="bub"><div class="vmsg"><span class="pl">▶</span><span class="wave">${[6,10,14,9,16,12,7,13,10,15,8,12].map(h=>`<i style="height:${h}px"></i>`).join("")}</span><span class="vdur">${esc(st.vm)}</span></div><div class="tsc"><b>文字起こし</b>${esc(st.t)}</div></div></div><span class="tm">${esc(tm||"")}</span></div>`;
+ return `<div class="msg">${avHTML(dk,38)}<div class="col"><div class="who">${esc(dm.n)}</div><div class="bub">${esc(st.t)}</div>${vc&&VOICE_OK[vc]?`<button class="vbtn" data-v="${vc}">▶ ボイス</button>`:""}</div><span class="tm">${esc(tm||"")}</span></div>`;}
 function renderChat(){const body=$("#chat-body");const sc=cur;let h="";const n=Math.min(S.shown,sc.steps.length);
  for(let i=0;i<n;i++){const st=sc.steps[i];
   if(st.choice){const ai=(S.answers||{})[sc.id+":"+i];const ch=ai!==undefined?st.choice[ai]:null;const me=ch?ch.t:st._me;const resp=ch?(ch.r||[]):st._resp;if(me)h+=msgHTML({me:me},fmtMin(clockMin(S.scene,i)));if(resp)h+=resp.map(r=>msgHTML({f:r[0],t:r[1]},fmtMin(clockMin(S.scene,i)))).join("");continue;}
   h+=msgHTML(st,fmtMin(clockMin(S.scene,i)));}
  body.innerHTML=h;
  body.querySelectorAll(".msg.me .rd").forEach(rd=>{setTimeout(()=>{rd.style.opacity="1";},300+Math.random()*700);});
+ if(sc.thread==="ht"){body.querySelectorAll(".msg.me .rd").forEach((rd,i)=>{rd.textContent="送信しました";setTimeout(()=>{rd.textContent="既読";},1500+i*150);});}
  renderPanel();body.scrollTop=body.scrollHeight;}
 function renderPanel(){const p=$("#chat-panel");const sc=cur;const st=sc.steps[S.step];
  if(S.shown<S.step){p.innerHTML="";return;}
@@ -1271,7 +1410,7 @@ function advance(){if(busy)return;const sc=cur;if(!sc)return;const st=sc.steps[S
  if(st&&st.choice&&S.shown>=S.step){return;}
  if(S.step>=sc.steps.length){finishScene();return;}
  busy=true;const body=$("#chat-body");const stp=sc.steps[S.step];
- if(stp&&stp.f&&!stp.choice){const tp=document.createElement("div");tp.className="msg";tp.id="tp-row";tp.innerHTML=avHTML(stp.f,38)+`<div class="col"><div class="who">${esc(M[stp.f].n)}</div><span class="typing"><i></i><i></i><i></i></span></div>`;body.appendChild(tp);body.scrollTop=body.scrollHeight;}
+ if(stp&&stp.f&&!stp.choice){const tp=document.createElement("div");tp.className="msg";tp.id="tp-row";tp.innerHTML=avHTML(sc.thread==="ht"&&stp.f==="sakuya"?"saku":stp.f,38)+`<div class="col"><div class="who">${esc(sc.thread==="ht"&&stp.f==="sakuya"?"빵돌이":M[stp.f].n)}</div><span class="typing"><i></i><i></i><i></i></span></div>`;body.appendChild(tp);body.scrollTop=body.scrollHeight;}
  setTimeout(()=>{const tp=$("#tp-row");if(tp)tp.remove();S.step++;S.shown=Math.max(S.shown,S.step);save();busy=false;renderChat();},typingDelay(sc,stp));}
 $("#chat-next").addEventListener("click",advance);
 $("#chat-body").addEventListener("click",advance);
@@ -1279,11 +1418,11 @@ function pickChoice(i){const sc=cur;const st=sc.steps[S.step];const c=st.choice[
 function finishScene(){const sc=cur;if(sc.fx)applyE(sc.fx);if(sc.memo&&!S.memos.includes(sc.id))S.memos.push(sc.id);if(sc.ig)S.ig=Math.max(S.ig,sc.ig);if(sc.tt)S.tt=Math.max(S.tt,sc.tt);S.scene++;S.step=0;S.shown=0;save();cur=null;
  if(S.scene>=SCENES.length){doEnding();return;}
  if(S.scene>=7){S.x=1;S.news=1;save();}
- toast("「"+SCENES[S.scene].title+"」が届いたよ");show("line");
+ toast("「"+SCENES[S.scene].title+"」が届いたよ");show(SCENES[S.scene].thread==="ht"?"ht":"line");
  const n2=NOTIFS.find(n=>n.after===S.scene);if(n2&&!S.notified.includes(S.scene)){S.notified.push(S.scene);save();setTimeout(()=>pushNotif(n2),600);}}
 /* ================= CALL ================= */
 let callTimer=null,callSec=0,callScene=null,callLine=0;
-function startCall(sc){callScene=sc;callLine=0;const _cb=$("#call-voice");if(_cb)_cb.style.display="none";const who=sc.call.who;$("#call-av").src=M[who].av||"";$("#call-av").style.display=M[who].av?"block":"none";$("#call-name").textContent=M[who].n;$("#call-status").textContent="着信中…";$("#call-sub").textContent="";$("#call-btns").style.display="flex";const cm=$("#call-mini");if(cm)cm.style.display="flex";$("#call-grid").style.display="none";$("#call-end").style.display="none";show("call");}
+function startCall(sc){callScene=sc;callLine=0;const _cb=$("#call-voice");if(_cb)_cb.style.display="none";const who=sc.call.who;const _htc=sc.thread==="ht";$("#call-av").src=M[who].av||"";$("#call-av").style.display=(M[who].av&&!_htc)?"block":"none";const _csil=$("#call-sil");if(_csil)_csil.style.display=_htc?"flex":"none";$("#call-name").textContent=_htc?"빵돌이":M[who].n;$("#call-app").textContent=_htc?"HelloTalk":"";$("#call-status").textContent="着信中…";$("#call-sub").textContent="";$("#call-btns").style.display="flex";const cm=$("#call-mini");if(cm)cm.style.display="flex";$("#call-grid").style.display="none";$("#call-end").style.display="none";show("call");}
 $("#call-acc").addEventListener("click",()=>{callSec=0;$("#call-status").textContent="00:00";$("#call-btns").style.display="none";const cm=$("#call-mini");if(cm)cm.style.display="none";$("#call-grid").style.display="grid";$("#call-end").style.display="block";$("#call-sub").textContent="タップで会話が進むよ";callTimer=setInterval(()=>{callSec++;$("#call-status").textContent=String(Math.floor(callSec/60)).padStart(2,"0")+":"+String(callSec%60).padStart(2,"0");},1000);});
 $("#call-dec").addEventListener("click",()=>{toast("かけ直してきたよ（応答してね）");});
 $("#call-end").addEventListener("click",()=>{const lines=callScene.call.lines;if(callLine<lines.length){$("#call-sub").textContent="「"+lines[callLine]+"」";const cvb=$("#call-voice");const cv=(CALL_VOICE[callScene.id]||{})[callLine];if(cvb){if(cv&&VOICE_OK[cv]){cvb.style.display="inline-block";cvb.dataset.v=cv;}else{cvb.style.display="none";}}callLine++;return;}clearInterval(callTimer);S.callsDone[callScene.id]=true;save();openChat(callScene);});
@@ -1311,7 +1450,7 @@ function igFolHTML(){if(S.scene>=7)return `<b id="ig-fol-num">${fmtNum(4862314+I
 function igTabsHTML(view){const on=v=>(view===v||(view==="feed"&&v==="grid")||(view==="tagfeed"&&v==="tagged"))?"on":"";return `<div class="ig-tabs"><button class="${on("grid")}" id="ig-t-grid">▦</button><button class="${on("reels")}" id="ig-t-reels">🎬</button><button class="${on("tagged")}" id="ig-t-tagged">👤</button></div>`;}
 function igTile(p){let badge="";if(p.slides)badge='<span class="grid-multi">❏</span>';else if(p.video)badge='<span class="pin">▶</span>';else if(p.id===1)badge='<span class="pin">📌</span>';const views=p.video?`<span class="grid-views">▶ ${fmtLikes(p.likes)}</span>`:"";return `<button data-post="${p.id}"><img src="${p.img}">${badge}${views}</button>`;}
 function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);const view=S.viewIG||"grid";
- let h=`<div class="stories">${Object.keys(M).filter(k=>M[k].av).map(k=>`<button class="story" data-story="${k}"><span class="ring ${S.ig>0?"":"seen"}"><img src="${M[k].av}"></span>${M[k].n}</button>`).join("")}<button class="story" data-story="me"><span class="ring seen"><span style="width:100%;height:100%;border-radius:50%;background:#06c755;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;border:2.5px solid #fff">N</span></span>あなた</button></div>`;
+ let h=`<div class="stories">${Object.keys(M).filter(k=>M[k].av).map(k=>`<button class="story" data-story="${k}"><span class="ring ${S.ig>0?"":"seen"}"><img src="${M[k].av}"></span>${M[k].n}</button>`).join("")}<button class="story" data-story="me"><span class="ring seen"><img src="assets/nao-face.jpg"></span>あなた</button></div>`;
  h+=`<div class="ig-prof"><div class="ig-top"><span class="ring"><img src="assets/group.jpg"></span><div class="ig-stats"><div><b>${Math.max(S.ig,0)}</b><span>投稿</span></div><div data-followers style="cursor:pointer">${igFolHTML()}<span>フォロワー</span></div><div><b>12</b><span>フォロー中</span></div></div></div>
  <div class="ig-cat">アーティスト</div>
  <div class="ig-bio"><b>nctwish_official</b> <span class="vbadge">✓</span><br>NCT WISH 公式アカウント<br>2nd TOUR『INTO THE WISH : Face Our WISH』開催中💫<br><span class="lnk">nctwish.jp/tour2027</span><br><span class="ig-threads"><i>🧵</i> nctwish_official</span></div>
@@ -1423,7 +1562,7 @@ function openNews(n){const cmts=n===NEWS_SCOOP?NCMT_SCOOP:(n===NEWS_STMT?NCMT_ST
 /* ================= CALENDAR ================= */
 function calMonth(y,m,events){const first=new Date(y,m-1,1).getDay(),days=new Date(y,m,0).getDate();let cells=["日","月","火","水","木","金","土"].map(d=>`<div class="dw">${d}</div>`).join("");for(let i=0;i<first;i++)cells+=`<div class="cd dim"></div>`;for(let d=1;d<=days;d++){const ev=events[d];cells+=`<div class="cd"><b>${d}</b>${ev?ev.map(e=>`<span class="ev ${e[1]}">${e[0]}</span>`).join(""):""}</div>`;}return `<div class="cal-grid">${cells}</div>`;}
 function renderCal(){$("#cal-wrap").innerHTML=`
- <div class="cal-m">2027年1月 <span>ソウル編</span></div>${calMonth(2027,1,{10:[["マッチ","ev-p"]],14:[["初対面","ev-r"]],15:[["高尺①","ev-p"]],16:[["高尺②","ev-p"]],17:[["帰国","ev-b"]]})}
+ <div class="cal-m">2027年1月 <span>ソウル編</span></div>${calMonth(2027,1,{10:[["出会い","ev-p"]],14:[["初対面","ev-r"]],15:[["高尺①","ev-p"]],16:[["高尺②","ev-p"]],17:[["帰国","ev-b"]]})}
  <div class="cal-m">2027年2月 <span>代々木編</span></div>${calMonth(2027,2,{26:[["代々木①","ev-p"]],27:[["代々木②","ev-p"]],28:[["代々木③","ev-p"]]})}
  <div class="cal-m">2027年3月 <span>神戸編→福岡・愛知へ</span></div>${calMonth(2027,3,{5:[["神戸①","ev-p"]],6:[["神戸②","ev-p"]],7:[["神戸③","ev-p"]],8:[["報道","ev-r"]],13:[["福岡①","ev-g"]],14:[["福岡②","ev-g"]],21:[["愛知①","ev-g"]],22:[["愛知②","ev-g"]]})}
  <div class="cal-legend">💜 公演（史実の日程・会場）｜ 🔴 私的な記念日｜ 🔵 移動｜ 🟢 ツアー後半（史実）<br>ツアー開幕はソウル・高尺スカイドーム（1/15-16）。神戸は千秋楽ではなく、福岡・愛知へ続きます。</div>
@@ -1440,9 +1579,10 @@ function renderNotes(){const el=$("#notes-body");const eg=endingsGot();let h=S.m
 function renderPhotos(){const el=$("#ph-grid");const unlocked=PHOTOS.filter(p=>S.scene>p.unlock||S.ended||p.unlock===0);$("#ph-count").textContent=unlocked.length+" / "+PHOTOS.length+" 件";
  el.innerHTML=PHOTOS.map((p,i)=>{const un=S.scene>p.unlock||S.ended||p.unlock===0;return `<button data-ph="${i}">${un?(p.video?`<video src="${p.src}" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover"></video><span class="pin" style="position:absolute;top:5px;right:6px;color:#fff">▶</span>`:`<img src="${p.src}">`):`<span class="lk">🔒</span>`}</button>`;}).join("");
  el.querySelectorAll("[data-ph]").forEach(b=>b.addEventListener("click",()=>{const p=PHOTOS[+b.dataset.ph];if(!(S.scene>p.unlock||S.ended||p.unlock===0)){toast("まだ解放されていない写真だよ");return;}
-  $("#pv-title").textContent="写真";$("#pv-media").innerHTML=p.video?`<video class="pv-vid" src="${p.src}" controls autoplay muted loop playsinline></video>`:`<img src="${p.src}" style="width:100%;flex:1;object-fit:contain;min-height:0;background:#000">`;$("#pv-cap").textContent=p.cap;show("photoview");}));}
+  $("#pv-title").textContent="写真";$("#pv-media").innerHTML=p.video?`<video class="pv-vid" src="${p.src}" controls autoplay muted loop playsinline></video>`:`<img src="${p.src}" style="width:100%;flex:1;object-fit:contain;min-height:0;background:#000">`;$("#pv-cap").textContent=p.cap;const _bb=document.querySelector("#v-photoview .back");if(_bb)_bb.dataset.back="photos";show("photoview");}));}
+function openNaoPhoto(s,cap){$("#pv-title").textContent="プロフィール";$("#pv-media").innerHTML=`<img src="${s}" style="width:100%;flex:1;object-fit:contain;min-height:0;background:#000">`;$("#pv-cap").textContent=cap;const _bb=document.querySelector("#v-photoview .back");if(_bb)_bb.dataset.back="ht";show("photoview");}
 /* ================= PROFILE ================= */
-function openProfile(key){const pr=PROF[key];if(!pr)return;$("#prof-name").textContent=pr.name;$("#prof-status").textContent=pr.status;$("#prof-cover").src=pr.cover;const img=$("#prof-av"),sl=$("#prof-avsil");
+function openProfile(key){if(key==="ht"){show("htprof");renderHTProf();return;}const pr=PROF[key];if(!pr)return;$("#prof-name").textContent=pr.name;$("#prof-status").textContent=pr.status;$("#prof-cover").src=pr.cover;const img=$("#prof-av"),sl=$("#prof-avsil");
  if(pr.av){img.src=pr.av;img.style.display="block";sl.style.display="none";}
  else{img.style.display="none";sl.style.display="flex";sl.textContent=pr.sil?pr.sil[0]:"?";sl.style.background=pr.sil?pr.sil[1]:"#999";}
  show("profile");}
@@ -1485,6 +1625,76 @@ $("#sheet-input").addEventListener("keydown",e=>{if(e.key==="Enter")$("#sheet-se
 const CMT_EXTRA=[["wish_daily","現地で見てたけど本当にすごかった…"],["sakuya_thoughts","言葉選びが今日も素敵"],["wish_archive","保存しました📌"]];
 function openIGComments(id){const post=IG_POSTS.find(x=>x.id===id);if(!post)return;const items=post.cm.concat(CMT_EXTRA);openSheet("コメント",items,v=>{post.cm.push(["nao",v]);$("#sheet-body").innerHTML=post.cm.concat(CMT_EXTRA).map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;});}
 function openTTComments(i){const post=TT_POSTS[i];if(!post)return;openSheet("コメント",post.cm,v=>{post.cm.push(["nao",v]);$("#sheet-body").innerHTML=post.cm.map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;});}
+/* ================= HELLOTALK ================= */
+let htTab="chat";
+function htAvHTML(size){return `<span class="ht-avw"><span class="sil" style="width:${size}px;height:${size}px;background:#b08968;font-size:${Math.round(size*0.36)}px">빵</span><span class="flg">🇯🇵</span><span class="ond"></span></span>`;}
+function gaugeHTML(flag,name,pct,lv){return `<div class="lg-row"><span class="flg2">${flag}</span><span class="lgn">${name}</span><span class="lg-bar"><i style="width:${pct}%"></i></span><span class="lg-lv">${lv}</span></div>`;}
+function openHTChat(){const sc=!S.ended?SCENES[S.scene]:null;
+ if(S.ended){toast("彼との連絡はLINEに移ったよ");return;}
+ if(!sc||sc.thread!=="ht"){toast(S.scene>2?"いまはLINEでのやり取りの時期だよ":"まだチャットは始まっていないよ");return;}
+ if(sc.call&&!S.callsDone[sc.id]){startCall(sc);return;}
+ openChat(sc);}
+function renderHT(){const el=$("#ht-body");$$("#ht-tabs button").forEach(b=>b.classList.toggle("on",b.dataset.httab===htTab));
+ if(htTab==="chat"){const cs=SCENES[S.scene];const curHt=!S.ended&&cs&&cs.thread==="ht";
+  el.innerHTML=`<div class="ht-tools">${[["📚","#744ff5","Courses"],["📗","#12b76a","HelloWords"],["🗣️","#149990","Translate"],["🤖","#f79009","AI Grammar"]].map(t=>`<span class="ht-tool"><i style="background:${t[1]}22">${t[0]}</i>${t[2]}</span>`).join("")}<span class="ht-tool"><i style="background:#eef1f0">⌄</i>More</span></div>
+  <div class="ht-search">🔍 Search</div>
+  <button class="ht-row" id="ht-open-chat">${htAvHTML(50)}<span class="tt2"><span class="tn2"><span>빵돌이</span><time>${S.ended?"3月9日":(cs?cs.date:"")}</time></span><span class="tp2">${S.ended?"LINEに移行済み ― ありがとうございました":curHt?(cs.title+" ― タップで開く"):(S.scene>2?"いまはLINEでのやり取りの時期":"モーメンツで見つけた人")}</span></span>${curHt?`<span class="ubp">1</span>`:`<span class="openpill">開く</span>`}</button>
+  <button class="ht-row" data-htdeco><span class="ht-avw"><span class="sil" style="width:50px;height:50px;background:#149990;font-size:15px">HT</span></span><span class="tt2"><span class="tn2"><span>HelloTalk公式</span><time>1月9日</time></span><span class="tp2">ようこそHelloTalkへ！ 最初のパートナーを見つけましょう</span></span></button>
+  <button class="ht-row" data-htdeco><span class="ht-avw"><span class="sil" style="width:50px;height:50px;background:#7b61c9;font-size:17px">지</span><span class="flg">🇰🇷</span></span><span class="tt2"><span class="tn2"><span>지수</span><time>1月8日</time></span><span class="tp2">日本語を勉強しています。よろしくお願いします！</span></span><span class="myturn">私の番</span></button>
+  <div class="locknote">HelloTalk（言語交換アプリ）。物語の相手は 빵돌이 だけだよ。<br>既読は実物どおり「送信しました → 既読」と文で切り替わる。</div>`;
+  $("#ht-open-chat").addEventListener("click",openHTChat);
+  el.querySelectorAll("[data-htdeco]").forEach(b=>b.addEventListener("click",()=>toast("物語の相手は 빵돌이 だけだよ")));}
+ else if(htTab==="moments"){
+  el.innerHTML=`<div class="mo-card"><div class="mo-head">${htAvHTML(40)}<span><div class="mn">빵돌이</div><div class="ms">ソウル · 1月9日</div></span><span class="langtag">한국어</span></div>
+  <div class="mo-body">서울의 아침. 동네 빵집에서 갓 구운 빵을 사면 하루가 조금 다정해진다. 오늘은 소금빵이 특히 좋았다.</div>
+  <button class="tr-btn" data-trm>🌐 翻訳を見る</button><div class="tr-box">ソウルの朝。近所のパン屋で焼きたてのパンを買うと、一日が少し優しくなる。今日は塩パンが特に良かった。</div>
+  <div class="mo-acts"><span>♡ <b>23</b></span><span>💬 <b>4</b></span><span>👁 <b>312</b></span><span style="margin-left:auto">✎ 訂正する</span></div>
+  <button class="ht-send" id="ht-mo-msg">✉️ メッセージを送る</button></div>
+  <div class="mo-card"><div class="mo-head"><span class="ht-avw"><img class="av" src="assets/nao-face.jpg" style="width:40px;height:40px"><span class="flg">🇯🇵</span></span><span><div class="mn">なお</div><div class="ms">ソウル · 1月10日</div></span><span class="langtag">한국어</span></div>
+  <img class="mo-img" src="assets/nao-jacket.jpg" alt="">
+  <div class="mo-body">오늘은 한강에 갔어요. 날씨가 너무 좋았어요! 한국어를 더 공부하고 싶어요.</div>
+  <div class="mo-acts"><span>♡ <b>8</b></span><span>💬 <b>2</b></span><span>👁 <b>96</b></span><span style="margin-left:auto;color:#0b7a71;font-weight:700">✎ 빵돌이 が訂正しました</span></div></div>
+  <div class="locknote">モーメンツ＝HelloTalkのタイムライン。投稿には言語タグが付き、翻訳・訂正がその場で使える（実物仕様）。<br>なおは彼のこの投稿を見つけて、メッセージを送った。</div>`;
+  const tb=el.querySelector("[data-trm]");if(tb)tb.addEventListener("click",()=>{const box=el.querySelector(".tr-box");const on=box.classList.toggle("on");tb.textContent=on?"🌐 翻訳を隠す":"🌐 翻訳を見る";});
+  const mb=$("#ht-mo-msg");if(mb)mb.addEventListener("click",openHTChat);}
+ else if(htTab==="search"){
+  el.innerHTML=`<div style="display:flex;gap:6px;padding:11px 12px 5px;background:#f7f9f8">${["真剣な学習者","近く","都市","性別"].map((c,i)=>`<span class="ht-chip${i===0?" on":""}">${c}</span>`).join("")}</div>
+  <button class="ht-row" id="ht-srch-prof">${htAvHTML(50)}<span class="tt2"><span class="tn2"><span>빵돌이</span><span style="font-size:15px">👋</span></span><span class="tp2">🇯🇵 日本語 → 🇰🇷 韓国語 ｜ ソウル在住</span><span class="tp2">言葉は、少なくていい。合う人には届くから</span></span></button>
+  <button class="ht-row" data-htdeco><span class="ht-avw"><span class="sil" style="width:50px;height:50px;background:#4a90d9;font-size:17px">민</span><span class="flg">🇰🇷</span></span><span class="tt2"><span class="tn2"><span>민준</span><span style="font-size:15px">👋</span></span><span class="tp2">🇰🇷 한국어 → 🇯🇵 日本語 ｜ ソウル在住</span><span class="tp2">일본어를 공부 중입니다. 도쿄에 가보고 싶어요</span></span></button>
+  <button class="ht-row" data-htdeco><span class="ht-avw"><span class="sil" style="width:50px;height:50px;background:#d95f7b;font-size:17px">서</span><span class="flg">🇰🇷</span></span><span class="tt2"><span class="tn2"><span>서연</span><span style="font-size:15px">👋</span></span><span class="tp2">🇰🇷 한국어 → 🇯🇵 日本語 ｜ 釜山在住</span><span class="tp2">アニメが好きで日本語を始めました</span></span></button>
+  <div class="locknote">検索タブは「自分の学習言語を母語とし、自分の母語を学ぶ人」が並ぶ設計（実物仕様）。<br>彼は「ソウル在住の日本人」という、少し珍しい登録だった。</div>`;
+  $("#ht-srch-prof").addEventListener("click",()=>{show("htprof");renderHTProf();});
+  el.querySelectorAll("[data-htdeco]").forEach(b=>b.addEventListener("click",()=>toast("物語の相手は 빵돌이 だけだよ")));}
+ else if(htTab==="learn"){
+  el.innerHTML=[["📗","#12b76a","HelloWords","単語フラッシュカードで今日の10語"],["🎧","#744ff5","ポッドキャスト","ネイティブの会話を聞いて学ぶ"],["🤖","#f79009","AIチューター","AIと会話練習・文法チェック"],["🎙️","#149990","Voiceroom","音声ライブで世界と話す"]].map(t=>`<button class="learn-card" data-htdeco><i style="background:${t[1]}22">${t[0]}</i><span><b>${t[2]}</b><small>${t[3]}</small></span></button>`).join("")+`<div class="locknote">学習タブは物語では使わないよ（実物にはHelloWordsやポッドキャスト等がある）。</div>`;
+  el.querySelectorAll("[data-htdeco]").forEach(b=>b.addEventListener("click",()=>toast("学習タブは物語では使わないよ")));}
+ else{
+  el.innerHTML=`<div style="background:#fff;padding:18px 16px 14px;display:flex;gap:13px;align-items:center"><span class="ht-avw"><img class="av" src="assets/nao-face.jpg" style="width:60px;height:60px"><span class="flg">🇯🇵</span></span><span><div style="font-size:17px;font-weight:800;color:#173b36">なお</div><div style="font-size:12px;color:#8a9491;margin-top:1px">@nao_study · HelloTalk歴 21日</div><div style="font-size:11.5px;color:#0b7a71;font-weight:700;margin-top:2px">ソウル旅行中 🇰🇷</div></span></div>
+  <div class="gauge-sec"><div class="gs-t">話せる言語</div>${gaugeHTML("🇯🇵","日本語",100,"堪能")}<div class="gs-t" style="margin-top:11px">学習中の言語</div>${gaugeHTML("🇰🇷","韓国語",55,"中級")}</div>
+  <div class="gauge-sec"><div class="gs-t">自己紹介</div><p style="font-size:13.5px;line-height:1.7;margin-top:4px;color:#333">韓国語勉強中です。1月にソウルへ旅行します。現地の人と話してみたいです🙏</p></div>
+  <div class="gauge-sec"><div class="gs-t">プロフィール写真</div><img src="assets/nao-wink.jpg" style="width:100%;border-radius:13px;margin-top:8px;display:block" alt=""></div>
+  <div class="gauge-sec"><div class="gs-t">アルバム</div><div class="nao-alb">${[["assets/nao-wink.jpg","プロフィール写真（白ニット・ウインク）"],["assets/nao-jacket.jpg","ソウルの街角で"],["assets/nao-cat.jpg","相棒の猫と"],["assets/nao-shirt.jpg","白シャツでピース"],["assets/nao-cafe.jpg","カフェ（cafe murmur）で"]].map(p=>`<button data-naoph="${p[0]}|${p[1]}"><img src="${p[0]}" alt=""></button>`).join("")}</div></div>
+  <button class="set-row2" data-htdeco>お気に入り（訂正コレクション）<span>2件 ›</span></button>
+  <button class="set-row2" data-htdeco>翻訳の既定言語<span>日本語 ›</span></button>
+  <button class="set-row2" data-htdeco>チャット設定<span>›</span></button>
+  <div class="locknote">本人タブ＝自分のプロフィールと設定（実物の構成）。</div>`;
+  el.querySelectorAll("[data-naoph]").forEach(b=>b.addEventListener("click",()=>{const pr=b.dataset.naoph.split("|");openNaoPhoto(pr[0],pr[1]);}));
+  el.querySelectorAll("[data-htdeco]").forEach(b=>b.addEventListener("click",()=>toast("ここは物語では使わないよ")));}}
+$$("#ht-tabs button").forEach(b=>b.addEventListener("click",()=>{htTab=b.dataset.httab;renderHT();}));
+$("#chat-call").addEventListener("click",()=>{if(cur&&cur.call&&!S.callsDone[cur.id]){startCall(cur);return;}toast("まだ通話は解放されていないみたい（何通かやり取りすると解放される仕様だよ）");});
+function renderHTProf(){const el=$("#htprof-body");
+ el.innerHTML=`<div style="background:linear-gradient(150deg,#1cb3a6,#0b6e66);padding:28px 16px 20px;color:#fff;text-align:center">
+ <span class="ht-avw"><span class="sil" style="width:88px;height:88px;background:#b08968;font-size:32px">빵</span><span class="flg" style="width:23px;height:23px;font-size:13px">🇯🇵</span><span class="ond" style="width:15px;height:15px"></span></span>
+ <div style="font-size:20px;font-weight:800;margin-top:10px">빵돌이</div>
+ <div style="font-size:12px;opacity:.88;margin-top:2px">@ppang_dori · ソウル（韓国）在住 · HelloTalk歴 32日</div>
+ <div style="font-size:11.5px;opacity:.72;margin-top:3px">プロフィール写真は設定していません</div></div>
+ <div class="gauge-sec"><div class="gs-t">話せる言語</div>${gaugeHTML("🇯🇵","日本語",100,"堪能")}<div class="gs-t" style="margin-top:11px">学習中の言語</div>${gaugeHTML("🇰🇷","韓国語",92,"堪能")}<div style="font-size:11px;color:#9aa5a3;margin-top:5px">※日本語ネイティブ。ソウル在住で、韓国語も堪能寄り</div></div>
+ <div class="gauge-sec"><div class="gs-t">自己紹介</div><p style="font-size:14px;line-height:1.75;margin-top:4px;color:#333">言葉は、少なくていい。合う人には届くから。<br><span style="color:#888;font-size:12.5px">ソウルのパン屋に詳しいです。韓国語の練習相手を探しています。</span></p></div>
+ <div class="gauge-sec" style="display:flex;text-align:center"><div style="flex:1"><b style="font-size:16px">3</b><div class="gs-s">モーメンツ</div></div><div style="flex:1"><b style="font-size:16px">12</b><div class="gs-s">フォロー中</div></div><div style="flex:1"><b style="font-size:16px">48</b><div class="gs-s">フォロワー</div></div></div>
+ <div style="display:flex;gap:8px;padding:13px 14px 4px"><button class="ht-pb sub" id="htp-fol">フォローする</button><button class="ht-pb main" id="htp-msg">✉️ 送信する</button></div>
+ <div class="locknote">顔写真なし・自己紹介は一言だけ。人気者なのに、このアプリの中では無名――それが 빵돌이 。</div>`;
+ $("#htp-msg").addEventListener("click",openHTChat);
+ const f=$("#htp-fol");f.addEventListener("click",()=>{const on=f.textContent==="フォローする";f.textContent=on?"フォロー中":"フォローする";f.classList.toggle("on",on);toast(on?"フォローしたよ":"フォローを外したよ");});}
 /* ================= NOTIF BANNER ================= */
 let _nbTimer=null,_nbGo="line";
 function pushNotif(nb){$("#nb-ic").textContent=nb.ic;$("#nb-ic").style.background=nb.bg;$("#nb-title").textContent=nb.title;$("#nb-body").textContent=nb.body;_nbGo=nb.go;const b=$("#nbanner");b.classList.add("show");clearTimeout(_nbTimer);_nbTimer=setTimeout(()=>b.classList.remove("show"),4600);}
