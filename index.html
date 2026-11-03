@@ -150,7 +150,7 @@ img{user-select:none;-webkit-user-drag:none}
 @keyframes tp{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-3px);opacity:1}}
 .chat-foot{flex:none;background:#f7f7f9;border-top:1px solid #ddd;padding:8px 10px 24px;display:flex;gap:8px;align-items:center}
 .chat-foot .plus{font-size:23px;color:#555}
-.chat-in{flex:1;background:#fff;border:1px solid #e2e2e8;border-radius:19px;padding:8px 13px;font-size:16px;color:#999}
+.chat-in{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#fff;border:1px solid #e2e2e8;border-radius:19px;padding:8px 13px;font-size:16px;color:#999}
 .send-b{background:var(--green);color:#fff;font-weight:700;font-size:13px;border-radius:16px;padding:8px 13px}
 .panel{flex:none;background:#fff;border-top:1px solid var(--line);padding:12px 14px 26px;animation:msgin .2s ease;max-height:46%;overflow-y:auto}
 .panel .pt{font-size:12px;color:var(--sub);font-weight:700;margin-bottom:8px;letter-spacing:.03em}
@@ -767,7 +767,7 @@ img{max-width:100%}
 <div class="ahead"><button class="back" data-back="home">‹</button><h2>設定</h2></div>
 <div class="abody" style="background:#f2f2f7">
 <button class="set-row" id="set-reset">最初からプレイし直す <span>セーブ削除</span></button>
-<div class="set-row">バージョン <span>v5.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row">バージョン <span>v6.0（iOS 26 / Liquid Glass）</span></div>
 <div class="set-row">ボイス <span>未収録（通話はテキスト＋タイマー式）</span></div>
 <div style="padding:16px;font-size:12px;color:#888;line-height:1.8">『サクヤと熱愛バレた件』は実在の人物を題材にした創作フィクション（ファンメイド作品）です。登場人物の発言・交際等の出来事は全て創作であり、実在の内容とは関係ありません。ツアー日程・会場・リリース実績は公開されている史実に基づきます。<br>なおのアバターには本人の写真を使用していません（イニシャルアイコン）。<br>画像：Pinterest／Instagram系の掲載写真（2024〜2026年）、メディア掲載写真等。動画：NCT WISH公式ミュージックビデオの公式プレビュー（iTunes）から作成した縦型クリップ等（権利は各権利者に帰属します）。TikTok公式動画は取得環境の都合（IPブロック）で直接収録できませんでした。</div>
 </div>
@@ -1037,12 +1037,15 @@ const TT_POSTS=[
  {video:"assets/video/mv-color.mp4",poster:"assets/stage-steady.jpg",user:"nctwish_official",cap:"『COLOR』ダンスブレイク🎨 #NCTWISH #COLOR",music:"COLOR - NCT WISH",likes:1204882,cmts:6102,shares:22140},
  {video:"assets/video/mv-ispy.mp4",poster:"assets/sakuya-ig1.jpg",user:"nctwish_official",cap:"『I SPY』🕵️ 最新ミニアルバムから #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:2276510,cmts:12044,shares:51872}
 ];
+const X_TRENDS_SEOUL=[["音楽","#NCTWISH","9.8万件のポスト"],["エンターテイメント","高尺スカイドーム","8.1万件のポスト"],["音楽","#FaceOurWISH","4.2万件のポスト"],["ジャパン","ソウル公演 完売","2.7万件のポスト"],["エンターテイメント","ウィシズニ","1.9万件のポスト"]];
 const X_TRENDS_PRE=[["エンターテイメント","#NCTWISH","12.4万件のポスト"],["音楽","高尺スカイドーム","8.1万件のポスト"],["ジャパン","代々木 完売","5.6万件のポスト"],["音楽","#FaceOurWISH","4.2万件のポスト"],["ジャパン","GLION ARENA KOBE","3.3万件のポスト"]];
 const X_TRENDS_POST=[["ジャパンのトレンド1位","サクヤ 熱愛","48.2万件のポスト"],["エンターテイメント","NCT WISH 声明","31.5万件のポスト"],["ジャパン","サクヤ","27.9万件のポスト"],["音楽","神戸 密会","15.4万件のポスト"],["エンターテイメント","#SakuyaWeLoveYou","11.8万件のポスト"]];
 const X_POSTS_PRE=[
- {user:"NCT WISH 公式",handle:"@nctwish_jp",av:"assets/group.jpg",time:"2月28日",text:"『INTO THE WISH : Face Our WISH』代々木3日間、満員御礼ありがとうございました💫 次は神戸・GLION ARENA KOBE（3/5〜7）でお会いしましょう！ #NCTWISH #FaceOurWISH",img:"assets/stage1.jpg",rp:"4.2万",lk:"18.6万",cm:"1.2万"},
- {user:"ウィッシュ速報",handle:"@wish_news_jp",av:"assets/stage-steady.jpg",time:"3月5日",text:"NCT WISH、神戸公演初日も完売の大盛況。2026年は『I SPY』初日120万枚など4作連続ミリオン、音楽番組通算12冠と破竹の勢い。",rp:"8,412",lk:"3.9万",cm:"964"},
- {user:"サクヤの言葉bot",handle:"@sakuya_words",av:"assets/av-sakuya.jpg",time:"3月6日",text:"今日のサクヤの言葉：「遠くて近い人がいます」…代々木MC。誰に向けた言葉なんだろう、ってずっと考えてる",rp:"1.1万",lk:"6.4万",cm:"2,208"}
+ {user:"NCT WISH 公式",handle:"@nctwish_jp",av:"assets/group.jpg",time:"1月16日",after:2,text:"ソウル・高尺スカイドーム2日間、満員御礼ありがとうございました💫 日本公演は2/26〜28 代々木、3/5〜7 神戸でお会いしましょう！ #NCTWISH #FaceOurWISH",img:"assets/group.jpg",rp:"3.8万",lk:"17.4万",cm:"1.1万"},
+ {user:"NCT WISH 公式",handle:"@nctwish_jp",av:"assets/group.jpg",time:"1月13日",after:0,text:"『INTO THE WISH : Face Our WISH』いよいよ明後日、ソウル・高尺スカイドームで開幕💫 全席完売、ありがとうございます！ #NCTWISH #FaceOurWISH",img:"assets/stage2.jpg",rp:"3.1万",lk:"15.2万",cm:"9,800"},
+ {user:"NCT WISH 公式",handle:"@nctwish_jp",av:"assets/group.jpg",time:"2月28日",after:4,text:"『INTO THE WISH : Face Our WISH』代々木3日間、満員御礼ありがとうございました💫 次は神戸・GLION ARENA KOBE（3/5〜7）でお会いしましょう！ #NCTWISH #FaceOurWISH",img:"assets/stage1.jpg",rp:"4.2万",lk:"18.6万",cm:"1.2万"},
+ {user:"ウィッシュ速報",handle:"@wish_news_jp",av:"assets/stage-steady.jpg",time:"3月5日",after:5,text:"NCT WISH、神戸公演初日も完売の大盛況。2026年は『I SPY』初日120万枚など4作連続ミリオン、音楽番組通算12冠と破竹の勢い。",rp:"8,412",lk:"3.9万",cm:"964"},
+ {user:"サクヤの言葉bot",handle:"@sakuya_words",av:"assets/av-sakuya.jpg",time:"3月6日",after:6,text:"今日のサクヤの言葉：「遠くて近い人がいます」…代々木MC。誰に向けた言葉なんだろう、ってずっと考えてる",rp:"1.1万",lk:"6.4万",cm:"2,208"}
 ];
 const X_POSTS_POST=[
  {user:"芸能速報",handle:"@geino_sokuhou",av:"assets/kobe.jpg",time:"3月8日",text:"【熱愛報道】NCT WISHサクヤ（19）、神戸公演後に一般女性と海沿いデートか。週刊誌が写真付きで報道。事務所は「確認中」。 #サクヤ熱愛",img:"assets/kobe-night.jpg",rp:"12.8万",lk:"9.3万",cm:"4.6万"},
@@ -1050,8 +1053,9 @@ const X_POSTS_POST=[
  {user:"サクヤペンの日常",handle:"@sakuya_pen_life",av:"assets/sakuya-selca.jpg",time:"3月8日",text:"複雑な気持ちはある。でも神戸のアンコールで見せた顔が本物だったのも知ってる。本人の言葉を待ちます。 #SakuyaWeLoveYou",rp:"2.2万",lk:"11.4万",cm:"3,877"}
 ];
 const NEWS_PRE=[
- {k:"ツアー",t:"NCT WISH、2ndツアー日本公演が開幕 代々木・神戸は全日程完売",m:"スポルティバ芸能部 ・ 2月26日",body:"NCT WISHの2ndコンサートツアー『INTO THE WISH : Face Our WISH』日本公演が、国立代々木競技場第一体育館で開幕した。1月のソウル・高尺スカイドーム公演に続く日本編で、代々木3日間と神戸・GLION ARENA KOBE 3日間は全て完売。\n\n2026年は日本1stミニアルバム『WISHLIST』、韓国1stフル『Ode to Love』（累計約187万枚）、日本シングル『YO-I-DON!』のダブルプラチナ、韓国4thミニ『I SPY』（初日約120万枚）で4作連続ミリオンセラーを記録し、音楽番組1位は通算12冠。若手トップクラスの勢いそのままに、満員の観客を魅了した。\n\nツアーはこの後、福岡・北九州メッセ（3/13〜14）、愛知・ポートメッセなごや（3/21〜22）へと続く。"},
- {k:"コラム",t:"「言葉の人」サクヤ――MCのひと言がファンの心を掴む理由",m:"ミュージックマガジン ・ 3月1日",body:"NCT WISHの最年少メンバー、サクヤのMCが静かな話題だ。代々木公演で放った「遠くて近い人がいます」という一節は、SNSで何度も引用された。\n\n不思議な感性と丁寧な言葉選び。彼の言葉は短いのに、長く残る。専門家は「飾らない誠実さが、若いファン層の言語感覚に合っている」と分析する。"}
+ {k:"ツアー",t:"NCT WISH、2ndツアーがソウルで開幕 高尺スカイドーム2日間は完売",m:"スポルティバ芸能部 ・ 1月15日",after:0,body:"NCT WISHの2ndコンサートツアー『INTO THE WISH : Face Our WISH』が、ソウル・高尺スカイドームで開幕した。2日間のチケットは完売し、会場はウィシズニの歓声に包まれた。\n\n日本公演は2月26〜28日に国立代々木競技場第一体育館、3月5〜7日に神戸・GLION ARENA KOBEで開催される。"},
+ {k:"ツアー",t:"NCT WISH、2ndツアー日本公演が開幕 代々木・神戸は全日程完売",m:"スポルティバ芸能部 ・ 2月26日",after:3,body:"NCT WISHの2ndコンサートツアー『INTO THE WISH : Face Our WISH』日本公演が、国立代々木競技場第一体育館で開幕した。1月のソウル・高尺スカイドーム公演に続く日本編で、代々木3日間と神戸・GLION ARENA KOBE 3日間は全て完売。\n\n2026年は日本1stミニアルバム『WISHLIST』、韓国1stフル『Ode to Love』（累計約187万枚）、日本シングル『YO-I-DON!』のダブルプラチナ、韓国4thミニ『I SPY』（初日約120万枚）で4作連続ミリオンセラーを記録し、音楽番組1位は通算12冠。若手トップクラスの勢いそのままに、満員の観客を魅了した。\n\nツアーはこの後、福岡・北九州メッセ（3/13〜14）、愛知・ポートメッセなごや（3/21〜22）へと続く。"},
+ {k:"コラム",t:"「言葉の人」サクヤ――MCのひと言がファンの心を掴む理由",m:"ミュージックマガジン ・ 3月1日",after:4,body:"NCT WISHの最年少メンバー、サクヤのMCが静かな話題だ。代々木公演で放った「遠くて近い人がいます」という一節は、SNSで何度も引用された。\n\n不思議な感性と丁寧な言葉選び。彼の言葉は短いのに、長く残る。専門家は「飾らない誠実さが、若いファン層の言語感覚に合っている」と分析する。"}
 ];
 const NEWS_SCOOP={k:"スクープ",t:"NCT WISHサクヤ、神戸の夜に一般女性と「密会」 週刊誌が写真掲載",m:"週刊スコープ ・ 3月8日",img:"assets/kobe-night.jpg",body:"人気グループNCT WISHのサクヤ（19）が、神戸公演最終日の夜、一般女性と海沿いを歩く姿を週刊スコープが捉えた。\n\n関係者によれば、女性は以前から公演に通うファンとみられ、ふたりは人目を避けるように帽子とマスク姿。短時間の逢瀬ののち、別々に帰路についたという。\n\n所属事務所は本誌の取材に「事実関係を確認中」とコメント。SNSでは「サクヤ 熱愛」がトレンド1位となり、ファンの間では動揺と擁護の声が交錯している。\n\n※本記事は創作フィクション内の架空記事です。"};
 const NEWS_STMT={k:"公式発表",t:"NCT WISHサクヤ熱愛報道、所属事務所が声明を発表",m:"スポルティバ芸能部 ・ 3月9日",body:"所属事務所は9日午後、サクヤの熱愛報道について声明を発表した。声明の詳細と全文は公式サイトに掲載されている。\n\n事務所は「アーティストの活動に影響のないよう、温かく見守っていただければ」とし、ツアーの福岡・愛知公演は予定通り開催される。\n\n※本記事は創作フィクション内の架空記事です。"};
@@ -1273,16 +1277,16 @@ function renderTT(){const el=$("#tt-feed");const posts=TT_POSTS.slice(0,S.tt);
 /* ================= X ================= */
 let xTab="feed";
 function renderX(){const el=$("#x-body");const post=S.scene>=7;
- if(xTab==="trend"){const tr=post?X_TRENDS_POST:X_TRENDS_PRE;el.innerHTML=`<div style="padding:12px 16px 4px;font-size:16px;font-weight:900">トレンド</div>`+tr.map(t=>`<div class="trend ${post&&t[1].includes("熱愛")?"hot":""}"><div class="tk">${esc(t[0])} ・ トレンド</div><div class="tt2">${esc(t[1])}</div><div class="tc">${esc(t[2])}</div></div>`).join("");return;}
- const posts=post?X_POSTS_POST:X_POSTS_PRE;
+ if(xTab==="trend"){const tr=post?X_TRENDS_POST:(S.scene>=3?X_TRENDS_PRE:X_TRENDS_SEOUL);el.innerHTML=`<div style="padding:12px 16px 4px;font-size:16px;font-weight:900">トレンド</div>`+tr.map(t=>`<div class="trend ${post&&t[1].includes("熱愛")?"hot":""}"><div class="tk">${esc(t[0])} ・ トレンド</div><div class="tt2">${esc(t[1])}</div><div class="tc">${esc(t[2])}</div></div>`).join("");return;}
+ const posts=post?X_POSTS_POST:X_POSTS_PRE.filter(p=>(p.after||0)<=S.scene).sort((a,b)=>(b.after||0)-(a.after||0));
  el.innerHTML=posts.map(p=>`<div class="xpost"><img class="xav" src="${p.av}"><div class="xb"><div class="xh"><b>${esc(p.user)}</b>${p.handle==="@nctwish_jp"?'<span style="color:#1d9bf0">✔</span>':""}<span>${esc(p.handle)} ・ ${esc(p.time)}</span></div><div class="xt">${esc(p.text)}</div>${p.img?`<img class="ximg" src="${p.img}">`:""}<div class="xa"><span>💬 <b>${esc(p.cm||"―")}</b></span><span>🔁 <b>${esc(p.rp)}</b></span><span>❤️ <b>${esc(p.lk)}</b></span><span>📊</span></div></div></div>`).join("")+`<div class="locknote">${post?"炎上中 ― 数値はまだ増え続けている":"平和なタイムライン。……今のところは"}</div>`;}
 function setXTab(t){xTab=t;$("#x-tab-feed").classList.toggle("on",t==="feed");$("#x-tab-trend").classList.toggle("on",t==="trend");renderX();}
 $("#x-tab-trend").addEventListener("click",()=>setXTab("trend"));
 $("#x-tab-feed").addEventListener("click",()=>setXTab("feed"));
 /* ================= NEWS ================= */
 function renderNews(){const el=$("#news-body");const post=S.scene>=7;const done=S.ended;
- let items=NEWS_PRE.slice();
- let h=items.map((n,i)=>`<button class="news-item" data-news="${i}"><div class="nk">${esc(n.k)}</div><h4>${esc(n.t)}</h4><div class="nm">${esc(n.m)}</div></button>`).join("");
+ let items=NEWS_PRE.map((n,i)=>({n,i})).filter(x=>(x.n.after||0)<=S.scene).sort((a,b)=>(b.n.after||0)-(a.n.after||0));
+ let h=items.map(({n,i})=>`<button class="news-item" data-news="${i}"><div class="nk">${esc(n.k)}</div><h4>${esc(n.t)}</h4><div class="nm">${esc(n.m)}</div></button>`).join("");
  if(post)h=`<button class="news-item scoop" data-scoop="1"><div class="nk">🔥 スクープ</div><h4>${esc(NEWS_SCOOP.t)}</h4><div class="nm">${esc(NEWS_SCOOP.m)}</div></button>`+h;
  if(done)h+=`<button class="news-item" data-stmt="1"><div class="nk">公式発表</div><h4>${esc(NEWS_STMT.t)}</h4><div class="nm">${esc(NEWS_STMT.m)}</div></button>`;
  el.innerHTML=h;
