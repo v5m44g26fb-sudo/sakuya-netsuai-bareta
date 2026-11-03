@@ -758,9 +758,42 @@ img{max-width:100%}
 .ncmt-h{font-size:13px;font-weight:800;margin:18px 0 6px;padding-top:13px;border-top:1px solid #eee}
 .ncmt{padding:8px 0;border-bottom:1px solid #f2f2f5;font-size:13px;line-height:1.6}
 .ncmt b{margin-right:7px}
+
+/* ===== v15: app icons — real-device SVG recreations (iOS squircle unified) ===== */
+.app .ic{border-radius:22.5%;box-shadow:0 2px 7px rgba(10,6,30,.28),0 1px 2px rgba(10,6,30,.18)}
+.app .ic::after{display:none}
+.icsvg{display:block;width:100%;height:100%}
+#nbanner .nb-ic{background:transparent;border-radius:22.5%;overflow:hidden;padding:0;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.ln-ic{background:transparent;border-radius:22.5%;overflow:hidden;padding:0;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.ic-cal .cwd{font-size:10.5px;letter-spacing:.05em;margin-top:6px}
+.ic-cal .cd2{font-size:31px;font-weight:300;color:#1c1c1e;line-height:1.04}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="gIg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".28" stop-color="#fa7e1e"/><stop offset=".55" stop-color="#d62976"/><stop offset=".8" stop-color="#962fbf"/><stop offset="1" stop-color="#4f5bd5"/></linearGradient>
+<linearGradient id="gHt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#23b8a8"/><stop offset=".55" stop-color="#149990"/><stop offset="1" stop-color="#0b7a71"/></linearGradient>
+<linearGradient id="gTel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6fe86e"/><stop offset="1" stop-color="#23cc3e"/></linearGradient>
+<linearGradient id="gSet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5f5f7"/><stop offset="1" stop-color="#c6c6cc"/></linearGradient>
+<linearGradient id="gGear" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#63636a"/><stop offset="1" stop-color="#3f3f45"/></linearGradient>
+<linearGradient id="gNote" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fee58f"/><stop offset="1" stop-color="#f9d854"/></linearGradient>
+<linearGradient id="gNews" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f43f5e"/><stop offset="1" stop-color="#be123c"/></linearGradient>
+<linearGradient id="gReset" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb3ad"/><stop offset="1" stop-color="#ff8a80"/></linearGradient>
+<linearGradient id="gEnd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5c8a"/><stop offset="1" stop-color="#7b61c9"/></linearGradient>
+<path id="ttNote" d="M41 7v5.2c.5 3.9 3.3 7 7.8 7.6v6.4c-1.7.1-3.7-.2-5.8-1v15.1c0 7.3-5.6 12.7-12.9 12.7C23 53 17.5 47.8 17.5 40.5c0-7.2 5.9-12.6 13.3-12.2v6.5c-3.9-.6-7.2 2.2-7.2 5.8 0 3.3 2.7 5.9 6 5.9 3.5 0 6.1-2.6 6.1-6.3V7H41z"/>
+<symbol id="icn-line" viewBox="0 0 60 60"><rect width="60" height="60" fill="#06c755"/><path d="M30 10.5c10.8 0 19.5 7.1 19.5 15.9S40.8 42.3 30 42.3c-2.4 0-4.7-.4-6.8-1.1L14.5 45.6l1.3-6C13 36.7 10.5 31.9 10.5 26.4 10.5 17.6 19.2 10.5 30 10.5z" fill="#fff"/><text x="30" y="31.4" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12.6" font-weight="900" letter-spacing=".2" fill="#06c755">LINE</text></symbol>
+<symbol id="icn-ig" viewBox="0 0 60 60"><rect width="60" height="60" fill="url(#gIg)"/><rect x="14.5" y="14.5" width="31" height="31" rx="9" fill="none" stroke="#fff" stroke-width="3.4"/><circle cx="30" cy="30" r="7.8" fill="none" stroke="#fff" stroke-width="3.4"/><circle cx="39" cy="21" r="2.2" fill="#fff"/></symbol>
+<symbol id="icn-tt" viewBox="0 0 60 60"><rect width="60" height="60" fill="#000"/><use href="#ttNote" fill="#25f4ee" transform="translate(-1.4 -1.15)"/><use href="#ttNote" fill="#fe2c55" transform="translate(1.4 1.15)"/><use href="#ttNote" fill="#fff"/></symbol>
+<symbol id="icn-x" viewBox="0 0 60 60"><rect width="60" height="60" fill="#000"/><path transform="translate(14.4 14.4) scale(1.3)" fill="#fff" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H4.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></symbol>
+<symbol id="icn-ht" viewBox="0 0 60 60"><rect width="60" height="60" fill="url(#gHt)"/><path d="M19 12h22a9 9 0 0 1 9 9v11a9 9 0 0 1-9 9H31l-8.4 7.6c-.9.8-2.3.2-2.3-1V41H19a9 9 0 0 1-9-9V21a9 9 0 0 1 9-9z" fill="#fff"/><g fill="none" stroke="#0d8a80" stroke-width="2.1"><circle cx="30" cy="26.5" r="8.4"/><ellipse cx="30" cy="26.5" rx="3.9" ry="8.4"/><path d="M21.6 26.5h16.8M23.3 21.4h13.4M23.3 31.6h13.4"/></g></symbol>
+<symbol id="icn-tel" viewBox="0 0 60 60"><rect width="60" height="60" fill="url(#gTel)"/><path transform="translate(10.5 10.5) scale(1.625)" fill="#fff" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></symbol>
+<symbol id="icn-photo" viewBox="0 0 60 60"><rect width="60" height="60" fill="#fff"/><g fill-opacity=".55"><ellipse cx="30" cy="18" rx="6.2" ry="12.4" fill="#f7c948"/><ellipse cx="30" cy="18" rx="6.2" ry="12.4" fill="#f2994a" transform="rotate(45 30 30)"/><ellipse cx="30" cy="18" rx="6.2" ry="12.4" fill="#eb5757" transform="rotate(90 30 30)"/><ellipse cx="30" cy="18" rx="6.2" ry="12.4" fill="#bb6bd9" transform="rotate(135 30 30)"/><ellipse cx="30" cy="18" rx="6.2" ry="12.4" fill="#2f80ed" transform="rotate(180 30 30)"/><ellipse cx="30" cy="18" rx="6.2" ry="12.4" fill="#56ccf2" transform="rotate(225 30 30)"/><ellipse cx="30" cy="18" rx="6.2" ry="12.4" fill="#219653" transform="rotate(270 30 30)"/><ellipse cx="30" cy="18" rx="6.2" ry="12.4" fill="#6fcf97" transform="rotate(315 30 30)"/></g></symbol>
+<symbol id="icn-set" viewBox="0 0 60 60"><rect width="60" height="60" fill="url(#gSet)"/><path fill="url(#gGear)" fill-rule="evenodd" d="M26.93 16.14 L27.23 8.98 L32.77 8.98 L33.07 16.14 A14.2 14.2 0 0 1 37.63 18.02 L42.91 13.18 L46.82 17.09 L41.98 22.37 A14.2 14.2 0 0 1 43.86 26.93 L51.02 27.23 L51.02 32.77 L43.86 33.07 A14.2 14.2 0 0 1 41.98 37.63 L46.82 42.91 L42.91 46.82 L37.63 41.98 A14.2 14.2 0 0 1 33.07 43.86 L32.77 51.02 L27.23 51.02 L26.93 43.86 A14.2 14.2 0 0 1 22.37 41.98 L17.09 46.82 L13.18 42.91 L18.02 37.63 A14.2 14.2 0 0 1 16.14 33.07 L8.98 32.77 L8.98 27.23 L16.14 26.93 A14.2 14.2 0 0 1 18.02 22.37 L13.18 17.09 L17.09 13.18 L22.37 18.02 A14.2 14.2 0 0 1 26.93 16.14 Z M23.40 30.00 a6.6 6.6 0 1 0 13.2 0 a6.6 6.6 0 1 0 -13.2 0 Z"/></symbol>
+<symbol id="icn-note" viewBox="0 0 60 60"><rect width="60" height="60" fill="#fff"/><rect width="60" height="19" fill="url(#gNote)"/><rect x="10" y="29" width="34" height="2.8" rx="1.4" fill="#d8d8de"/><rect x="10" y="37.5" width="40" height="2.8" rx="1.4" fill="#d8d8de"/><rect x="10" y="46" width="40" height="2.8" rx="1.4" fill="#d8d8de"/></symbol>
+<symbol id="icn-news" viewBox="0 0 60 60"><rect width="60" height="60" fill="url(#gNews)"/><rect x="18" y="12.5" width="31" height="31" rx="3" fill="#fff" opacity=".45"/><rect x="12" y="16" width="31" height="31" rx="3" fill="#fff"/><rect x="16" y="20.5" width="10.5" height="8.5" rx="1.2" fill="#f43f5e"/><g fill="#a8a8b3"><rect x="29" y="21" width="10" height="2.4" rx="1.2"/><rect x="29" y="25.4" width="10" height="2.4" rx="1.2"/><rect x="16" y="32.5" width="23" height="2.4" rx="1.2"/><rect x="16" y="37" width="23" height="2.4" rx="1.2"/><rect x="16" y="41.5" width="15" height="2.4" rx="1.2"/></g></symbol>
+<symbol id="icn-reset" viewBox="0 0 60 60"><rect width="60" height="60" fill="url(#gReset)"/><path d="M30 15.5a14.5 14.5 0 1 1-10.25 4.25" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round"/><path d="M29 10v11l9-5.5z" fill="#fff"/></symbol>
+<symbol id="icn-end" viewBox="0 0 60 60"><rect width="60" height="60" fill="url(#gEnd)"/><path d="M30 48.6C19.2 40 13.4 32.3 13.4 24.9c0-5.6 4-9.9 9.3-9.9 3 0 5.9 1.6 7.3 4.1 1.4-2.5 4.3-4.1 7.3-4.1 5.3 0 9.3 4.3 9.3 9.9 0 7.4-5.8 15.1-16.6 23.7z" fill="#fff"/></symbol>
+</defs></svg>
 <div class="page-head">
 <h1>💗 サクヤと熱愛バレた件</h1>
 <p>ソウル旅行の前にHelloTalk（言語交換アプリ）で出会った相手は、NCT WISHのサクヤだった――。秘密の遠距離恋愛と、神戸の夜のスクープを描くスマホ風SNSファンゲーム。</p>
@@ -795,9 +828,9 @@ img{max-width:100%}
 <div class="lock-top">🔒</div>
 <div class="lock-clock"><div class="lock-date" id="lock-date">1月10日 土曜日</div><div class="lock-time" id="lock-time">9:41</div></div>
 <div class="lock-notifs">
-<button class="lnotif" data-go="ht"><span class="ln-ic" style="background:#149990">💬</span><span style="flex:1"><span class="ln-h">HelloTalk <span>今</span></span><span class="ln-t"><b>빵돌이</b> さんとのチャットが始まっています。最初のメッセージを送ってみましょう</span></span></button>
-<button class="lnotif" data-go="ig"><img src="assets/group.jpg" alt=""><span style="flex:1"><span class="ln-h">INSTAGRAM <span>3時間前</span></span><span class="ln-t"><b>nctwish_official</b>：INTO THE WISH : Face Our WISH ― SEOULまであと5日💫</span></span></button>
-<div class="lnotif stack"><span class="ln-ic" style="background:#000">𝕏</span><span style="flex:1"><span class="ln-h">X <span>5時間前</span></span><span class="ln-t">トレンド：<b>#NCTWISH</b> ・ <b>高尺スカイドーム</b></span></span></div>
+<button class="lnotif" data-go="ht"><span class="ln-ic"><svg class="icsvg"><use href="#icn-ht"/></svg></span><span style="flex:1"><span class="ln-h">HelloTalk <span>今</span></span><span class="ln-t"><b>빵돌이</b> さんとのチャットが始まっています。最初のメッセージを送ってみましょう</span></span></button>
+<button class="lnotif" data-go="ig"><span class="ln-ic"><svg class="icsvg"><use href="#icn-ig"/></svg></span><span style="flex:1"><span class="ln-h">INSTAGRAM <span>3時間前</span></span><span class="ln-t"><b>nctwish_official</b>：INTO THE WISH : Face Our WISH ― SEOULまであと5日💫</span></span></button>
+<div class="lnotif stack"><span class="ln-ic"><svg class="icsvg"><use href="#icn-x"/></svg></span><span style="flex:1"><span class="ln-h">X <span>5時間前</span></span><span class="ln-t">トレンド：<b>#NCTWISH</b> ・ <b>高尺スカイドーム</b></span></span></div>
 </div>
 <div class="lock-btns"><span class="lk-btn">🔦</span><span class="lk-btn">📷</span></div>
 <div class="lock-hint">タップしてロック解除</div>
@@ -818,24 +851,24 @@ img{max-width:100%}
 <div class="grow"><span>ファンの温度</span><span id="g-fan-v">55</span></div><div class="gbar"><i id="g-fan" style="width:55%;background:linear-gradient(90deg,#7b61c9,#4fc3e8)"></i></div>
 </div><div id="home-prog" style="font-size:11.5px;color:#888;margin-top:2px">第1話から始まるよ。HelloTalkを開いてね</div></div>
 <div class="apps">
-<button class="app" data-go="ig"><span class="ic ic-ig">📸</span>Instagram<span class="bdg" data-bdg="ig" style="display:none"></span></button>
-<button class="app" data-go="x"><span class="ic ic-x">𝕏</span>X<span class="bdg" data-bdg="x" style="display:none"></span></button>
-<button class="app" data-go="news"><span class="ic ic-news">🗞️</span>ニュース<span class="bdg" data-bdg="news" style="display:none"></span></button>
-<button class="app" data-go="tt"><span class="ic ic-tt">♪</span>TikTok<span class="bdg" data-bdg="tt" style="display:none"></span></button>
-<button class="app" data-go="ht"><span class="ic ic-ht">💬</span>HelloTalk<span class="bdg" data-bdg="ht" style="display:none"></span></button>
+<button class="app" data-go="ig"><span class="ic"><svg class="icsvg"><use href="#icn-ig"/></svg></span>Instagram<span class="bdg" data-bdg="ig" style="display:none"></span></button>
+<button class="app" data-go="x"><span class="ic"><svg class="icsvg"><use href="#icn-x"/></svg></span>X<span class="bdg" data-bdg="x" style="display:none"></span></button>
+<button class="app" data-go="news"><span class="ic"><svg class="icsvg"><use href="#icn-news"/></svg></span>ニュース<span class="bdg" data-bdg="news" style="display:none"></span></button>
+<button class="app" data-go="tt"><span class="ic"><svg class="icsvg"><use href="#icn-tt"/></svg></span>TikTok<span class="bdg" data-bdg="tt" style="display:none"></span></button>
+<button class="app" data-go="ht"><span class="ic"><svg class="icsvg"><use href="#icn-ht"/></svg></span>HelloTalk<span class="bdg" data-bdg="ht" style="display:none"></span></button>
 <button class="app" data-go="cal"><span class="ic ic-cal"><span class="cwd" id="cal-wd">SAT</span><span class="cd2" id="cal-d">10</span></span>カレンダー</button>
-<button class="app" data-go="notes"><span class="ic ic-note"><span class="nb"></span><span class="nl"></span><span class="nl"></span></span>観察メモ<span class="bdg" data-bdg="notes" style="display:none"></span></button>
-<button class="app" data-go="photos"><span class="ic ic-photo">🌼</span>写真</button>
-<button class="app" data-go="set"><span class="ic ic-set">⚙️</span>設定</button>
-<button class="app" id="app-reset"><span class="ic" style="background:linear-gradient(180deg,#ffb3ad,#ff8a80)">↺</span>最初から</button>
-<button class="app" data-go="notes"><span class="ic" style="background:linear-gradient(135deg,#ff5c8a,#7b61c9);color:#fff">💗</span>END記録</button>
+<button class="app" data-go="notes"><span class="ic"><svg class="icsvg"><use href="#icn-note"/></svg></span>観察メモ<span class="bdg" data-bdg="notes" style="display:none"></span></button>
+<button class="app" data-go="photos"><span class="ic"><svg class="icsvg"><use href="#icn-photo"/></svg></span>写真</button>
+<button class="app" data-go="set"><span class="ic"><svg class="icsvg"><use href="#icn-set"/></svg></span>設定</button>
+<button class="app" id="app-reset"><span class="ic"><svg class="icsvg"><use href="#icn-reset"/></svg></span>最初から</button>
+<button class="app" data-go="notes"><span class="ic"><svg class="icsvg"><use href="#icn-end"/></svg></span>END記録</button>
 </div>
 </div>
 <div class="dock">
-<button class="app" data-go="line"><span class="ic ic-tel">📞</span></button>
-<button class="app" data-go="line"><span class="ic ic-line" style="color:#fff;font-weight:900;font-size:19px">LINE</span><span class="bdg" data-bdg="line" style="display:none"></span></button>
-<button class="app" data-go="ig"><span class="ic ic-ig">📸</span></button>
-<button class="app" data-go="tt"><span class="ic ic-tt">♪</span></button>
+<button class="app" data-go="line"><span class="ic"><svg class="icsvg"><use href="#icn-tel"/></svg></span></button>
+<button class="app" data-go="line"><span class="ic"><svg class="icsvg"><use href="#icn-line"/></svg></span><span class="bdg" data-bdg="line" style="display:none"></span></button>
+<button class="app" data-go="ig"><span class="ic"><svg class="icsvg"><use href="#icn-ig"/></svg></span></button>
+<button class="app" data-go="tt"><span class="ic"><svg class="icsvg"><use href="#icn-tt"/></svg></span></button>
 </div>
 </div>
 
@@ -992,7 +1025,7 @@ img{max-width:100%}
 <div id="sheet"><div class="sheet-card"><div class="sheet-grip"></div><div class="sheet-head"><span id="sheet-head">コメント</span><button id="sheet-x" aria-label="閉じる">✕</button></div><div class="sheet-body" id="sheet-body"></div><div class="sheet-in"><input id="sheet-input" type="text" placeholder="コメントを追加…" autocomplete="off"><button id="sheet-send">投稿</button></div></div></div>
 
 <!-- NOTIFICATION BANNER -->
-<button id="nbanner"><span class="nb-ic" id="nb-ic">📸</span><span class="nb-tx"><span class="nb-h"><b id="nb-title">Instagram</b><span>今</span></span><span class="nb-b" id="nb-body"></span></span></button>
+<button id="nbanner"><span class="nb-ic" id="nb-ic"><svg class="icsvg"><use href="#icn-ig"/></svg></span><span class="nb-tx"><span class="nb-h"><b id="nb-title">Instagram</b><span>今</span></span><span class="nb-b" id="nb-body"></span></span></button>
 
 <div class="toast" id="toast"></div>
 </div></div>
@@ -1697,7 +1730,7 @@ function renderHTProf(){const el=$("#htprof-body");
  const f=$("#htp-fol");f.addEventListener("click",()=>{const on=f.textContent==="フォローする";f.textContent=on?"フォロー中":"フォローする";f.classList.toggle("on",on);toast(on?"フォローしたよ":"フォローを外したよ");});}
 /* ================= NOTIF BANNER ================= */
 let _nbTimer=null,_nbGo="line";
-function pushNotif(nb){$("#nb-ic").textContent=nb.ic;$("#nb-ic").style.background=nb.bg;$("#nb-title").textContent=nb.title;$("#nb-body").textContent=nb.body;_nbGo=nb.go;const b=$("#nbanner");b.classList.add("show");clearTimeout(_nbTimer);_nbTimer=setTimeout(()=>b.classList.remove("show"),4600);}
+function pushNotif(nb){const _ic$= $("#nb-ic");const _icn={line:"icn-line",ig:"icn-ig",tt:"icn-tt",news:"icn-news",ht:"icn-ht"}[nb.go]||"icn-ig";_ic$.style.background="transparent";_ic$.innerHTML='<svg class="icsvg"><use href="#'+_icn+'"/></svg>';$("#nb-title").textContent=nb.title;$("#nb-body").textContent=nb.body;_nbGo=nb.go;const b=$("#nbanner");b.classList.add("show");clearTimeout(_nbTimer);_nbTimer=setTimeout(()=>b.classList.remove("show"),4600);}
 $("#nbanner").addEventListener("click",()=>{$("#nbanner").classList.remove("show");show(_nbGo);});
 /* ================= FREE CHAT ================= */
 function openFree(){show("free");const b=$("#free-body");if(!b.dataset.init){const greet={public:"なおさん。……隠さなくていいって、やっぱり嬉しいですね",silent:"なおさん、お疲れさまです。……少しだけ、話せますか",bitter:"……久しぶりですね。元気でしたか"}[S.endId]||"なおさん、お疲れさまです";b.innerHTML=`<div class="day-pill"><span>エンディング後 ― フリーチャット</span></div>`+msgHTML({f:"sakuya",t:greet},nowTimeStr());b.dataset.init="1";}}
