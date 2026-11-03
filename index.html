@@ -590,6 +590,10 @@ img{max-width:100%}
  .call-btns{padding-bottom:30px}
  .call-mini{margin-bottom:14px}
 }
+
+.vbtn{margin-top:5px;align-self:flex-start;display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:999px;background:linear-gradient(92deg,#ff5c8a,#ff8fab);color:#fff;font-size:11px;font-weight:800;box-shadow:0 3px 10px rgba(255,92,138,.35)}
+.vbtn:active{transform:scale(.96)}
+#call-voice{margin-top:14px;padding:9px 18px;border-radius:999px;background:linear-gradient(92deg,#ff5c8a,#ff8fab);color:#fff;font-size:13px;font-weight:800;box-shadow:0 6px 18px rgba(255,92,138,.4)}
 </style>
 </head>
 <body>
@@ -746,6 +750,7 @@ img{max-width:100%}
 <div class="cnm" id="call-name">サクヤ</div>
 <div class="cst" id="call-status">着信中…</div>
 <div class="csub" id="call-sub"></div>
+<button id="call-voice" style="display:none">▶ ボイスで聞く</button>
 <div class="call-grid" id="call-grid" style="display:none">
 <div class="cb"><i>🔇</i>消音</div><div class="cb"><i>⌨️</i>キーパッド</div><div class="cb"><i>🔊</i>スピーカー</div>
 <div class="cb"><i>➕</i>追加</div><div class="cb"><i>📹</i>FaceTime</div><div class="cb"><i>👤</i>連絡先</div></div>
@@ -767,7 +772,7 @@ img{max-width:100%}
 <div class="ahead"><button class="back" data-back="home">‹</button><h2>設定</h2></div>
 <div class="abody" style="background:#f2f2f7">
 <button class="set-row" id="set-reset">最初からプレイし直す <span>セーブ削除</span></button>
-<div class="set-row">バージョン <span>v6.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row">バージョン <span>v7.0（iOS 26 / Liquid Glass）</span></div>
 <div class="set-row">ボイス <span>未収録（通話はテキスト＋タイマー式）</span></div>
 <div style="padding:16px;font-size:12px;color:#888;line-height:1.8">『サクヤと熱愛バレた件』は実在の人物を題材にした創作フィクション（ファンメイド作品）です。登場人物の発言・交際等の出来事は全て創作であり、実在の内容とは関係ありません。ツアー日程・会場・リリース実績は公開されている史実に基づきます。<br>なおのアバターには本人の写真を使用していません（イニシャルアイコン）。<br>画像：Pinterest／Instagram系の掲載写真（2024〜2026年）、メディア掲載写真等。動画：NCT WISH公式ミュージックビデオの公式プレビュー（iTunes）から作成した縦型クリップ等（権利は各権利者に帰属します）。TikTok公式動画は取得環境の都合（IPブロック）で直接収録できませんでした。</div>
 </div>
@@ -804,6 +809,7 @@ img{max-width:100%}
 
 <div class="toast" id="toast"></div>
 </div></div>
+<script src="assets/voice/manifest.js"></script>
 <script>
 "use strict";
 /* ================= DATA ================= */
@@ -1177,7 +1183,8 @@ function msgHTML(st,tm){
  if(typeof st.me==="string"||st.me===true){const txt=typeof st.me==="string"?st.me:st.t;return `<div class="msg me"><span class="tm"><span class="rd" style="opacity:0">既読</span>${esc(tm||"")}</span><div class="bub">${esc(txt)}</div></div>`;}
  const m=M[st.f];if(!m)return "";
  if(st.img)return `<div class="msg">${avHTML(st.f,38)}<div class="col"><div class="who">${esc(m.n)}</div><div class="bub imgb"><img src="${st.img}" alt=""></div>${st.cap?`<div class="bub" style="margin-top:4px">${esc(st.cap)}</div>`:""}</div><span class="tm">${esc(tm||"")}</span></div>`;
- return `<div class="msg">${avHTML(st.f,38)}<div class="col"><div class="who">${esc(m.n)}</div><div class="bub">${esc(st.t)}</div></div><span class="tm">${esc(tm||"")}</span></div>`;}
+ const vc=(st.f==="sakuya"&&typeof cur!=="undefined"&&cur&&VOICE_CHAT[cur.id])?VOICE_CHAT[cur.id][st.t]:null;
+ return `<div class="msg">${avHTML(st.f,38)}<div class="col"><div class="who">${esc(m.n)}</div><div class="bub">${esc(st.t)}</div>${vc&&VOICE_OK[vc]?`<button class="vbtn" data-v="${vc}">▶ ボイス</button>`:""}</div><span class="tm">${esc(tm||"")}</span></div>`;}
 function renderChat(){const body=$("#chat-body");const sc=cur;let h="";const n=Math.min(S.shown,sc.steps.length);
  for(let i=0;i<n;i++){const st=sc.steps[i];
   if(st.choice){const ai=(S.answers||{})[sc.id+":"+i];const ch=ai!==undefined?st.choice[ai]:null;const me=ch?ch.t:st._me;const resp=ch?(ch.r||[]):st._resp;if(me)h+=msgHTML({me:me},fmtMin(clockMin(S.scene,i)));if(resp)h+=resp.map(r=>msgHTML({f:r[0],t:r[1]},fmtMin(clockMin(S.scene,i)))).join("");continue;}
@@ -1207,10 +1214,10 @@ function finishScene(){const sc=cur;if(sc.fx)applyE(sc.fx);if(sc.memo&&!S.memos.
  const n2=NOTIFS.find(n=>n.after===S.scene);if(n2&&!S.notified.includes(S.scene)){S.notified.push(S.scene);save();setTimeout(()=>pushNotif(n2),600);}}
 /* ================= CALL ================= */
 let callTimer=null,callSec=0,callScene=null,callLine=0;
-function startCall(sc){callScene=sc;callLine=0;const who=sc.call.who;$("#call-av").src=M[who].av||"";$("#call-av").style.display=M[who].av?"block":"none";$("#call-name").textContent=M[who].n;$("#call-status").textContent="着信中…";$("#call-sub").textContent="";$("#call-btns").style.display="flex";const cm=$("#call-mini");if(cm)cm.style.display="flex";$("#call-grid").style.display="none";$("#call-end").style.display="none";show("call");}
+function startCall(sc){callScene=sc;callLine=0;const _cb=$("#call-voice");if(_cb)_cb.style.display="none";const who=sc.call.who;$("#call-av").src=M[who].av||"";$("#call-av").style.display=M[who].av?"block":"none";$("#call-name").textContent=M[who].n;$("#call-status").textContent="着信中…";$("#call-sub").textContent="";$("#call-btns").style.display="flex";const cm=$("#call-mini");if(cm)cm.style.display="flex";$("#call-grid").style.display="none";$("#call-end").style.display="none";show("call");}
 $("#call-acc").addEventListener("click",()=>{callSec=0;$("#call-status").textContent="00:00";$("#call-btns").style.display="none";const cm=$("#call-mini");if(cm)cm.style.display="none";$("#call-grid").style.display="grid";$("#call-end").style.display="block";$("#call-sub").textContent="タップで会話が進むよ";callTimer=setInterval(()=>{callSec++;$("#call-status").textContent=String(Math.floor(callSec/60)).padStart(2,"0")+":"+String(callSec%60).padStart(2,"0");},1000);});
 $("#call-dec").addEventListener("click",()=>{toast("かけ直してきたよ（応答してね）");});
-$("#call-end").addEventListener("click",()=>{const lines=callScene.call.lines;if(callLine<lines.length){$("#call-sub").textContent="「"+lines[callLine]+"」";callLine++;return;}clearInterval(callTimer);S.callsDone[callScene.id]=true;save();openChat(callScene);});
+$("#call-end").addEventListener("click",()=>{const lines=callScene.call.lines;if(callLine<lines.length){$("#call-sub").textContent="「"+lines[callLine]+"」";const cvb=$("#call-voice");const cv=(CALL_VOICE[callScene.id]||{})[callLine];if(cvb){if(cv&&VOICE_OK[cv]){cvb.style.display="inline-block";cvb.dataset.v=cv;}else{cvb.style.display="none";}}callLine++;return;}clearInterval(callTimer);S.callsDone[callScene.id]=true;save();openChat(callScene);});
 $("#call-hang").addEventListener("click",ev=>{ev.stopPropagation();$("#call-end").click();});
 /* ================= ENDING ================= */
 function doEnding(){const g=S.gauges;let id;
@@ -1355,6 +1362,14 @@ function openFree(){show("free");const b=$("#free-body");if(!b.dataset.init){con
 function freeSend(){const inp=$("#free-input");const v=inp.value.trim();if(!v)return;inp.value="";const b=$("#free-body");b.innerHTML+=msgHTML({me:true,t:v},nowTimeStr());let r=null;for(const f of FREE){if(f.k.some(k=>v.includes(k))){r=typeof f.r==="string"?f.r:(f.r[S.endId]||f.r.def);break;}}if(!r)r=FREE_DEFAULT[S.freeCount%FREE_DEFAULT.length];S.freeCount++;save();const tp=document.createElement("div");tp.className="msg";tp.innerHTML=avHTML("sakuya",38)+`<div class="col"><div class="who">サクヤ</div><span class="typing"><i></i><i></i><i></i></span></div>`;b.appendChild(tp);b.scrollTop=b.scrollHeight;setTimeout(()=>{tp.remove();b.innerHTML+=msgHTML({f:"sakuya",t:r},nowTimeStr());b.scrollTop=b.scrollHeight;},800);}
 $("#free-send").addEventListener("click",freeSend);
 $("#free-input").addEventListener("keydown",e=>{if(e.key==="Enter")freeSend();});
+/* ================= VOICE (AnyVoice サクヤ) ================= */
+const VOICE_CHAT={"s2":{"はい。……なおさんの好きなグループの、サクヤです":"sk1"},"s7":{"……今の、見ましたか":"sk5","帰りましょう。別々に。……ごめんなさい、なおさん":"sk6"},"s10":{"どの道でも、一つだけ。ソウルで交わした言葉は、全部本当でした":"sk7"}};
+const CALL_VOICE={"s3":{0:"sk2",3:"sk3",4:"sk4"}};
+const VOICE_OK={};let VAUDIO=null;
+function playVoice(id){$$("video").forEach(v=>{try{v.pause()}catch(e){}});if(!VAUDIO)VAUDIO=new Audio();VAUDIO.src="assets/voice/"+id+".mp3";VAUDIO.play().catch(()=>{});}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-v]");if(b){playVoice(b.dataset.v);}});
+(window.VOICE_FILES||[]).forEach(id=>{VOICE_OK[id]=true;});
+const _cvBtn=document.querySelector("#call-voice");if(_cvBtn)_cvBtn.addEventListener("click",()=>{if(_cvBtn.dataset.v)playVoice(_cvBtn.dataset.v);});
 /* ================= VIEWPORT FIT + TITLE ================= */
 function fitPhone(){const vv=window.visualViewport;const h=vv?vv.height:window.innerHeight;document.documentElement.style.setProperty("--vvh",h+"px");}
 if(window.visualViewport)window.visualViewport.addEventListener("resize",fitPhone);
