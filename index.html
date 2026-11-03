@@ -1109,6 +1109,41 @@ button{touch-action:manipulation}
 #call-voice .uic{display:inline-block;vertical-align:-2px}
 .thread .done .uic,.corr .ch .uic,.tt-music .uic{display:inline-block;vertical-align:-2px}
 .pin .uic{display:block}
+
+/* ==== v23: lock / home edit / photos / music player / settings ==== */
+.lnotif.stack{justify-content:center}
+@keyframes jig{from{transform:rotate(-1.7deg)}to{transform:rotate(1.7deg)}}
+#v-home.editing .app .ic{animation:jig .26s ease-in-out infinite alternate}
+#v-home.editing .app::after{content:"\2212";position:absolute;top:-7px;left:1px;width:20px;height:20px;border-radius:50%;background:#e9e9ea;color:#333;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.3);z-index:3;line-height:1}
+#home-done{position:absolute;top:56px;right:14px;z-index:40;background:rgba(30,30,36,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;font-size:13.5px;font-weight:600;padding:7px 16px;border-radius:16px;border:1px solid rgba(255,255,255,.25);font-family:inherit}
+.ph-fav{position:absolute;left:5px;bottom:5px;color:#ff3040;display:flex;filter:drop-shadow(0 1px 2px rgba(0,0,0,.55))}
+.mp-wrap{display:flex;flex-direction:column;flex:1;min-height:0;background:#000;width:100%}
+.mp-vid{width:100%;flex:1;min-height:0;object-fit:contain;background:#000}
+.mp-under{padding:10px 18px 2px;color:#fff;flex:none}
+.mp-song{display:flex;flex-direction:column;gap:1px}
+.mp-song b{font-size:15.5px}
+.mp-song span{font-size:12px;color:#b8b8be}
+.lyr-box{position:relative;height:86px;overflow:hidden;margin:10px 0 2px;scroll-behavior:smooth;mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent)}
+.lyr-line{font-size:15px;font-weight:600;color:#6d6d72;padding:5px 0;transition:color .25s}
+.lyr-line.on{color:#fff}
+.mp-times{display:flex;align-items:center;gap:9px;font-size:11.5px;color:#b8b8be;margin-top:6px}
+.mp-times input{flex:1;accent-color:#fff;height:22px;min-width:0}
+.mp-btns{display:flex;align-items:center;justify-content:space-between;padding:2px 8px 0;color:#fff}
+.mp-btns button{color:#fff;display:flex;padding:6px;background:none;border:none}
+.ios-sw{width:48px;height:28px;border-radius:14px;background:#e9e9ea;position:relative;flex:none;transition:background .18s;display:inline-block;cursor:pointer}
+.ios-sw i{position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.25);transition:left .18s}
+.ios-sw.on{background:#34c759}
+.ios-sw.on i{left:22px}
+.set-row2i .set-lab{color:#111;font-size:14px;display:flex;align-items:center;gap:9px;text-align:left}
+.set-ric{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;flex:none}
+.set-ric .uic{color:#fff}
+.ntog{cursor:pointer}
+.ntog .ios-sw{margin-left:auto}
+.sto-top{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;padding:2px 0 9px}
+.sto-top span{color:#8e8e93;font-size:12px}
+.sto-bar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:#e9e9ea;margin-bottom:10px}
+.sto-bar i{display:block;height:100%}
+.sto-dot{width:10px;height:10px;border-radius:3px;flex:none;align-self:center}
 </style>
 </head>
 <body>
@@ -1137,6 +1172,17 @@ button{touch-action:manipulation}
 <symbol id="icn-end" viewBox="0 0 60 60"><rect width="60" height="60" fill="url(#gEnd)"/><path d="M30 48.6C19.2 40 13.4 32.3 13.4 24.9c0-5.6 4-9.9 9.3-9.9 3 0 5.9 1.6 7.3 4.1 1.4-2.5 4.3-4.1 7.3-4.1 5.3 0 9.3 4.3 9.3 9.9 0 7.4-5.8 15.1-16.6 23.7z" fill="#fff"/></symbol>
 
 <symbol id="i-heart" viewBox="0 0 24 24"><path fill="currentColor" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+<symbol id="i-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M7 5h3.6v14H7zM13.4 5H17v14h-3.6z"/></symbol>
+<symbol id="i-airplay" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="2"/></g><path fill="currentColor" d="M12 14.4 17.4 20.2H6.6z"/></symbol>
+<symbol id="i-prev" viewBox="0 0 24 24"><path fill="currentColor" d="M6 5h2.4v14H6zM19.5 5.5v13L9.8 12z"/></symbol>
+<symbol id="i-next" viewBox="0 0 24 24"><path fill="currentColor" d="M15.6 5H18v14h-2.4zM4.5 5.5v13L14.2 12z"/></symbol>
+<symbol id="i-wifi" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3.8 10.2a12.5 12.5 0 0 1 16.4 0"/><path d="M6.6 13.6a8.4 8.4 0 0 1 10.8 0"/><path d="M9.4 16.9a4.4 4.4 0 0 1 5.2 0"/></g><circle cx="12" cy="19.6" r="1.35" fill="currentColor"/></symbol>
+<symbol id="i-bt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M6.8 8.2 17.2 15.8 12 20.3V3.7l5.2 4.5L6.8 15.8"/></symbol>
+<symbol id="i-cell" viewBox="0 0 24 24"><g fill="currentColor"><rect x="3.4" y="14" width="3.2" height="6" rx="1"/><rect x="8.6" y="11" width="3.2" height="9" rx="1"/><rect x="13.8" y="8" width="3.2" height="12" rx="1"/><rect x="19" y="5" width="3.2" height="15" rx="1" opacity=".35"/></g></symbol>
+<symbol id="i-plane" viewBox="0 0 24 24"><path fill="currentColor" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-1.5-1.5A1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></symbol>
+<symbol id="i-batt" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2.5" y="8.5" width="17" height="8" rx="2.2"/></g><rect x="4.3" y="10.3" width="10.5" height="4.4" rx="1" fill="currentColor"/><path d="M21.8 11v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.8v2.2M12 19v2.2M2.8 12H5M19 12h2.2M5 5l1.6 1.6M17.4 17.4 19 19M19 5l-1.6 1.6M6.6 17.4 5 19"/></g></symbol>
+<symbol id="i-photo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><circle cx="9" cy="10" r="1.7"/><path d="M4.5 18.5 10 13l3.2 3 2.6-2.4 4.7 4.4"/></g></symbol>
 <symbol id="i-moon" viewBox="0 0 24 24"><path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
 <symbol id="i-flower" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="12" cy="7.6" r="3"/><circle cx="7.8" cy="11.2" r="3"/><circle cx="16.2" cy="11.2" r="3"/></g><circle cx="12" cy="10.4" r="1.6" fill="#fff"/><path d="M12 14.5V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
 <symbol id="i-close" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></g></symbol>
@@ -1230,11 +1276,7 @@ button{touch-action:manipulation}
 <div class="shade"></div>
 <div class="lock-top"><svg class="uic s19" style="margin:0 auto"><use href="#i-lock"/></svg></div>
 <div class="lock-clock"><div class="lock-date" id="lock-date">1月10日 土曜日</div><div class="lock-time" id="lock-time">9:41</div></div>
-<div class="lock-notifs">
-<button class="lnotif" data-go="ht"><span class="ln-ic"><svg class="icsvg"><use href="#icn-ht"/></svg></span><span style="flex:1"><span class="ln-h">HelloTalk <span>今</span></span><span class="ln-t"><b>빵돌이</b> さんとのチャットが始まっています。最初のメッセージを送ってみましょう</span></span></button>
-<button class="lnotif" data-go="ig"><span class="ln-ic"><svg class="icsvg"><use href="#icn-ig"/></svg></span><span style="flex:1"><span class="ln-h">INSTAGRAM <span>3時間前</span></span><span class="ln-t"><b>nctwish_official</b>：INTO THE WISH : Face Our WISH ― SEOULまであと5日💫</span></span></button>
-<div class="lnotif stack"><span class="ln-ic"><svg class="icsvg"><use href="#icn-x"/></svg></span><span style="flex:1"><span class="ln-h">X <span>5時間前</span></span><span class="ln-t">トレンド：<b>#NCTWISH</b> ・ <b>高尺スカイドーム</b></span></span></div>
-</div>
+<div class="lock-notifs" id="lock-notifs"></div>
 <div class="lock-btns"><span class="lk-btn"><svg class="uic s21"><use href="#i-flash"/></svg></span><span class="lk-btn"><svg class="uic s21"><use href="#i-camera"/></svg></span></div>
 <div class="lock-hint">タップしてロック解除</div>
 </div>
@@ -1243,10 +1285,11 @@ button{touch-action:manipulation}
 <div class="view" id="v-home">
 <img class="wallbg" src="assets/group.jpg" alt="">
 <div class="shade"></div>
+<button id="home-done" style="display:none">完了</button>
 <div class="home-scroll">
 <div class="wid-row">
 <div class="wid wid-count"><div class="k"><svg class="uic" style="width:11px;height:11px;color:#ff8fab;vertical-align:-1px"><use href="#i-heart"/></svg> SECRET STORY</div><div class="big" id="cd-num">ソウル編</div><div class="s" id="cd-sub">2027年1月 ― HelloTalkで<br>知り合った相手は…</div></div>
-<div class="wid wid-photo"><img src="assets/stage2.jpg" alt=""><span>INTO THE WISH : Face Our WISH</span></div>
+<div class="wid wid-photo"><img id="wid-ph-img" src="assets/stage2.jpg" alt=""><span id="wid-ph-cap">INTO THE WISH : Face Our WISH</span></div>
 </div>
 <div class="wid-wide"><b><svg class="uic" style="width:13px;height:13px;color:#ff5c8a;vertical-align:-2px"><use href="#i-heart"/></svg> ふたりのステータス</b><div style="margin-top:7px">
 <div class="grow"><span>信頼度</span><span id="g-trust-v">45</span></div><div class="gbar"><i id="g-trust" style="width:45%;background:linear-gradient(90deg,#ff5c8a,#ff8fab)"></i></div>
@@ -1347,14 +1390,14 @@ button{touch-action:manipulation}
 
 <!-- PHOTOS -->
 <div class="view" id="v-photos">
-<div class="ahead"><button class="back" data-back="home">‹</button><h2>写真 <span class="sub" id="ph-count"></span></h2><span class="hic">⋯</span></div>
+<div class="ahead"><button class="back" data-back="home">‹</button><h2>写真 <span class="sub" id="ph-count"></span></h2><button class="hic" id="ph-more" aria-label="表示オプション">⋯</button></div>
 <div class="ph-seg"><span>年別</span><span>月別</span><span>日別</span><span class="on">すべての写真</span></div>
 <div class="abody"><div class="ph-grid" id="ph-grid"></div></div>
 </div>
 <div class="view" id="v-photoview">
 <div class="ahead" style="background:#000;color:#fff;border-color:#222"><button class="back" data-back="photos" style="color:#fff">‹</button><h2 id="pv-title">写真</h2></div>
 <div id="pv-media" style="display:flex;flex-direction:column;flex:1;min-height:0"></div>
-<div class="pv-cap" id="pv-cap"></div><div class="pv-tools"><button data-pvtool><svg class="uic s22"><use href="#i-upload"/></svg></button><button data-pvtool><svg class="uic s22"><use href="#i-heart-o"/></svg></button><button data-pvtool><svg class="uic s22"><use href="#i-info"/></svg></button><button data-pvtool><svg class="uic s22"><use href="#i-trash"/></svg></button></div>
+<div class="pv-cap" id="pv-cap"></div><div class="pv-tools"><button data-pvtool="share" aria-label="共有"><svg class="uic s22"><use href="#i-upload"/></svg></button><button data-pvtool="fav" aria-label="お気に入り"><svg class="uic s22"><use href="#i-heart-o"/></svg></button><button data-pvtool="info" aria-label="情報"><svg class="uic s22"><use href="#i-info"/></svg></button><button data-pvtool="del" aria-label="削除"><svg class="uic s22"><use href="#i-trash"/></svg></button></div>
 </div>
 
 <!-- CALL -->
@@ -1389,14 +1432,25 @@ button{touch-action:manipulation}
 <div class="abody" style="background:#f2f2f7">
 <div class="set-prof"><img src="assets/nao-face.jpg" alt=""><span><b>なお</b><small>サクヤペン💗 ― プレイヤー</small></span></div>
 <div class="ios-grp">
-<div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
-<div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v22.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i"><span class="set-lab"><span class="set-ric" style="background:#ff9500"><svg class="uic s14"><use href="#i-plane"/></svg></span>機内モード</span><span class="ios-sw" id="sw-air"><i></i></span></div>
+<button class="set-row2i" id="set-wifi"><span class="set-lab"><span class="set-ric" style="background:#0a84ff"><svg class="uic s14"><use href="#i-wifi"/></svg></span>Wi-Fi</span><span id="wifi-val">Home-5G ›</span></button>
+<div class="set-row2i"><span class="set-lab"><span class="set-ric" style="background:#0a84ff"><svg class="uic s14"><use href="#i-bt"/></svg></span>Bluetooth</span><span>オン</span></div>
+<div class="set-row2i"><span class="set-lab"><span class="set-ric" style="background:#34c759"><svg class="uic s14"><use href="#i-cell"/></svg></span>モバイル通信</span><span></span></div>
 </div>
 <div class="ios-grp">
-<div class="set-row2i">通知 <span>バッジ・バナー オン</span></div>
-<div class="set-row2i">サウンドと触覚 <span>デフォルト</span></div>
-<div class="set-row2i">画面表示 <span>Liquid Glass（iOS 26）</span></div>
+<button class="set-row2i" id="set-notif"><span class="set-lab"><span class="set-ric" style="background:#ff3b30"><svg class="uic s14"><use href="#i-bell"/></svg></span>通知</span><span>アプリ別 ›</span></button>
+<div class="set-row2i"><span class="set-lab"><span class="set-ric" style="background:#ff2d55"><svg class="uic s14"><use href="#i-vol"/></svg></span>サウンドと触覚</span><span>デフォルト</span></div>
+<div class="set-row2i"><span class="set-lab"><span class="set-ric" style="background:#0a84ff"><svg class="uic s14"><use href="#i-sun"/></svg></span>画面表示と明るさ</span><span>Liquid Glass</span></div>
+</div>
+<div class="ios-grp">
+<button class="set-row2i" id="set-wall"><span class="set-lab"><span class="set-ric" style="background:#5e5ce6"><svg class="uic s14"><use href="#i-photo"/></svg></span>壁紙</span><span id="wall-val">デフォルト ›</span></button>
+<button class="set-row2i" id="set-storage"><span class="set-lab"><span class="set-ric" style="background:#8e8e93"><svg class="uic s14"><use href="#i-chart"/></svg></span>iPhoneストレージ</span><span>256 GB ›</span></button>
+<div class="set-row2i"><span class="set-lab"><span class="set-ric" style="background:#34c759"><svg class="uic s14"><use href="#i-batt"/></svg></span>バッテリー</span><span>100%</span></div>
+</div>
+<div class="ios-grp">
+<div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
+<div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
+<div class="set-row2i">バージョン <span>v23.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px;font-size:12px;color:#888;line-height:1.8">『サクヤと熱愛バレた件』は実在の人物を題材にした創作フィクション（ファンメイド作品）です。登場人物の発言・交際等の出来事は全て創作であり、実在の内容とは関係ありません。ツアー日程・会場・リリース実績は公開されている史実に基づきます。<br>なおのプロフィール写真・アルバムには、本人の許可済み写真（5枚セット）を使用しています（本作のみの許可です）。<br>画像：Pinterest／Instagram系の掲載写真（2024〜2026年）、メディア掲載写真等。動画：NCT WISH公式ミュージックビデオの公式プレビュー（iTunes）から作成した縦型クリップ等（権利は各権利者に帰属します）。TikTok公式動画は取得環境の都合（IPブロック）で直接収録できませんでした。</div>
@@ -1739,19 +1793,19 @@ const NEWS_PRE=[
 const NEWS_SCOOP={k:"スクープ",t:"NCT WISHサクヤ、神戸の夜に一般女性と「密会」 週刊誌が写真掲載",m:"週刊スコープ ・ 3月8日",img:"assets/kobe-night.jpg",body:"人気グループNCT WISHのサクヤ（19）が、神戸公演最終日の夜、一般女性と海沿いを歩く姿を週刊スコープが捉えた。\n\n関係者によれば、女性は以前から公演に通うファンとみられ、ふたりは人目を避けるように帽子とマスク姿。短時間の逢瀬ののち、別々に帰路についたという。\n\n所属事務所は本誌の取材に「事実関係を確認中」とコメント。SNSでは「サクヤ 熱愛」がトレンド1位となり、ファンの間では動揺と擁護の声が交錯している。\n\n※本記事は創作フィクション内の架空記事です。"};
 const NEWS_STMT={k:"公式発表",t:"NCT WISHサクヤ熱愛報道、所属事務所が声明を発表",m:"スポルティバ芸能部 ・ 3月9日",body:"所属事務所は9日午後、サクヤの熱愛報道について声明を発表した。声明の詳細と全文は公式サイトに掲載されている。\n\n事務所は「アーティストの活動に影響のないよう、温かく見守っていただければ」とし、ツアーの福岡・愛知公演は予定通り開催される。\n\n※本記事は創作フィクション内の架空記事です。"};
 const PHOTOS=[
- {src:"assets/nao-wink.jpg",cap:"なおのプロフィール写真（白ニット・ウインク）",unlock:0},
- {src:"assets/nao-jacket.jpg",cap:"ソウル旅行の街角で（1月10日）",unlock:0},
- {src:"assets/nao-cafe.jpg",cap:"ソウルのカフェで（cafe murmur）",unlock:1},
- {src:"assets/nao-cat.jpg",cap:"留守番中の相棒と（帰国後）",unlock:2},
- {src:"assets/nao-shirt.jpg",cap:"白シャツでピース",unlock:3},
- {src:"assets/sakuya-selca.jpg",cap:"ソウルで彼が送ってきた写真（1月14日）",unlock:1},
- {src:"assets/group.jpg",cap:"公式写真：ツアー開幕ビジュアル",unlock:0},
- {src:"assets/stage-steady.jpg",cap:"『Steady』ショーケース（SM公式掲載）",unlock:0},
- {src:"assets/stage1.jpg",cap:"代々木公演のステージ（公式系メディア掲載）",unlock:3},
- {src:"assets/kobe-night.jpg",cap:"神戸の夜景 ― 最終日の思い出",unlock:4},
- {src:"assets/video/mv-steady-wide.mp4",video:true,cap:"動画：『Steady』MV公式プレビュー（IGリール）",unlock:3},
- {src:"assets/stage2.jpg",cap:"GLION ARENA KOBE 最終日",unlock:6},
- {src:"assets/av-sakuya2.jpg",cap:"公式投稿：リョウ＆サクヤ in 神戸",unlock:4}
+ {src:"assets/nao-wink.jpg",cap:"なおのプロフィール写真（白ニット・ウインク）",unlock:0,d:"2027年1月10日 10:24",loc:"ソウル特別市"},
+ {src:"assets/nao-jacket.jpg",cap:"ソウル旅行の街角で（1月10日）",unlock:0,d:"2027年1月10日 13:02",loc:"ソウル特別市"},
+ {src:"assets/nao-cafe.jpg",cap:"ソウルのカフェで（cafe murmur）",unlock:1,d:"2027年1月11日 15:40",loc:"ソウル特別市・cafe murmur"},
+ {src:"assets/nao-cat.jpg",cap:"留守番中の相棒と（帰国後）",unlock:2,d:"2027年1月18日 20:15",loc:"自宅"},
+ {src:"assets/nao-shirt.jpg",cap:"白シャツでピース",unlock:3,d:"2027年2月14日 12:30",loc:"自宅"},
+ {src:"assets/sakuya-selca.jpg",cap:"ソウルで彼が送ってきた写真（1月14日）",unlock:1,d:"2027年1月14日 21:47",loc:"ソウル特別市"},
+ {src:"assets/group.jpg",cap:"公式写真：ツアー開幕ビジュアル",unlock:0,d:"2027年1月10日 9:00",loc:"公式写真"},
+ {src:"assets/stage-steady.jpg",cap:"『Steady』ショーケース（SM公式掲載）",unlock:0,d:"2024年9月",loc:"ソウル特別市"},
+ {src:"assets/stage1.jpg",cap:"代々木公演のステージ（公式系メディア掲載）",unlock:3,d:"2027年2月27日 19:20",loc:"国立代々木競技場 第一体育館"},
+ {src:"assets/kobe-night.jpg",cap:"神戸の夜景 ― 最終日の思い出",unlock:4,d:"2027年3月7日 21:05",loc:"神戸市"},
+ {src:"assets/video/mv-steady-wide.mp4",video:true,cap:"動画：『Steady』MV公式プレビュー（IGリール）",unlock:3,d:"2024年9月",loc:"ミュージックビデオ"},
+ {src:"assets/stage2.jpg",cap:"GLION ARENA KOBE 最終日",unlock:6,d:"2027年3月7日 18:44",loc:"GLION ARENA KOBE"},
+ {src:"assets/av-sakuya2.jpg",cap:"公式投稿：リョウ＆サクヤ in 神戸",unlock:4,d:"2027年3月6日 22:10",loc:"神戸市"}
 ];
 const STORIES=[{k:"sion",img:"assets/stage2.jpg",h:"2時間前"},{k:"yushi",img:"assets/group.jpg",h:"3時間前"},{k:"riku",img:"assets/stage1.jpg",h:"5時間前"},{k:"jaehee",img:"assets/kobe.jpg",h:"6時間前"},{k:"ryo",img:"assets/av-ryo.jpg",h:"8時間前"},{k:"sakuya",img:"assets/sakuya-selca.jpg",h:"9時間前"}];
 const PROF={
@@ -1794,7 +1848,7 @@ const NOTIFS=[
 ];
 /* ================= STATE ================= */
 const KEY="sakuya_scandal_v1",EKEY="sakuya_scandal_ends_v1";
-function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{}};}
+function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{},favs:{},wall:"",noff:{}};}
 let S=load();
 function load(){try{const j=JSON.parse(localStorage.getItem(KEY));if(j&&typeof j.scene==="number")return Object.assign(defState(),j);}catch(e){}return defState();}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
@@ -1814,18 +1868,46 @@ const VB='<span class="vbadge"><svg class="uic"><use href="#i-badge"/></svg></sp
 function tmDisp(tm){if(!tm)return "";if(typeof cur!=="undefined"&&cur&&cur.thread==="ht")return tm;const m=/^(\d{1,2}):(\d{2})$/.exec(tm);if(!m)return tm;let h=+m[1];const ap=h<12?"午前":"午後";const hh=h%12===0?12:h%12;return ap+hh+":"+m[2];}
 /* ================= NAV ================= */
 function syncVideos(){setTimeout(()=>{$$("video").forEach(v=>{const view=v.closest(".view");if(view&&view.classList.contains("on")){if(v.closest(".post-vid")||v.classList.contains("pv-vid")){v.play().catch(()=>{});}}else{v.pause();}});},90);}
-function show(id){if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set","ht","htprof"].includes(id));window.scrollTo(0,0);if(id==="tt"){ttView="feed";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="home"));}if(id==="x")xView="feed";if(id==="home")renderHome();if(id==="ht")renderHT();if(id==="line")renderLineList();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();}
+function show(id){if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set","ht","htprof"].includes(id));window.scrollTo(0,0);if(id==="tt"){ttView="feed";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="home"));}if(id==="x")xView="feed";if(id==="lock")renderLock();if(id==="home")renderHome();if(id==="ht")renderHT();if(id==="line")renderLineList();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();}
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){show(g.dataset.go);return;}const b=e.target.closest("[data-back]");if(b)show(b.dataset.back);});
 $("#homebar").addEventListener("click",()=>show("home"));
-$("#v-lock").addEventListener("click",()=>show("home"));
-function tick(){const d=new Date(),h=d.getHours(),m=String(d.getMinutes()).padStart(2,"0");$("#sb-time").textContent=h+":"+m;$("#lock-time").textContent=h+":"+m;const wd=["日","月","火","水","木","金","土"][d.getDay()];$("#lock-date").textContent=(d.getMonth()+1)+"月"+d.getDate()+"日 "+wd+"曜日";const wde=["SUN","MON","TUE","WED","THU","FRI","SAT"][d.getDay()];$("#cal-wd").textContent=wde;$("#cal-d").textContent=d.getDate();}
+$("#v-lock").addEventListener("click",e=>{if(e.target.closest("[data-go]"))return;show("home");});
+function tick(){const d=new Date(),h=d.getHours(),m=String(d.getMinutes()).padStart(2,"0");$("#sb-time").textContent=h+":"+m;const wde=["SUN","MON","TUE","WED","THU","FRI","SAT"][d.getDay()];$("#cal-wd").textContent=wde;$("#cal-d").textContent=d.getDate();}
 tick();setInterval(tick,20000);
 const PHASES=["ソウル編","ソウル編","遠距離編","代々木編","神戸編","神戸編","神戸編","炎上編","炎上編","声明編"];
-function renderHome(){renderGauges();$("#cd-num").innerHTML=S.ended?("完走 "+ic("sparkle","s20")):esc(PHASES[Math.min(S.scene,PHASES.length-1)]);$("#cd-sub").innerHTML=S.ended?("お疲れさまでした。<br>フリーチャット解放中 "+ic("heart","s13")):"2027年1〜3月 ― HelloTalkで<br>知り合った相手は…";const _cs=SCENES[S.scene];const _ht=!S.ended&&_cs&&_cs.thread==="ht";$("#home-prog").textContent=S.ended?("エンディング到達："+(ENDINGS[S.endId]?ENDINGS[S.endId].t:"")):(_cs?_cs.title+" が待ってるよ。"+(_ht?"HelloTalk":"LINE")+"を開いてね":"");setBdg("line",(!S.ended&&!_ht)?1:0);setBdg("ht",_ht?1:0);setBdg("ig",Math.max(0,S.ig-(S._igSeen||0)));setBdg("tt",Math.max(0,S.tt-(S._ttSeen||0)));setBdg("notes",S.memos.length-(S._memoSeen||0));setBdg("x",S.x?1:0);setBdg("news",S.news?1:0);}
+function renderHome(){applyWall();renderGauges();$("#cd-num").innerHTML=S.ended?("完走 "+ic("sparkle","s20")):esc(PHASES[Math.min(S.scene,PHASES.length-1)]);$("#cd-sub").innerHTML=S.ended?("お疲れさまでした。<br>フリーチャット解放中 "+ic("heart","s13")):"2027年1〜3月 ― HelloTalkで<br>知り合った相手は…";const _cs=SCENES[S.scene];const _ht=!S.ended&&_cs&&_cs.thread==="ht";$("#home-prog").textContent=S.ended?("エンディング到達："+(ENDINGS[S.endId]?ENDINGS[S.endId].t:"")):(_cs?_cs.title+" が待ってるよ。"+(_ht?"HelloTalk":"LINE")+"を開いてね":"");setBdg("line",(!S.ended&&!_ht)?1:0);setBdg("ht",_ht?1:0);setBdg("ig",Math.max(0,S.ig-(S._igSeen||0)));setBdg("tt",Math.max(0,S.tt-(S._ttSeen||0)));setBdg("notes",S.memos.length-(S._memoSeen||0));setBdg("x",S.x?1:0);setBdg("news",S.news?1:0);const _unl=PHOTOS.filter(p=>(S.scene>p.unlock||S.ended||p.unlock===0)&&!p.video);const _lp=_unl[_unl.length-1];if(_lp){$("#wid-ph-img").src=_lp.src;$("#wid-ph-cap").textContent=_lp.cap;}}
 function setBdg(k,n){$$('[data-bdg="'+k+'"]').forEach(b=>{b.style.display=n>0?"flex":"none";b.textContent=n;});}
+/* ================= LOCK / NOTIFICATION CENTER (v23) ================= */
+function applyWall(){const lk=$("#v-lock .wallbg");if(lk)lk.src=(typeof S!=="undefined"&&S.wall)||"assets/sakuya-ig1.jpg";const hm=$("#v-home .wallbg");if(hm)hm.src=(typeof S!=="undefined"&&S.wall)||"assets/group.jpg";}
+function storyClock(){const si=S.ended?SCENES.length-1:Math.min(S.scene,SCENES.length-1);const sc=SCENES[si];const upto=S.ended?sc.steps.length:S.step;return {date:sc.date.replace("("," ").replace(")","曜日"),time:fmtMin(clockMin(si,upto))};}
+function lockNotifList(){const L=[];const noff=S.noff||{};const sc=SCENES[S.scene];
+ if(!S.ended&&sc){if(sc.thread==="ht")L.push({go:"ht",icn:"icn-ht",app:"HelloTalk",body:"<b>빵돌이</b> とのチャット ― "+esc(sc.title)+" が待っているよ"});else{const th=THREADS[sc.thread];L.push({go:"line",icn:"icn-line",app:"LINE",body:"<b>"+esc(th?th.title:"")+"</b> ― "+esc(sc.title)+" が待っているよ"});}}
+ NOTIFS.filter(n=>S.scene>=n.after).slice().reverse().forEach(n=>{const icn={"line":"icn-line","ig":"icn-ig","tt":"icn-tt","news":"icn-news"}[n.go]||"icn-ig";L.push({go:n.go,icn:icn,app:n.title,body:esc(n.body)});});
+ const igN=S.ig-(S._igSeen||0);if(igN>0)L.push({go:"ig",icn:"icn-ig",app:"INSTAGRAM",body:"<b>nctwish_official</b> の新しい投稿が "+igN+" 件あるよ"});
+ const ttN=S.tt-(S._ttSeen||0);if(ttN>0)L.push({go:"tt",icn:"icn-tt",app:"TikTok",body:"新しい動画が "+ttN+" 件あるよ"});
+ if(S.x)L.push({go:"x",icn:"icn-x",app:"X",body:"トレンド：<b>#NCTWISH</b> ― 関連ポストが増えているよ"});
+ if(S.news)L.push({go:"news",icn:"icn-news",app:"ニュース",body:"新着記事があるよ"});
+ return L.filter(n=>!noff[n.go]);}
+function renderLock(){const c=storyClock();$("#lock-date").textContent=c.date;$("#lock-time").textContent=c.time;applyWall();const L=lockNotifList();const times=["今","1時間前","2時間前","4時間前","6時間前"];const groups=[];const seen={};L.forEach(n=>{if(seen[n.go])seen[n.go].cnt++;else{seen[n.go]={n:n,cnt:0};groups.push(seen[n.go]);}});
+ $("#lock-notifs").innerHTML=groups.length?groups.slice(0,4).map((g,i)=>{const n=g.n;const main=`<button class="lnotif" data-go="${n.go}"><span class="ln-ic"><svg class="icsvg"><use href="#${n.icn}"/></svg></span><span style="flex:1"><span class="ln-h">${esc(n.app)} <span>${times[Math.min(i,times.length-1)]}</span></span><span class="ln-t">${n.body}</span></span></button>`;const stack=g.cnt>0?`<button class="lnotif stack" data-go="${n.go}"><span class="ln-h" style="font-size:12.5px">${esc(n.app)} の通知 あと${g.cnt}件</span></button>`:"";return main+stack;}).join(""):`<div class="lnotif"><span style="flex:1"><span class="ln-t">新しい通知はないよ</span></span></div>`;}
+/* ================= HOME EDIT MODE (v23) ================= */
+let homeEdit=false,_hLpT=null,_hLpFired=false;
+function setHomeEdit(on){homeEdit=on;$("#v-home").classList.toggle("editing",on);$("#home-done").style.display=on?"block":"none";}
+$("#v-home").addEventListener("pointerdown",e=>{if(!e.target.closest(".app"))return;_hLpFired=false;clearTimeout(_hLpT);_hLpT=setTimeout(()=>{_hLpFired=true;if(!homeEdit){setHomeEdit(true);toast("ホーム画面の編集モード ― 「完了」で終わるよ");}},520);});
+["pointerup","pointercancel","pointerleave"].forEach(ev=>$("#v-home").addEventListener(ev,()=>clearTimeout(_hLpT)));
+$("#v-home").addEventListener("click",e=>{if(_hLpFired){_hLpFired=false;e.stopPropagation();e.preventDefault();return;}if(!homeEdit)return;if(e.target.closest("#home-done")){setHomeEdit(false);e.stopPropagation();e.preventDefault();return;}if(e.target.closest(".app")){e.stopPropagation();e.preventDefault();toast("この端末ではアプリの削除・移動は固定だよ");}},true);
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){const t=g.dataset.go;if(t==="ig")S._igSeen=S.ig;if(t==="tt")S._ttSeen=S.tt;if(t==="notes")S._memoSeen=S.memos.length;if(t==="x")S.x=0;if(t==="news")S.news=0;save();}});
 $("#app-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();show("home");toast("リセットしたよ");}});
 $("#set-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();show("home");toast("リセットしたよ");}});
+/* ================= SETTINGS DETAIL (v23) ================= */
+const WALLS=[{src:"",name:"デフォルト",th:"assets/sakuya-ig1.jpg"},{src:"assets/group.jpg",name:"グループ写真",th:"assets/group.jpg"},{src:"assets/kobe-night.jpg",name:"神戸の夜景",th:"assets/kobe-night.jpg"},{src:"assets/stage2.jpg",name:"GLION ARENA KOBE",th:"assets/stage2.jpg"}];
+function wallName(){const w=WALLS.find(w=>w.src===(S.wall||""));return w?w.name:"デフォルト";}
+const _wv=$("#wall-val");if(_wv)_wv.textContent=wallName()+" ›";
+$("#sw-air").addEventListener("click",function(){this.classList.toggle("on");toast(this.classList.contains("on")?"機内モード オン（物語には影響しないよ）":"機内モード オフ");});
+$("#set-wifi").addEventListener("click",()=>{const nets=["Home-5G","Cafe murmur Wi-Fi","KIX Free Wi-Fi","ホテル神戸 Wi-Fi"];const cur=$("#wifi-val").textContent.replace(/ ›$/,"");sheetList("Wi-Fi",nets.map(n=>`<button class="sh-row" data-wifi="${esc(n)}"><span class="ric">${ic("wifi","s19")}</span>${esc(n)}<span style="margin-left:auto;color:#0a84ff">${cur===n?"✓":""}</span></button>`).join(""));$$("#sheet-body [data-wifi]").forEach(b=>b.addEventListener("click",()=>{$("#wifi-val").textContent=b.dataset.wifi+" ›";closeSheet();toast("Wi-Fi："+b.dataset.wifi+" に接続したよ");}));});
+$("#set-notif").addEventListener("click",()=>{const apps=[["ht","HelloTalk"],["line","LINE"],["ig","Instagram"],["tt","TikTok"],["x","X"],["news","ニュース"]];sheetList("通知",apps.map(a=>`<div class="sc-row ntog" data-ntog="${a[0]}"><div class="sc-main"><b>${a[1]}</b><div style="color:#8e8e93;font-size:12px;margin-top:1px">ロック画面・バナー</div></div><span class="ios-sw ${(S.noff&&S.noff[a[0]])?"":"on"}"><i></i></span></div>`).join("")+`<div class="locknote">オフにしたアプリはロック画面に出なくなるよ</div>`);$$("#sheet-body [data-ntog]").forEach(r=>r.addEventListener("click",()=>{const k=r.dataset.ntog;S.noff=S.noff||{};if(S.noff[k])delete S.noff[k];else S.noff[k]=1;save();r.querySelector(".ios-sw").classList.toggle("on",!S.noff[k]);}));});
+$("#set-wall").addEventListener("click",()=>{sheetList("壁紙",WALLS.map(w=>`<button class="sh-row" data-wall="${esc(w.src)}"><img src="${w.th}" style="width:40px;height:52px;border-radius:8px;object-fit:cover;flex:none">${esc(w.name)}<span style="margin-left:auto;color:#0a84ff">${(S.wall||"")===w.src?"✓":""}</span></button>`).join(""));$$("#sheet-body [data-wall]").forEach(b=>b.addEventListener("click",()=>{S.wall=b.dataset.wall;save();applyWall();$("#wall-val").textContent=wallName()+" ›";closeSheet();toast("壁紙を変更したよ");}));});
+$("#set-storage").addEventListener("click",()=>{const rows=[["#ff9500","iOS 26","12.4 GB",46],["#ff2d55","写真・動画","1.9 GB",8],["#5e5ce6","TikTok 動画","486 MB",2],["#0a84ff","アプリ","812 MB",3],["#8e8e93","その他","3.2 GB",13]];sheetList("iPhoneストレージ",`<div class="sto-top"><b>iPhone</b><span>256 GB 中 18.8 GB を使用</span></div><div class="sto-bar">${rows.map(r=>`<i style="width:${r[3]}%;background:${r[0]}"></i>`).join("")}</div>`+rows.map(r=>`<div class="sc-row"><span class="sto-dot" style="background:${r[0]}"></span><div class="sc-main"><b>${esc(r[1])}</b></div><span style="color:#8e8e93;font-size:12.5px">${r[2]}</span></div>`).join("")+`<div class="locknote">写真 ${PHOTOS.length} 件 ・ 動画 ${TT_POSTS.length} 件が この端末に保存されているよ</div>`);});
 /* ================= LINE LIST ================= */
 function renderLineList(){const el=$("#line-list");let h=`<div class="line-search">${ic("search")} 検索</div><button class="me-row"><img class="av" src="assets/nao-face.jpg" style="width:50px;height:50px" alt=""><span><span class="nm">なお</span><div class="st">サクヤペン💗 神戸公演が楽しみ</div></span></button><div class="sec-t">トーク</div>`;
  const order=["sakuya","members","yui","mgr"];
@@ -2200,12 +2282,46 @@ function notesListHTML(){const q=notesQuery.trim();const list=S.memos.map(id=>SC
 function renderNotes(){const el=$("#notes-body");const eg=endingsGot();let h=`<label class="notes-search">${ic("search","s15")}<input id="notes-in" type="text" placeholder="メモを検索" value="${esc(notesQuery).replace(/"/g,"&quot;")}" autocomplete="off"></label><div id="notes-list">${notesListHTML()}</div>`;
  h+=`<div class="end-coll"><div style="font-size:13px;font-weight:800;margin-bottom:8px">エンディングコレクション</div>`+Object.keys(ENDINGS).map(id=>{const got=eg[id];const mt=ENDMETA[id];return got?`<div class="end-card" style="background:${mt[1]}"><b>${ic(mt[0],"s15")} ${esc(ENDINGS[id].t)}</b>到達済み ― おつかれさま${ic("heart","s13")}</div>`:`<div class="end-card lock"><b>？？？</b>未到達のエンディング</div>`;}).join("")+`</div>`;
  el.innerHTML=h;const _ni=$("#notes-in");if(_ni)_ni.addEventListener("input",()=>{notesQuery=_ni.value;const r=$("#notes-list");if(r)r.innerHTML=notesListHTML();});}
-/* ================= PHOTOS ================= */
-function renderPhotos(){const el=$("#ph-grid");const unlocked=PHOTOS.filter(p=>S.scene>p.unlock||S.ended||p.unlock===0);$("#ph-count").textContent=unlocked.length+" / "+PHOTOS.length+" 件";
- el.innerHTML=PHOTOS.map((p,i)=>{const un=S.scene>p.unlock||S.ended||p.unlock===0;return `<button data-ph="${i}">${un?(p.video?`<video src="${p.src}" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover"></video><span class="pin" style="position:absolute;top:5px;right:6px;color:#fff">${ic("play","s13")}</span>`:`<img src="${p.src}">`):`<span class="lk">${ic("lock","s20")}</span>`}</button>`;}).join("");
- el.querySelectorAll("[data-ph]").forEach(b=>b.addEventListener("click",()=>{const p=PHOTOS[+b.dataset.ph];if(!(S.scene>p.unlock||S.ended||p.unlock===0)){toast("まだ解放されていない写真だよ");return;}
-  $("#pv-title").textContent="写真";$("#pv-media").innerHTML=p.video?`<video class="pv-vid" src="${p.src}" controls autoplay muted loop playsinline></video>`:`<img src="${p.src}" style="width:100%;flex:1;object-fit:contain;min-height:0;background:#000">`;$("#pv-cap").textContent=p.cap;const _bb=document.querySelector("#v-photoview .back");if(_bb)_bb.dataset.back="photos";show("photoview");}));}
-function openNaoPhoto(s,cap){$("#pv-title").textContent="プロフィール";$("#pv-media").innerHTML=`<img src="${s}" style="width:100%;flex:1;object-fit:contain;min-height:0;background:#000">`;$("#pv-cap").textContent=cap;const _bb=document.querySelector("#v-photoview .back");if(_bb)_bb.dataset.back="ht";show("photoview");}
+/* ================= PHOTOS (v23: fav / share / info / music player) ================= */
+let pvCtx=null,phFavOnly=false;
+function phUnlocked(p){return S.scene>p.unlock||S.ended||p.unlock===0;}
+function renderPhotos(){const el=$("#ph-grid");const unlocked=PHOTOS.filter(phUnlocked);$("#ph-count").textContent=unlocked.length+" / "+PHOTOS.length+" 件"+(phFavOnly?" ・ お気に入り":"");
+ el.innerHTML=PHOTOS.map((p,i)=>{const un=phUnlocked(p);if(phFavOnly&&!(S.favs&&S.favs[i]))return "";return `<button data-ph="${i}">${un?(p.video?`<video src="${p.src}" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover"></video><span class="pin" style="position:absolute;top:5px;right:6px;color:#fff">${ic("play","s13")}</span>`:`<img src="${p.src}">`)+(S.favs&&S.favs[i]?`<span class="ph-fav">${ic("heart","s11")}</span>`:""):`<span class="lk">${ic("lock","s20")}</span>`}</button>`;}).join("")||`<div class="locknote">お気に入りの写真はまだないよ</div>`;
+ el.querySelectorAll("[data-ph]").forEach(b=>b.addEventListener("click",()=>{const i=+b.dataset.ph;if(!phUnlocked(PHOTOS[i])){toast("まだ解放されていない写真だよ");return;}openPhoto(i);}));}
+function openPhoto(i){const p=PHOTOS[i];pvCtx={t:"lib",i};$("#pv-title").textContent=p.d;$("#pv-cap").textContent=p.cap;const bb=document.querySelector("#v-photoview .back");if(bb)bb.dataset.back="photos";
+ if(p.video){$("#pv-media").innerHTML=mpHTML(p);bindMP(p);}else{$("#pv-media").innerHTML=`<img src="${p.src}" style="width:100%;flex:1;object-fit:contain;min-height:0;background:#000">`;}
+ updPvFav();show("photoview");}
+function openNaoPhoto(s,cap){pvCtx={t:"nao",cap};$("#pv-title").textContent="プロフィール";$("#pv-media").innerHTML=`<img src="${s}" style="width:100%;flex:1;object-fit:contain;min-height:0;background:#000">`;$("#pv-cap").textContent=cap;const bb=document.querySelector("#v-photoview .back");if(bb)bb.dataset.back="ht";updPvFav();show("photoview");}
+function updPvFav(){const b=document.querySelector("[data-pvtool='fav']");if(!b)return;const on=!!(pvCtx&&pvCtx.t==="lib"&&S.favs&&S.favs[pvCtx.i]);b.innerHTML=ic(on?"heart":"heart-o","s22");b.style.color=on?"#ff3040":"#fff";}
+function pvPhoto(){return pvCtx&&pvCtx.t==="lib"?PHOTOS[pvCtx.i]:null;}
+function openPvShare(){sheetList("共有",`<button class="sh-row" data-psh="copy"><span class="ric">${ic("copy","s19")}</span>リンクをコピー</button><button class="sh-row" data-psh="line"><span class="ric"><svg class="icsvg" style="width:22px;height:22px;border-radius:5px"><use href="#icn-line"/></svg></span>LINEで送る</button><button class="sh-row" data-psh="memo"><span class="ric"><svg class="icsvg" style="width:22px;height:22px;border-radius:5px"><use href="#icn-note"/></svg></span>観察メモに追加</button><button class="sh-row" data-psh="air"><span class="ric">${ic("send","s19")}</span>AirDrop ― なおのMacBook</button>`);
+ $$("#sheet-body [data-psh]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.psh;closeSheet();
+  if(k==="copy")ttCopyLink("https://photos.example/p"+(pvCtx&&pvCtx.i||0),"リンクをコピーしたよ");
+  else if(k==="line")toast("LINEで送ったよ");
+  else if(k==="memo")toast("観察メモに追加したよ");
+  else toast("「なおのMacBook」に送信したよ");}));}
+function openPvInfo(){const p=pvPhoto();const rows=p?[["日付",p.d],["場所",p.loc],["説明",p.cap],["形式",p.video?"ビデオ（MP4）":"写真（JPEG）"],["お気に入り",(S.favs&&S.favs[pvCtx.i])?"登録済み":"―"]]:[["説明",(pvCtx&&pvCtx.cap)||""],["形式","写真（JPEG）"]];
+ sheetList("情報",rows.map(r=>`<div class="sc-row"><div class="sc-main"><b>${esc(r[0])}</b><div style="color:#8e8e93;font-size:12.5px;margin-top:1px">${esc(r[1])}</div></div></div>`).join(""));}
+$("#ph-more").addEventListener("click",()=>{sheetList("表示",`<button class="sh-row" data-phopt="fav"><span class="ric">${ic("heart","s19")}</span>お気に入りだけ表示<span style="margin-left:auto;color:#0a84ff">${phFavOnly?"✓":""}</span></button><button class="sh-row" data-phopt="all"><span class="ric">${ic("grid","s19")}</span>すべての写真を表示<span style="margin-left:auto;color:#0a84ff">${phFavOnly?"":"✓"}</span></button>`);$$("#sheet-body [data-phopt]").forEach(b=>b.addEventListener("click",()=>{phFavOnly=b.dataset.phopt==="fav";closeSheet();renderPhotos();}));});
+/* ---- music player for the MV in the photo viewer (audio source unchanged) ---- */
+const LYR=[[0,"♪ イントロ"],[0.16,"♪ バース"],[0.36,"♪ プレコーラス"],[0.52,"♪ コーラス"],[0.72,"♪ ブリッジ"],[0.88,"♪ アウトロ"]];
+function mpT(s){s=Math.max(0,Math.floor(s||0));return Math.floor(s/60)+":"+String(s%60).padStart(2,"0");}
+function mpHTML(p){return `<div class="mp-wrap"><video class="pv-vid mp-vid" src="${p.src}" playsinline loop preload="auto"></video><div class="mp-under"><div class="mp-song"><b>Steady</b><span>NCT WISH ― ミュージックビデオ（公式プレビュー）</span></div><div class="lyr-box" id="lyr-box">${LYR.map((l,i)=>`<div class="lyr-line" data-li="${i}">${l[1]}</div>`).join("")}</div><div class="mp-times"><span id="mp-cur">0:00</span><input type="range" id="mp-seek" min="0" max="1000" value="0" aria-label="シーク"><span id="mp-dur">0:00</span></div><div class="mp-btns"><button id="mp-prev" aria-label="最初から">${ic("prev","s26")}</button><button id="mp-play" aria-label="再生／停止">${ic("pause","s36")}</button><button id="mp-next" aria-label="次の曲">${ic("next","s26")}</button><button id="mp-air" aria-label="AirPlay">${ic("airplay","s23")}</button><button id="mp-mute" aria-label="消音">${ic("vol","s23")}</button></div></div></div>`;}
+function bindMP(p){const v=document.querySelector("#pv-media .mp-vid");if(!v)return;const playB=$("#mp-play"),seek=$("#mp-seek"),cur=$("#mp-cur"),dur=$("#mp-dur"),muteB=$("#mp-mute");let drag=false;
+ const setPlayIc=()=>{playB.innerHTML=ic(v.paused?"play":"pause","s36");};
+ v.addEventListener("loadedmetadata",()=>{dur.textContent=mpT(v.duration);});
+ v.addEventListener("timeupdate",()=>{if(!drag&&v.duration)seek.value=Math.round(v.currentTime/v.duration*1000);cur.textContent=mpT(v.currentTime);if(v.duration){const f=v.currentTime/v.duration;let on=0;LYR.forEach((l,i)=>{if(f>=l[0])on=i;});$$("#lyr-box .lyr-line").forEach((el,i)=>el.classList.toggle("on",i===on));const box=$("#lyr-box"),ln=box?box.querySelector(".lyr-line.on"):null;if(box&&ln)box.scrollTop=Math.max(0,ln.offsetTop-box.clientHeight/2+14);}});
+ v.addEventListener("play",setPlayIc);v.addEventListener("pause",setPlayIc);
+ seek.addEventListener("input",()=>{drag=true;if(v.duration){v.currentTime=seek.value/1000*v.duration;cur.textContent=mpT(v.currentTime);}});
+ seek.addEventListener("change",()=>{drag=false;});
+ playB.addEventListener("click",()=>{if(v.paused)v.play().catch(()=>{});else v.pause();});
+ v.addEventListener("click",()=>{if(v.paused)v.play().catch(()=>{});else v.pause();});
+ $("#mp-prev").addEventListener("click",()=>{v.currentTime=0;v.play().catch(()=>{});});
+ $("#mp-next").addEventListener("click",()=>toast("次の曲はないよ（このプレビューだけ）"));
+ muteB.addEventListener("click",()=>{v.muted=!v.muted;muteB.innerHTML=ic(v.muted?"volx":"vol","s23");});
+ $("#mp-air").addEventListener("click",()=>{sheetList("AirPlay",`<button class="sh-row" data-air="0"><span class="ric">${ic("vol","s19")}</span>このiPhone<span style="margin-left:auto;color:#0a84ff">✓</span></button><button class="sh-row" data-air="1"><span class="ric">${ic("airplay","s19")}</span>リビングのテレビ</button><button class="sh-row" data-air="2"><span class="ric">${ic("airplay","s19")}</span>ホームシアター</button>`);$$("#sheet-body [data-air]").forEach(b=>b.addEventListener("click",()=>{closeSheet();toast(b.dataset.air==="0"?"このiPhoneで再生中だよ":"そのデバイスには接続できないよ");}));});
+ v.muted=false;const pr=v.play();if(pr&&pr.catch)pr.catch(()=>{v.muted=true;muteB.innerHTML=ic("volx","s23");v.play().catch(()=>{});});
+ setPlayIc();}
 /* ================= PROFILE ================= */
 function openProfile(key){if(key==="ht"){show("htprof");renderHTProf();return;}const pr=PROF[key];if(!pr)return;$("#prof-name").textContent=pr.name;$("#prof-status").textContent=pr.status;$("#prof-cover").src=pr.cover;const img=$("#prof-av"),sl=$("#prof-avsil");
  if(pr.av){img.src=pr.av;img.style.display="block";sl.style.display="none";}
@@ -2390,7 +2506,13 @@ $$("#htmenu [data-htm]").forEach(b=>b.addEventListener("click",()=>{const k=b.da
  else if(k==="trans")toast("翻訳は吹き出しの下に展開されるよ");
  else toast("その機能は物語では使わないよ");}));
 $("#chat-body").addEventListener("contextmenu",e=>{if(cur&&cur.thread==="ht")e.preventDefault();});
-$$("[data-pvtool]").forEach(b=>b.addEventListener("click",()=>toast("写真の操作は物語では使わないよ")));
+$$("[data-pvtool]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.pvtool;
+ if(!pvCtx){toast("写真を開いてから操作してね");return;}
+ if(k==="del"){toast("物語の写真は削除できないよ");return;}
+ if(k==="fav"){if(pvCtx.t!=="lib"){toast("この写真はお気に入りにできないよ");return;}S.favs=S.favs||{};if(S.favs[pvCtx.i])delete S.favs[pvCtx.i];else S.favs[pvCtx.i]=1;save();updPvFav();toast(S.favs[pvCtx.i]?"お気に入りに追加したよ":"お気に入りを取り消したよ");return;}
+ if(k==="share"){openPvShare();return;}
+ if(k==="info"){openPvInfo();return;}
+}));
 $$("#v-photos .ph-seg span").forEach((s,i)=>s.addEventListener("click",()=>{if(i<3)toast("並び替えは『すべての写真』表示だけだよ");}));
 const _hf=$("#ht-filter");if(_hf)_hf.addEventListener("click",()=>toast("絞り込みは物語では使わないよ"));
 /* ================= INIT ================= */
