@@ -1159,6 +1159,38 @@ button.end-card{width:100%;text-align:left;font-family:inherit;border:none;curso
 .sto-bar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:#e9e9ea;margin-bottom:10px}
 .sto-bar i{display:block;height:100%}
 .sto-dot{width:10px;height:10px;border-radius:3px;flex:none;align-self:center}
+/* ==== v26: tap targets / contrast / title finish ==== */
+.ahead .back{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;margin-left:-8px;flex:none}
+.ahead .hic{min-width:40px;min-height:40px;display:inline-flex;align-items:center;justify-content:center}
+.chat-head .back{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;margin-left:-6px;flex:none}
+.chat-head .hic{min-width:40px;min-height:40px;display:inline-flex;align-items:center;justify-content:center}
+.ig-head .back,.x-head .back,.ht-head .back{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;margin-left:-10px;flex:none}
+.xs-back,.tts-back{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.pv-tools button{min-width:48px;min-height:44px;align-items:center;justify-content:center}
+.story-ic{min-width:44px;min-height:44px;align-items:center;justify-content:center}
+.story-head #story-x{min-width:44px;min-height:44px;justify-content:center}
+.prof-back{width:44px;height:44px}
+.x-tabs button{padding:13px 0}
+.send-b{min-height:40px}
+.sheet-head #sheet-x{width:32px;height:32px}
+.igx-clear{width:30px;height:30px}
+.ll-icons button{min-width:40px;min-height:40px;align-items:center;justify-content:center}
+.chat-foot .fic{padding:7px 3px}
+.sc-row .sc-heart{padding:7px 6px 7px 12px}
+.ttp-hic{min-width:40px;min-height:40px;display:inline-flex;align-items:center;justify-content:center;color:inherit}
+.sec-t{color:#76767c}
+.news-item .nm,.news-art .nm{color:#76767c}
+.note-lock{color:#6e6e73}
+.cal-grid .dw{color:#76767c}
+.calllog-row time{color:#76767c}
+.thread .tn time{color:#76767c}
+.chat-in{color:#76767c}
+.title-kick{padding-left:.34em}
+.title-logo .l1{padding-left:.42em}
+.title-main{padding-bottom:max(30px,env(safe-area-inset-bottom))}
+.title-note{margin-top:16px;width:100%;max-width:300px}
+.tbtn{transition:transform .12s ease}
+.tbtn:active{transform:scale(.975)}
 </style>
 </head>
 <body>
@@ -1311,7 +1343,7 @@ button.end-card{width:100%;text-align:left;font-family:inherit;border:none;curso
 <div class="grow"><span>信頼度</span><span id="g-trust-v">45</span></div><div class="gbar"><i id="g-trust" style="width:45%;background:linear-gradient(90deg,#ff5c8a,#ff8fab)"></i></div>
 <div class="grow"><span>炎上度</span><span id="g-fire-v">10</span></div><div class="gbar"><i id="g-fire" style="width:10%;background:linear-gradient(90deg,#ff9500,#ff3b30)"></i></div>
 <div class="grow"><span>ファンの温度</span><span id="g-fan-v">55</span></div><div class="gbar"><i id="g-fan" style="width:55%;background:linear-gradient(90deg,#7b61c9,#4fc3e8)"></i></div>
-</div><div id="home-prog" style="font-size:11.5px;color:#888;margin-top:2px">第1話から始まるよ。HelloTalkを開いてね</div></div>
+</div><div id="home-prog" style="font-size:11.5px;color:#6e6e73;margin-top:2px">第1話から始まるよ。HelloTalkを開いてね</div></div>
 <div class="apps">
 <button class="app" data-go="ig"><span class="ic"><svg class="icsvg"><use href="#icn-ig"/></svg></span>Instagram<span class="bdg" data-bdg="ig" style="display:none"></span></button>
 <button class="app" data-go="x"><span class="ic"><svg class="icsvg"><use href="#icn-x"/></svg></span>X<span class="bdg" data-bdg="x" style="display:none"></span></button>
@@ -1368,14 +1400,14 @@ button.end-card{width:100%;text-align:left;font-family:inherit;border:none;curso
 
 <!-- IG -->
 <div class="view" id="v-ig">
-<div class="ig-head"><button class="back" data-back="home" style="font-size:24px">‹</button><span class="ig-uname">nctwish_official <span class="vbadge"><svg class="uic "><use href="#i-badge"/></svg></span></span><button class="hic" id="ig-bell" aria-label="アクティビティ"><svg class="uic s22"><use href="#i-bell"/></svg><span class="bdot"></span></button><span class="hic" style="font-weight:800;letter-spacing:1px">•••</span></div>
+<div class="ig-head"><button class="back" data-back="home" style="font-size:24px">‹</button><span class="ig-uname">nctwish_official <span class="vbadge"><svg class="uic "><use href="#i-badge"/></svg></span></span><button class="hic" id="ig-bell" aria-label="アクティビティ"><svg class="uic s22"><use href="#i-bell"/></svg><span class="bdot"></span></button><span class="hic" id="ig-dots" role="button" aria-label="その他のオプション" style="font-weight:800;letter-spacing:1px">•••</span></div>
 <div class="abody" id="ig-body"></div>
 <div class="ig-nav"><button data-ignav="feed" aria-label="ホーム"><svg class="uic s24"><use href="#i-home"/></svg></button><button data-ignav="explore" aria-label="検索"><svg class="uic s24"><use href="#i-search"/></svg></button><button data-ignav="reels" aria-label="リール"><svg class="uic s24"><use href="#i-film"/></svg></button><button data-ignav="grid" aria-label="プロフィール"><img class="nav-av" src="assets/group.jpg" alt=""></button></div>
 </div>
 
 <!-- X -->
 <div class="view" id="v-x">
-<div class="x-head"><button class="back" data-back="home" style="font-size:24px">‹</button><span class="x-logo"><svg class="uic s21"><use href="#i-xlogo"/></svg></span><button class="hic x-bellwrap" id="x-bell" aria-label="通知"><svg class="uic s21"><use href="#i-bell"/></svg><span class="bdot"></span></button><span class="hic"><svg class="uic s21"><use href="#i-sparkle"/></svg></span></div>
+<div class="x-head"><button class="back" data-back="home" style="font-size:24px">‹</button><span class="x-logo"><svg class="uic s21"><use href="#i-xlogo"/></svg></span><button class="hic x-bellwrap" id="x-bell" aria-label="通知"><svg class="uic s21"><use href="#i-bell"/></svg><span class="bdot"></span></button><span class="hic" id="x-spark" role="button" aria-label="タイムライン表示"><svg class="uic s21"><use href="#i-sparkle"/></svg></span></div>
 <div class="x-tabs"><button class="on" id="x-tab-feed">おすすめ</button><button id="x-tab-trend">トレンド</button><button id="x-tab-bmk">ブックマーク</button></div>
 <div class="abody" id="x-body"></div>
 </div>
@@ -1470,10 +1502,10 @@ button.end-card{width:100%;text-align:left;font-family:inherit;border:none;curso
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v25.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v26.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
-<div style="padding:16px;font-size:12px;color:#888;line-height:1.8">『サクヤと熱愛バレた件』は実在の人物を題材にした創作フィクション（ファンメイド作品）です。登場人物の発言・交際等の出来事は全て創作であり、実在の内容とは関係ありません。ツアー日程・会場・リリース実績は公開されている史実に基づきます。<br>なおのプロフィール写真・アルバムには、本人の許可済み写真（5枚セット）を使用しています（本作のみの許可です）。<br>画像：Pinterest／Instagram系の掲載写真（2024〜2026年）、メディア掲載写真等。動画：NCT WISH公式ミュージックビデオの公式プレビュー（iTunes）から作成した縦型クリップ等（権利は各権利者に帰属します）。TikTok公式動画は取得環境の都合（IPブロック）で直接収録できませんでした。</div>
+<div style="padding:16px;font-size:12px;color:#6e6e73;line-height:1.8">『サクヤと熱愛バレた件』は実在の人物を題材にした創作フィクション（ファンメイド作品）です。登場人物の発言・交際等の出来事は全て創作であり、実在の内容とは関係ありません。ツアー日程・会場・リリース実績は公開されている史実に基づきます。<br>なおのプロフィール写真・アルバムには、本人の許可済み写真（5枚セット）を使用しています（本作のみの許可です）。<br>画像：Pinterest／Instagram系の掲載写真（2024〜2026年）、メディア掲載写真等。動画：NCT WISH公式ミュージックビデオの公式プレビュー（iTunes）から作成した縦型クリップ等（権利は各権利者に帰属します）。TikTok公式動画は取得環境の都合（IPブロック）で直接収録できませんでした。</div>
 </div>
 </div>
 
@@ -1949,7 +1981,7 @@ const WALLS=[{src:"",name:"デフォルト",th:"assets/sakuya-ig1.jpg"},{src:"as
 function wallName(){const w=WALLS.find(w=>w.src===(S.wall||""));return w?w.name:"デフォルト";}
 const _wv=$("#wall-val");if(_wv)_wv.textContent=wallName()+" ›";
 $("#sw-air").addEventListener("click",function(){this.classList.toggle("on");toast(this.classList.contains("on")?"機内モード オン（物語には影響しないよ）":"機内モード オフ");});
-$("#set-wifi").addEventListener("click",()=>{const nets=["Home-5G","Cafe murmur Wi-Fi","KIX Free Wi-Fi","ホテル神戸 Wi-Fi"];const cur=$("#wifi-val").textContent.replace(/ ›$/,"");sheetList("Wi-Fi",nets.map(n=>`<button class="sh-row" data-wifi="${esc(n)}"><span class="ric">${ic("wifi","s19")}</span>${esc(n)}<span style="margin-left:auto;color:#0a84ff">${cur===n?"✓":""}</span></button>`).join(""));$$("#sheet-body [data-wifi]").forEach(b=>b.addEventListener("click",()=>{$("#wifi-val").textContent=b.dataset.wifi+" ›";closeSheet();toast("Wi-Fi："+b.dataset.wifi+" に接続したよ");}));});
+$("#set-wifi").addEventListener("click",()=>{const nets=["Home-5G","Cafe murmur Wi-Fi","KIX Free Wi-Fi","ホテル神戸 Wi-Fi"];const cur=$("#wifi-val").textContent.replace(/ ›$/,"");sheetList("Wi-Fi",nets.map(n=>`<button class="sh-row" data-wifi="${esc(n)}"><span class="ric">${ic("wifi","s19")}</span>${esc(n)}<span style="margin-left:auto;color:#0a84ff">${cur===n?"✓":""}</span></button>`).join(""));$$("#sheet-body [data-wifi]").forEach(b=>b.addEventListener("click",()=>{$("#wifi-val").textContent=b.dataset.wifi+" ›";closeSheet();toast("Wi-Fi「"+b.dataset.wifi+"」に接続したよ");}));});
 $("#set-notif").addEventListener("click",()=>{const apps=[["ht","HelloTalk"],["line","LINE"],["ig","Instagram"],["tt","TikTok"],["x","X"],["news","ニュース"]];sheetList("通知",apps.map(a=>`<div class="sc-row ntog" data-ntog="${a[0]}"><div class="sc-main"><b>${a[1]}</b><div style="color:#8e8e93;font-size:12px;margin-top:1px">ロック画面・バナー</div></div><span class="ios-sw ${(S.noff&&S.noff[a[0]])?"":"on"}"><i></i></span></div>`).join("")+`<div class="locknote">オフにしたアプリはロック画面に出なくなるよ</div>`);$$("#sheet-body [data-ntog]").forEach(r=>r.addEventListener("click",()=>{const k=r.dataset.ntog;S.noff=S.noff||{};if(S.noff[k])delete S.noff[k];else S.noff[k]=1;save();r.querySelector(".ios-sw").classList.toggle("on",!S.noff[k]);}));});
 $("#set-wall").addEventListener("click",()=>{sheetList("壁紙",WALLS.map(w=>`<button class="sh-row" data-wall="${esc(w.src)}"><img src="${w.th}" style="width:40px;height:52px;border-radius:8px;object-fit:cover;flex:none">${esc(w.name)}<span style="margin-left:auto;color:#0a84ff">${(S.wall||"")===w.src?"✓":""}</span></button>`).join(""));$$("#sheet-body [data-wall]").forEach(b=>b.addEventListener("click",()=>{S.wall=b.dataset.wall;save();applyWall();$("#wall-val").textContent=wallName()+" ›";closeSheet();toast("壁紙を変更したよ");}));});
 $("#set-storage").addEventListener("click",()=>{const rows=[["#ff9500","iOS 26","12.4 GB",46],["#ff2d55","写真・動画","1.9 GB",8],["#5e5ce6","TikTok 動画","486 MB",2],["#0a84ff","アプリ","812 MB",3],["#8e8e93","その他","3.2 GB",13]];sheetList("iPhoneストレージ",`<div class="sto-top"><b>iPhone</b><span>256 GB 中 18.8 GB を使用</span></div><div class="sto-bar">${rows.map(r=>`<i style="width:${r[3]}%;background:${r[0]}"></i>`).join("")}</div>`+rows.map(r=>`<div class="sc-row"><span class="sto-dot" style="background:${r[0]}"></span><div class="sc-main"><b>${esc(r[1])}</b></div><span style="color:#8e8e93;font-size:12.5px">${r[2]}</span></div>`).join("")+`<div class="locknote">写真 ${PHOTOS.length} 件 ・ 動画 ${TT_POSTS.length} 件が この端末に保存されているよ</div>`);});
@@ -2179,7 +2211,7 @@ function ttProfHTML(){const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g
  if(ttProfTab==="lock")grid=`<div style="grid-column:1/-1;text-align:center;font-size:12px;color:#8e8e96;padding:22px 10px">${ic("lock","s15")} 非公開の動画だよ</div>`;
  else if(ttProfTab==="liked")grid=likedPosts.length?likedPosts.map(ttGridBtn).join(""):`<div style="grid-column:1/-1;text-align:center;font-size:12px;color:#8e8e96;padding:22px 10px">いいねした動画はまだないよ</div>`;
  else grid=posts.length?posts.map(ttGridBtn).join(""):`<div style="grid-column:1/-1;text-align:center;font-size:12px;color:#8e8e96;padding:22px 10px">${ic("lock","s15")} 物語を進めると動画が解放されるよ</div>`;
- return `<div class="ttp"><div class="ttp-head"><span style="width:24px"></span><span class="ttu">@nctwish_official ${VB}</span><span style="display:flex;gap:14px">${ic("bell","s21")}${ic("menu","s21")}</span></div>
+ return `<div class="ttp"><div class="ttp-head"><span style="width:24px"></span><span class="ttu">@nctwish_official ${VB}</span><span style="display:flex;gap:6px"><button class="ttp-hic" data-ttpbell aria-label="通知">${ic("bell","s21")}</button><button class="ttp-hic" data-ttpmenu aria-label="メニュー">${ic("menu","s21")}</button></span></div>
  <img class="ttp-av" src="assets/group.jpg" alt="">
  <div class="ttp-id">@nctwish_official</div>
  <div class="ttp-stats"><div><b>12</b><span>フォロー中</span></div><div><b>${fmtTT(4862314)}</b><span>フォロワー</span></div><div><b>${fmtTT(totLikes)}</b><span>いいね</span></div></div>
@@ -2198,7 +2230,7 @@ function ttSearchResultsHTML(){
  const q=ttQuery.trim().toLowerCase().replace(/^#/,"");
  const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt).filter(x=>!q||((x.p.cap||"")+" "+(x.p.music||"")+" "+(x.p.user||"")).toLowerCase().includes(q));
  const tags=TT_TRENDS.filter(t=>!q||t[0].toLowerCase().replace(/\s/g,"").includes(q.replace(/\s/g,"")));
- return `<div class="tts-sec">トレンド</div>${tags.length?tags.map(t=>`<button class="ttd-tag" data-tttag="${esc(t[0])}"><span class="tic">#</span><span><b>${esc(t[0])}</b><small>${esc(t[1])}</small></span></button>`).join(""):`<div class="igx-empty" style="color:#9a9ab0">一致するトレンドはないよ</div>`}<div class="tts-sec">動画${q?`（${posts.length}件）`:""}</div><div class="ttp-grid">${posts.length?posts.map(ttGridBtn).join(""):`<div class="igx-empty" style="color:#9a9ab0">${q?"「"+esc(ttQuery.trim())+"」に一致する動画はないよ":"物語を進めると動画が解放されるよ"}</div>`}</div>`;}
+ return `<div class="tts-sec">トレンド</div>${tags.length?tags.map(t=>`<button class="ttd-tag" data-tttag="${esc(t[0])}"><span class="tic">#</span><span><b>${esc(t[0])}</b><small>${esc(t[1])}</small></span></button>`).join(""):`<div class="igx-empty" style="color:#9a9ab0">「${esc(ttQuery.trim())}」に一致するトレンドはないよ</div>`}<div class="tts-sec">動画${q?`（${posts.length}件）`:""}</div><div class="ttp-grid">${posts.length?posts.map(ttGridBtn).join(""):`<div class="igx-empty" style="color:#9a9ab0">${q?"「"+esc(ttQuery.trim())+"」に一致する動画はないよ":"物語を進めると動画が解放されるよ"}</div>`}</div>`;}
 function ttSearchHTML(){
  return `<div class="ttd"><div class="tt-search-head"><button class="tts-back" id="tts-back" aria-label="戻る">‹</button><label class="xs-inwrap">${ic("search","s15")}<input id="tts-in" type="text" placeholder="検索" value="${esc(ttQuery).replace(/"/g,"&quot;")}" autocomplete="off"></label></div><div id="tts-results">${ttSearchResultsHTML()}</div></div>`;}
 function bindTTSearchRes(root){root.querySelectorAll("[data-ttopen]").forEach(b=>b.addEventListener("click",()=>{ttView="feed";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="home"));renderTT();setTimeout(()=>{const t=$("#ttv-"+b.dataset.ttopen);if(t)t.scrollIntoView({block:"start"});},80);}));root.querySelectorAll("[data-tttag]").forEach(b=>b.addEventListener("click",()=>{ttQuery=b.dataset.tttag||"";const i2=$("#tts-in");if(i2)i2.value=ttQuery;const r=$("#tts-results");if(r){r.innerHTML=ttSearchResultsHTML();bindTTSearchRes(r);}}));}
@@ -2218,6 +2250,7 @@ function renderTT(){const el=$("#tt-feed");
   el.querySelectorAll("[data-ttptab]").forEach(b=>b.addEventListener("click",()=>{ttProfTab=b.dataset.ttptab;renderTT();}));
   const fb=el.querySelector("[data-ttpfol]");if(fb)fb.addEventListener("click",()=>{ttFollowing=!ttFollowing;toast(ttFollowing?"フォローしたよ":"フォローを外したよ");renderTT();});
   const sh=el.querySelector("[data-ttshare]");if(sh)sh.addEventListener("click",()=>{ttCopyLink("https://www.tiktok.com/@nctwish_official","プロフィールのリンクをコピーしたよ");});
+  el.querySelectorAll("[data-ttpbell],[data-ttpmenu]").forEach(b=>b.addEventListener("click",()=>toast("その機能は物語では使わないよ")));
   return;}
  if(ttView==="disc"){el.style.scrollSnapType="none";el.innerHTML=ttDiscHTML();el.scrollTop=0;
   el.querySelectorAll("[data-ttopen]").forEach(b=>b.addEventListener("click",()=>{ttView="feed";renderTT();setTimeout(()=>{const t=$("#ttv-"+b.dataset.ttopen);if(t)t.scrollIntoView({block:"start"});},80);}));
@@ -2278,7 +2311,7 @@ function renderXSearch(el,post){const tr=post?X_TRENDS_POST:(S.scene>=3?X_TRENDS
 function renderX(){const el=$("#x-body");const post=S.scene>=7;if(window._xT){clearInterval(window._xT);window._xT=null;}
  if(xView==="prof"){const offs=X_POSTS_PRE.filter(p=>p.handle==="@nctwish_jp");
   let xbody="";
-  if(xProfTab==="media"){const pl=offs.filter(p=>p.img);xbody=pl.length?pl.map(p=>xPostHTML(p,0,false,false)).join(""):`<div class="locknote">メディア付きの投稿はまだないよ</div>`;}
+  if(xProfTab==="media"){const pl=offs.filter(p=>p.img);xbody=pl.length?pl.map(p=>xPostHTML(p,0,false,false)).join(""):`<div class="locknote">メディア付きの投稿はまだありません</div>`;}
   else if(xProfTab==="reply"){xbody=`<div class="x-empty"><b>返信はまだありません</b><span>@nctwish_jp の返信がここに表示されます</span></div>`;}
   else if(xProfTab==="like"){xbody=`<div class="x-empty">${ic("lock","s26")}<b>いいねは非公開です</b><span>このアカウントがいいねしたポストは表示されません</span></div>`;}
   else{xbody=offs.map(p=>xPostHTML(p,0,false,false)).join("");}
@@ -2290,7 +2323,7 @@ function renderX(){const el=$("#x-body");const post=S.scene>=7;if(window._xT){cl
   el.scrollTop=0;return;}
  if(xView==="search"){renderXSearch(el,post);return;}
  if(xTab==="trend"){const tr=post?X_TRENDS_POST:(S.scene>=3?X_TRENDS_PRE:X_TRENDS_SEOUL);el.innerHTML=`<button class="x-search" id="x-search-open">${ic("search")} 検索</button><div style="padding:12px 16px 4px;font-size:16px;font-weight:900">トレンド</div>`+tr.map(t=>`<div class="trend ${post&&t[1].includes("熱愛")?"hot":""}"><div class="tk">${esc(t[0])} ・ トレンド</div><div class="tt2">${esc(t[1])}</div><div class="tc">${esc(t[2])}</div></div>`).join("");const _so=$("#x-search-open");if(_so)_so.addEventListener("click",()=>{xView="search";renderX();});return;}
- if(xTab==="bmk"){const all=X_POSTS_POST.concat(X_POSTS_PRE);const mine=all.filter(p=>S.xbmk&&S.xbmk[xKey(p)]);el.innerHTML=mine.length?mine.map(p=>xPostHTML(p,0,false,false)).join(""):`<div class="locknote">ブックマークしたポストはまだないよ。<br>ポストのブックマークアイコンから追加できるよ</div>`;bindXBmk(el);bindXAv(el);return;}
+ if(xTab==="bmk"){const all=X_POSTS_POST.concat(X_POSTS_PRE);const mine=all.filter(p=>S.xbmk&&S.xbmk[xKey(p)]);el.innerHTML=mine.length?mine.map(p=>xPostHTML(p,0,false,false)).join(""):`<div class="locknote">ブックマークしたポストはまだありません<br>ポストのブックマークアイコンから追加できます</div>`;bindXBmk(el);bindXAv(el);return;}
  const posts=post?X_POSTS_POST:X_POSTS_PRE.filter(p=>(p.after||0)<=S.scene).sort((a,b)=>(b.after||0)-(a.after||0));const pidx=p=>posts.indexOf(p);
  el.innerHTML=posts.map(p=>xPostHTML(p,pidx(p),post,post)).join("")+`<div class="locknote">${post?"炎上中 ― 数値はまだ増え続けている":"平和なタイムライン。……今のところは"}</div>`;
  bindXAv(el);bindXBmk(el);
@@ -2323,7 +2356,7 @@ const NCMT_STMT=[["wish_pen","本人たちの言葉で聞けてよかった"],["
 function newsKey(n){if(n===NEWS_SCOOP)return "scoop";if(n===NEWS_STMT)return "stmt";return "pre:"+NEWS_PRE.indexOf(n);}
 function newsAvail(){const arr=NEWS_PRE.filter(n=>(n.after||0)<=S.scene);if(S.scene>=7)arr.unshift(NEWS_SCOOP);if(S.ended)arr.push(NEWS_STMT);return arr;}
 function openNews(n){const key=newsKey(n);const baseCmts=n===NEWS_SCOOP?NCMT_SCOOP:(n===NEWS_STMT?NCMT_STMT:null);const mine=(S.newsCmts&&S.newsCmts[key])||[];const cmts=(baseCmts||mine.length)?(baseCmts||[]).concat(mine.map(t=>["なお",t])):null;const views=42000+((n.t.length*1377)%380000);const cday=(/(\d+月\d+日)/.exec(n.m||"")||[])[1]||"3月8日";const ctimes=["9:12","9:26","10:03","11:47","13:20"];const ccols=["#4a90d9","#d95f7b","#149990","#7b61c9","#f0a04b"];const rel=newsAvail().filter(a=>a!==n).slice(0,3);
- $("#news-body").innerHTML=`<div class="news-art"><button class="back" id="news-back" style="font-size:22px">‹ 戻る</button><div class="nk">${esc(n.k)}</div><h3>${esc(n.t)}</h3><div class="nm">${esc(n.m)}</div><div class="news-views">${ic("eye","s13")} ${fmtLikes(views)}回表示${cmts?` ・ コメント ${cmts.length}件`:""}</div>${n.img?`<img src="${n.img}">`:""}<p>${esc(n.body)}</p><div class="news-acts"><button data-nshare>${ic("upload","s19")} シェア</button><button data-nbmk class="${(S.newsBmk&&S.newsBmk[key])?"on":""}">${ic((S.newsBmk&&S.newsBmk[key])?"bmk-f":"bmk","s19")} 保存</button><button data-ncmt>${ic("cmt","s19")} コメント</button></div>${cmts?`<div class="ncmt-h">コメント ${cmts.length}件 <span style="font-weight:400;color:#9aa5a3;font-size:11.5px">― おすすめ順</span></div>`+cmts.map((c,i)=>`<div class="ncmt2"><span class="sc-av" style="background:${ccols[i%5]}">${esc(c[0][0].toUpperCase())}</span><div class="nc-b"><div class="nc-h"><b>${esc(c[0])}</b><time>${(mine.length&&i>=(baseCmts?baseCmts.length:0))?"たった今":(cday+" "+ctimes[i%5])}</time></div>${esc(c[1])}<div class="nc-acts"><span>${ic("heart-o")} ${(c[0].length*53+i*97)%420}</span><span>${ic("cmt")} 返信する</span></div></div></div>`).join(""):""}${cmts?"":`<div class="ncmt-h">コメント</div>`}<div class="ncmt-form"><input id="ncmt-in" type="text" placeholder="コメントを書く…" autocomplete="off"><button id="ncmt-send">投稿</button></div>${rel.length?`<div class="news-rel"><h5>関連記事</h5>${rel.map((a,j)=>`<button class="nrel" data-rel="${j}"><img src="${a.img||(NEWS_PRE.indexOf(a)>=0?NEWS_THUMB[NEWS_PRE.indexOf(a)%3]:"assets/stage2.jpg")}"><span>${esc(a.t)}<small>${esc(a.m)}</small></span></button>`).join("")}</div>`:""}</div>`;
+ $("#news-body").innerHTML=`<div class="news-art"><button class="back" id="news-back" style="font-size:22px">‹ 戻る</button><div class="nk">${esc(n.k)}</div><h3>${esc(n.t)}</h3><div class="nm">${esc(n.m)}</div><div class="news-views">${ic("eye","s13")} ${fmtLikes(views)}回表示${cmts?` ・ コメント ${cmts.length}件`:""}</div>${n.img?`<img src="${n.img}">`:""}<p>${esc(n.body)}</p><div class="news-acts"><button data-nshare>${ic("upload","s19")} シェア</button><button data-nbmk class="${(S.newsBmk&&S.newsBmk[key])?"on":""}">${ic((S.newsBmk&&S.newsBmk[key])?"bmk-f":"bmk","s19")} 保存</button><button data-ncmt>${ic("cmt","s19")} コメント</button></div>${cmts?`<div class="ncmt-h">コメント ${cmts.length}件 <span style="font-weight:400;color:#6e6e73;font-size:11.5px">― おすすめ順</span></div>`+cmts.map((c,i)=>`<div class="ncmt2"><span class="sc-av" style="background:${ccols[i%5]}">${esc(c[0][0].toUpperCase())}</span><div class="nc-b"><div class="nc-h"><b>${esc(c[0])}</b><time>${(mine.length&&i>=(baseCmts?baseCmts.length:0))?"たった今":(cday+" "+ctimes[i%5])}</time></div>${esc(c[1])}<div class="nc-acts"><span>${ic("heart-o")} ${(c[0].length*53+i*97)%420}</span><span>${ic("cmt")} 返信する</span></div></div></div>`).join(""):""}${cmts?"":`<div class="ncmt-h">コメント</div>`}<div class="ncmt-form"><input id="ncmt-in" type="text" placeholder="コメントを書く…" autocomplete="off"><button id="ncmt-send">投稿</button></div>${rel.length?`<div class="news-rel"><h5>関連記事</h5>${rel.map((a,j)=>`<button class="nrel" data-rel="${j}"><img src="${a.img||(NEWS_PRE.indexOf(a)>=0?NEWS_THUMB[NEWS_PRE.indexOf(a)%3]:"assets/stage2.jpg")}"><span>${esc(a.t)}<small>${esc(a.m)}</small></span></button>`).join("")}</div>`:""}</div>`;
  $("#news-back").addEventListener("click",renderNews);
  const _nsh=$("#news-body [data-nshare]");if(_nsh)_nsh.addEventListener("click",()=>{ttCopyLink(location.href.split("#")[0],"記事のリンクをコピーしたよ");});
  const _nbk=$("#news-body [data-nbmk]");if(_nbk)_nbk.addEventListener("click",()=>{S.newsBmk=S.newsBmk||{};if(S.newsBmk[key])delete S.newsBmk[key];else S.newsBmk[key]=1;save();openNews(n);toast(S.newsBmk[key]?"保存したよ":"保存を取り消したよ");});
@@ -2375,7 +2408,7 @@ function openPvShare(){sheetList("共有",`<button class="sh-row" data-psh="copy
   else toast("「なおのMacBook」に送信したよ");}));}
 function openPvInfo(){const p=pvPhoto();const rows=p?[["日付",p.d],["場所",p.loc],["説明",p.cap],["形式",p.video?"ビデオ（MP4）":"写真（JPEG）"],["お気に入り",(S.favs&&S.favs[pvCtx.i])?"登録済み":"―"]]:[["説明",(pvCtx&&pvCtx.cap)||""],["形式","写真（JPEG）"]];
  sheetList("情報",rows.map(r=>`<div class="sc-row"><div class="sc-main"><b>${esc(r[0])}</b><div style="color:#8e8e93;font-size:12.5px;margin-top:1px">${esc(r[1])}</div></div></div>`).join(""));}
-$("#ph-more").addEventListener("click",()=>{sheetList("表示",`<button class="sh-row" data-phopt="fav"><span class="ric">${ic("heart","s19")}</span>お気に入りだけ表示<span style="margin-left:auto;color:#0a84ff">${phFavOnly?"✓":""}</span></button><button class="sh-row" data-phopt="all"><span class="ric">${ic("grid","s19")}</span>すべての写真を表示<span style="margin-left:auto;color:#0a84ff">${phFavOnly?"":"✓"}</span></button>`);$$("#sheet-body [data-phopt]").forEach(b=>b.addEventListener("click",()=>{phFavOnly=b.dataset.phopt==="fav";closeSheet();renderPhotos();}));});
+$("#ph-more").addEventListener("click",()=>{sheetList("表示オプション",`<button class="sh-row" data-phopt="fav"><span class="ric">${ic("heart","s19")}</span>お気に入りだけ表示<span style="margin-left:auto;color:#0a84ff">${phFavOnly?"✓":""}</span></button><button class="sh-row" data-phopt="all"><span class="ric">${ic("grid","s19")}</span>すべての写真を表示<span style="margin-left:auto;color:#0a84ff">${phFavOnly?"":"✓"}</span></button>`);$$("#sheet-body [data-phopt]").forEach(b=>b.addEventListener("click",()=>{phFavOnly=b.dataset.phopt==="fav";closeSheet();renderPhotos();}));});
 /* ---- music player for the MV in the photo viewer (audio source unchanged) ---- */
 const LYR=[[0,"♪ イントロ"],[0.16,"♪ バース"],[0.36,"♪ プレコーラス"],[0.52,"♪ コーラス"],[0.72,"♪ ブリッジ"],[0.88,"♪ アウトロ"]];
 function mpT(s){s=Math.max(0,Math.floor(s||0));return Math.floor(s/60)+":"+String(s%60).padStart(2,"0");}
@@ -2532,7 +2565,7 @@ function renderHTProf(){const el=$("#htprof-body");
  <div style="font-size:12px;opacity:.88;margin-top:2px">@ppang_dori · ソウル（韓国）在住 · HelloTalk歴 32日</div>
  <div style="font-size:11.5px;opacity:.72;margin-top:3px">プロフィール写真は設定していません</div></div>
  <div class="gauge-sec"><div class="gs-t">話せる言語</div>${gaugeHTML("🇯🇵","日本語",100,"堪能")}<div class="gs-t" style="margin-top:11px">学習中の言語</div>${gaugeHTML("🇰🇷","韓国語",92,"堪能")}<div style="font-size:11px;color:#9aa5a3;margin-top:5px">※日本語ネイティブ。ソウル在住で、韓国語も堪能寄り</div></div>
- <div class="gauge-sec"><div class="gs-t">自己紹介</div><p style="font-size:14px;line-height:1.75;margin-top:4px;color:#333">言葉は、少なくていい。合う人には届くから。<br><span style="color:#888;font-size:12.5px">ソウルのパン屋に詳しいです。韓国語の練習相手を探しています。</span></p></div>
+ <div class="gauge-sec"><div class="gs-t">自己紹介</div><p style="font-size:14px;line-height:1.75;margin-top:4px;color:#333">言葉は、少なくていい。合う人には届くから。<br><span style="color:#6e6e73;font-size:12.5px">ソウルのパン屋に詳しいです。韓国語の練習相手を探しています。</span></p></div>
  <div class="gauge-sec" style="display:flex;text-align:center"><div style="flex:1"><b style="font-size:16px">3</b><div class="gs-s">モーメンツ</div></div><div style="flex:1"><b style="font-size:16px">12</b><div class="gs-s">フォロー中</div></div><div style="flex:1"><b style="font-size:16px">48</b><div class="gs-s">フォロワー</div></div></div>
  <div style="display:flex;gap:8px;padding:13px 14px 4px"><button class="ht-pb sub" id="htp-fol">フォローする</button><button class="ht-pb main" id="htp-msg">送信する</button></div>
  <div class="locknote">顔写真なし・自己紹介は一言だけ。人気者なのに、このアプリの中では無名――それが 빵돌이 。</div>`;
@@ -2563,7 +2596,7 @@ const _cvBtn=document.querySelector("#call-voice");if(_cvBtn)_cvBtn.addEventList
 function fitPhone(){const vv=window.visualViewport;const h=vv?vv.height:window.innerHeight;document.documentElement.style.setProperty("--vvh",h+"px");}
 if(window.visualViewport)window.visualViewport.addEventListener("resize",fitPhone);
 window.addEventListener("resize",fitPhone);window.addEventListener("orientationchange",fitPhone);fitPhone();
-function titleInit(){const has=(S.scene>0||S.ended||S.step>0);$("#title-continue").style.display=has?"block":"none";$("#title-start").textContent=has?"はじめから（最初から）":"はじめから ▶";}
+function titleInit(){const has=(S.scene>0||S.ended||S.step>0);$("#title-continue").style.display=has?"block":"none";const _ts=$("#title-start");_ts.textContent=has?"はじめから（最初から）":"はじめから ▶";_ts.classList.toggle("primary",!has);_ts.classList.toggle("glass",has);}
 $("#title-continue").addEventListener("click",()=>show("home"));
 $("#title-start").addEventListener("click",()=>{const has=(S.scene>0||S.ended||S.step>0);if(has&&!confirm("セーブを消して最初からプレイしますか？"))return;if(has){localStorage.removeItem(KEY);S=defState();save();}show("lock");});
 titleInit();
@@ -2588,6 +2621,14 @@ $$("[data-pvtool]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset
 }));
 $$("#v-photos .ph-seg span").forEach((s,i)=>s.addEventListener("click",()=>{if(i<3)toast("並び替えは『すべての写真』表示だけだよ");}));
 const _hf=$("#ht-filter");if(_hf)_hf.addEventListener("click",()=>toast("絞り込みは物語では使わないよ"));
+/* v26: dead-control wiring (audit round 2) */
+$$("#v-line .ll-tabs button").forEach((b,i)=>b.addEventListener("click",()=>{if(i!==1)toast("そのタブは物語では使わないよ");}));
+$$("#v-line .ll-icons button").forEach((b,i)=>b.addEventListener("click",()=>toast(i===0?"その機能は物語では使わないよ":"物語の相手は 빵돌이 だけだよ")));
+const _chSearch=$("#v-chat .chat-head .hic");if(_chSearch)_chSearch.addEventListener("click",()=>toast("その機能は物語では使わないよ"));
+const _chMenu=$("#chat-menuic");if(_chMenu)_chMenu.addEventListener("click",()=>toast(cur&&cur.thread==="ht"?"絞り込みは物語では使わないよ":"その機能は物語では使わないよ"));
+$$("#v-chat .fic,#v-chat .chat-foot .plus,#v-free .chat-foot .plus,#chat-tools .ct-ic").forEach(_el=>_el.addEventListener("click",()=>toast("その機能は物語では使わないよ")));
+const _igd=$("#ig-dots");if(_igd)_igd.addEventListener("click",()=>toast("その機能は物語では使わないよ"));
+const _xsp=$("#x-spark");if(_xsp)_xsp.addEventListener("click",()=>toast("その機能は物語では使わないよ"));
 /* ================= INIT ================= */
 renderGauges();save();
 </script>
