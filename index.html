@@ -1582,7 +1582,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v44.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v45.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -2519,12 +2519,12 @@ function openNews(n){const key=newsKey(n);const baseCmts=n===NEWS_SCOOP?NCMT_SCO
  const _nsd=$("#ncmt-send");if(_nsd)_nsd.addEventListener("click",()=>{const i2=$("#ncmt-in");const v=i2?i2.value.trim():"";if(!v)return;S.newsCmts=S.newsCmts||{};(S.newsCmts[key]=S.newsCmts[key]||[]).push(v);save();openNews(n);setTimeout(()=>{const h=document.querySelector(".ncmt-h");if(h)h.scrollIntoView({block:"start"});},40);});
  const _nin=$("#ncmt-in");if(_nin)_nin.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing&&e.keyCode!==229&&$("#ncmt-send"))$("#ncmt-send").click();});$("#news-body").querySelectorAll("[data-rel]").forEach(b=>b.addEventListener("click",()=>openNews(rel[+b.dataset.rel])));$("#news-body").scrollTop=0;}
 /* ================= CALENDAR ================= */
-function calMonth(y,m,events){const first=new Date(y,m-1,1).getDay(),days=new Date(y,m,0).getDate();let cells=["日","月","火","水","木","金","土"].map(d=>`<div class="dw">${d}</div>`).join("");for(let i=0;i<first;i++)cells+=`<div class="cd dim"></div>`;for(let d=1;d<=days;d++){const ev=events[d];cells+=`<div class="cd"><b>${d}</b>${ev?ev.map(e=>`<span class="ev ${e[1]}">${e[0]}</span>`).join(""):""}</div>`;}return `<div class="cal-grid">${cells}</div>`;}
+function calMonth(y,m,events,td){const first=new Date(y,m-1,1).getDay(),days=new Date(y,m,0).getDate();let cells=["日","月","火","水","木","金","土"].map(d=>`<div class="dw">${d}</div>`).join("");for(let i=0;i<first;i++)cells+=`<div class="cd dim"></div>`;for(let d=1;d<=days;d++){const ev=events[d];cells+=`<div class="cd${td&&td[0]===m&&td[1]===d?" today":""}"><b>${d}</b>${ev?ev.map(e=>`<span class="ev ${e[1]}">${e[0]}</span>`).join(""):""}</div>`;}return `<div class="cal-grid">${cells}</div>`;}
 /* v44: personal calendar events unlock when their story day arrives; concert dates are the public tour schedule (announced in advance) and stay visible */
-function renderCal(){const evOk=f=>S.ended||S.scene>=f;const jan={10:[["出会い","ev-p"]],15:[["高尺①","ev-p"]],16:[["高尺②","ev-p"]]};if(evOk(1))jan[14]=[["初対面","ev-r"]];if(evOk(2))jan[17]=[["帰国","ev-b"]];const mar={5:[["神戸①","ev-p"]],6:[["神戸②","ev-p"]],7:[["神戸③","ev-p"]],13:[["福岡①","ev-g"]],14:[["福岡②","ev-g"]],21:[["愛知①","ev-g"]],22:[["愛知②","ev-g"]]};if(evOk(7))mar[8]=[["報道","ev-r"]];$("#cal-wrap").innerHTML=`
- <div class="cal-m">2027年1月 <span>ソウル編</span></div>${calMonth(2027,1,jan)}
- <div class="cal-m">2027年2月 <span>代々木編</span></div>${calMonth(2027,2,{26:[["代々木①","ev-p"]],27:[["代々木②","ev-p"]],28:[["代々木③","ev-p"]]})}
- <div class="cal-m">2027年3月 <span>神戸編→福岡・愛知へ</span></div>${calMonth(2027,3,mar)}
+function renderCal(){const evOk=f=>S.ended||S.scene>=f;const jan={10:[["出会い","ev-p"]],15:[["高尺①","ev-p"]],16:[["高尺②","ev-p"]]};if(evOk(1))jan[14]=[["初対面","ev-r"]];if(evOk(2))jan[17]=[["帰国","ev-b"]];const mar={5:[["神戸①","ev-p"]],6:[["神戸②","ev-p"]],7:[["神戸③","ev-p"]],13:[["福岡①","ev-g"]],14:[["福岡②","ev-g"]],21:[["愛知①","ev-g"]],22:[["愛知②","ev-g"]]};if(evOk(7))mar[8]=[["報道","ev-r"]];const _tds=(SCENES[Math.min(S.scene,SCENES.length-1)]||{}).date||"";const _tdm=_tds.match(/(\d+)月(\d+)日/);const _td=_tdm?[+_tdm[1],+_tdm[2]]:null;$("#cal-wrap").innerHTML=`
+ <div class="cal-m">2027年1月 <span>ソウル編</span></div>${calMonth(2027,1,jan,_td)}
+ <div class="cal-m">2027年2月 <span>代々木編</span></div>${calMonth(2027,2,{26:[["代々木①","ev-p"]],27:[["代々木②","ev-p"]],28:[["代々木③","ev-p"]]},_td)}
+ <div class="cal-m">2027年3月 <span>神戸編→福岡・愛知へ</span></div>${calMonth(2027,3,mar,_td)}
  <div class="cal-legend"><span class="cal-dot" style="background:#7b61c9"></span> 公演（史実の日程・会場）｜ <span class="cal-dot" style="background:#ff9500"></span> 私的な記念日｜ <span class="cal-dot" style="background:#0a84ff"></span> 移動｜ <span class="cal-dot" style="background:#34c759"></span> ツアー後半（史実）<br>ツアー開幕はソウル・高尺スカイドーム（1/15-16）。神戸は千秋楽ではなく、福岡・愛知へ続きます。</div>
  <div class="cal-item"><div class="dt"><b>15</b><span>1月</span></div><div>ソウル・高尺スカイドームでツアー開幕（〜16日、全席完売）</div></div>
  <div class="cal-item"><div class="dt"><b>26</b><span>2月</span></div><div>代々木第一体育館 3日間（〜28日、完売）</div></div>
