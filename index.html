@@ -822,6 +822,9 @@ img{max-width:100%}
 .lvbar i{display:block;height:100%;background:var(--ht);border-radius:2px}
 .mo-acts .uic{vertical-align:-5px}
 .mo-acts span{display:inline-flex;align-items:center;gap:5px}
+.mo-acts button{display:inline-flex;align-items:center;gap:5px;color:inherit;font-size:inherit}
+.mo-acts .mo-like.liked{color:#ff3040}.mo-acts .mo-like.liked b{color:#ff3040}
+.mc-all{cursor:pointer}
 /* voiceroom */
 .vr-card{margin:10px 12px 0;border-radius:18px;padding:14px;color:#fff;background:linear-gradient(140deg,#3b1d78,#6c4cf1);box-shadow:0 8px 22px rgba(80,50,180,.28)}
 .vr-top{display:flex;align-items:center;gap:8px}
@@ -1573,7 +1576,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v39.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v40.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -1981,7 +1984,7 @@ const NOTIFS=[
 ];
 /* ================= STATE ================= */
 const KEY="sakuya_scandal_v1",EKEY="sakuya_scandal_ends_v1";
-function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],chDates:{},ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{},favs:{},wall:"",noff:{},snd:{on:true,vol:.6,vib:true},a11y:{fs:0,bold:false,contrast:false,rm:false}};}
+function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],chDates:{},ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{},favs:{},wall:"",noff:{},snd:{on:true,vol:.6,vib:true},a11y:{fs:0,bold:false,contrast:false,rm:false},htfavs:[],moLike:{},moCmts:{}};}
 let S=load();
 S.snd=Object.assign({on:true,vol:.6,vib:true},S.snd||{});
 S.a11y=Object.assign({fs:0,bold:false,contrast:false,rm:false},S.a11y||{});
@@ -2002,7 +2005,8 @@ function sanitizeSave(j){
  o.memos=(arr(j.memos)||[]).filter(x=>typeof x==="string");
  o.notified=(arr(j.notified)||[]).filter(x=>typeof x==="number"&&isFinite(x));
  o.chDates=obj(j.chDates)||{};
- ["callsDone","answers","likedIG","likedTT","savedIG","savedTT","xbmk","callDur","newsBmk","newsCmts","favs","noff"].forEach(k=>{o[k]=obj(j[k])||{};});
+ ["callsDone","answers","likedIG","likedTT","savedIG","savedTT","xbmk","callDur","newsBmk","newsCmts","favs","noff","moLike","moCmts"].forEach(k=>{o[k]=obj(j[k])||{};});
+ o.htfavs=(arr(j.htfavs)||[]).filter(x=>typeof x==="string").slice(0,200);
  o.ig=int(j.ig,0,0,999);o.tt=int(j.tt,0,0,999);o.x=int(j.x,0,0,999);o.news=int(j.news,0,0,999);o.freeCount=int(j.freeCount,0,0,1000000);
  o.ended=j.ended===true;o.endId=str(j.endId,"");o.act=str(j.act,"");o.viewIG=str(j.viewIG,"grid");o.wall=str(j.wall,"");
  const sj=obj(j.snd)||{};o.snd={on:typeof sj.on==="boolean"?sj.on:true,vol:num(sj.vol,.6,0,1),vib:typeof sj.vib==="boolean"?sj.vib:true};
@@ -2190,7 +2194,7 @@ function renderChat(){tick();const body=$("#chat-body");const sc=cur;let h="";co
  body.innerHTML=h;
  body.querySelectorAll(".msg.me .rd").forEach(rd=>{setTimeout(()=>{rd.style.opacity="1";},300+Math.random()*700);});
  if(sc.thread==="ht"){body.querySelectorAll(".msg.me .rd").forEach((rd,i)=>{rd.textContent="送信しました";setTimeout(()=>{rd.textContent="既読";},1500+i*150);});}
- if(sc.thread==="ht"){body.querySelectorAll(".bub,.corr").forEach(bub=>{let t=null;bub.addEventListener("pointerdown",()=>{t=setTimeout(()=>{window._lpSup=true;openHTMenu(bub.textContent.trim());},560);});["pointerup","pointerleave","pointercancel"].forEach(ev=>bub.addEventListener(ev,()=>{if(t)clearTimeout(t);}));});}
+ if(sc.thread==="ht"){body.querySelectorAll(".bub,.corr").forEach(bub=>{let t=null;bub.addEventListener("pointerdown",()=>{t=setTimeout(()=>{window._lpSup=true;let tx=bub.textContent.trim();if(!tx&&bub.classList.contains("imgb")){const cp=bub.parentElement?bub.parentElement.querySelector(".bub:not(.imgb)"):null;if(cp)tx=cp.textContent.trim();}if(tx)openHTMenu(tx);},560);});["pointerup","pointerleave","pointercancel"].forEach(ev=>bub.addEventListener(ev,()=>{if(t)clearTimeout(t);}));});}
  renderPanel();body.scrollTop=body.scrollHeight;}
 function renderPanel(){const p=$("#chat-panel");const sc=cur;const st=sc.steps[S.step];
  if(S.shown<S.step){p.innerHTML="";return;}
@@ -2646,6 +2650,12 @@ function openHTChat(){const sc=!S.ended?SCENES[S.scene]:null;
  if(!sc||sc.thread!=="ht"){toast(S.scene>2?"いまはLINEでのやり取りの時期だよ":"まだチャットは始まっていないよ");return;}
  if(sc.call&&!S.callsDone[sc.id]){startCall(sc);return;}
  openChat(sc);}
+/* v40: HT moments likes/comments + favorites are real, persisted state */
+function moLiked(id){return !!(S.moLike&&S.moLike[id]);}
+function moCmtN(id){const a=S.moCmts&&S.moCmts[id];return Array.isArray(a)?a.filter(x=>typeof x==="string").length:0;}
+function moPostedHTML(id){const a=(S.moCmts&&S.moCmts[id])||[];return a.filter(x=>typeof x==="string").map(t=>`<div class="mo-cmt"><img class="av" src="assets/nao-face.jpg" style="width:30px;height:30px"><div class="mc-b"><b>なお</b> ${esc(t)}<div class="mc-meta"><span>いま</span><span>いいね 0</span><span>返信する</span></div></div></div>`).join("");}
+const MO_CMTS={m1:[["지민","소금빵 저도 좋아해요! 어느 빵집인지 궁금해요"],["yuki_jp","韓国語の言い回しが自然で、勉強になります"]],m2:[["빵돌이","한강, 좋죠. 너무 → 정말 のほうが、嬉しい気持ちには近いです"],["지수","한강 사진 예뻐요! 저도 주말에 갈래요"]]};
+function openMoComments(id){const items=()=>MO_CMTS[id].concat(((S.moCmts&&S.moCmts[id])||[]).filter(x=>typeof x==="string").map(t=>["nao",t]));openSheet("コメント",items(),v=>{S.moCmts=S.moCmts||{};if(!Array.isArray(S.moCmts[id]))S.moCmts[id]=[];S.moCmts[id].push(v);save();$("#sheet-body").innerHTML=items().map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;renderHT();});}
 function renderHT(){const el=$("#ht-body");$$("#ht-tabs button").forEach(b=>b.classList.toggle("on",b.dataset.httab===htTab));
  if(htTab==="chat"){const cs=SCENES[S.scene];const curHt=!S.ended&&cs&&cs.thread==="ht";
   el.innerHTML=`<div class="ht-tools">${[[ic("book","s20"),"#7b61c9","Courses"],['<b style="font-size:14.5px">Aa</b>',"#12b76a","HelloWords"],[ic("translate","s20"),"#0ea5b4","Translate"],[ic("sparkle","s20"),"#9dc41c","AI Grammar"]].map(t=>`<span class="ht-tool"><i style="background:${t[1]}22">${t[0]}</i>${t[2]}</span>`).join("")}<span class="ht-tool"><i style="background:#eef1f0">⌄</i>More</span></div>
@@ -2661,25 +2671,28 @@ function renderHT(){const el=$("#ht-body");$$("#ht-tabs button").forEach(b=>b.cl
   <div class="mo-pair">🇰🇷 KR <span class="lvbar"><i style="width:100%"></i></span> ⇄ 🇯🇵 JP <span class="lvbar"><i style="width:92%"></i></span></div>
   <div class="mo-body">서울의 아침. 동네 빵집에서 갓 구운 빵을 사면 하루가 조금 다정해진다. 오늘은 소금빵이 특히 좋았다.</div>
   <button class="tr-btn" data-trm>${ic("translate")}<span>翻訳を見る</span></button><div class="tr-box">ソウルの朝。近所のパン屋で焼きたてのパンを買うと、一日が少し優しくなる。今日は塩パンが特に良かった。</div>
-  <div class="mo-acts"><span>${ic("heart-o","s18")} <b>23</b></span><span>${ic("cmt","s18")} <b>4</b></span><span>${ic("eye","s18")} <b>312</b></span><span style="margin-left:auto">${ic("pencil","s15")} 訂正する</span></div>
+  <div class="mo-acts"><button class="mo-like${moLiked("m1")?" liked":""}" data-molike="m1">${ic(moLiked("m1")?"heart":"heart-o","s18")} <b>${23+(moLiked("m1")?1:0)}</b></button><button data-mocmt="m1">${ic("cmt","s18")} <b>${2+moCmtN("m1")}</b></button><span>${ic("eye","s18")} <b>312</b></span><button id="mo-cor1" style="margin-left:auto">${ic("pencil","s15")} 訂正する</button></div>
   <div class="mo-cmts">
   <div class="mo-cmt"><span class="sil" style="width:30px;height:30px;background:#4a90d9;font-size:12px">지</span><div class="mc-b"><b>지민</b> 소금빵 저도 좋아해요! 어느 빵집인지 궁금해요<div class="mc-meta"><span>1月9日</span><span>いいね 3</span><span>返信する</span></div></div></div>
-  <div class="mo-cmt"><span class="sil" style="width:30px;height:30px;background:#d95f7b;font-size:12px">Y</span><div class="mc-b"><b>yuki_jp</b> 韓国語の言い回しが自然で、勉強になります<div class="mc-meta"><span>1月9日</span><span>いいね 1</span><span>返信する</span></div></div></div>
-  <div class="mc-all">コメント4件をすべて見る</div>
+  <div class="mo-cmt"><span class="sil" style="width:30px;height:30px;background:#d95f7b;font-size:12px">Y</span><div class="mc-b"><b>yuki_jp</b> 韓国語の言い回しが自然で、勉強になります<div class="mc-meta"><span>1月9日</span><span>いいね 1</span><span>返信する</span></div></div></div>${moPostedHTML("m1")}
+  <div class="mc-all" data-mocmt="m1">コメント${2+moCmtN("m1")}件をすべて見る</div>
   </div>
   <button class="ht-send" id="ht-mo-msg">メッセージを送る</button></div>
   <div class="mo-card"><div class="mo-head"><span class="ht-avw"><img class="av" src="assets/nao-face.jpg" style="width:40px;height:40px"><span class="flg">🇯🇵</span></span><span><div class="mn">なお</div><div class="ms">ソウル · 1月10日</div></span><span class="langtag">한국어</span></div>
   <div class="mo-pair">🇯🇵 JP <span class="lvbar"><i style="width:100%"></i></span> ⇄ 🇰🇷 KR <span class="lvbar"><i style="width:55%"></i></span></div>
   <img class="mo-img" src="assets/nao-jacket.jpg" alt="">
   <div class="mo-body">오늘은 한강에 갔어요. 날씨가 너무 좋았어요! 한국어를 더 공부하고 싶어요.</div>
-  <div class="mo-acts"><span>${ic("heart-o","s18")} <b>8</b></span><span>${ic("cmt","s18")} <b>2</b></span><span>${ic("eye","s18")} <b>96</b></span><span style="margin-left:auto;color:#5a3ee0;font-weight:700">${ic("pencil","s15")} 빵돌이 が訂正しました</span></div>
+  <div class="mo-acts"><button class="mo-like${moLiked("m2")?" liked":""}" data-molike="m2">${ic(moLiked("m2")?"heart":"heart-o","s18")} <b>${8+(moLiked("m2")?1:0)}</b></button><button data-mocmt="m2">${ic("cmt","s18")} <b>${2+moCmtN("m2")}</b></button><span>${ic("eye","s18")} <b>96</b></span><span style="margin-left:auto;color:#5a3ee0;font-weight:700">${ic("pencil","s15")} 빵돌이 が訂正しました</span></div>
   <div class="mo-cmts">
   <div class="mo-cmt"><span class="sil" style="width:30px;height:30px;background:#b08968;font-size:12px">빵</span><div class="mc-b"><b>빵돌이</b> 한강, 좋죠. <span class="corr"><del>너무</del> → 정말</span> のほうが、嬉しい気持ちには近いです<div class="mc-meta"><span>1月10日</span><span>いいね 5</span><span>返信する</span></div></div></div>
-  <div class="mo-cmt"><span class="sil" style="width:30px;height:30px;background:#7b61c9;font-size:12px">지</span><div class="mc-b"><b>지수</b> 한강 사진 예뻐요! 저도 주말에 갈래요<div class="mc-meta"><span>1月10日</span><span>いいね 2</span><span>返信する</span></div></div></div>
+  <div class="mo-cmt"><span class="sil" style="width:30px;height:30px;background:#7b61c9;font-size:12px">지</span><div class="mc-b"><b>지수</b> 한강 사진 예뻐요! 저도 주말에 갈래요<div class="mc-meta"><span>1月10日</span><span>いいね 2</span><span>返信する</span></div></div></div>${moPostedHTML("m2")}
   </div></div>
   <div class="locknote">モーメンツ＝HelloTalkのタイムライン。投稿には言語タグが付き、翻訳・訂正がその場で使える（実物仕様）。<br>なおは彼のこの投稿を見つけて、メッセージを送った。</div>`;
   const tb=el.querySelector("[data-trm]");if(tb)tb.addEventListener("click",()=>{const box=el.querySelector(".tr-box");const on=box.classList.toggle("on");tb.querySelector("span").textContent=on?"翻訳を隠す":"翻訳を見る";});
-  const mb=$("#ht-mo-msg");if(mb)mb.addEventListener("click",openHTChat);}
+  const mb=$("#ht-mo-msg");if(mb)mb.addEventListener("click",openHTChat);
+  el.querySelectorAll("[data-molike]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.molike;S.moLike=S.moLike||{};if(S.moLike[id])delete S.moLike[id];else S.moLike[id]=1;save();renderHT();}));
+  el.querySelectorAll("[data-mocmt]").forEach(b=>b.addEventListener("click",()=>openMoComments(b.dataset.mocmt)));
+  const cor1=$("#mo-cor1");if(cor1)cor1.addEventListener("click",()=>toast("訂正はチャットの中で進むよ"));}
  else if(htTab==="search"){
   el.innerHTML=`<div style="display:flex;gap:6px;padding:11px 12px 5px;background:#f7f9f8">${["韓国語 🇰🇷","日本語 🇯🇵","＋ 言語を追加"].map((c,i)=>`<span class="ht-chip${i===0?" on":""}">${c}</span>`).join("")}</div>
   <div class="ht-fchips"><span class="ht-chip on">すべて</span><span class="ht-chip">オンライン中</span><span class="ht-chip">近くにいる人</span><span class="ht-chip">同じ興味</span></div>
@@ -2705,12 +2718,13 @@ function renderHT(){const el=$("#ht-body");$$("#ht-tabs button").forEach(b=>b.cl
   <div class="gauge-sec"><div class="gs-t">自己紹介</div><p style="font-size:13.5px;line-height:1.7;margin-top:4px;color:#333">韓国語勉強中です。1月にソウルへ旅行します。現地の人と話してみたいです🙏</p></div>
   <div class="gauge-sec"><div class="gs-t">プロフィール写真</div><img src="assets/nao-wink.jpg" style="width:100%;border-radius:13px;margin-top:8px;display:block" alt=""></div>
   <div class="gauge-sec"><div class="gs-t">アルバム</div><div class="nao-alb">${NAO_ALBUM.map((p,ai)=>`<button data-naoph="${ai}"><img src="${p[0]}"${p[2]?` style="object-position:${p[2]}"`:""} alt=""></button>`).join("")}</div></div>
-  <button class="set-row2" data-htdeco>お気に入り（訂正コレクション）<span>2件 ›</span></button>
+  <button class="set-row2" id="me-favs">お気に入り（訂正コレクション）<span>${2+((S.htfavs||[]).length)}件 ›</span></button>
   <button class="set-row2" data-htdeco>翻訳の既定言語<span>日本語 ›</span></button>
   <button class="set-row2" data-htdeco>チャット設定<span>›</span></button>
   <button class="set-row2" data-htdeco>学習リマインダー<span>毎日 21:00 ›</span></button>
   <div class="locknote">本人タブ＝自分のプロフィールと設定（実物の構成）。</div>`;
   el.querySelectorAll("[data-naoph]").forEach(b=>b.addEventListener("click",()=>openNaoPhoto(+b.dataset.naoph)));
+  const mf=el.querySelector("#me-favs");if(mf)mf.addEventListener("click",()=>{const favs=(S.htfavs||[]).filter(x=>typeof x==="string");const rows=favs.map(t=>`<div class="sc-row"><span class="sc-av" style="background:#5a3ee0">★</span><div class="sc-main"><span>${esc(t)}</span></div></div>`).join("");sheetList("お気に入り",rows+`<div class="locknote">${favs.length?"":"まだ保存したメッセージはないよ。"}チャットの吹き出しを長押し→「お気に入り」で保存できるよ。訂正カード2件は第1話のチャットの中にあるよ</div>`);});
   el.querySelectorAll("[data-htdeco]").forEach(b=>b.addEventListener("click",()=>toast("ここは物語では使わないよ")));}}
 $$("#ht-tabs button").forEach(b=>b.addEventListener("click",()=>{htTab=b.dataset.httab;renderHT();}));
 $("#chat-call").addEventListener("click",()=>{if(cur&&cur.call&&!S.callsDone[cur.id]){startCall(cur);return;}toast("まだ通話は解放されていないみたい（何通かやり取りすると解放される仕様だよ）");});
@@ -2769,12 +2783,14 @@ titleInit();
 let _htmTxt="";
 function openHTMenu(txt){_htmTxt=txt||"";$("#htmenu").classList.add("on");}
 function closeHTMenu(){$("#htmenu").classList.remove("on");}
+function speakHT(txt){if(!txt)return;try{const sy=window.speechSynthesis;if(!sy){toast("この端末では読み上げできないよ");return;}sy.cancel();const u=new SpeechSynthesisUtterance(txt);u.lang=/[가-힣]/.test(txt)?"ko-KR":"ja-JP";sy.speak(u);toast("読み上げ中だよ");}catch(e){toast("この端末では読み上げできないよ");}}
 $("#htmenu").addEventListener("click",e=>{if(e.target.id==="htmenu")closeHTMenu();});
 $$("#htmenu [data-htm]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.htm;closeHTMenu();
- if(k==="copy"){try{navigator.clipboard&&navigator.clipboard.writeText(_htmTxt);}catch(e){}toast("コピーしたよ");}
- else if(k==="fav")toast("お気に入りに保存したよ");
+ if(k==="copy"){try{const pr=navigator.clipboard&&navigator.clipboard.writeText(_htmTxt);if(pr&&pr.catch)pr.catch(()=>{});}catch(e){}toast("コピーしたよ");}
+ else if(k==="speak")speakHT(_htmTxt);
+ else if(k==="fav"){S.htfavs=S.htfavs||[];const fi=S.htfavs.indexOf(_htmTxt);if(fi>=0){S.htfavs.splice(fi,1);save();toast("お気に入りを取り消したよ");}else{S.htfavs.push(_htmTxt);save();toast("お気に入りに保存したよ");}}
  else if(k==="corr"){const c=$("#chat-body .corr");if(c){c.scrollIntoView({block:"center"});toast("訂正カードはこれだよ");}else toast("このメッセージへの訂正はないよ");}
- else if(k==="trans")toast("翻訳は吹き出しの下に展開されるよ");
+ else if(k==="trans")toast("翻訳はモーメンツの投稿で使えるよ");
  else toast("その機能は物語では使わないよ");}));
 $("#chat-body").addEventListener("contextmenu",e=>{if(cur&&cur.thread==="ht")e.preventDefault();});
 $$("[data-pvtool]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.pvtool;
