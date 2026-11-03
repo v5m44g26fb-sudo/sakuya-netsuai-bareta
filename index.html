@@ -90,7 +90,7 @@ img{user-select:none;-webkit-user-drag:none}
 .dock{position:absolute;left:11px;right:11px;bottom:9px;height:88px;background:rgba(232,232,240,.32);backdrop-filter:blur(22px) saturate(1.6);border-radius:28px;display:flex;align-items:center;justify-content:space-around;padding:0 12px;z-index:3}
 .dock .app{text-shadow:none}
 /* headers */
-.ahead{padding:54px 12px 8px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--line);background:#fff;z-index:6;flex:none}
+.ahead{padding:54px 14px 7px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--line);background:#fff;z-index:6;flex:none}
 .ahead .back{font-size:25px;padding:0 6px;color:#222;line-height:1}
 .ahead h2{font-size:16.5px;font-weight:700;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ahead .sub{font-size:10.5px;color:var(--sub);font-weight:400}
@@ -124,7 +124,8 @@ img{user-select:none;-webkit-user-drag:none}
 .locknote{padding:13px 16px;font-size:12px;color:var(--sub);text-align:center;line-height:1.6}
 /* LINE chat */
 #v-chat{background:#8fa9c8}
-.chat-head{padding:52px 8px 7px;display:flex;align-items:center;gap:2px;background:rgba(143,169,200,.96);z-index:6;flex:none;color:#12233c}
+#v-free{background:#8fa9c8}
+.chat-head{padding:54px 8px 7px;display:flex;align-items:center;gap:2px;background:rgba(143,169,200,.96);z-index:6;flex:none;color:#12233c}
 .chat-head .back{font-size:25px;padding:0 5px}
 .chat-head h2{font-size:15.5px;font-weight:700;flex:1}
 .chat-head .hic{font-size:17px;padding:2px 5px}
@@ -1502,10 +1503,19 @@ button.end-card{width:100%;text-align:left;font-family:inherit;border:none;curso
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v27.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v28.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
-<div style="padding:16px;font-size:12px;color:#6e6e73;line-height:1.8">『サクヤと熱愛バレた件』は実在の人物を題材にした創作フィクション（ファンメイド作品）です。登場人物の発言・交際等の出来事は全て創作であり、実在の内容とは関係ありません。ツアー日程・会場・リリース実績は公開されている史実に基づきます。<br>なおのプロフィール写真・アルバムには、本人の許可済み写真（5枚セット）を使用しています（本作のみの許可です）。<br>画像：Pinterest／Instagram系の掲載写真、KProfiles等のプロフィール写真、メディア掲載写真（サクヤは『COLOR』コンセプト公式写真・『I SPY』公式ティーザー写真など最新期のもの）。動画：NCT WISH公式YouTube（公式Shorts／MVティーザー／MV／ダンスプラクティス）から取得した正規素材をゲーム用に変換したもの（権利は各権利者に帰属します）。TikTokアプリからは取得環境の都合（IPブロック）で直接収録できないため、公式動画をTikTokのUIで再生する形にしています。</div>
+<div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
+<p style="margin:0 0 4px;font-weight:700;color:#3a3a3c;font-size:12.5px">この作品について</p>
+<p style="margin:0 0 12px">『サクヤと熱愛バレた件』は実在の人物を題材にした創作フィクション（ファンメイド作品）です。登場人物の発言・交際等の出来事は全て創作であり、実在の内容とは関係ありません。ツアー日程・会場・リリース実績は公開されている史実に基づきます。</p>
+<p style="margin:0 0 4px;font-weight:700;color:#3a3a3c;font-size:12.5px">写真について</p>
+<p style="margin:0 0 12px">なおのプロフィール写真・アルバムには、本人の許可済み写真（5枚セット）を使用しています（本作のみの許可です）。</p>
+<p style="margin:0 0 4px;font-weight:700;color:#3a3a3c;font-size:12.5px">画像・動画素材</p>
+<p style="margin:0 0 12px">画像：Pinterest／Instagram系の掲載写真、KProfiles等のプロフィール写真、メディア掲載写真（サクヤは『COLOR』コンセプト公式写真・『I SPY』公式ティーザー写真など最新期のもの）。動画：NCT WISH公式YouTube（公式Shorts／MVティーザー／MV／ダンスプラクティス）から取得した正規素材をゲーム用に変換したもの（権利は各権利者に帰属します）。TikTokアプリからは取得環境の都合（IPブロック）で直接収録できないため、公式動画をTikTokのUIで再生する形にしています。</p>
+<p style="margin:0 0 4px;font-weight:700;color:#3a3a3c;font-size:12.5px">音声について</p>
+<p style="margin:0">サクヤのボイスは、本人が提供したサンプル音声をもとに作成した音声クローン（AnyVoice）を使用しています。収録は物語の重要場面7箇所です。</p>
+</div>
 </div>
 </div>
 
@@ -1974,7 +1984,7 @@ function syncVideos(){setTimeout(()=>{$$("video").forEach(v=>{const view=v.close
 document.addEventListener("visibilitychange",()=>{if(document.hidden){save();$$("video").forEach(v=>{try{v.pause()}catch(e){}});try{if(typeof VAUDIO!=="undefined"&&VAUDIO)VAUDIO.pause();}catch(e){}}else{syncVideos();}});
 window.addEventListener("pagehide",()=>save());
 window.addEventListener("pageshow",e=>{if(e.persisted)syncVideos();});
-function show(id){if(id!=="call")ringStop();if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set","ht","htprof"].includes(id));window.scrollTo(0,0);if(id==="tt"){ttView="feed";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="home"));}if(id==="x")xView="feed";if(id==="lock")renderLock();if(id==="home")renderHome();if(id==="set")renderSetRec();if(id==="ht")renderHT();if(id==="line")renderLineList();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();}
+function show(id){if(id!=="call")ringStop();if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set","ht","htprof","chat","free"].includes(id));window.scrollTo(0,0);if(id==="tt"){ttView="feed";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="home"));}if(id==="x")xView="feed";if(id==="lock")renderLock();if(id==="home")renderHome();if(id==="set")renderSetRec();if(id==="ht")renderHT();if(id==="line")renderLineList();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();}
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){show(g.dataset.go);return;}const b=e.target.closest("[data-back]");if(b)show(b.dataset.back);});
 $("#homebar").addEventListener("click",()=>show("home"));
 $("#v-lock").addEventListener("click",e=>{if(e.target.closest("[data-go]"))return;show("home");});
