@@ -1569,7 +1569,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v36.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v37.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -2490,7 +2490,7 @@ function openNews(n){const key=newsKey(n);const baseCmts=n===NEWS_SCOOP?NCMT_SCO
  const _nbk=$("#news-body [data-nbmk]");if(_nbk)_nbk.addEventListener("click",()=>{S.newsBmk=S.newsBmk||{};if(S.newsBmk[key])delete S.newsBmk[key];else S.newsBmk[key]=1;save();openNews(n);toast(S.newsBmk[key]?"保存したよ":"保存を取り消したよ");});
  const _ncm=$("#news-body [data-ncmt]");if(_ncm)_ncm.addEventListener("click",()=>{const t=document.querySelector(".ncmt-h")||$("#ncmt-in");if(t)t.scrollIntoView({block:"center"});const i2=$("#ncmt-in");if(i2)i2.focus();});
  const _nsd=$("#ncmt-send");if(_nsd)_nsd.addEventListener("click",()=>{const i2=$("#ncmt-in");const v=i2?i2.value.trim():"";if(!v)return;S.newsCmts=S.newsCmts||{};(S.newsCmts[key]=S.newsCmts[key]||[]).push(v);save();openNews(n);setTimeout(()=>{const h=document.querySelector(".ncmt-h");if(h)h.scrollIntoView({block:"start"});},40);});
- const _nin=$("#ncmt-in");if(_nin)_nin.addEventListener("keydown",e=>{if(e.key==="Enter"&&$("#ncmt-send"))$("#ncmt-send").click();});$("#news-body").querySelectorAll("[data-rel]").forEach(b=>b.addEventListener("click",()=>openNews(rel[+b.dataset.rel])));$("#news-body").scrollTop=0;}
+ const _nin=$("#ncmt-in");if(_nin)_nin.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing&&e.keyCode!==229&&$("#ncmt-send"))$("#ncmt-send").click();});$("#news-body").querySelectorAll("[data-rel]").forEach(b=>b.addEventListener("click",()=>openNews(rel[+b.dataset.rel])));$("#news-body").scrollTop=0;}
 /* ================= CALENDAR ================= */
 function calMonth(y,m,events){const first=new Date(y,m-1,1).getDay(),days=new Date(y,m,0).getDate();let cells=["日","月","火","水","木","金","土"].map(d=>`<div class="dw">${d}</div>`).join("");for(let i=0;i<first;i++)cells+=`<div class="cd dim"></div>`;for(let d=1;d<=days;d++){const ev=events[d];cells+=`<div class="cd"><b>${d}</b>${ev?ev.map(e=>`<span class="ev ${e[1]}">${e[0]}</span>`).join(""):""}</div>`;}return `<div class="cal-grid">${cells}</div>`;}
 function renderCal(){$("#cal-wrap").innerHTML=`
@@ -2580,9 +2580,9 @@ $("#story-x").addEventListener("click",ev=>{ev.stopPropagation();closeStory();})
 $("#story-next").addEventListener("click",()=>storyNav(1));
 $("#story-prev").addEventListener("click",()=>storyNav(-1));
 $("#story-heart").addEventListener("click",ev=>{ev.stopPropagation();const b=$("#story-heart");const on=b.classList.toggle("liked");b.innerHTML=on?ic("heart","s26"):ic("heart-o","s26");if(on)toast("いいねを送ったよ");});
-function storySendMsg(){const inp=$("#story-reply-in");if(inp&&inp.value.trim()){inp.value="";toast("メッセージを送信したよ");}else toast("メッセージを送信したよ");}
+function storySendMsg(){const inp=$("#story-reply-in");if(inp&&inp.value.trim()){inp.value="";toast("メッセージを送信したよ");}}
 $("#story-send").addEventListener("click",ev=>{ev.stopPropagation();storySendMsg();});
-$("#story-reply-in").addEventListener("keydown",e=>{if(e.key==="Enter")storySendMsg();});
+$("#story-reply-in").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing&&e.keyCode!==229)storySendMsg();});
 $("#story-reply-in").addEventListener("click",ev=>ev.stopPropagation());
 /* ================= COMMENT SHEET ================= */
 let _sheetSend=null;
@@ -2600,8 +2600,8 @@ function openSheet(title,items,onSend){const _sh=$("#sheet");clearTimeout(_sh._c
 function closeSheet(){const sh=$("#sheet");if(!sh.classList.contains("on"))return;sh.classList.add("bye");clearTimeout(sh._ct);sh._ct=setTimeout(()=>{sh.classList.remove("on","bye");},190);}
 $("#sheet").addEventListener("click",e=>{if(e.target.id==="sheet")closeSheet();});
 $("#sheet-x").addEventListener("click",closeSheet);
-$("#sheet-send").addEventListener("click",()=>{const inp=$("#sheet-input");const v=inp.value.trim();if(!v)return;inp.value="";if(_sheetSend)_sheetSend(v);});
-$("#sheet-input").addEventListener("keydown",e=>{if(e.key==="Enter")$("#sheet-send").click();});
+$("#sheet-send").addEventListener("click",()=>{const inp=$("#sheet-input");const v=inp.value.trim();if(!v)return;inp.value="";if(_sheetSend)_sheetSend(v);inp.focus();});
+$("#sheet-input").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing&&e.keyCode!==229)$("#sheet-send").click();});
 const CMT_EXTRA=[["wish_daily","現地で見てたけど本当にすごかった…"],["sakuya_thoughts","言葉選びが今日も素敵"],["wish_archive","保存しました📌"]];
 function igCapRow(post){const av=post.ini?`<span class="sc-av">${esc(post.ini)}</span>`:`<img class="sc-av" src="assets/group.jpg" style="object-fit:cover">`;return `<div class="sc-row cap-first">${av}<div class="sc-main"><b>${esc(post.user)}</b> <span>${esc(post.cap)}</span><div class="sc-meta"><span>${esc(post.time||"")}</span></div></div></div>`;}
 function openIGComments(id){const post=IG_POSTS.find(x=>x.id===id)||TAGGED_POSTS.find(x=>x.id===id);if(!post)return;const extra=IG_POSTS.indexOf(post)>=0?CMT_EXTRA:[];const items=post.cm.concat(extra);openSheet("コメント",items,v=>{post.cm.push(["nao",v]);$("#sheet-body").innerHTML=igCapRow(post)+post.cm.concat(extra).map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;});$("#sheet-body").insertAdjacentHTML("afterbegin",igCapRow(post));}
