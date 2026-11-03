@@ -1373,7 +1373,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 </div>
 <div class="phone"><span class="action-btn" aria-hidden="true"></span><div class="screen">
 <div class="island"></div>
-<div class="statusbar" id="statusbar"><span id="sb-time">21:04</span><span class="sb-r"><svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg><svg width="25" height="12" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3.5" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2" fill="currentColor"/><path d="M23 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" opacity=".45"/></svg></span></div>
+<div class="statusbar" id="statusbar"><span id="sb-time">21:04</span><span class="sb-r"><svg id="sb-plane" width="16" height="16" viewBox="0 0 24 24" style="display:none"><use href="#i-plane"/></svg><svg id="sb-sig" width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg><svg width="25" height="12" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="20" height="11" rx="3.5" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2" fill="currentColor"/><path d="M23 4v4a2.2 2.2 0 0 0 0-4z" fill="currentColor" opacity=".45"/></svg></span></div>
 <div class="homebar" id="homebar"></div>
 
 <!-- TITLE -->
@@ -1582,7 +1582,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v45.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v46.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -1990,7 +1990,7 @@ const NOTIFS=[
 ];
 /* ================= STATE ================= */
 const KEY="sakuya_scandal_v1",EKEY="sakuya_scandal_ends_v1";
-function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],chDates:{},ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{},newsLikes:{},favs:{},wall:"",noff:{},snd:{on:true,vol:.6,vib:true},a11y:{fs:0,bold:false,contrast:false,rm:false},htfavs:[],moLike:{},moCmts:{},ttCmts:{},xLikes:{},xReposts:{},ttFol:true,xFol:true,igCmts:{},igReposts:{},igFol:true};}
+function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],chDates:{},ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{},newsLikes:{},favs:{},wall:"",air:false,wifi:"Home-5G",noff:{},snd:{on:true,vol:.6,vib:true},a11y:{fs:0,bold:false,contrast:false,rm:false},htfavs:[],moLike:{},moCmts:{},ttCmts:{},xLikes:{},xReposts:{},ttFol:true,xFol:true,igCmts:{},igReposts:{},igFol:true};}
 let S=load();
 S.snd=Object.assign({on:true,vol:.6,vib:true},S.snd||{});
 S.a11y=Object.assign({fs:0,bold:false,contrast:false,rm:false},S.a11y||{});
@@ -2016,6 +2016,7 @@ function sanitizeSave(j){
  o.htfavs=(arr(j.htfavs)||[]).filter(x=>typeof x==="string").slice(0,200);
  o.ig=int(j.ig,0,0,999);o.tt=int(j.tt,0,0,999);o.x=int(j.x,0,0,999);o.news=int(j.news,0,0,999);o.freeCount=int(j.freeCount,0,0,1000000);
  o.ended=j.ended===true;o.endId=str(j.endId,"");o.act=str(j.act,"");o.viewIG=str(j.viewIG,"grid");o.wall=str(j.wall,"");
+ o.air=j.air===true;o.wifi=["Home-5G","Cafe murmur Wi-Fi","KIX Free Wi-Fi","ホテル神戸 Wi-Fi"].includes(j.wifi)?j.wifi:"Home-5G";
  const sj=obj(j.snd)||{};o.snd={on:typeof sj.on==="boolean"?sj.on:true,vol:num(sj.vol,.6,0,1),vib:typeof sj.vib==="boolean"?sj.vib:true};
  const aj=obj(j.a11y)||{};o.a11y={fs:(aj.fs===1||aj.fs===2)?aj.fs:0,bold:aj.bold===true,contrast:aj.contrast===true,rm:aj.rm===true};
  return o;
@@ -2097,17 +2098,20 @@ $("#v-home").addEventListener("pointerdown",e=>{if(!e.target.closest(".app"))ret
 ["pointerup","pointercancel","pointerleave"].forEach(ev=>$("#v-home").addEventListener(ev,()=>clearTimeout(_hLpT)));
 $("#v-home").addEventListener("click",e=>{if(_hLpFired){_hLpFired=false;e.stopPropagation();e.preventDefault();return;}if(!homeEdit)return;if(e.target.closest("#home-done")){setHomeEdit(false);e.stopPropagation();e.preventDefault();return;}if(e.target.closest(".app")){e.stopPropagation();e.preventDefault();toast("この端末ではアプリの削除・移動は固定だよ");}},true);
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){const t=g.dataset.go;if(t==="ig")S._igSeen=S.ig;if(t==="tt")S._ttSeen=S.tt;if(t==="notes")S._memoSeen=S.memos.length;if(t==="x")S.x=0;if(t==="news")S.news=0;save();}});
-$("#app-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();applyA11y();show("home");toast("リセットしたよ");}});
-$("#set-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();applyA11y();show("home");toast("リセットしたよ");}});
+$("#app-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();applyA11y();applyAir();updWifiVal();show("home");toast("リセットしたよ");}});
+$("#set-reset").addEventListener("click",()=>{if(confirm("セーブを消して最初からプレイしますか？")){localStorage.removeItem(KEY);S=defState();save();applyA11y();applyAir();updWifiVal();show("home");toast("リセットしたよ");}});
 /* ================= SETTINGS DETAIL (v23) ================= */
 const WALLS=[{src:"",name:"デフォルト",th:"assets/sakuya-ig1.jpg"},{src:"assets/group.jpg",name:"グループ写真",th:"assets/group.jpg"},{src:"assets/kobe-night.jpg",name:"神戸の夜景",th:"assets/kobe-night.jpg"},{src:"assets/stage2.jpg",name:"GLION ARENA KOBE",th:"assets/stage2.jpg"}];
 function wallName(){const w=WALLS.find(w=>w.src===(S.wall||""));return w?w.name:"デフォルト";}
 const _wv=$("#wall-val");if(_wv)_wv.textContent=wallName()+" ›";
-$("#sw-air").addEventListener("click",function(){this.classList.toggle("on");toast(this.classList.contains("on")?"機内モード オン（物語には影響しないよ）":"機内モード オフ");});
-$("#set-wifi").addEventListener("click",()=>{const nets=["Home-5G","Cafe murmur Wi-Fi","KIX Free Wi-Fi","ホテル神戸 Wi-Fi"];const cur=$("#wifi-val").textContent.replace(/ ›$/,"");sheetList("Wi-Fi",nets.map(n=>`<button class="sh-row" data-wifi="${esc(n)}"><span class="ric">${ic("wifi","s19")}</span>${esc(n)}<span style="margin-left:auto;color:#0a84ff">${cur===n?"✓":""}</span></button>`).join(""));$$("#sheet-body [data-wifi]").forEach(b=>b.addEventListener("click",()=>{$("#wifi-val").textContent=b.dataset.wifi+" ›";closeSheet();toast("Wi-Fi「"+b.dataset.wifi+"」に接続したよ");}));});
+function applyAir(){const on=!!S.air;const sw=$("#sw-air");if(sw)sw.classList.toggle("on",on);const sig=$("#sb-sig");if(sig)sig.style.display=on?"none":"";const pl=$("#sb-plane");if(pl)pl.style.display=on?"block":"none";}
+$("#sw-air").addEventListener("click",function(){S.air=!S.air;save();applyAir();toast(S.air?"機内モード オン（物語には影響しないよ）":"機内モード オフ");});
+function updWifiVal(){const v=$("#wifi-val");if(v)v.textContent=(S.wifi||"Home-5G")+" ›";}
+$("#set-wifi").addEventListener("click",()=>{const nets=["Home-5G","Cafe murmur Wi-Fi","KIX Free Wi-Fi","ホテル神戸 Wi-Fi"];const cur=S.wifi||"Home-5G";sheetList("Wi-Fi",nets.map(n=>`<button class="sh-row" data-wifi="${esc(n)}"><span class="ric">${ic("wifi","s19")}</span>${esc(n)}<span style="margin-left:auto;color:#0a84ff">${cur===n?"✓":""}</span></button>`).join(""));$$("#sheet-body [data-wifi]").forEach(b=>b.addEventListener("click",()=>{S.wifi=b.dataset.wifi;save();updWifiVal();closeSheet();toast("Wi-Fi「"+b.dataset.wifi+"」に接続したよ");}));});
+applyAir();updWifiVal();
 $("#set-notif").addEventListener("click",()=>{const apps=[["ht","HelloTalk"],["line","LINE"],["ig","Instagram"],["tt","TikTok"],["x","X"],["news","ニュース"]];sheetList("通知",apps.map(a=>`<div class="sc-row ntog" data-ntog="${a[0]}"><div class="sc-main"><b>${a[1]}</b><div style="color:#8e8e93;font-size:12px;margin-top:1px">ロック画面・バナー</div></div><span class="ios-sw ${(S.noff&&S.noff[a[0]])?"":"on"}"><i></i></span></div>`).join("")+`<div class="locknote">オフにしたアプリはロック画面・バナーに出なくなるよ</div>`);$$("#sheet-body [data-ntog]").forEach(r=>r.addEventListener("click",()=>{const k=r.dataset.ntog;S.noff=S.noff||{};if(S.noff[k])delete S.noff[k];else S.noff[k]=1;save();r.querySelector(".ios-sw").classList.toggle("on",!S.noff[k]);}));});
 $("#set-wall").addEventListener("click",()=>{sheetList("壁紙",WALLS.map(w=>`<button class="sh-row" data-wall="${esc(w.src)}"><img src="${w.th}" style="width:40px;height:52px;border-radius:8px;object-fit:cover;flex:none">${esc(w.name)}<span style="margin-left:auto;color:#0a84ff">${(S.wall||"")===w.src?"✓":""}</span></button>`).join(""));$$("#sheet-body [data-wall]").forEach(b=>b.addEventListener("click",()=>{S.wall=b.dataset.wall;save();applyWall();$("#wall-val").textContent=wallName()+" ›";closeSheet();toast("壁紙を変更したよ");}));});
-$("#set-storage").addEventListener("click",()=>{const rows=[["#ff9500","iOS 26","12.4 GB",46],["#ff2d55","写真・動画","1.9 GB",8],["#5e5ce6","TikTok 動画","486 MB",2],["#0a84ff","アプリ","812 MB",3],["#8e8e93","その他","3.2 GB",13]];sheetList("iPhoneストレージ",`<div class="sto-top"><b>iPhone</b><span>256 GB 中 18.8 GB を使用</span></div><div class="sto-bar">${rows.map(r=>`<i style="width:${r[3]}%;background:${r[0]}"></i>`).join("")}</div>`+rows.map(r=>`<div class="sc-row"><span class="sto-dot" style="background:${r[0]}"></span><div class="sc-main"><b>${esc(r[1])}</b></div><span style="color:#8e8e93;font-size:12.5px">${r[2]}</span></div>`).join("")+`<div class="locknote">写真 ${PHOTOS.length} 件 ・ 動画 ${TT_POSTS.length} 件が この端末に保存されているよ</div>`);});
+$("#set-storage").addEventListener("click",()=>{const rows=[["#ff9500","iOS 26","12.4 GB",4.84],["#ff2d55","写真・動画","1.9 GB",0.74],["#5e5ce6","TikTok 動画","486 MB",0.19],["#0a84ff","アプリ","812 MB",0.32],["#8e8e93","その他","3.2 GB",1.25]];sheetList("iPhoneストレージ",`<div class="sto-top"><b>iPhone</b><span>256 GB 中 18.8 GB を使用</span></div><div class="sto-bar">${rows.map(r=>`<i style="width:${r[3]}%;background:${r[0]}"></i>`).join("")}</div>`+rows.map(r=>`<div class="sc-row"><span class="sto-dot" style="background:${r[0]}"></span><div class="sc-main"><b>${esc(r[1])}</b></div><span style="color:#8e8e93;font-size:12.5px">${r[2]}</span></div>`).join("")+`<div class="locknote">写真 ${PHOTOS.length} 件 ・ 動画 ${TT_POSTS.length} 件が この端末に保存されているよ</div>`);});
 /* ================= SETTINGS: RECORDS (v25) ================= */
 $("#set-ends").addEventListener("click",()=>{sheetList("エンディングコレクション",`<div class="end-coll" style="margin:0">`+endCollHTML()+`</div>`);bindEndCards($("#sheet-body"),"set");});
 $("#set-chaps").addEventListener("click",()=>{sheetList("チャプター振り返り",`<div class="ch-list">`+chapReviewHTML()+`</div>`);bindChapRows($("#sheet-body"));});
