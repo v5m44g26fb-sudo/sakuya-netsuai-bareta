@@ -213,6 +213,7 @@ img{user-select:none;-webkit-user-drag:none}
 @keyframes heartpop{0%{opacity:0;transform:scale(.4)}25%{opacity:1;transform:scale(1.12)}55%{opacity:1;transform:scale(.96)}100%{opacity:0;transform:scale(1.05) translateY(-8px)}}
 .post-act{display:flex;gap:15px;padding:9px 12px 3px;font-size:23px;align-items:center}
 .post-act .hrt.liked{color:#ff3040;animation:hb .3s ease}
+.post-act .rp-on{color:#00ba7c}
 @keyframes hb{50%{transform:scale(1.3)}}
 .post-act .save{margin-left:auto}
 .post-likes{padding:2px 12px;font-size:13.5px;font-weight:700}
@@ -1581,7 +1582,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v42.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v43.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -1989,7 +1990,7 @@ const NOTIFS=[
 ];
 /* ================= STATE ================= */
 const KEY="sakuya_scandal_v1",EKEY="sakuya_scandal_ends_v1";
-function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],chDates:{},ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{},newsLikes:{},favs:{},wall:"",noff:{},snd:{on:true,vol:.6,vib:true},a11y:{fs:0,bold:false,contrast:false,rm:false},htfavs:[],moLike:{},moCmts:{},ttCmts:{},xLikes:{},xReposts:{},ttFol:true,xFol:true};}
+function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],chDates:{},ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{},newsLikes:{},favs:{},wall:"",noff:{},snd:{on:true,vol:.6,vib:true},a11y:{fs:0,bold:false,contrast:false,rm:false},htfavs:[],moLike:{},moCmts:{},ttCmts:{},xLikes:{},xReposts:{},ttFol:true,xFol:true,igCmts:{},igReposts:{},igFol:true};}
 let S=load();
 S.snd=Object.assign({on:true,vol:.6,vib:true},S.snd||{});
 S.a11y=Object.assign({fs:0,bold:false,contrast:false,rm:false},S.a11y||{});
@@ -2010,8 +2011,8 @@ function sanitizeSave(j){
  o.memos=(arr(j.memos)||[]).filter(x=>typeof x==="string");
  o.notified=(arr(j.notified)||[]).filter(x=>typeof x==="number"&&isFinite(x));
  o.chDates=obj(j.chDates)||{};
- ["callsDone","answers","likedIG","likedTT","savedIG","savedTT","xbmk","callDur","newsBmk","newsCmts","newsLikes","favs","noff","moLike","moCmts","ttCmts","xLikes","xReposts"].forEach(k=>{o[k]=obj(j[k])||{};});
- o.ttFol=j.ttFol!==false;o.xFol=j.xFol!==false;
+ ["callsDone","answers","likedIG","likedTT","savedIG","savedTT","xbmk","callDur","newsBmk","newsCmts","newsLikes","favs","noff","moLike","moCmts","ttCmts","xLikes","xReposts","igCmts","igReposts"].forEach(k=>{o[k]=obj(j[k])||{};});
+ o.ttFol=j.ttFol!==false;o.xFol=j.xFol!==false;o.igFol=j.igFol!==false;
  o.htfavs=(arr(j.htfavs)||[]).filter(x=>typeof x==="string").slice(0,200);
  o.ig=int(j.ig,0,0,999);o.tt=int(j.tt,0,0,999);o.x=int(j.x,0,0,999);o.news=int(j.news,0,0,999);o.freeCount=int(j.freeCount,0,0,1000000);
  o.ended=j.ended===true;o.endId=str(j.endId,"");o.act=str(j.act,"");o.viewIG=str(j.viewIG,"grid");o.wall=str(j.wall,"");
@@ -2248,12 +2249,16 @@ const IGHEAT={fol:0,likes:{},added:0};
 const IG_FLOOD=[["匿名","公式は早く声明出して"],["wish_pen","本人の言葉を待つって決めた"],["kobe_local","最終日、会場で見た彼は本物だった"],["匿名","擁護も批判も、声明が出てからでよくない？"],["ispy_fan","活動は続けてほしい。ただそれだけ"],["通りすがりのウィシズニ","騒ぐ人は騒ぐ。私は静かに待つ"]];
 const HIGHLIGHTS=[{t:"TOUR 2027",img:"assets/stage2.jpg"},{t:"SEOUL",img:"assets/group.jpg"},{t:"TOKYO",img:"assets/stage1.jpg"},{t:"KOBE",img:"assets/kobe.jpg"}];
 const TAGGED_POSTS=[
- {id:101,img:"assets/kobe-night.jpg",user:"wish_daily",ini:"W",loc:"GLION ARENA KOBE",likes:"84,213",cap:"神戸最終日、海のそばのアリーナが綺麗すぎた⚓ #NCTWISH #FaceOurWISH",cm:[["wish_archive","同じ空間にいました…！"]],time:"3月7日"},
- {id:102,img:"assets/stage1.jpg",user:"sakuya_thoughts",ini:"S",loc:"国立代々木競技場第一体育館",likes:"61,540",cap:"代々木3日間完走おつかれさま💫 言葉の一つひとつが届いた公演だった",cm:[["ispy_fan","代々木参戦勢です、最高でした"]],time:"2月28日"}
+ {id:101,after:7,img:"assets/kobe-night.jpg",user:"wish_daily",ini:"W",loc:"GLION ARENA KOBE",likes:"84,213",cap:"神戸最終日、海のそばのアリーナが綺麗すぎた⚓ #NCTWISH #FaceOurWISH",cm:[["wish_archive","同じ空間にいました…！"]],time:"3月7日"},
+ {id:102,after:4,img:"assets/stage1.jpg",user:"sakuya_thoughts",ini:"S",loc:"国立代々木競技場第一体育館",likes:"61,540",cap:"代々木3日間完走おつかれさま💫 言葉の一つひとつが届いた公演だった",cm:[["ispy_fan","代々木参戦勢です、最高でした"]],time:"2月28日"}
 ];
 const CARIDX={};const CAPOPEN={};
 function igLiveId(){return S.ig>0?IG_POSTS[Math.min(S.ig,IG_POSTS.length)-1].id:0;}
-function igFolHTML(){return `<b id="ig-fol-num">${fmtNum(4862314+IGHEAT.fol)}</b>`;}
+/* v43: IG follower count is one shared number (heat drift minus own unfollow) */
+function igFolNum(){return 4862314+IGHEAT.fol-(S.igFol===false?1:0);}
+function igFolHTML(){return `<b id="ig-fol-num">${fmtNum(igFolNum())}</b>`;}
+/* v43: tagged posts unlock with story progress, like the rest of the IG surface */
+function taggedPosts(){return TAGGED_POSTS.filter(p=>S.ended||S.scene>=(p.after||0));}
 function igTabsHTML(view){const on=v=>(view===v||(view==="feed"&&v==="grid")||(view==="tagfeed"&&v==="tagged"))?"on":"";return `<div class="ig-tabs"><button class="${on("grid")}" id="ig-t-grid">${ic("grid","s21")}</button><button class="${on("reels")}" id="ig-t-reels">${ic("film","s21")}</button><button class="${on("tagged")}" id="ig-t-tagged">${ic("tag","s21")}</button></div>`;}
 function igTile(p){let badge="";if(p.slides)badge='<span class="grid-multi">'+ic("copy","s13")+'</span>';else if(p.video)badge='<span class="pin">'+ic("play","s13")+'</span>';else if(p.id===1)badge='<span class="pin">'+ic("bmk-f","s13")+'</span>';const views=p.video?`<span class="grid-views">${ic("play","s11")} ${fmtLikes(p.likes)}</span>`:"";return `<button data-post="${p.id}"><img src="${p.img}" loading="lazy" decoding="async">${badge}${views}</button>`;}
 function igStoriesHTML(){return `<div class="stories">${Object.keys(M).filter(k=>M[k].av).map(k=>`<button class="story" data-story="${k}"><span class="ring ${S.ig>0?"":"seen"}"><img src="${M[k].av}"></span>${M[k].n}</button>`).join("")}<button class="story" data-story="me"><span class="ring seen"><img src="assets/nao-face.jpg"><span class="story-plus">＋</span></span>あなた</button></div>`;}
@@ -2265,7 +2270,7 @@ function igExploreResultsHTML(posts){
  const mem=Object.keys(M).filter(k=>M[k].av).map(k=>({av:M[k].av,ini:"",n:M[k].n,sub:"NCT WISH",off:false}));
  const fans=FAN_ACC.map(a=>({av:"",ini:a[0][0].toUpperCase(),n:a[0],sub:a[1],off:true}));
  const accs=mem.concat(fans).filter(a=>!q||(a.n+" "+a.sub).toLowerCase().includes(q));
- const tiles=posts.map(p=>({t:"post",p})).concat(TAGGED_POSTS.map(p=>({t:"tpost",p}))).filter(x=>!q||((x.p.user||"")+" "+(x.p.cap||"")+" "+(x.p.loc||"")+" "+(x.p.time||"")).toLowerCase().includes(q));
+ const tiles=posts.map(p=>({t:"post",p})).concat(taggedPosts().map(p=>({t:"tpost",p}))).filter(x=>!q||((x.p.user||"")+" "+(x.p.cap||"")+" "+(x.p.loc||"")+" "+(x.p.time||"")).toLowerCase().includes(q));
  const sug=accs.length?accs.map(a=>lkRow(a.av,a.ini,a.n,a.sub,a.off)).join(""):`<div class="igx-empty" style="padding:14px 16px;text-align:left">「${esc(igQuery.trim())}」に一致するアカウントはないよ</div>`;
  const grid=tiles.length?tiles.map(x=>{const p=x.p;const badge=p.slides?'<span class="grid-multi">'+ic("copy","s13")+'</span>':p.video?'<span class="pin">'+ic("play","s13")+'</span>':"";const views=p.video?`<span class="grid-views">${ic("play","s11")} ${fmtLikes(p.likes)}</span>`:"";return `<button data-${x.t}="${p.id}"><img src="${p.img}" loading="lazy" decoding="async">${badge}${views}</button>`;}).join(""):`<div class="igx-empty">${q?"「"+esc(igQuery.trim())+"」に一致する投稿はないよ":ic("lock","s15")+" 物語を進めると投稿が解放されるよ"}</div>`;
  return `<div class="igx-sec">${q?"アカウント":"おすすめアカウント"}${q?`（${accs.length}件）`:""}</div>${sug}<div class="igx-sec">${q?"投稿":"探索"}${q?`（${tiles.length}件）`:""}</div><div class="ig-grid">${grid}</div>`;}
@@ -2281,14 +2286,14 @@ function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);co
  h+=`<div class="ig-prof"><div class="ig-top"><span class="ring"><img src="assets/group.jpg"></span><div class="ig-stats"><div><b>${Math.max(S.ig,0)}</b><span>投稿</span></div><div data-followers style="cursor:pointer">${igFolHTML()}<span>フォロワー</span></div><div><b>12</b><span>フォロー中</span></div></div></div>
  <div class="ig-cat">アーティスト</div>
  <div class="ig-bio"><b>nctwish_official</b> ${VB}<br>NCT WISH 公式アカウント<br>2nd TOUR『INTO THE WISH : Face Our WISH』開催中💫<br><span class="lnk">nctwish.jp/tour2027</span><br><span class="ig-threads"><i>🧵</i> nctwish_official</span></div>
- <div class="ig-btns"><button id="ig-fol">フォロー中 ▾</button><button id="ig-msg">メッセージ</button><button id="ig-sug" style="flex:none;padding:7px 11px;display:flex;align-items:center;justify-content:center" aria-label="おすすめ">${ic("userplus","s17")}</button></div>
+ <div class="ig-btns"><button id="ig-fol" class="${S.igFol===false?"fol":""}">${S.igFol===false?"フォローする":"フォロー中 ▾"}</button><button id="ig-msg">メッセージ</button><button id="ig-sug" style="flex:none;padding:7px 11px;display:flex;align-items:center;justify-content:center" aria-label="おすすめ">${ic("userplus","s17")}</button></div>
  <div class="hl-row">${HIGHLIGHTS.map((hl,i)=>`<button class="hl" data-hl="${i}"><span class="hlc"><img src="${hl.img}"></span>${hl.t}</button>`).join("")}</div></div>`;
  const savedPosts=posts.filter(p=>S.savedIG&&S.savedIG[p.id]);
  if(savedPosts.length)h+=`<button class="saved-row" id="ig-t-saved">${ic("bmk","s15")} 保存済み（${savedPosts.length}件）<span style="margin-left:auto;color:#8e8e93">›</span></button>`;
  h+=igTabsHTML(view);
  if(view==="reels"){h+=`<div class="ig-reels">${posts.filter(p=>p.video).length?posts.filter(p=>p.video).map(p=>`<button data-post="${p.id}"><video src="${p.video}" poster="${p.img}" muted playsinline preload="none"></video><span class="grid-views">${ic("play","s11")} ${fmtLikes(p.likes)}</span></button>`).join(""):`<div class="ig-lock">${ic("lock","s15")} リールはまだ解放されていないよ</div>`}</div>`;}
- else if(view==="tagged"){h+=`<div class="ig-grid"><div class="tag-note">nctwish_official がタグ付けされた投稿</div>${TAGGED_POSTS.map(p=>`<button data-tpost="${p.id}"><img src="${p.img}" loading="lazy" decoding="async"></button>`).join("")}</div>`;}
- else if(view==="tagfeed"){h+=TAGGED_POSTS.map(p=>postHTML(p)).join("");}
+ else if(view==="tagged"){const tp=taggedPosts();h+=`<div class="ig-grid"><div class="tag-note">nctwish_official がタグ付けされた投稿</div>${tp.length?tp.map(p=>`<button data-tpost="${p.id}"><img src="${p.img}" loading="lazy" decoding="async"></button>`).join(""):`<div class="ig-lock">${ic("lock","s15")} タグ付けされた投稿はまだないよ</div>`}</div>`;}
+ else if(view==="tagfeed"){h+=taggedPosts().map(p=>postHTML(p)).join("");}
  else if(view==="saved"){h+=savedPosts.length?`<div class="ig-grid">${savedPosts.map(p=>igTile(p)).join("")}</div>`:`<div class="ig-lock">${ic("bmk","s15")} 保存済みの投稿はまだないよ</div>`;}
  else if(view==="feed"){h+=posts.map(p=>postHTML(p)).join("");}
  else{h+=`<div class="ig-grid">${posts.length?posts.map(p=>igTile(p)).join(""):`<div class="ig-lock">${ic("lock","s15")} 物語を進めると公式投稿が解放されるよ</div>`}</div>`;}
@@ -2298,7 +2303,7 @@ function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);co
  const ms=$("#ig-msg");if(ms)ms.addEventListener("click",openIGDM);
  const sg=$("#ig-sug");if(sg)sg.addEventListener("click",openIGSuggest);
  const fw=el.querySelector("[data-followers]");if(fw)fw.addEventListener("click",openFollowers);
- const fol=$("#ig-fol");if(fol)fol.addEventListener("click",()=>{const on=fol.textContent.indexOf("フォロー中")===0;fol.textContent=on?"フォローする":"フォロー中 ▾";fol.classList.toggle("fol",on);toast(on?"フォローを外したよ（公式は泣かない）":"フォローしたよ");});
+ const fol=$("#ig-fol");if(fol)fol.addEventListener("click",()=>{S.igFol=S.igFol===false?true:false;save();fol.textContent=S.igFol?"フォロー中 ▾":"フォローする";fol.classList.toggle("fol",!S.igFol);const fn=$("#ig-fol-num");if(fn)fn.textContent=fmtNum(igFolNum());toast(S.igFol?"フォローしたよ":"フォローを外したよ（公式は泣かない）");});
  bindIGTiles(el);
  el.querySelectorAll("[data-hl]").forEach(b=>b.addEventListener("click",()=>openHL(+b.dataset.hl)));
  bindPostActs(el);igLiveStart();}
@@ -2311,8 +2316,9 @@ function postHTML(p){const liked=S.likedIG[p.id];const saved=S.savedIG&&S.savedI
  const live=(S.scene>=7&&p.id===igLiveId());
  if(live&&!p._seeded){p._seeded=true;p.cm.push(IG_FLOOD[0],IG_FLOOD[1]);IGHEAT.added=Math.max(IGHEAT.added,2);}
  const likesN=parseCnt(p.likes)+(liked?1:0)+(IGHEAT.likes[p.id]||0);
- const totalCm=p.cm.length+(IG_POSTS.indexOf(p)>=0?CMT_EXTRA.length:0);
- const shownCm=live?p.cm:p.cm.slice(0,2);
+ const effCm=igEffCm(p);
+ const totalCm=effCm.length+(IG_POSTS.indexOf(p)>=0?CMT_EXTRA.length:0);
+ const shownCm=live?effCm:effCm.slice(0,2);
  const cmts=shownCm.map(c=>`<div class="post-cmt"><b>${esc(c[0])}</b> ${esc(c[1])}</div>`).join("");
  const moreBtn=totalCm>shownCm.length?`<button class="cmt-more" data-cmt="${p.id}">コメント${totalCm}件をすべて見る</button>`:"";
  const stack=`<span class="likes-stack">${[0,1,2].map(j=>{const k=["sion","riku","sakuya","yushi","ryo","jaehee"][(p.id+j)%6];return `<img src="${M[k].av}">`;}).join("")}</span>`;
@@ -2321,7 +2327,7 @@ function postHTML(p){const liked=S.likedIG[p.id];const saved=S.savedIG&&S.savedI
  const avh=p.ini?`<span style="width:100%;height:100%;border-radius:50%;background:#8e8e93;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;border:2px solid #fff;font-size:13px">${p.ini}</span>`:`<img src="assets/group.jpg">`;
  return `<div class="post" id="igpost-${p.id}"><div class="post-h"><span class="ring">${avh}</span><span><b>${esc(p.user)}</b>${p.ini?"":" "+VB}<div class="loc">${esc(p.loc||"")}</div></span><span class="dots">•••</span></div>
  <div class="post-img">${media}<div class="big-heart" data-heart="${p.id}">${ic("heart","")}</div></div>
- <div class="post-act"><button class="hrt ${liked?"liked":""}" data-like="${p.id}">${liked?ic("heart","s26"):ic("heart-o","s26")}</button><button data-cmt="${p.id}">${ic("cmt","s24")}</button><button aria-label="リポスト">${ic("repeat","s24")}</button><button>${ic("send","s24")}</button><button class="save ${saved?"liked":""}" data-save="${p.id}">${saved?ic("bmk-f","s23"):ic("bmk","s23")}</button></div>
+ <div class="post-act"><button class="hrt ${liked?"liked":""}" data-like="${p.id}">${liked?ic("heart","s26"):ic("heart-o","s26")}</button><button data-cmt="${p.id}">${ic("cmt","s24")}</button><button aria-label="リポスト" data-rp="${p.id}" class="${S.igReposts&&S.igReposts[p.id]?"rp-on":""}">${ic("repeat","s24")}</button><button aria-label="シェア" data-share="${p.id}">${ic("send","s24")}</button><button class="save ${saved?"liked":""}" data-save="${p.id}">${saved?ic("bmk-f","s23"):ic("bmk","s23")}</button></div>
  <button class="post-likes" data-likers="${p.id}">${stack}<span${live?` data-livelikes="${p.id}"`:""}>いいね！${fmtNum(likesN)}件</span></button>
  <div class="post-cap"><b>${esc(p.user)}</b>${capHTML}</div><div class="post-cmts" id="cmts-${p.id}">${cmts}</div>
  ${moreBtn}
@@ -2329,6 +2335,8 @@ function postHTML(p){const liked=S.likedIG[p.id];const saved=S.savedIG&&S.savedI
 function bindPostActs(root){root.querySelectorAll("[data-like]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.like;S.likedIG[id]=!S.likedIG[id];if(S.likedIG[id])sfx("like");save();renderIG();}));
  root.querySelectorAll("[data-cmt]").forEach(b=>b.addEventListener("click",()=>openIGComments(+b.dataset.cmt)));
  root.querySelectorAll("[data-likers]").forEach(b=>b.addEventListener("click",()=>openLikers(+b.dataset.likers)));
+ root.querySelectorAll("[data-rp]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.rp;S.igReposts=S.igReposts||{};if(S.igReposts[id])delete S.igReposts[id];else S.igReposts[id]=1;save();b.classList.toggle("rp-on",!!S.igReposts[id]);toast(S.igReposts[id]?"リポストしたよ":"リポストを取り消したよ");}));
+ root.querySelectorAll("[data-share]").forEach(b=>b.addEventListener("click",()=>openIGShare(+b.dataset.share)));
  root.querySelectorAll("[data-save]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.save;S.savedIG=S.savedIG||{};S.savedIG[id]=!S.savedIG[id];save();toast(S.savedIG[id]?"保存したよ":"保存を取り消したよ");renderIG();}));
  root.querySelectorAll("[data-cap]").forEach(b=>b.addEventListener("click",()=>{CAPOPEN[b.dataset.cap]=true;renderIG();setTimeout(()=>{const t=$("#igpost-"+b.dataset.cap);if(t)t.scrollIntoView({block:"start"});},30);}));
  root.querySelectorAll("[data-mutev]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const v=b.closest(".post-vid").querySelector("video");if(v){v.muted=!v.muted;b.innerHTML=ic(v.muted?"volx":"vol","s15");}}));
@@ -2339,7 +2347,7 @@ function igLiveStart(){if(window._igT){clearInterval(window._igT);window._igT=nu
  window._igT=setInterval(()=>{const view=$("#v-ig");if(!view||!view.classList.contains("on")){clearInterval(window._igT);window._igT=null;return;}
   IGHEAT.likes[pid]=(IGHEAT.likes[pid]||0)+Math.floor(280+Math.random()*2100);
   const lk=document.querySelector(`[data-livelikes="${pid}"]`);if(lk)lk.textContent="いいね！"+fmtNum(parseCnt(post.likes)+(S.likedIG[pid]?1:0)+IGHEAT.likes[pid])+"件";
-  const fe=document.getElementById("ig-fol-num");if(fe){IGHEAT.fol+=S.ended?Math.floor(Math.random()*46):-Math.floor(5+Math.random()*30);if(IGHEAT.fol<-26000)IGHEAT.fol=-26000;fe.textContent=fmtNum(4862314+IGHEAT.fol);}
+  const fe=document.getElementById("ig-fol-num");if(fe){IGHEAT.fol+=S.ended?Math.floor(Math.random()*46):-Math.floor(5+Math.random()*30);if(IGHEAT.fol<-26000)IGHEAT.fol=-26000;fe.textContent=fmtNum(igFolNum());}
   if(!S.ended&&IGHEAT.added<IG_FLOOD.length&&Math.random()<0.65){const c=IG_FLOOD[IGHEAT.added++];post.cm.push(c);const box=document.getElementById("cmts-"+pid);if(box){const d=document.createElement("div");d.className="post-cmt";d.innerHTML=`<b>${esc(c[0])}</b> ${esc(c[1])}`;box.appendChild(d);}}
  },2800);}
 /* ================= TIKTOK ================= */
@@ -2637,7 +2645,7 @@ const EMOQ=["❤️","🙌","🔥","👏","😢","😍","😮","😂"];
 $("#emo-bar").innerHTML=EMOQ.map(e=>`<button data-emo="${e}" aria-label="絵文字">${e}</button>`).join("");
 function lkRow(av,ini,name,sub,off){return `<div class="sc-row lk-row">${av?`<img class="av" src="${av}" style="width:38px;height:38px">`:`<span class="sil" style="width:38px;height:38px;background:#8e8e93;font-size:14px">${ini}</span>`}<span class="lk-nm"><b>${name}</b><small>${sub}</small></span><button class="lk-fol${off?" off":""}">${off?"フォローする":"フォロー中"}</button></div>`;}
 function openLikers(id){const fans=FAN_ACC.map((a,j)=>FAN_ACC[(j+(id||0))%FAN_ACC.length]);const rows=Object.keys(M).filter(k=>M[k].av).map(k=>lkRow(M[k].av,"",M[k].n,k==="sakuya"?"NCT WISH（本人）":"NCT WISH",false)).join("")+fans.map(a=>lkRow("","W",a[0],a[1],true)).join("");sheetList("いいね！した人",rows);}
-function openFollowers(){const rows=Object.keys(M).filter(k=>M[k].av).map(k=>lkRow(M[k].av,"",M[k].n,"NCT WISH",false)).join("")+FAN_ACC.map(a=>lkRow("",a[0][0].toUpperCase(),a[0],a[1],true)).join("")+`<div class="locknote">フォロワー${fmtNum(4862314+IGHEAT.fol)}人のうち、知っているアカウントを一部表示しています</div>`;sheetList("フォロワー",rows);}
+function openFollowers(){const rows=Object.keys(M).filter(k=>M[k].av).map(k=>lkRow(M[k].av,"",M[k].n,"NCT WISH",false)).join("")+FAN_ACC.map(a=>lkRow("",a[0][0].toUpperCase(),a[0],a[1],true)).join("")+`<div class="locknote">フォロワー${fmtNum(igFolNum())}人のうち、知っているアカウントを一部表示しています</div>`;sheetList("フォロワー",rows);}
 function openSheet(title,items,onSend){const _sh=$("#sheet");clearTimeout(_sh._ct);_sh.classList.remove("bye");$("#sheet").classList.remove("nopost");$("#sheet").classList.add("emo");const sh=$("#sheet-head");sh.childNodes[0].textContent=title;$("#sheet-body").innerHTML=items.map(sheetRow).join("");_sheetSend=onSend;$("#sheet").classList.add("on");$("#sheet-body").scrollTop=0;}
 function closeSheet(){const sh=$("#sheet");if(!sh.classList.contains("on"))return;sh.classList.add("bye");clearTimeout(sh._ct);sh._ct=setTimeout(()=>{sh.classList.remove("on","bye");},190);}
 $("#sheet").addEventListener("click",e=>{if(e.target.id==="sheet")closeSheet();});
@@ -2646,7 +2654,16 @@ $("#sheet-send").addEventListener("click",()=>{const inp=$("#sheet-input");const
 $("#sheet-input").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing&&e.keyCode!==229)$("#sheet-send").click();});
 const CMT_EXTRA=[["wish_daily","現地で見てたけど本当にすごかった…"],["sakuya_thoughts","言葉選びが今日も素敵"],["wish_archive","保存しました📌"]];
 function igCapRow(post){const av=post.ini?`<span class="sc-av">${esc(post.ini)}</span>`:`<img class="sc-av" src="assets/group.jpg" style="object-fit:cover">`;return `<div class="sc-row cap-first">${av}<div class="sc-main"><b>${esc(post.user)}</b> <span>${esc(post.cap)}</span><div class="sc-meta"><span>${esc(post.time||"")}</span></div></div></div>`;}
-function openIGComments(id){const post=IG_POSTS.find(x=>x.id===id)||TAGGED_POSTS.find(x=>x.id===id);if(!post)return;const extra=IG_POSTS.indexOf(post)>=0?CMT_EXTRA:[];const items=post.cm.concat(extra);openSheet("コメント",items,v=>{post.cm.push(["nao",v]);$("#sheet-body").innerHTML=igCapRow(post)+post.cm.concat(extra).map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;});$("#sheet-body").insertAdjacentHTML("afterbegin",igCapRow(post));}
+/* v43: own IG comments persist (igCmts) and every count uses the effective list */
+function igMyCmts(id){const a=S.igCmts&&S.igCmts[id];return Array.isArray(a)?a.filter(x=>typeof x==="string"):[];}
+function igEffCm(p){return p.cm.concat(igMyCmts(p.id).map(t=>["nao",t]));}
+function openIGShare(id){sheetList("シェア",`<button class="sh-row" data-ish="copy"><span class="ric">${ic("copy","s19")}</span>リンクをコピー</button><button class="sh-row" data-ish="line"><span class="ric"><svg class="icsvg" style="width:22px;height:22px;border-radius:5px"><use href="#icn-line"/></svg></span>LINEで送る</button><button class="sh-row" data-ish="memo"><span class="ric">${ic("bmk","s19")}</span>観察メモに追加</button><button class="sh-row" data-ish="air"><span class="ric">${ic("send","s19")}</span>AirDrop ― なおのMacBook</button>`);
+ $$("#sheet-body [data-ish]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.ish;closeSheet();
+  if(k==="copy")ttCopyLink("https://www.instagram.com/p/ig"+id+"/","リンクをコピーしたよ");
+  else if(k==="line")toast("LINEで送ったよ");
+  else if(k==="memo")toast("観察メモに追加したよ");
+  else toast("「なおのMacBook」に送信したよ");}));}
+function openIGComments(id){const post=IG_POSTS.find(x=>x.id===id)||TAGGED_POSTS.find(x=>x.id===id);if(!post)return;const extra=IG_POSTS.indexOf(post)>=0?CMT_EXTRA:[];const items=igEffCm(post).concat(extra);openSheet("コメント",items,v=>{S.igCmts=S.igCmts||{};if(!Array.isArray(S.igCmts[post.id]))S.igCmts[post.id]=[];S.igCmts[post.id].push(v);save();const eff=igEffCm(post);$("#sheet-body").innerHTML=igCapRow(post)+eff.concat(extra).map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;const mb=document.querySelector('#igpost-'+post.id+' .cmt-more');if(mb)mb.textContent="コメント"+(eff.length+extra.length)+"件をすべて見る";const _live=S.scene>=7&&post.id===igLiveId();if(_live||IG_POSTS.indexOf(post)<0){const box=document.getElementById("cmts-"+post.id);if(box&&(_live||box.querySelectorAll(".post-cmt").length<2)){const d=document.createElement("div");d.className="post-cmt";d.innerHTML=`<b>nao</b> ${esc(v)}`;box.appendChild(d);}}});$("#sheet-body").insertAdjacentHTML("afterbegin",igCapRow(post));}
 /* v42: TT comments — own posts persist (ttCmts) and counts include them */
 function ttMyCmts(ai){const a=S.ttCmts&&S.ttCmts[ai];return Array.isArray(a)?a.filter(x=>typeof x==="string"):[];}
 function ttCmtTotal(p,ai){return (p.cmts||0)+ttMyCmts(ai).length;}
