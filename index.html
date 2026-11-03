@@ -8,15 +8,15 @@
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{--ink:#0b0b0f;--sub:#8e8e93;--bg:#f2f2f7;--red:#ff3b30;--line:#e4e4ea;--green:#06c755;--wish:#7b61c9;--wish2:#4fc3e8}
 html,body{height:100%}
-body{font-family:-apple-system,"SF Pro Text","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:radial-gradient(1100px 700px at 15% 0%,#2c2742 0%,#14121f 55%,#07060c 100%);color:#fff;display:flex;flex-direction:column;align-items:center;min-height:100dvh}
+body{font-family:-apple-system,"SF Pro Text","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:radial-gradient(1100px 700px at 15% 0%,#2c2742 0%,#14121f 55%,#07060c 100%);color:#fff;display:flex;flex-direction:column;align-items:center;min-height:100vh;min-height:100dvh;overscroll-behavior:none}
 .page-head{padding:15px 16px 7px;text-align:center;max-width:580px}
 .page-head h1{font-size:19px;letter-spacing:.05em}
 .page-head p{font-size:11.5px;color:#c7c0da;margin-top:5px;line-height:1.65}
 .page-head .src{font-size:10.5px;color:#8d84a3;margin-top:4px;line-height:1.6}
-.phone{position:relative;width:min(402px,100vw);height:min(852px,calc(100dvh - 112px));background:#000;border-radius:54px;padding:11px;flex:none;box-shadow:0 0 0 2px #4a4d52,0 0 0 5px #17181c,0 30px 70px rgba(0,0,0,.7);margin-bottom:12px}
+.phone{position:relative;width:min(402px,100vw);height:min(852px,calc(100vh - 112px));height:min(852px,calc(100dvh - 112px));background:#000;border-radius:54px;padding:11px;flex:none;box-shadow:0 0 0 2px #4a4d52,0 0 0 5px #17181c,0 30px 70px rgba(0,0,0,.7);margin-bottom:12px}
 .phone::before{content:'';position:absolute;left:-2.5px;top:200px;width:3px;height:90px;background:#3a3d42;border-radius:2px}
 .phone::after{content:'';position:absolute;right:-2.5px;top:230px;width:3px;height:124px;background:#3a3d42;border-radius:2px}
-@media(max-width:430px){.phone{border-radius:0;padding:0;height:calc(100dvh - 92px);box-shadow:none}.phone::before,.phone::after{display:none}.page-head{padding:9px 12px 3px}.page-head .src{display:none}}
+@media(max-width:430px){.phone{border-radius:0;padding:0;height:calc(100vh - 92px);height:calc(100dvh - 92px);box-shadow:none}.phone::before,.phone::after{display:none}.page-head{padding:9px 12px 3px}.page-head .src{display:none}}
 .screen{position:relative;width:100%;height:100%;border-radius:43px;overflow:hidden;background:#000}
 @media(max-width:430px){.screen{border-radius:0}}
 .island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:112px;height:30px;background:#000;border-radius:20px;z-index:212;display:flex;align-items:center;justify-content:flex-end;padding-right:9px}
@@ -150,7 +150,7 @@ img{user-select:none;-webkit-user-drag:none}
 .typing i{width:6px;height:6px;border-radius:50%;background:#b9b9c0;animation:tp 1s infinite}
 .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
 @keyframes tp{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-3px);opacity:1}}
-.chat-foot{flex:none;background:#f7f7f9;border-top:1px solid #ddd;padding:8px 10px 24px;display:flex;gap:8px;align-items:center}
+.chat-foot{flex:none;background:#f7f7f9;border-top:1px solid #ddd;padding:8px 10px max(24px,env(safe-area-inset-bottom));display:flex;gap:8px;align-items:center}
 .chat-foot .plus{font-size:23px;color:#555}
 .chat-in{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#fff;border:1px solid #e2e2e8;border-radius:19px;padding:8px 13px;font-size:16px;color:#999}
 .send-b{background:var(--green);color:#fff;font-weight:700;font-size:13px;border-radius:16px;padding:8px 13px}
@@ -368,14 +368,14 @@ img{user-select:none;-webkit-user-drag:none}
 :root{--glass:rgba(255,255,255,.16);--glass-brd:rgba(255,255,255,.38);--spring:cubic-bezier(.32,1.4,.36,1)}
 body{background:radial-gradient(1200px 760px at 18% -5%,#3d3560 0%,#191527 52%,#08070f 100%)}
 /* titanium frame, thinner bezel */
-.phone{width:min(412px,100vw);height:min(874px,calc(100dvh - 112px));border-radius:60px;padding:9px;
+.phone{width:min(412px,100vw);height:min(874px,calc(100vh - 112px));height:min(874px,calc(100dvh - 112px));border-radius:60px;padding:9px;
  background:linear-gradient(155deg,#c9ccd4 0%,#7d818c 18%,#3f4249 42%,#8b8f99 68%,#2c2e34 100%);
  box-shadow:0 0 0 1.5px rgba(255,255,255,.35),0 0 0 3.5px #17181d,0 34px 80px rgba(0,0,0,.75),inset 0 0 4px rgba(255,255,255,.5)}
 .phone::before{left:-3px;top:212px;height:96px;background:linear-gradient(90deg,#5a5d64,#9a9ea8);border-radius:2.5px}
 .phone::after{right:-3px;top:238px;height:132px;background:linear-gradient(90deg,#9a9ea8,#5a5d64);border-radius:2.5px}
 .phone .action-btn{position:absolute;left:-3px;top:128px;width:3.5px;height:52px;border-radius:2.5px;background:linear-gradient(90deg,#5a5d64,#a8acb6);z-index:5}
 .screen{border-radius:51px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
-@media(max-width:430px){.phone{border-radius:0;padding:0;height:calc(100dvh - 92px);background:#000;box-shadow:none}.phone .action-btn{display:none}.screen{border-radius:0}}
+@media(max-width:430px){.phone{border-radius:0;padding:0;height:calc(100vh - 92px);height:calc(100dvh - 92px);background:#000;box-shadow:none}.phone .action-btn{display:none}.screen{border-radius:0}}
 .island{top:10px;width:118px;height:31px;border-radius:21px;box-shadow:inset 0 0 3px rgba(120,170,255,.25),0 0 0 .5px rgba(255,255,255,.06)}
 .statusbar{height:52px;font-size:15.5px;letter-spacing:.01em}
 .homebar{width:140px;height:5.5px;border-radius:3px;background:rgba(255,255,255,.95)}
@@ -495,7 +495,7 @@ img{max-width:100%}
 .story-head #story-time{color:#cfcfe0;font-weight:400;font-size:12.5px}
 .story-head #story-x{margin-left:auto;font-size:19px;color:#fff;padding:4px 8px}
 .story-foot{position:absolute;left:12px;right:12px;bottom:30px;z-index:3;display:flex;gap:12px;align-items:center}
-.story-reply{flex:1;border:1.5px solid rgba(255,255,255,.65);border-radius:22px;padding:10px 15px;font-size:13.5px;color:#eee;background:rgba(0,0,0,.18);backdrop-filter:blur(6px)}
+.story-reply{flex:1;border:1.5px solid rgba(255,255,255,.65);border-radius:22px;padding:10px 15px;font-size:16px;color:#eee;background:rgba(0,0,0,.18);backdrop-filter:blur(6px)}
 .story-ic{font-size:24px}
 .story-zone{position:absolute;top:0;bottom:0;width:32%;z-index:2}
 .story-zone.l{left:0}.story-zone.r{right:0}
@@ -781,7 +781,7 @@ img{max-width:100%}
 .httab-av{width:24px;height:24px;border-radius:50%;object-fit:cover;display:block}
 .ht-tabs button img.httab-av{margin:0 auto}
 /* chat tools row (HelloTalk mode) */
-#chat-tools{display:none;gap:20px;align-items:center;background:#fff;border-top:1px solid #eee;padding:7px 14px 22px;color:#111}
+#chat-tools{display:none;gap:20px;align-items:center;background:#fff;border-top:1px solid #eee;padding:7px 14px max(22px,env(safe-area-inset-bottom));color:#111}
 #v-chat.htmode #chat-tools{display:flex}
 #v-chat.htmode .chat-foot{border-top:none;padding-bottom:6px}
 #v-chat.htmode [data-fic="cam"],#v-chat.htmode [data-fic="img"]{display:none}
@@ -1061,7 +1061,7 @@ button{touch-action:manipulation}
 .xs-head{display:flex;align-items:center;gap:8px;padding:10px 14px 2px}
 .xs-back{font-size:26px;padding:0 4px;line-height:1}
 .xs-inwrap{flex:1;display:flex;align-items:center;gap:7px;background:#eff3f4;border-radius:999px;padding:8px 13px;color:#536471}
-.xs-inwrap input{flex:1;border:none;background:transparent;outline:none;font-size:14px;font-family:inherit;color:#0f1419;min-width:0}
+.xs-inwrap input{flex:1;border:none;background:transparent;outline:none;font-size:16px;font-family:inherit;color:#0f1419;min-width:0}
 .xs-chips{display:flex;gap:7px;flex-wrap:wrap;padding:10px 16px 4px}
 .xs-chips button{background:#eff3f4;border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:700;color:#0f1419;font-family:inherit}
 .call-grid .cb{cursor:pointer}
@@ -1073,12 +1073,12 @@ button{touch-action:manipulation}
 .ht-tabs{padding-bottom:max(20px,env(safe-area-inset-bottom))}
 .sheet-in{padding-bottom:max(26px,env(safe-area-inset-bottom))}
 .igx-search{display:flex;align-items:center;gap:7px;margin:12px 16px 2px;background:#efefef;border-radius:10px;padding:4px 8px 4px 12px;color:#8e8e93;width:calc(100% - 32px)}
-.igx-search input{flex:1;border:none;background:transparent;outline:none;font-size:14px;font-family:inherit;color:#262626;padding:6px 0;min-width:0}
+.igx-search input{flex:1;border:none;background:transparent;outline:none;font-size:16px;font-family:inherit;color:#262626;padding:6px 0;min-width:0}
 .igx-clear{flex:none;width:24px;height:24px;border-radius:50%;background:#c7c7cc;color:#fff;font-size:13px;display:none;align-items:center;justify-content:center;padding:0}
 .igx-clear.show{display:flex}
 .igx-empty{grid-column:1/-1;text-align:center;font-size:12.5px;color:#8e8e93;padding:24px 12px;line-height:1.7}
 #ig-body .igx-empty{grid-column:auto}
-.notes-search input{flex:1;border:none;background:transparent;outline:none;font-size:13.5px;font-family:inherit;color:#262626;min-width:0}
+.notes-search input{flex:1;border:none;background:transparent;outline:none;font-size:16px;font-family:inherit;color:#262626;min-width:0}
 .tt-search-head{display:flex;align-items:center;gap:8px;padding:52px 14px 4px}
 .tt-search-head .xs-inwrap{background:rgba(255,255,255,.14);color:#cfcfe0}
 .tt-search-head .xs-inwrap input{color:#fff}
@@ -1088,7 +1088,7 @@ button{touch-action:manipulation}
 .news-acts button{display:flex;align-items:center;gap:5px;font-size:12px;color:#555}
 .news-acts button.on{color:#0a84ff}
 .ncmt-form{display:flex;gap:8px;margin-top:12px}
-.ncmt-form input{flex:1;border:1px solid #e3e7e6;border-radius:19px;padding:8px 13px;font-size:14px;font-family:inherit;outline:none;min-width:0;color:#111}
+.ncmt-form input{flex:1;border:1px solid #e3e7e6;border-radius:19px;padding:8px 13px;font-size:16px;font-family:inherit;outline:none;min-width:0;color:#111}
 .ncmt-form button{flex:none;font-weight:800;color:#0a84ff;font-size:13.5px;padding:0 4px}
 .sh-row{display:flex;align-items:center;gap:11px;width:100%;padding:11px 2px;font-size:14px;color:#262626;text-align:left;font-family:inherit}
 .sh-row .ric{display:flex;width:38px;height:38px;border-radius:50%;background:#f2f2f5;align-items:center;justify-content:center;flex:none}
@@ -1110,6 +1110,16 @@ button{touch-action:manipulation}
 .thread .done .uic,.corr .ch .uic,.tt-music .uic{display:inline-block;vertical-align:-2px}
 .pin .uic{display:block}
 
+/* ==== v25: records (ending collection / chapter review) ==== */
+button.end-card{width:100%;text-align:left;font-family:inherit;border:none;cursor:pointer;display:block}
+.end-meta{display:block;font-size:12px;opacity:.92;margin-top:2px}
+.end-rd{display:block;margin-top:6px;font-size:12px;font-weight:800}
+.ch-list{display:flex;flex-direction:column;gap:8px}
+.ch-row{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:#fff;border:1px solid #ececf1;border-radius:13px;padding:11px 13px;font-family:inherit;color:#26262b;cursor:pointer}
+.ch-row .ch-main{flex:1;min-width:0}
+.ch-row .ch-main b{display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ch-row .ch-main small{display:block;color:#8e8e93;font-size:11.5px;margin-top:2px}
+.ch-row .ch-memo{flex:none;color:#7b61c9;font-size:12px;font-weight:700;display:flex;align-items:center;gap:3px}
 /* ==== v24: sound settings ==== */
 .snd-volrow{display:flex;align-items:center;gap:11px;width:100%;padding:11px 2px;font-size:14px;color:#262626}
 .snd-volrow input{flex:1;accent-color:#ff2d55;height:24px;min-width:0}
@@ -1270,6 +1280,7 @@ button{touch-action:manipulation}
 <div class="title-btns">
 <button class="tbtn primary" id="title-continue" style="display:none">つづきから ▶</button>
 <button class="tbtn glass" id="title-start">はじめから</button>
+<button class="tbtn glass" id="title-records">記録 ― END・チャプター</button>
 </div>
 <div class="title-note">※実在の人物を題材にした創作フィクションです。出来事・発言は全て創作です。<br>動画つき（音量に注意）／セーブは自動です</div>
 </div>
@@ -1453,9 +1464,13 @@ button{touch-action:manipulation}
 <div class="set-row2i"><span class="set-lab"><span class="set-ric" style="background:#34c759"><svg class="uic s14"><use href="#i-batt"/></svg></span>バッテリー</span><span>100%</span></div>
 </div>
 <div class="ios-grp">
+<button class="set-row2i" id="set-ends"><span class="set-lab"><span class="set-ric" style="background:#ff5c8a"><svg class="uic s14"><use href="#i-heart"/></svg></span>エンディングコレクション</span><span id="ends-val">0 / 3 ›</span></button>
+<button class="set-row2i" id="set-chaps"><span class="set-lab"><span class="set-ric" style="background:#7b61c9"><svg class="uic s14"><use href="#i-book"/></svg></span>チャプター振り返り</span><span id="chaps-val">0 / 10 ›</span></button>
+</div>
+<div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v24.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v25.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px;font-size:12px;color:#888;line-height:1.8">『サクヤと熱愛バレた件』は実在の人物を題材にした創作フィクション（ファンメイド作品）です。登場人物の発言・交際等の出来事は全て創作であり、実在の内容とは関係ありません。ツアー日程・会場・リリース実績は公開されている史実に基づきます。<br>なおのプロフィール写真・アルバムには、本人の許可済み写真（5枚セット）を使用しています（本作のみの許可です）。<br>画像：Pinterest／Instagram系の掲載写真（2024〜2026年）、メディア掲載写真等。動画：NCT WISH公式ミュージックビデオの公式プレビュー（iTunes）から作成した縦型クリップ等（権利は各権利者に帰属します）。TikTok公式動画は取得環境の都合（IPブロック）で直接収録できませんでした。</div>
@@ -1853,12 +1868,17 @@ const NOTIFS=[
 ];
 /* ================= STATE ================= */
 const KEY="sakuya_scandal_v1",EKEY="sakuya_scandal_ends_v1";
-function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{},favs:{},wall:"",noff:{},snd:{on:true,vol:.6,vib:true}};}
+function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],chDates:{},ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{},favs:{},wall:"",noff:{},snd:{on:true,vol:.6,vib:true}};}
 let S=load();
 S.snd=Object.assign({on:true,vol:.6,vib:true},S.snd||{});
+S.chDates=S.chDates||{};
 function load(){try{const j=JSON.parse(localStorage.getItem(KEY));if(j&&typeof j.scene==="number")return Object.assign(defState(),j);}catch(e){}return defState();}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
 function endingsGot(){try{return JSON.parse(localStorage.getItem(EKEY))||{};}catch(e){return{};}}
+function todayJp(){const d=new Date();return d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日";}
+function endRec(id){const r=endingsGot()[id];if(!r)return null;if(r===true)return {legacy:true};return r;}
+function endCount(){return Object.keys(ENDINGS).filter(id=>endRec(id)).length;}
+function clearedChaps(){return SCENES.slice(0,S.ended?SCENES.length:Math.min(S.scene,SCENES.length));}
 /* ================= HELPERS ================= */
 const $=s=>document.querySelector(s),$$=s=>Array.from(document.querySelectorAll(s));
 function toast(t){const el=$("#toast");el.textContent=t;el.classList.add("show");clearTimeout(el._h);el._h=setTimeout(()=>el.classList.remove("show"),2300);}
@@ -1893,7 +1913,7 @@ const VB='<span class="vbadge"><svg class="uic"><use href="#i-badge"/></svg></sp
 function tmDisp(tm){if(!tm)return "";if(typeof cur!=="undefined"&&cur&&cur.thread==="ht")return tm;const m=/^(\d{1,2}):(\d{2})$/.exec(tm);if(!m)return tm;let h=+m[1];const ap=h<12?"午前":"午後";const hh=h%12===0?12:h%12;return ap+hh+":"+m[2];}
 /* ================= NAV ================= */
 function syncVideos(){setTimeout(()=>{$$("video").forEach(v=>{const view=v.closest(".view");if(view&&view.classList.contains("on")){if(v.closest(".post-vid")||v.classList.contains("pv-vid")){v.play().catch(()=>{});}}else{v.pause();}});},90);}
-function show(id){if(id!=="call")ringStop();if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set","ht","htprof"].includes(id));window.scrollTo(0,0);if(id==="tt"){ttView="feed";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="home"));}if(id==="x")xView="feed";if(id==="lock")renderLock();if(id==="home")renderHome();if(id==="ht")renderHT();if(id==="line")renderLineList();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();}
+function show(id){if(id!=="call")ringStop();if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set","ht","htprof"].includes(id));window.scrollTo(0,0);if(id==="tt"){ttView="feed";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="home"));}if(id==="x")xView="feed";if(id==="lock")renderLock();if(id==="home")renderHome();if(id==="set")renderSetRec();if(id==="ht")renderHT();if(id==="line")renderLineList();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();}
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){show(g.dataset.go);return;}const b=e.target.closest("[data-back]");if(b)show(b.dataset.back);});
 $("#homebar").addEventListener("click",()=>show("home"));
 $("#v-lock").addEventListener("click",e=>{if(e.target.closest("[data-go]"))return;show("home");});
@@ -1933,6 +1953,10 @@ $("#set-wifi").addEventListener("click",()=>{const nets=["Home-5G","Cafe murmur 
 $("#set-notif").addEventListener("click",()=>{const apps=[["ht","HelloTalk"],["line","LINE"],["ig","Instagram"],["tt","TikTok"],["x","X"],["news","ニュース"]];sheetList("通知",apps.map(a=>`<div class="sc-row ntog" data-ntog="${a[0]}"><div class="sc-main"><b>${a[1]}</b><div style="color:#8e8e93;font-size:12px;margin-top:1px">ロック画面・バナー</div></div><span class="ios-sw ${(S.noff&&S.noff[a[0]])?"":"on"}"><i></i></span></div>`).join("")+`<div class="locknote">オフにしたアプリはロック画面に出なくなるよ</div>`);$$("#sheet-body [data-ntog]").forEach(r=>r.addEventListener("click",()=>{const k=r.dataset.ntog;S.noff=S.noff||{};if(S.noff[k])delete S.noff[k];else S.noff[k]=1;save();r.querySelector(".ios-sw").classList.toggle("on",!S.noff[k]);}));});
 $("#set-wall").addEventListener("click",()=>{sheetList("壁紙",WALLS.map(w=>`<button class="sh-row" data-wall="${esc(w.src)}"><img src="${w.th}" style="width:40px;height:52px;border-radius:8px;object-fit:cover;flex:none">${esc(w.name)}<span style="margin-left:auto;color:#0a84ff">${(S.wall||"")===w.src?"✓":""}</span></button>`).join(""));$$("#sheet-body [data-wall]").forEach(b=>b.addEventListener("click",()=>{S.wall=b.dataset.wall;save();applyWall();$("#wall-val").textContent=wallName()+" ›";closeSheet();toast("壁紙を変更したよ");}));});
 $("#set-storage").addEventListener("click",()=>{const rows=[["#ff9500","iOS 26","12.4 GB",46],["#ff2d55","写真・動画","1.9 GB",8],["#5e5ce6","TikTok 動画","486 MB",2],["#0a84ff","アプリ","812 MB",3],["#8e8e93","その他","3.2 GB",13]];sheetList("iPhoneストレージ",`<div class="sto-top"><b>iPhone</b><span>256 GB 中 18.8 GB を使用</span></div><div class="sto-bar">${rows.map(r=>`<i style="width:${r[3]}%;background:${r[0]}"></i>`).join("")}</div>`+rows.map(r=>`<div class="sc-row"><span class="sto-dot" style="background:${r[0]}"></span><div class="sc-main"><b>${esc(r[1])}</b></div><span style="color:#8e8e93;font-size:12.5px">${r[2]}</span></div>`).join("")+`<div class="locknote">写真 ${PHOTOS.length} 件 ・ 動画 ${TT_POSTS.length} 件が この端末に保存されているよ</div>`);});
+/* ================= SETTINGS: RECORDS (v25) ================= */
+$("#set-ends").addEventListener("click",()=>{sheetList("エンディングコレクション",`<div class="end-coll" style="margin:0">`+endCollHTML()+`</div>`);bindEndCards($("#sheet-body"),"set");});
+$("#set-chaps").addEventListener("click",()=>{sheetList("チャプター振り返り",`<div class="ch-list">`+chapReviewHTML()+`</div>`);bindChapRows($("#sheet-body"));});
+$("#title-records").addEventListener("click",()=>{show("notes");});
 /* ================= SETTINGS: SOUND & HAPTICS (v24) ================= */
 function updSndVal(){const v=$("#snd-val");if(v)v.textContent=((S.snd&&S.snd.on)?"オン":"オフ")+" ›";}
 $("#set-snd").addEventListener("click",()=>{sheetList("サウンドと触覚",
@@ -2021,7 +2045,7 @@ function advance(){if(window._lpSup){window._lpSup=false;return;}if(busy)return;
 $("#chat-next").addEventListener("click",advance);
 $("#chat-body").addEventListener("click",advance);
 function pickChoice(i){const sc=cur;const st=sc.steps[S.step];const c=st.choice[i];applyE(c.e);sfx("send");buzz(10);if(c.r&&c.r.length)setTimeout(()=>sfx("recv"),700);if(c.act)S.act=c.act;if(!S.answers)S.answers={};S.answers[sc.id+":"+S.step]=i;st._me=c.t;st._resp=c.r||[];S.step++;S.shown=Math.max(S.shown,S.step);save();renderChat();setTimeout(()=>{const b=$("#chat-body");b.scrollTop=b.scrollHeight;},50);}
-function finishScene(){const sc=cur;if(sc.fx)applyE(sc.fx);if(sc.memo&&!S.memos.includes(sc.id))S.memos.push(sc.id);if(sc.ig)S.ig=Math.max(S.ig,sc.ig);if(sc.tt)S.tt=Math.max(S.tt,sc.tt);S.scene++;S.step=0;S.shown=0;save();cur=null;
+function finishScene(){const sc=cur;if(sc.fx)applyE(sc.fx);if(sc.memo&&!S.memos.includes(sc.id))S.memos.push(sc.id);S.chDates=S.chDates||{};if(!S.chDates[sc.id])S.chDates[sc.id]=todayJp();if(sc.ig)S.ig=Math.max(S.ig,sc.ig);if(sc.tt)S.tt=Math.max(S.tt,sc.tt);S.scene++;S.step=0;S.shown=0;save();cur=null;
  if(S.scene>=SCENES.length){doEnding();return;}
  if(S.scene>=7){S.x=1;S.news=1;save();}
  sfx("chime");buzz(15);toast("「"+SCENES[S.scene].title+"」が届いたよ");show(SCENES[S.scene].thread==="ht"?"ht":"line");
@@ -2042,10 +2066,10 @@ function doEnding(){sfx("fanfare");buzz([40,60,40,60,80]);const g=S.gauges;let i
  if(S.act==="distance"||g.fire>=88)id="bitter";
  else if(S.act==="public"&&g.trust>=58)id="public";
  else id="silent";
- S.ended=true;S.endId=id;const eg=endingsGot();eg[id]=true;try{localStorage.setItem(EKEY,JSON.stringify(eg));}catch(e){}
+ S.ended=true;S.endId=id;window._endBack=null;const eg=endingsGot();eg[id]={d:todayJp(),g:{trust:g.trust,fire:g.fire,fan:g.fan}};try{localStorage.setItem(EKEY,JSON.stringify(eg));}catch(e){}
  const last=SCENES[SCENES.length-1];if(last.memo&&!S.memos.includes(last.id))S.memos.push(last.id);S.ig=6;S.tt=3;S.news=1;save();
  const E=ENDINGS[id];$("#end-title").textContent=E.t;$("#end-text").textContent=E.tx;$("#end-bg").src=E.bg;$("#end-gauges").innerHTML="最終ゲージ ― 信頼度 "+g.trust+" ／ 炎上度 "+g.fire+" ／ ファンの温度 "+g.fan;show("ending");}
-$("#end-home").addEventListener("click",()=>show("home"));
+$("#end-home").addEventListener("click",()=>{const b=window._endBack;window._endBack=null;$("#end-home").textContent="ホームへ戻る";show(b||"home");});
 /* ================= IG ================= */
 const IGHEAT={fol:0,likes:{},added:0};
 const IG_FLOOD=[["匿名","公式は早く声明出して"],["wish_pen","本人の言葉を待つって決めた"],["kobe_local","最終日、会場で見た彼は本物だった"],["匿名","擁護も批判も、声明が出てからでよくない？"],["ispy_fan","活動は続けてほしい。ただそれだけ"],["通りすがりのウィシズニ","騒ぐ人は騒ぐ。私は静かに待つ"]];
@@ -2322,8 +2346,15 @@ const ENDMETA={public:["heart","linear-gradient(135deg,#ff5c8a,#ff8fab)"],silent
 let notesQuery="";
 function notesListHTML(){const q=notesQuery.trim();const list=S.memos.map(id=>SCENES.find(s=>s.id===id)).filter(sc=>sc&&(!q||(sc.memo.t+sc.memo.b+sc.date).includes(q)));return list.length?list.map(sc=>`<div class="note-item"><div class="nt">${esc(sc.memo.t)}<span>${esc(sc.date)}</span></div><p>${esc(sc.memo.b)}</p></div>`).join(""):(S.memos.length?`<div class="note-lock">${ic("search","s15")} 「${esc(q)}」に一致するメモはないよ</div>`:`<div class="note-lock">${ic("lock")} 観察メモはまだないよ。物語を進めると「サクヤ観察メモ」が貯まっていく</div>`);}
 function renderNotes(){const el=$("#notes-body");const eg=endingsGot();let h=`<label class="notes-search">${ic("search","s15")}<input id="notes-in" type="text" placeholder="メモを検索" value="${esc(notesQuery).replace(/"/g,"&quot;")}" autocomplete="off"></label><div id="notes-list">${notesListHTML()}</div>`;
- h+=`<div class="end-coll"><div style="font-size:13px;font-weight:800;margin-bottom:8px">エンディングコレクション</div>`+Object.keys(ENDINGS).map(id=>{const got=eg[id];const mt=ENDMETA[id];return got?`<div class="end-card" style="background:${mt[1]}"><b>${ic(mt[0],"s15")} ${esc(ENDINGS[id].t)}</b>到達済み ― おつかれさま${ic("heart","s13")}</div>`:`<div class="end-card lock"><b>？？？</b>未到達のエンディング</div>`;}).join("")+`</div>`;
- el.innerHTML=h;const _ni=$("#notes-in");if(_ni)_ni.addEventListener("input",()=>{notesQuery=_ni.value;const r=$("#notes-list");if(r)r.innerHTML=notesListHTML();});}
+ h+=`<div class="end-coll"><div style="font-size:13px;font-weight:800;margin-bottom:8px">エンディングコレクション</div>`+endCollHTML()+`</div><div class="end-coll"><div style="font-size:13px;font-weight:800;margin-bottom:8px">チャプター振り返り</div><div class="ch-list">`+chapReviewHTML()+`</div></div>`;
+ el.innerHTML=h;const _ni=$("#notes-in");if(_ni)_ni.addEventListener("input",()=>{notesQuery=_ni.value;const r=$("#notes-list");if(r)r.innerHTML=notesListHTML();});bindEndCards(el,"notes");bindChapRows(el);}
+/* ================= RECORDS (v25) ================= */
+function endCollHTML(){return Object.keys(ENDINGS).map(id=>{const r=endRec(id);const mt=ENDMETA[id];if(!r)return `<div class="end-card lock"><b>？？？</b>未到達のエンディング</div>`;const meta=r.legacy?"到達済み（このセーブでは日付・ゲージ未記録）":("到達日 "+esc(r.d||"")+(r.g?(" ― 信頼度 "+r.g.trust+" ／ 炎上度 "+r.g.fire+" ／ ファンの温度 "+r.g.fan):""));return `<button class="end-card" data-end="${id}" style="background:${mt[1]}"><b>${ic(mt[0],"s15")} ${esc(ENDINGS[id].t)}</b><span class="end-meta">${meta}</span><span class="end-rd">結末を読み返す ›</span></button>`;}).join("");}
+function openEndingReview(id){const E=ENDINGS[id];const r=endRec(id);if(!E||!r)return;window._endBack=window._endFrom||"notes";$("#end-title").textContent=E.t;$("#end-text").textContent=E.tx;$("#end-bg").src=E.bg;$("#end-gauges").innerHTML=r.g?("最終ゲージ ― 信頼度 "+r.g.trust+" ／ 炎上度 "+r.g.fire+" ／ ファンの温度 "+r.g.fan+(r.d?("　・　到達日 "+esc(r.d)):"")):"到達済み ― おつかれさま";$("#end-home").textContent="戻る";show("ending");}
+function bindEndCards(root,from){(root||document).querySelectorAll("[data-end]").forEach(b=>b.addEventListener("click",()=>{window._endFrom=from||"notes";if(from==="set")closeSheet();openEndingReview(b.dataset.end);}));}
+function chapReviewHTML(){const cl=clearedChaps();if(!cl.length)return `<div class="note-lock">${ic("lock")} クリアしたチャプターはまだないよ。物語を進めると、ここで振り返れるようになる</div>`;return cl.map(sc=>{const d=(S.chDates||{})[sc.id];return `<button class="ch-row" data-chap="${sc.id}"><span class="ch-main"><b>${esc(sc.title)}</b><small>${esc(sc.date)}${d?(" ・ 到達日 "+esc(d)):""}</small></span><span class="ch-memo">${ic("pencil","s13")} メモ ›</span></button>`;}).join("");}
+function bindChapRows(root){(root||document).querySelectorAll("[data-chap]").forEach(b=>b.addEventListener("click",()=>{const sc=SCENES.find(x=>x.id===b.dataset.chap);if(!sc||!sc.memo)return;sheetList("観察メモ",`<div class="note-item" style="margin:0"><div class="nt">${esc(sc.memo.t)}<span>${esc(sc.date)}</span></div><p>${esc(sc.memo.b)}</p></div>`);}));}
+function renderSetRec(){const ev=$("#ends-val");if(ev)ev.textContent=endCount()+" / "+Object.keys(ENDINGS).length+" ›";const cv=$("#chaps-val");if(cv)cv.textContent=clearedChaps().length+" / "+SCENES.length+" ›";}
 /* ================= PHOTOS (v23: fav / share / info / music player) ================= */
 let pvCtx=null,phFavOnly=false;
 function phUnlocked(p){return S.scene>p.unlock||S.ended||p.unlock===0;}
