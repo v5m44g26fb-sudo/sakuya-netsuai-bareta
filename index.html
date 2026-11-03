@@ -901,6 +901,39 @@ img{max-width:100%}
 /* story icons */
 .story-ic{display:flex;color:#fff}
 .story-ic.liked{color:#ff3040}
+/* IG/TT v18 real-spec pass */
+.tt-tabs{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.48) 40%,rgba(0,0,0,.66));border-top:none;padding:8px 4px 22px}
+.ttp{padding-bottom:106px}
+.ttd{padding-bottom:106px}
+.likes-stack{display:inline-flex;align-items:center;vertical-align:middle}
+.likes-stack img{width:21px;height:21px;border-radius:50%;border:1.8px solid #fff;object-fit:cover;margin-left:-7px;background:#e9e9ee}
+.likes-stack img:first-child{margin-left:0}
+.post-likes{display:flex;align-items:center;gap:6px;width:100%;text-align:left}
+.big-heart svg{width:92px;height:92px;color:#fff}
+.emo-bar{display:none;justify-content:space-between;padding:8px 16px 0;font-size:21px;flex:none}
+#sheet.emo .emo-bar{display:flex}
+.emo-bar button{padding:1px 2px}
+.sheet-in .myav{width:32px;height:32px;border-radius:50%;object-fit:cover;flex:none}
+.sc-heart{display:flex;align-items:center;color:#262626;padding:2px;flex:none}
+.sc-heart.liked{color:#ff3040}
+.bdot{position:absolute;top:0;right:-1px;width:8.5px;height:8.5px;border-radius:50%;background:#ff3040;border:1.6px solid #fff}
+.story .ring{position:relative}
+.story-plus{position:absolute;right:-2px;bottom:-2px;width:19px;height:19px;border-radius:50%;background:#0095f6;color:#fff;font-size:13.5px;font-weight:800;display:flex;align-items:center;justify-content:center;border:2px solid #fff;line-height:1;z-index:2}
+.story-head .story-dots{margin-left:auto;font-size:14px;letter-spacing:1.5px;padding:4px 2px}
+.story-head #story-x{margin-left:0;display:flex;align-items:center}
+.tt-more{font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.55);padding:0;font-size:13px}
+.tt-bigheart{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;z-index:2}
+.tt-bigheart svg{width:94px;height:94px;color:#fff;filter:drop-shadow(0 4px 22px rgba(0,0,0,.4))}
+.tt-bigheart.pop{animation:heartpop .7s ease}
+.ttd-search{margin:58px 14px 0;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.13);border-radius:9px;padding:10px 12px;font-size:13.5px;color:#cfcfe0;width:calc(100% - 28px);text-align:left}
+.ttd-sec{font-size:15px;font-weight:800;margin:19px 14px 6px}
+.ttd-tag{display:flex;align-items:center;gap:11px;padding:8px 14px;width:100%;text-align:left;color:#fff}
+.ttd-tag .tic{width:37px;height:37px;border:1.5px solid rgba(255,255,255,.45);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex:none}
+.ttd-tag b{font-size:14px;display:block}
+.ttd-tag small{color:#b9b9be;font-size:11.5px}
+.cap-first{border-bottom:1px solid #f0f0f3;padding-bottom:6px;margin-bottom:2px}
+.ttp-tabs span{cursor:pointer}
+.ttp-btns .fol-on{background:#fe2c55;color:#fff}
 /* call grid svg */
 .call-grid .cb i svg{margin:auto}
 .call-mini span svg{margin:0 auto}
@@ -941,6 +974,7 @@ img{max-width:100%}
 <symbol id="icn-end" viewBox="0 0 60 60"><rect width="60" height="60" fill="url(#gEnd)"/><path d="M30 48.6C19.2 40 13.4 32.3 13.4 24.9c0-5.6 4-9.9 9.3-9.9 3 0 5.9 1.6 7.3 4.1 1.4-2.5 4.3-4.1 7.3-4.1 5.3 0 9.3 4.3 9.3 9.9 0 7.4-5.8 15.1-16.6 23.7z" fill="#fff"/></symbol>
 
 <symbol id="i-heart" viewBox="0 0 24 24"><path fill="currentColor" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></g></symbol>
 <symbol id="i-heart-o" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
 <symbol id="i-cmt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
 <symbol id="i-send" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></g></symbol>
@@ -1098,7 +1132,7 @@ img{max-width:100%}
 
 <!-- IG -->
 <div class="view" id="v-ig">
-<div class="ig-head"><button class="back" data-back="home" style="font-size:24px">‹</button><span class="ig-uname">nctwish_official <span class="vbadge"><svg class="uic "><use href="#i-badge"/></svg></span></span><span class="hic"><svg class="uic s22"><use href="#i-bell"/></svg></span><span class="hic" style="font-weight:800;letter-spacing:1px">•••</span></div>
+<div class="ig-head"><button class="back" data-back="home" style="font-size:24px">‹</button><span class="ig-uname">nctwish_official <span class="vbadge"><svg class="uic "><use href="#i-badge"/></svg></span></span><button class="hic" id="ig-bell" aria-label="アクティビティ"><svg class="uic s22"><use href="#i-bell"/></svg><span class="bdot"></span></button><span class="hic" style="font-weight:800;letter-spacing:1px">•••</span></div>
 <div class="abody" id="ig-body"></div>
 </div>
 
@@ -1177,7 +1211,7 @@ img{max-width:100%}
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v17.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v18.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px;font-size:12px;color:#888;line-height:1.8">『サクヤと熱愛バレた件』は実在の人物を題材にした創作フィクション（ファンメイド作品）です。登場人物の発言・交際等の出来事は全て創作であり、実在の内容とは関係ありません。ツアー日程・会場・リリース実績は公開されている史実に基づきます。<br>なおのプロフィール写真・アルバムには、本人の許可済み写真（5枚セット）を使用しています（本作のみの許可です）。<br>画像：Pinterest／Instagram系の掲載写真（2024〜2026年）、メディア掲載写真等。動画：NCT WISH公式ミュージックビデオの公式プレビュー（iTunes）から作成した縦型クリップ等（権利は各権利者に帰属します）。TikTok公式動画は取得環境の都合（IPブロック）で直接収録できませんでした。</div>
@@ -1222,7 +1256,7 @@ img{max-width:100%}
 <img class="story-img" id="story-img" alt="">
 <div class="story-shade"></div>
 <div class="story-top"><div class="story-segs" id="story-segs"></div>
-<div class="story-head"><img id="story-av" alt=""><span id="story-name"></span><span id="story-time"></span><button id="story-x">✕</button></div></div>
+<div class="story-head"><img id="story-av" alt=""><span id="story-name"></span><span id="story-time"></span><span class="story-dots">•••</span><button id="story-x" aria-label="閉じる"><svg class="uic s20"><use href="#i-close"/></svg></button></div></div>
 <div class="story-foot"><input class="story-reply" id="story-reply-in" type="text" placeholder="メッセージを送信…" autocomplete="off"><button class="story-ic" id="story-heart"><svg class="uic s26"><use href="#i-heart-o"/></svg></button><button class="story-ic" id="story-send"><svg class="uic s24"><use href="#i-send"/></svg></button></div>
 <button class="story-zone l" id="story-prev" aria-label="前へ"></button><button class="story-zone r" id="story-next" aria-label="次へ"></button>
 </div>
@@ -1245,7 +1279,7 @@ img{max-width:100%}
 </div></div>
 
 <!-- COMMENT SHEET -->
-<div id="sheet"><div class="sheet-card"><div class="sheet-grip"></div><div class="sheet-head"><span id="sheet-head">コメント</span><button id="sheet-x" aria-label="閉じる">✕</button></div><div class="sheet-body" id="sheet-body"></div><div class="sheet-in"><input id="sheet-input" type="text" placeholder="コメントを追加…" autocomplete="off"><button id="sheet-send">投稿</button></div></div></div>
+<div id="sheet"><div class="sheet-card"><div class="sheet-grip"></div><div class="sheet-head"><span id="sheet-head">コメント</span><button id="sheet-x" aria-label="閉じる">✕</button></div><div class="sheet-body" id="sheet-body"></div><div class="emo-bar" id="emo-bar"></div><div class="sheet-in"><img class="myav" src="assets/nao-face.jpg" alt=""><input id="sheet-input" type="text" placeholder="コメントを追加…" autocomplete="off"><button id="sheet-send">投稿</button></div></div></div>
 
 <!-- NOTIFICATION BANNER -->
 <button id="nbanner"><span class="nb-ic" id="nb-ic"><svg class="icsvg"><use href="#icn-ig"/></svg></span><span class="nb-tx"><span class="nb-h"><b id="nb-title">Instagram</b><span>今</span></span><span class="nb-b" id="nb-body"></span></span></button>
@@ -1486,15 +1520,15 @@ const IG_POSTS=[
  {id:6,img:"assets/stage2.jpg",user:"nctwish_official",loc:"GLION ARENA KOBE",likes:"2,958,340",cap:"KOBE FINAL DAY 💫 海のそばのアリーナ、3日間ありがとうございました。ツアーはこのあと福岡・愛知へ続きます。",cm:[["wish_archive","神戸お疲れさまでした😭"],["wish_jp_fan","アンコールの景色忘れない"]],time:"3月7日"}
 ];
 const TT_POSTS=[
- {g:1,video:"assets/video/mv-poppop.mp4",poster:"assets/group.jpg",user:"nctwish_official",cap:"『poppop』🫧 公式MVクリップ #NCTWISH #poppop #ダンスチャレンジ",music:"poppop - NCT WISH",likes:1842031,cmts:9321,shares:40213,cm:[["wish_jp","かっこよすぎる😭"],["dance_cover_jp","振りコピしました！"],["sakuya_thoughts","poppop大好き"]]},
- {g:1,video:"assets/video/tt-ispy-teaser.mp4",poster:"assets/sakuya-ig1.jpg",user:"nctwish_official",cap:"『I SPY』M/V Teaser 🕵️ 10.12 Release #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:1932844,cmts:8431,shares:31208,cm:[["ispy_fan","ティーザーだけで鳥肌…"],["wish_daily","MV本編が楽しみすぎる"]]},
- {g:1,video:"assets/video/tt-short-ispy.mp4",poster:"assets/sakuya-ig1.jpg",user:"nctwish_official",cap:"👀 I SPY 👀 #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:2411907,cmts:10233,shares:44981,cm:[["ispy_fan","サビの中毒性やばい"],["wish_jp","全員ビジュ優勝"]]},
- {g:2,video:"assets/video/mv-color.mp4",poster:"assets/stage-steady.jpg",user:"nctwish_official",cap:"『COLOR』ダンスブレイク🎨 #NCTWISH #COLOR",music:"COLOR - NCT WISH",likes:1204882,cmts:6102,shares:22140,cm:[["color_fan","ダンスブレイク鳥肌"],["wish_archive","COLOR期のビジュ優勝"]]},
- {g:2,video:"assets/video/tt-short-pixelup.mp4",poster:"assets/group.jpg",user:"nctwish_official",cap:"pixel up ˖‧⁺ #SION #YUSHI #SAKUYA #NCTWISH",music:"オリジナル音源 - nctwish_official",likes:986412,cmts:5214,shares:12047,cm:[["wish_archive","年長組と末っ子の空気感が好き"],["sakuya_thoughts","サクヤの表情管理すごい"]]},
- {g:2,video:"assets/video/tt-ispy-mv.mp4",poster:"assets/sakuya-ig1.jpg",user:"nctwish_official",cap:"『I SPY』M/V 🎬 サビの振りに注目 #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:2688419,cmts:11980,shares:50336,cm:[["dance_cover_jp","サビの振り、コピしました"],["ispy_fan","I SPY回してる手が止まらない"]]},
- {g:3,video:"assets/video/mv-ispy.mp4",poster:"assets/sakuya-ig1.jpg",user:"nctwish_official",cap:"『I SPY』🕵️ 最新ミニアルバムから #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:2276510,cmts:12044,shares:51872,cm:[["ispy_fan","I SPYの中毒性やばい"],["wish_daily","サクヤ回、再生が止まらない"]]},
- {g:3,video:"assets/video/tt-short-ispy-yujin.mp4",poster:"assets/av-sakuya.jpg",user:"nctwish_official",cap:"I SPY with 한유진 #SAKUYA #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:1755330,cmts:9102,shares:28754,cm:[["wish_daily","他グループのメンバーとのコラボ新鮮"],["sakuya_thoughts","サクヤ、少し緊張してる顔もいい"]]},
- {g:3,wide:true,video:"assets/video/tt-ispy-dance.mp4",poster:"assets/stage1.jpg",user:"nctwish_official",cap:"『I SPY』Dance Practice 🕺 フルフォーメーション #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:1502773,cmts:7645,shares:19830,cm:[["dance_cover_jp","フォーメーション移動が綺麗すぎる"],["wish_archive","練習室ver.が一番好き"]]}
+ {g:1,video:"assets/video/mv-poppop.mp4",poster:"assets/group.jpg",user:"nctwish_official",cap:"『poppop』🫧 公式MVクリップ #NCTWISH #poppop #ダンスチャレンジ",music:"poppop - NCT WISH",likes:1842031,cmts:9321,shares:40213,saves:398214,cm:[["wish_jp","かっこよすぎる😭"],["dance_cover_jp","振りコピしました！"],["sakuya_thoughts","poppop大好き"]]},
+ {g:1,video:"assets/video/tt-ispy-teaser.mp4",poster:"assets/sakuya-ig1.jpg",user:"nctwish_official",cap:"『I SPY』M/V Teaser 🕵️ 10.12 Release #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:1932844,cmts:8431,shares:31208,saves:402317,cm:[["ispy_fan","ティーザーだけで鳥肌…"],["wish_daily","MV本編が楽しみすぎる"]]},
+ {g:1,video:"assets/video/tt-short-ispy.mp4",poster:"assets/sakuya-ig1.jpg",user:"nctwish_official",cap:"👀 I SPY 👀 #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:2411907,cmts:10233,shares:44981,saves:512480,cm:[["ispy_fan","サビの中毒性やばい"],["wish_jp","全員ビジュ優勝"]]},
+ {g:2,video:"assets/video/mv-color.mp4",poster:"assets/stage-steady.jpg",user:"nctwish_official",cap:"『COLOR』ダンスブレイク🎨 #NCTWISH #COLOR",music:"COLOR - NCT WISH",likes:1204882,cmts:6102,shares:22140,saves:261705,cm:[["color_fan","ダンスブレイク鳥肌"],["wish_archive","COLOR期のビジュ優勝"]]},
+ {g:2,video:"assets/video/tt-short-pixelup.mp4",poster:"assets/group.jpg",user:"nctwish_official",cap:"pixel up ˖‧⁺ #SION #YUSHI #SAKUYA #NCTWISH",music:"オリジナル音源 - nctwish_official",likes:986412,cmts:5214,shares:12047,saves:204318,cm:[["wish_archive","年長組と末っ子の空気感が好き"],["sakuya_thoughts","サクヤの表情管理すごい"]]},
+ {g:2,video:"assets/video/tt-ispy-mv.mp4",poster:"assets/sakuya-ig1.jpg",user:"nctwish_official",cap:"『I SPY』M/V 🎬 サビの振りに注目 #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:2688419,cmts:11980,shares:50336,saves:573902,cm:[["dance_cover_jp","サビの振り、コピしました"],["ispy_fan","I SPY回してる手が止まらない"]]},
+ {g:3,video:"assets/video/mv-ispy.mp4",poster:"assets/sakuya-ig1.jpg",user:"nctwish_official",cap:"『I SPY』🕵️ 最新ミニアルバムから #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:2276510,cmts:12044,shares:51872,saves:486120,cm:[["ispy_fan","I SPYの中毒性やばい"],["wish_daily","サクヤ回、再生が止まらない"]]},
+ {g:3,video:"assets/video/tt-short-ispy-yujin.mp4",poster:"assets/av-sakuya.jpg",user:"nctwish_official",cap:"I SPY with 한유진 #SAKUYA #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:1755330,cmts:9102,shares:28754,saves:371845,cm:[["wish_daily","他グループのメンバーとのコラボ新鮮"],["sakuya_thoughts","サクヤ、少し緊張してる顔もいい"]]},
+ {g:3,wide:true,video:"assets/video/tt-ispy-dance.mp4",poster:"assets/stage1.jpg",user:"nctwish_official",cap:"『I SPY』Dance Practice 🕺 フルフォーメーション #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:1502773,cmts:7645,shares:19830,saves:318660,cm:[["dance_cover_jp","フォーメーション移動が綺麗すぎる"],["wish_archive","練習室ver.が一番好き"]]}
 ];
 const X_TRENDS_SEOUL=[["音楽","#NCTWISH","9.8万件のポスト"],["エンターテイメント","高尺スカイドーム","8.1万件のポスト"],["音楽","#FaceOurWISH","4.2万件のポスト"],["ジャパン","ソウル公演 完売","2.7万件のポスト"],["エンターテイメント","ウィシズニ","1.9万件のポスト"]];
 const X_TRENDS_PRE=[["エンターテイメント","#NCTWISH","12.4万件のポスト"],["音楽","高尺スカイドーム","8.1万件のポスト"],["ジャパン","代々木 完売","5.6万件のポスト"],["音楽","#FaceOurWISH","4.2万件のポスト"],["ジャパン","GLION ARENA KOBE","3.3万件のポスト"]];
@@ -1594,7 +1628,7 @@ const VB='<span class="vbadge"><svg class="uic"><use href="#i-badge"/></svg></sp
 function tmDisp(tm){if(!tm)return "";if(typeof cur!=="undefined"&&cur&&cur.thread==="ht")return tm;const m=/^(\d{1,2}):(\d{2})$/.exec(tm);if(!m)return tm;let h=+m[1];const ap=h<12?"午前":"午後";const hh=h%12===0?12:h%12;return ap+hh+":"+m[2];}
 /* ================= NAV ================= */
 function syncVideos(){setTimeout(()=>{$$("video").forEach(v=>{const view=v.closest(".view");if(view&&view.classList.contains("on")){if(v.closest(".post-vid")||v.classList.contains("pv-vid")){v.play().catch(()=>{});}}else{v.pause();}});},90);}
-function show(id){if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set","ht","htprof"].includes(id));window.scrollTo(0,0);if(id==="tt")ttView="feed";if(id==="x")xView="feed";if(id==="home")renderHome();if(id==="ht")renderHT();if(id==="line")renderLineList();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();}
+function show(id){if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set","ht","htprof"].includes(id));window.scrollTo(0,0);if(id==="tt"){ttView="feed";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="home"));}if(id==="x")xView="feed";if(id==="home")renderHome();if(id==="ht")renderHT();if(id==="line")renderLineList();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();}
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){show(g.dataset.go);return;}const b=e.target.closest("[data-back]");if(b)show(b.dataset.back);});
 $("#homebar").addEventListener("click",()=>show("home"));
 $("#v-lock").addEventListener("click",()=>show("home"));
@@ -1708,29 +1742,29 @@ const CARIDX={};const CAPOPEN={};
 function igLiveId(){return S.ig>0?IG_POSTS[Math.min(S.ig,IG_POSTS.length)-1].id:0;}
 function igFolHTML(){if(S.scene>=7)return `<b id="ig-fol-num">${fmtNum(4862314+IGHEAT.fol)}</b>`;return `<b>486万</b>`;}
 function igTabsHTML(view){const on=v=>(view===v||(view==="feed"&&v==="grid")||(view==="tagfeed"&&v==="tagged"))?"on":"";return `<div class="ig-tabs"><button class="${on("grid")}" id="ig-t-grid">${ic("grid","s21")}</button><button class="${on("reels")}" id="ig-t-reels">${ic("film","s21")}</button><button class="${on("tagged")}" id="ig-t-tagged">${ic("tag","s21")}</button></div>`;}
-function igTile(p){let badge="";if(p.slides)badge='<span class="grid-multi">'+ic("copy","s13")+'</span>';else if(p.video)badge='<span class="pin">'+ic("play","s13")+'</span>';else if(p.id===1)badge='<span class="pin">'+ic("bmk-f","s13")+'</span>';const views=p.video?`<span class="grid-views">▶ ${fmtLikes(p.likes)}</span>`:"";return `<button data-post="${p.id}"><img src="${p.img}">${badge}${views}</button>`;}
+function igTile(p){let badge="";if(p.slides)badge='<span class="grid-multi">'+ic("copy","s13")+'</span>';else if(p.video)badge='<span class="pin">'+ic("play","s13")+'</span>';else if(p.id===1)badge='<span class="pin">'+ic("bmk-f","s13")+'</span>';const views=p.video?`<span class="grid-views">${ic("play","s11")} ${fmtLikes(p.likes)}</span>`:"";return `<button data-post="${p.id}"><img src="${p.img}">${badge}${views}</button>`;}
 function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);const view=S.viewIG||"grid";
- let h=`<div class="stories">${Object.keys(M).filter(k=>M[k].av).map(k=>`<button class="story" data-story="${k}"><span class="ring ${S.ig>0?"":"seen"}"><img src="${M[k].av}"></span>${M[k].n}</button>`).join("")}<button class="story" data-story="me"><span class="ring seen"><img src="assets/nao-face.jpg"></span>あなた</button></div>`;
+ let h=`<div class="stories">${Object.keys(M).filter(k=>M[k].av).map(k=>`<button class="story" data-story="${k}"><span class="ring ${S.ig>0?"":"seen"}"><img src="${M[k].av}"></span>${M[k].n}</button>`).join("")}<button class="story" data-story="me"><span class="ring seen"><img src="assets/nao-face.jpg"><span class="story-plus">＋</span></span>あなた</button></div>`;
  h+=`<div class="ig-prof"><div class="ig-top"><span class="ring"><img src="assets/group.jpg"></span><div class="ig-stats"><div><b>${Math.max(S.ig,0)}</b><span>投稿</span></div><div data-followers style="cursor:pointer">${igFolHTML()}<span>フォロワー</span></div><div><b>12</b><span>フォロー中</span></div></div></div>
  <div class="ig-cat">アーティスト</div>
  <div class="ig-bio"><b>nctwish_official</b> ${VB}<br>NCT WISH 公式アカウント<br>2nd TOUR『INTO THE WISH : Face Our WISH』開催中💫<br><span class="lnk">nctwish.jp/tour2027</span><br><span class="ig-threads"><i>🧵</i> nctwish_official</span></div>
- <div class="ig-btns"><button class="fol" id="ig-fol">フォロー中</button><button id="ig-msg">メッセージ</button><button style="flex:none;padding:7px 11px">👤＋</button></div>
+ <div class="ig-btns"><button id="ig-fol">フォロー中 ▾</button><button id="ig-msg">メッセージ</button><button style="flex:none;padding:7px 11px;display:flex;align-items:center;justify-content:center" aria-label="おすすめ">${ic("userplus","s17")}</button></div>
  <div class="hl-row">${HIGHLIGHTS.map((hl,i)=>`<button class="hl" data-hl="${i}"><span class="hlc"><img src="${hl.img}"></span>${hl.t}</button>`).join("")}</div></div>`;
  const savedPosts=posts.filter(p=>S.savedIG&&S.savedIG[p.id]);
- if(savedPosts.length)h+=`<button class="saved-row" id="ig-t-saved">🔖 保存済み（${savedPosts.length}件）<span style="margin-left:auto;color:#8e8e93">›</span></button>`;
+ if(savedPosts.length)h+=`<button class="saved-row" id="ig-t-saved">${ic("bmk","s15")} 保存済み（${savedPosts.length}件）<span style="margin-left:auto;color:#8e8e93">›</span></button>`;
  h+=igTabsHTML(view);
- if(view==="reels"){h+=`<div class="ig-reels">${posts.filter(p=>p.video).length?posts.filter(p=>p.video).map(p=>`<button data-post="${p.id}"><video src="${p.video}" poster="${p.img}" muted playsinline preload="metadata"></video><span class="grid-views">▶ ${fmtLikes(p.likes)}</span></button>`).join(""):`<div class="ig-lock">🔒 リールはまだ解放されていないよ</div>`}</div>`;}
+ if(view==="reels"){h+=`<div class="ig-reels">${posts.filter(p=>p.video).length?posts.filter(p=>p.video).map(p=>`<button data-post="${p.id}"><video src="${p.video}" poster="${p.img}" muted playsinline preload="metadata"></video><span class="grid-views">${ic("play","s11")} ${fmtLikes(p.likes)}</span></button>`).join(""):`<div class="ig-lock">${ic("lock","s15")} リールはまだ解放されていないよ</div>`}</div>`;}
  else if(view==="tagged"){h+=`<div class="ig-grid"><div class="tag-note">nctwish_official がタグ付けされた投稿</div>${TAGGED_POSTS.map(p=>`<button data-tpost="${p.id}"><img src="${p.img}"></button>`).join("")}</div>`;}
  else if(view==="tagfeed"){h+=TAGGED_POSTS.map(p=>postHTML(p)).join("");}
  else if(view==="saved"){h+=`<div class="ig-grid">${savedPosts.map(p=>igTile(p)).join("")}</div>`;}
  else if(view==="feed"){h+=posts.map(p=>postHTML(p)).join("");}
- else{h+=`<div class="ig-grid">${posts.length?posts.map(p=>igTile(p)).join(""):`<div class="ig-lock">🔒 物語を進めると公式投稿が解放されるよ</div>`}</div>`;}
+ else{h+=`<div class="ig-grid">${posts.length?posts.map(p=>igTile(p)).join(""):`<div class="ig-lock">${ic("lock","s15")} 物語を進めると公式投稿が解放されるよ</div>`}</div>`;}
  el.innerHTML=h;
  const bindTab=(id,v)=>{const b=$(id);if(b)b.addEventListener("click",()=>{S.viewIG=v;save();renderIG();});};
  bindTab("#ig-t-grid","grid");bindTab("#ig-t-reels","reels");bindTab("#ig-t-tagged","tagged");bindTab("#ig-t-saved","saved");
- const ms=$("#ig-msg");if(ms)ms.addEventListener("click",()=>toast("DMは使っていないみたい（連絡はLINEだよ）"));
+ const ms=$("#ig-msg");if(ms)ms.addEventListener("click",openIGDM);
  const fw=el.querySelector("[data-followers]");if(fw)fw.addEventListener("click",openFollowers);
- const fol=$("#ig-fol");if(fol)fol.addEventListener("click",()=>{const on=fol.textContent==="フォロー中";fol.textContent=on?"フォローする":"フォロー中";fol.classList.toggle("fol",!on);toast(on?"フォローを外したよ（公式は泣かない）":"フォローしたよ");});
+ const fol=$("#ig-fol");if(fol)fol.addEventListener("click",()=>{const on=fol.textContent.indexOf("フォロー中")===0;fol.textContent=on?"フォローする":"フォロー中 ▾";fol.classList.toggle("fol",on);toast(on?"フォローを外したよ（公式は泣かない）":"フォローしたよ");});
  el.querySelectorAll("[data-post]").forEach(b=>b.addEventListener("click",()=>{S.viewIG="feed";save();renderIG();setTimeout(()=>{const t=$("#igpost-"+b.dataset.post);if(t)t.scrollIntoView({block:"start"});},60);}));
  el.querySelectorAll("[data-tpost]").forEach(b=>b.addEventListener("click",()=>{S.viewIG="tagfeed";save();renderIG();setTimeout(()=>{const t=$("#igpost-"+b.dataset.tpost);if(t)t.scrollIntoView({block:"start"});},60);}));
  el.querySelectorAll("[data-story]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.story;const i=STORIES.findIndex(s=>s.k===k);if(i>=0)openStory(i);else toast("あなたのストーリーはまだないよ");}));
@@ -1739,28 +1773,32 @@ function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);co
 function postHTML(p){const liked=S.likedIG[p.id];const saved=S.savedIG&&S.savedIG[p.id];
  let media="";
  if(p.slides){const ci=CARIDX[p.id]||0;media=`<div class="car-wrap"><div class="car-track" style="transform:translateX(-${ci*100}%)">${p.slides.map(s=>`<img src="${s}">`).join("")}</div><span class="car-cnt">${ci+1}/${p.slides.length}</span><button class="car-zone l" data-car="${p.id}|-1" aria-label="前へ"></button><button class="car-zone r" data-car="${p.id}|1" aria-label="次へ"></button><div class="car-dots">${p.slides.map((s,j)=>`<i class="${j===ci?"on":""}"></i>`).join("")}</div></div>`;}
- else if(p.video){media=`<div class="post-vid"><video src="${p.video}" poster="${p.img}" autoplay muted loop playsinline></video><button class="post-mute" data-mutev="${p.id}">🔇</button></div>`;}
+ else if(p.video){media=`<div class="post-vid"><video src="${p.video}" poster="${p.img}" autoplay muted loop playsinline></video><button class="post-mute" data-mutev="${p.id}" aria-label="ミュート切替">${ic("volx","s15")}</button></div>`;}
  else media=`<img src="${p.img}">`;
  const live=(S.scene>=7&&p.id===igLiveId());
  if(live&&!p._seeded){p._seeded=true;p.cm.push(IG_FLOOD[0],IG_FLOOD[1]);IGHEAT.added=Math.max(IGHEAT.added,2);}
  const likesN=parseCnt(p.likes)+(liked?1:0)+(IGHEAT.likes[p.id]||0);
- const cmts=p.cm.map(c=>`<div class="post-cmt"><b>${esc(c[0])}</b> ${esc(c[1])}</div>`).join("");
+ const totalCm=p.cm.length+(IG_POSTS.indexOf(p)>=0?CMT_EXTRA.length:0);
+ const shownCm=live?p.cm:p.cm.slice(0,2);
+ const cmts=shownCm.map(c=>`<div class="post-cmt"><b>${esc(c[0])}</b> ${esc(c[1])}</div>`).join("");
+ const moreBtn=totalCm>shownCm.length?`<button class="cmt-more" data-cmt="${p.id}">コメント${totalCm}件をすべて見る</button>`:"";
+ const stack=`<span class="likes-stack">${[0,1,2].map(j=>{const k=["sion","riku","sakuya","yushi","ryo","jaehee"][(p.id+j)%6];return `<img src="${M[k].av}">`;}).join("")}</span>`;
  const capLong=p.cap.length>64&&!CAPOPEN[p.id];
  const capHTML=capLong?esc(p.cap.slice(0,64))+` <button class="cap-more" data-cap="${p.id}">…その他</button>`:esc(p.cap);
  const avh=p.ini?`<span style="width:100%;height:100%;border-radius:50%;background:#8e8e93;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;border:2px solid #fff;font-size:13px">${p.ini}</span>`:`<img src="assets/group.jpg">`;
  return `<div class="post" id="igpost-${p.id}"><div class="post-h"><span class="ring">${avh}</span><span><b>${esc(p.user)}</b>${p.ini?"":" "+VB}<div class="loc">${esc(p.loc||"")}</div></span><span class="dots">•••</span></div>
- <div class="post-img">${media}<div class="big-heart" data-heart="${p.id}">🤍</div></div>
- <div class="post-act"><button class="hrt ${liked?"liked":""}" data-like="${p.id}">${liked?ic("heart","s26"):ic("heart-o","s26")}</button><button data-cmt="${p.id}">${ic("cmt","s24")}</button><button>${ic("send","s24")}</button><button class="save ${saved?"liked":""}" data-save="${p.id}">${saved?ic("bmk-f","s23"):ic("bmk","s23")}</button></div>
- <button class="post-likes" data-likers="${p.id}"${live?` data-livelikes="${p.id}"`:""}>いいね！${fmtNum(likesN)}件</button>
+ <div class="post-img">${media}<div class="big-heart" data-heart="${p.id}">${ic("heart","")}</div></div>
+ <div class="post-act"><button class="hrt ${liked?"liked":""}" data-like="${p.id}">${liked?ic("heart","s26"):ic("heart-o","s26")}</button><button data-cmt="${p.id}">${ic("cmt","s24")}</button><button aria-label="リポスト">${ic("repeat","s24")}</button><button>${ic("send","s24")}</button><button class="save ${saved?"liked":""}" data-save="${p.id}">${saved?ic("bmk-f","s23"):ic("bmk","s23")}</button></div>
+ <button class="post-likes" data-likers="${p.id}">${stack}<span${live?` data-livelikes="${p.id}"`:""}>いいね！${fmtNum(likesN)}件</span></button>
  <div class="post-cap"><b>${esc(p.user)}</b>${capHTML}</div><div class="post-cmts" id="cmts-${p.id}">${cmts}</div>
- <button class="cmt-more" data-cmt="${p.id}">コメントをすべて見る</button>
+ ${moreBtn}
  <div class="post-time">${p.time}</div></div>`;}
 function bindPostActs(root){root.querySelectorAll("[data-like]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.like;S.likedIG[id]=!S.likedIG[id];save();renderIG();}));
  root.querySelectorAll("[data-cmt]").forEach(b=>b.addEventListener("click",()=>openIGComments(+b.dataset.cmt)));
  root.querySelectorAll("[data-likers]").forEach(b=>b.addEventListener("click",()=>openLikers(+b.dataset.likers)));
  root.querySelectorAll("[data-save]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.save;S.savedIG=S.savedIG||{};S.savedIG[id]=!S.savedIG[id];save();toast(S.savedIG[id]?"保存したよ":"保存を取り消したよ");renderIG();}));
  root.querySelectorAll("[data-cap]").forEach(b=>b.addEventListener("click",()=>{CAPOPEN[b.dataset.cap]=true;renderIG();setTimeout(()=>{const t=$("#igpost-"+b.dataset.cap);if(t)t.scrollIntoView({block:"start"});},30);}));
- root.querySelectorAll("[data-mutev]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const v=b.closest(".post-vid").querySelector("video");if(v){v.muted=!v.muted;b.textContent=v.muted?"🔇":"🔊";}}));
+ root.querySelectorAll("[data-mutev]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const v=b.closest(".post-vid").querySelector("video");if(v){v.muted=!v.muted;b.innerHTML=ic(v.muted?"volx":"vol","s15");}}));
  root.querySelectorAll("[data-car]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const pr=b.dataset.car.split("|");const id=+pr[0],d=+pr[1];const p=IG_POSTS.find(x=>x.id===id)||TAGGED_POSTS.find(x=>x.id===id);if(!p||!p.slides)return;const n=p.slides.length;CARIDX[id]=(((CARIDX[id]||0)+d)%n+n)%n;renderIG();setTimeout(()=>{const t=$("#igpost-"+id);if(t)t.scrollIntoView({block:"start"});},30);}));
  root.querySelectorAll(".post-img").forEach(pi=>{pi.addEventListener("dblclick",()=>{const hrt=pi.querySelector(".big-heart");if(hrt){hrt.classList.remove("pop");void hrt.offsetWidth;hrt.classList.add("pop");}const hh=pi.querySelector("[data-heart]");if(!hh)return;const id=hh.dataset.heart;if(!S.likedIG[id]){S.likedIG[id]=true;save();setTimeout(renderIG,350);}});});}
 function igLiveStart(){if(window._igT){clearInterval(window._igT);window._igT=null;}
@@ -1773,48 +1811,73 @@ function igLiveStart(){if(window._igT){clearInterval(window._igT);window._igT=nu
  },2800);}
 /* ================= TIKTOK ================= */
 let ttView="feed";
+function fmtTT(n){n=+n||0;if(n>=10000){const w=n/10000;return (Math.floor(w*10)/10).toString().replace(/\.0$/,"")+"万";}return String(n);}
+let ttProfTab="grid",ttFollowing=true;const TTCAPOPEN={};
+function ttGridBtn(x){const p=x.p,ai=x.ai;return `<button data-ttopen="${ai}"><video src="${p.video}" poster="${p.poster}" muted playsinline preload="metadata"></video><span class="gv">${ic("play","s13")} ${fmtTT(p.likes)}</span></button>`;}
 function ttProfHTML(){const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt);const totLikes=posts.reduce((a,x)=>a+x.p.likes,0);
+ const likedPosts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>S.likedTT[x.ai]);
+ let grid="";
+ if(ttProfTab==="lock")grid=`<div style="grid-column:1/-1;text-align:center;font-size:12px;color:#8e8e96;padding:22px 10px">${ic("lock","s15")} 非公開の動画だよ</div>`;
+ else if(ttProfTab==="liked")grid=likedPosts.length?likedPosts.map(ttGridBtn).join(""):`<div style="grid-column:1/-1;text-align:center;font-size:12px;color:#8e8e96;padding:22px 10px">いいねした動画はまだないよ</div>`;
+ else grid=posts.length?posts.map(ttGridBtn).join(""):`<div style="grid-column:1/-1;text-align:center;font-size:12px;color:#8e8e96;padding:22px 10px">${ic("lock","s15")} 物語を進めると動画が解放されるよ</div>`;
  return `<div class="ttp"><div class="ttp-head"><span style="width:24px"></span><span class="ttu">@nctwish_official ${VB}</span><span style="display:flex;gap:14px">${ic("bell","s21")}${ic("menu","s21")}</span></div>
  <img class="ttp-av" src="assets/group.jpg" alt="">
  <div class="ttp-id">@nctwish_official</div>
- <div class="ttp-stats"><div><b>12</b><span>フォロー中</span></div><div><b>${fmtLikes(4862314)}</b><span>フォロワー</span></div><div><b>${fmtLikes(totLikes)}</b><span>いいね</span></div></div>
- <div class="ttp-btns"><button class="fol2">フォロー中</button><button data-ttshare>シェア</button></div>
+ <div class="ttp-stats"><div><b>12</b><span>フォロー中</span></div><div><b>${fmtTT(4862314)}</b><span>フォロワー</span></div><div><b>${fmtTT(totLikes)}</b><span>いいね</span></div></div>
+ <div class="ttp-btns"><button data-ttpfol class="${ttFollowing?"fol2":"fol-on"}">${ttFollowing?"フォロー中":"フォローする"}</button><button data-ttshare>シェア</button></div>
  <div class="ttp-bio">NCT WISH 公式アカウント💫<br>2nd TOUR『INTO THE WISH : Face Our WISH』開催中</div>
- <div class="ttp-tabs"><span class="on">${ic("grid","s21")}</span><span>${ic("lock","s20")}</span></div>
- <div class="ttp-grid">${posts.length?posts.map(({p,ai})=>`<button data-ttopen="${ai}"><video src="${p.video}" poster="${p.poster}" muted playsinline preload="metadata"></video><span class="gv">${ic("play","s13")} ${fmtLikes(p.likes)}</span></button>`).join(""):`<div style="grid-column:1/-1;text-align:center;font-size:12px;color:#8e8e96;padding:22px 10px">🔒 物語を進めると動画が解放されるよ</div>`}</div></div>`;}
+ <div class="ttp-tabs"><span data-ttptab="grid" class="${ttProfTab==="grid"?"on":""}">${ic("grid","s21")}</span><span data-ttptab="lock" class="${ttProfTab==="lock"?"on":""}">${ic("lock","s20")}</span><span data-ttptab="liked" class="${ttProfTab==="liked"?"on":""}">${ic("heart-o","s20")}</span></div>
+ <div class="ttp-grid">${grid}</div></div>`;}
+const TT_TRENDS=[["#NCTWISH","2,314万回再生"],["#ISPY","1,872万回再生"],["#FaceOurWISH","964万回再生"],["#poppop","842万回再生"],["#COLOR","517万回再生"],["#ダンスチャレンジ","1.2億回再生"]];
+function ttDiscHTML(){const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt);
+ return `<div class="ttd"><button class="ttd-search" data-ttsearch>${ic("search","s16")} NCT WISH を検索</button><div class="ttd-sec">トレンド</div>${TT_TRENDS.map(t=>`<button class="ttd-tag" data-tttag><span class="tic">#</span><span><b>${t[0]}</b><small>${t[1]}</small></span></button>`).join("")}<div class="ttd-sec">動画</div><div class="ttp-grid">${posts.length?posts.map(ttGridBtn).join(""):`<div style="grid-column:1/-1;text-align:center;font-size:12px;color:#8e8e96;padding:22px 10px">${ic("lock","s15")} 物語を進めると動画が解放されるよ</div>`}</div></div>`;}
+function ttCapHTML(p,ai){const bold=s=>esc(s).replace(/#([^\s#]+)/g,'<b class="hash">#$1</b>');if(p.cap.length<=56||TTCAPOPEN[ai])return `<div class="cap">${bold(p.cap)}</div>`;return `<div class="cap">${bold(p.cap.slice(0,56))} <button class="tt-more" data-ttmore="${ai}">もっと見る</button></div>`;}
+function openTTInbox(){const rows=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt).slice().reverse().map(x=>lkRow("assets/group.jpg","","nctwish_official","新しい動画を投稿しました",false)).join("");sheetList("受信箱",rows||`<div class="locknote">新しい通知はないよ</div>`);}
 function renderTT(){const el=$("#tt-feed");
  if(ttView==="prof"){el.style.scrollSnapType="none";el.innerHTML=ttProfHTML();el.scrollTop=0;
   el.querySelectorAll("[data-ttopen]").forEach(b=>b.addEventListener("click",()=>{ttView="feed";renderTT();setTimeout(()=>{const t=$("#ttv-"+b.dataset.ttopen);if(t)t.scrollIntoView({block:"start"});},80);}));
+  el.querySelectorAll("[data-ttptab]").forEach(b=>b.addEventListener("click",()=>{ttProfTab=b.dataset.ttptab;renderTT();}));
+  const fb=el.querySelector("[data-ttpfol]");if(fb)fb.addEventListener("click",()=>{ttFollowing=!ttFollowing;toast(ttFollowing?"フォローしたよ":"フォローを外したよ");renderTT();});
   const sh=el.querySelector("[data-ttshare]");if(sh)sh.addEventListener("click",()=>toast("シェアは物語では使わないよ"));
   return;}
+ if(ttView==="disc"){el.style.scrollSnapType="none";el.innerHTML=ttDiscHTML();el.scrollTop=0;
+  el.querySelectorAll("[data-ttopen]").forEach(b=>b.addEventListener("click",()=>{ttView="feed";renderTT();setTimeout(()=>{const t=$("#ttv-"+b.dataset.ttopen);if(t)t.scrollIntoView({block:"start"});},80);}));
+  el.querySelectorAll("[data-ttsearch]").forEach(b=>b.addEventListener("click",()=>toast("検索は物語では使わないよ")));
+  el.querySelectorAll("[data-tttag]").forEach(b=>b.addEventListener("click",()=>toast("ハッシュタグのページは物語では開かないよ")));
+  return;}
  el.style.scrollSnapType="";const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt);
- if(!posts.length){el.innerHTML=`<div class="tt-item"><img class="bg" src="assets/group.jpg"><div class="grad"></div><div class="tt-top"><span class="on">おすすめ</span><span>フォロー中</span></div><div class="tt-info"><div class="at">@nctwish_official</div><div class="cap">🔒 物語を進めると公式TikTokが解放されるよ</div></div></div>`;return;}
+ if(!posts.length){el.innerHTML=`<div class="tt-item"><img class="bg" src="assets/group.jpg"><div class="grad"></div><div class="tt-top"><span class="on">おすすめ</span><span>フォロー中</span></div><div class="tt-info"><div class="at">@nctwish_official</div><div class="cap">${ic("lock","s13")} 物語を進めると公式TikTokが解放されるよ</div></div></div>`;return;}
  el.innerHTML=posts.map(({p,ai})=>{const liked=S.likedTT[ai];const saved=S.savedTT&&S.savedTT[ai];const likes=p.likes+(liked?1:0);return `<div class="tt-item">
  <video class="bgv${p.wide?" wide":""}" id="ttv-${ai}" src="${p.video}" poster="${p.poster}" muted loop playsinline preload="auto"></video>
  <div class="grad"></div><div class="tt-top"><span class="live">LIVE</span><span>フォロー中</span><span class="on">おすすめ</span><span class="srch" data-ttsearch>${ic("search","s21")}</span></div>
  <button class="tt-mute" data-mute="${ai}" aria-label="ミュート切替">${ic("volx","s19")}</button>
  <div class="tt-rail"><span><img class="tav" src="assets/group.jpg"><span class="plus" style="display:flex">＋</span></span>
- <button class="rb" data-ttlike="${ai}"><span class="ric ${liked?"liked":""}">${ic("heart","s28")}</span>${fmtLikes(likes)}</button>
- <button class="rb" data-ttcmt="${ai}"><span class="ric">${ic("cmt","s28")}</span>${fmtLikes(p.cmts)}</button>
- <button class="rb" data-ttsave="${ai}"><span class="ric" style="${saved?"color:#facc15":""}">${ic(saved?"bmk-f":"bmk","s26")}</span>${saved?"保存済":"保存"}</button>
- <button class="rb"><span class="ric">${ic("send","s26")}</span>${fmtLikes(p.shares)}</button>
- <span class="tt-disc"><img src="assets/group.jpg"></span></div>
- <div class="tt-info"><div class="at">@${p.user} ${VB}</div><div class="cap">${esc(p.cap)}</div>
+ <button class="rb" data-ttlike="${ai}"><span class="ric ${liked?"liked":""}">${ic("heart","s28")}</span><span class="rct">${fmtTT(likes)}</span></button>
+ <button class="rb" data-ttcmt="${ai}"><span class="ric">${ic("cmt","s28")}</span>${fmtTT(p.cmts)}</button>
+ <button class="rb" data-ttsave="${ai}"><span class="ric" style="${saved?"color:#facc15":""}">${ic(saved?"bmk-f":"bmk","s26")}</span>${fmtTT((p.saves||0)+(saved?1:0))}</button>
+ <button class="rb" data-ttshare2><span class="ric">${ic("send","s26")}</span>${fmtTT(p.shares)}</button>
+ <span class="tt-disc" data-disc="${ai}"><img src="assets/group.jpg"></span></div>
+ <div class="tt-info"><div class="at">@${p.user} ${VB}</div>${ttCapHTML(p,ai)}
  <div class="tt-music"><span>♪</span><span class="marq"><span>${esc(p.music)} ♪ ${esc(p.music)} ♪&nbsp;</span></span></div></div>
+ <div class="tt-bigheart" id="ttbh-${ai}">${ic("heart","")}</div>
  <div class="tt-play" id="ttp-${ai}">▶</div>
  <div class="tt-prog"><i id="ttpg-${ai}"></i></div></div>`;}).join("");
  el.querySelectorAll("[data-ttlike]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const i=b.dataset.ttlike;S.likedTT[i]=!S.likedTT[i];save();renderTT();}));
  el.querySelectorAll("[data-ttcmt]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();openTTComments(+b.dataset.ttcmt);}));
  el.querySelectorAll("[data-ttsave]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const i=b.dataset.ttsave;S.savedTT=S.savedTT||{};S.savedTT[i]=!S.savedTT[i];save();toast(S.savedTT[i]?"保存したよ":"保存を取り消したよ");renderTT();}));
  el.querySelectorAll("[data-ttsearch]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();toast("検索は物語では使わないよ");}));
+ el.querySelectorAll("[data-ttshare2]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();toast("シェアは物語では使わないよ");}));
+ el.querySelectorAll("[data-ttmore]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const ai=b.dataset.ttmore;TTCAPOPEN[ai]=true;renderTT();setTimeout(()=>{const t=$("#ttv-"+ai);if(t)t.scrollIntoView({block:"start"});},60);}));
  el.querySelectorAll("[data-mute]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const v=$("#ttv-"+b.dataset.mute);if(v){v.muted=!v.muted;b.innerHTML=ic(v.muted?"volx":"vol","s19");}}));
- el.querySelectorAll(".tt-item").forEach(it=>{it.addEventListener("click",()=>{const v=it.querySelector("video.bgv");if(!v)return;const ai=v.id.replace("ttv-","");if(v.paused){v.play();$("#ttp-"+ai).classList.remove("show");}else{v.pause();$("#ttp-"+ai).classList.add("show");}});});
- clearInterval(window._ttProg);window._ttProg=setInterval(()=>{if(!$("#v-tt").classList.contains("on"))return;posts.forEach(({ai})=>{const v=$("#ttv-"+ai),pg=$("#ttpg-"+ai);if(v&&pg&&v.duration)pg.style.width=(v.currentTime/v.duration*100)+"%";});},250);
+ el.querySelectorAll(".tt-item").forEach(it=>{it.addEventListener("click",()=>{const v=it.querySelector("video.bgv");if(!v)return;const ai=v.id.replace("ttv-","");if(v.paused){v.play();$("#ttp-"+ai).classList.remove("show");}else{v.pause();$("#ttp-"+ai).classList.add("show");}});
+  it.addEventListener("dblclick",()=>{const v=it.querySelector("video.bgv");if(!v)return;const ai=+v.id.replace("ttv-","");const bh=$("#ttbh-"+ai);if(bh){bh.classList.remove("pop");void bh.offsetWidth;bh.classList.add("pop");}if(!S.likedTT[ai]){S.likedTT[ai]=true;save();const rb=it.querySelector("[data-ttlike]");if(rb){rb.querySelector(".ric").classList.add("liked");const rc=rb.querySelector(".rct");if(rc)rc.textContent=fmtTT(TT_POSTS[ai].likes+1);}}});});
+ clearInterval(window._ttProg);window._ttProg=setInterval(()=>{if(!$("#v-tt").classList.contains("on"))return;posts.forEach(({ai})=>{const v=$("#ttv-"+ai),pg=$("#ttpg-"+ai);if(v&&pg&&v.duration)pg.style.width=(v.currentTime/v.duration*100)+"%";const d=document.querySelector(`[data-disc="${ai}"]`);if(d)d.style.animationPlayState=(v&&!v.paused)?"running":"paused";});},250);
  if(window._ttIO)window._ttIO.disconnect();
  window._ttIO=new IntersectionObserver(es=>{es.forEach(en=>{const v=en.target.querySelector("video.bgv");if(!v)return;if(en.intersectionRatio>=0.6){v.play().catch(()=>{});}else{v.pause();}});},{root:el,threshold:[0,0.6,1]});
  el.querySelectorAll(".tt-item").forEach(it=>window._ttIO.observe(it));}
 $$("#v-tt .tt-tabs button").forEach(b=>b.addEventListener("click",()=>{const t=b.dataset.tttab;
- if(t==="home"||t==="prof"){$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x===b));ttView=t==="prof"?"prof":"feed";renderTT();}
+ if(t==="inbox"){openTTInbox();return;}
+ if(t==="home"||t==="prof"||t==="discover"){$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x===b));ttView=t==="prof"?"prof":(t==="discover"?"disc":"feed");renderTT();}
  else toast("そのタブは物語では使わないよ");}));
 /* ================= X ================= */
 let xTab="feed";let xView="feed";
@@ -1899,22 +1962,28 @@ $("#story-reply-in").addEventListener("click",ev=>ev.stopPropagation());
 /* ================= COMMENT SHEET ================= */
 let _sheetSend=null;
 const SC_TIMES=["2時間前","4時間前","6時間前","9時間前","13時間前","1日前"];
-function sheetRow(c,i){i=i||0;const ini=c[0]==="nao"?"N":c[0][0].toUpperCase();const lk=(c[0].length*37+i*13)%180;return `<div class="sc-row"><span class="sc-av" style="${c[0]==="nao"?"background:#06c755":""}">${ini}</span><div class="sc-main"><b>${esc(c[0])}</b> <span>${esc(c[1])}</span><div class="sc-meta"><span>${SC_TIMES[i%SC_TIMES.length]}</span><span>いいね！${lk}件</span><button class="sc-reply" data-reply="${esc(c[0])}">返信する</button></div></div><button class="sc-heart" aria-label="いいね">♡</button></div>`;}
-document.addEventListener("click",e=>{const h=e.target.closest(".sc-heart");if(h){const on=h.textContent==="❤️";h.textContent=on?"♡":"❤️";return;}const rp=e.target.closest("[data-reply]");if(rp){const inp=$("#sheet-input");if(inp){inp.value="@"+rp.dataset.reply+" ";inp.focus();}return;}const f=e.target.closest(".lk-fol");if(f){const off=f.classList.toggle("off");f.textContent=off?"フォローする":"フォロー中";}});
+function sheetRow(c,i){i=i||0;const ini=c[0]==="nao"?"N":c[0][0].toUpperCase();const lk=(c[0].length*37+i*13)%180;return `<div class="sc-row"><span class="sc-av" style="${c[0]==="nao"?"background:#06c755":""}">${ini}</span><div class="sc-main"><b>${esc(c[0])}</b> <span>${esc(c[1])}</span><div class="sc-meta"><span>${SC_TIMES[i%SC_TIMES.length]}</span><span>いいね！${lk}件</span><button class="sc-reply" data-reply="${esc(c[0])}">返信する</button></div></div><button class="sc-heart" aria-label="いいね">${ic("heart-o","s17")}</button></div>`;}
+document.addEventListener("click",e=>{const h=e.target.closest(".sc-heart");if(h){const on=h.classList.toggle("liked");h.innerHTML=ic(on?"heart":"heart-o","s17");return;}const eb=e.target.closest("[data-emo]");if(eb){const inp=$("#sheet-input");if(inp){inp.value+=eb.dataset.emo;inp.focus();}return;}const rp=e.target.closest("[data-reply]");if(rp){const inp=$("#sheet-input");if(inp){inp.value="@"+rp.dataset.reply+" ";inp.focus();}return;}const f=e.target.closest(".lk-fol");if(f){const off=f.classList.toggle("off");f.textContent=off?"フォローする":"フォロー中";}});
 const FAN_ACC=[["wish_daily","ウィシズニ"],["sakuya_thoughts","サクヤの言葉を集める人"],["wish_archive","公演アーカイブ"],["ispy_fan","I SPY期から応援"],["color_fan","COLOR期ペン"],["dance_cover_jp","振りコピ勢"]];
-function sheetList(title,rows){$("#sheet-head").childNodes[0].textContent=title;$("#sheet-body").innerHTML=rows;$("#sheet").classList.add("on","nopost");$("#sheet-body").scrollTop=0;}
+function sheetList(title,rows){$("#sheet-head").childNodes[0].textContent=title;$("#sheet-body").innerHTML=rows;$("#sheet").classList.add("on","nopost");$("#sheet").classList.remove("emo");$("#sheet-body").scrollTop=0;}
+const EMOQ=["❤️","🙌","🔥","👏","😢","😍","😮","😂"];
+$("#emo-bar").innerHTML=EMOQ.map(e=>`<button data-emo="${e}" aria-label="絵文字">${e}</button>`).join("");
 function lkRow(av,ini,name,sub,off){return `<div class="sc-row lk-row">${av?`<img class="av" src="${av}" style="width:38px;height:38px">`:`<span class="sil" style="width:38px;height:38px;background:#8e8e93;font-size:14px">${ini}</span>`}<span class="lk-nm"><b>${name}</b><small>${sub}</small></span><button class="lk-fol${off?" off":""}">${off?"フォローする":"フォロー中"}</button></div>`;}
 function openLikers(id){const fans=FAN_ACC.map((a,j)=>FAN_ACC[(j+(id||0))%FAN_ACC.length]);const rows=Object.keys(M).filter(k=>M[k].av).map(k=>lkRow(M[k].av,"",M[k].n,k==="sakuya"?"NCT WISH（本人）":"NCT WISH",false)).join("")+fans.map(a=>lkRow("","W",a[0],a[1],true)).join("");sheetList("いいね！した人",rows);}
 function openFollowers(){const rows=Object.keys(M).filter(k=>M[k].av).map(k=>lkRow(M[k].av,"",M[k].n,"NCT WISH",false)).join("")+FAN_ACC.map(a=>lkRow("",a[0][0].toUpperCase(),a[0],a[1],true)).join("")+`<div class="locknote">フォロワー486万人のうち、知っているアカウントを一部表示しています</div>`;sheetList("フォロワー",rows);}
-function openSheet(title,items,onSend){$("#sheet").classList.remove("nopost");const sh=$("#sheet-head");sh.childNodes[0].textContent=title;$("#sheet-body").innerHTML=items.map(sheetRow).join("");_sheetSend=onSend;$("#sheet").classList.add("on");$("#sheet-body").scrollTop=0;}
+function openSheet(title,items,onSend){$("#sheet").classList.remove("nopost");$("#sheet").classList.add("emo");const sh=$("#sheet-head");sh.childNodes[0].textContent=title;$("#sheet-body").innerHTML=items.map(sheetRow).join("");_sheetSend=onSend;$("#sheet").classList.add("on");$("#sheet-body").scrollTop=0;}
 function closeSheet(){$("#sheet").classList.remove("on");}
 $("#sheet").addEventListener("click",e=>{if(e.target.id==="sheet")closeSheet();});
 $("#sheet-x").addEventListener("click",closeSheet);
 $("#sheet-send").addEventListener("click",()=>{const inp=$("#sheet-input");const v=inp.value.trim();if(!v)return;inp.value="";if(_sheetSend)_sheetSend(v);});
 $("#sheet-input").addEventListener("keydown",e=>{if(e.key==="Enter")$("#sheet-send").click();});
 const CMT_EXTRA=[["wish_daily","現地で見てたけど本当にすごかった…"],["sakuya_thoughts","言葉選びが今日も素敵"],["wish_archive","保存しました📌"]];
-function openIGComments(id){const post=IG_POSTS.find(x=>x.id===id);if(!post)return;const items=post.cm.concat(CMT_EXTRA);openSheet("コメント",items,v=>{post.cm.push(["nao",v]);$("#sheet-body").innerHTML=post.cm.concat(CMT_EXTRA).map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;});}
-function openTTComments(i){const post=TT_POSTS[i];if(!post)return;openSheet("コメント",post.cm,v=>{post.cm.push(["nao",v]);$("#sheet-body").innerHTML=post.cm.map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;});}
+function igCapRow(post){const av=post.ini?`<span class="sc-av">${esc(post.ini)}</span>`:`<img class="sc-av" src="assets/group.jpg" style="object-fit:cover">`;return `<div class="sc-row cap-first">${av}<div class="sc-main"><b>${esc(post.user)}</b> <span>${esc(post.cap)}</span><div class="sc-meta"><span>${esc(post.time||"")}</span></div></div></div>`;}
+function openIGComments(id){const post=IG_POSTS.find(x=>x.id===id)||TAGGED_POSTS.find(x=>x.id===id);if(!post)return;const extra=IG_POSTS.indexOf(post)>=0?CMT_EXTRA:[];const items=post.cm.concat(extra);openSheet("コメント",items,v=>{post.cm.push(["nao",v]);$("#sheet-body").innerHTML=igCapRow(post)+post.cm.concat(extra).map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;});$("#sheet-body").insertAdjacentHTML("afterbegin",igCapRow(post));}
+function openTTComments(i){const post=TT_POSTS[i];if(!post)return;openSheet(fmtTT(post.cmts)+"件のコメント",post.cm,v=>{post.cm.push(["nao",v]);$("#sheet-body").innerHTML=post.cm.map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;});}
+function openIGActivity(){const posts=IG_POSTS.slice(0,S.ig);const rows=posts.slice().reverse().map(p=>lkRow(p.img,"","nctwish_official","新しい投稿をシェアしました ・ "+p.time,false)).join("");sheetList("アクティビティ",rows||`<div class="locknote">新しいアクティビティはないよ</div>`);}
+function openIGDM(){sheetList("メッセージ",`<div class="sc-row"><img class="av" src="assets/group.jpg" style="width:44px;height:44px"><div class="sc-main"><b>nctwish_official</b> ${VB}<div style="color:#8e8e93;font-size:12px;margin-top:1px">公式アカウント ・ DMは受け付けていません</div></div></div><div class="locknote">公式アカウントはDMを受け付けていないよ（物語の連絡はLINEだよ）</div>`);}
+const _igBell=$("#ig-bell");if(_igBell)_igBell.addEventListener("click",openIGActivity);
 /* ================= HELLOTALK ================= */
 let htTab="chat";
 function htAvHTML(size){return `<span class="ht-avw"><span class="sil" style="width:${size}px;height:${size}px;background:#b08968;font-size:${Math.round(size*0.36)}px">빵</span><span class="flg">🇯🇵</span><span class="ond"></span></span>`;}
