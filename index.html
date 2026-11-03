@@ -1066,6 +1066,9 @@ button{touch-action:manipulation}
 .igx-sec{font-size:13.5px;font-weight:800;padding:14px 16px 4px}
 .xa .xbmkb{display:flex;align-items:center;color:#536471;padding:0}
 .xa .xbmkb.on{color:#1d9bf0}
+.xa .xact{cursor:pointer}
+.xa .xact.on-like{color:#f91880}
+.xa .xact.on-rp{color:#00ba7c}
 .x-search{font-family:inherit;cursor:pointer}
 .xs-head{display:flex;align-items:center;gap:8px;padding:10px 14px 2px}
 .xs-back{font-size:26px;padding:0 4px;line-height:1}
@@ -1578,7 +1581,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v41.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v42.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -1986,7 +1989,7 @@ const NOTIFS=[
 ];
 /* ================= STATE ================= */
 const KEY="sakuya_scandal_v1",EKEY="sakuya_scandal_ends_v1";
-function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],chDates:{},ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{},newsLikes:{},favs:{},wall:"",noff:{},snd:{on:true,vol:.6,vib:true},a11y:{fs:0,bold:false,contrast:false,rm:false},htfavs:[],moLike:{},moCmts:{}};}
+function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],chDates:{},ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{},newsLikes:{},favs:{},wall:"",noff:{},snd:{on:true,vol:.6,vib:true},a11y:{fs:0,bold:false,contrast:false,rm:false},htfavs:[],moLike:{},moCmts:{},ttCmts:{},xLikes:{},xReposts:{},ttFol:true,xFol:true};}
 let S=load();
 S.snd=Object.assign({on:true,vol:.6,vib:true},S.snd||{});
 S.a11y=Object.assign({fs:0,bold:false,contrast:false,rm:false},S.a11y||{});
@@ -2007,7 +2010,8 @@ function sanitizeSave(j){
  o.memos=(arr(j.memos)||[]).filter(x=>typeof x==="string");
  o.notified=(arr(j.notified)||[]).filter(x=>typeof x==="number"&&isFinite(x));
  o.chDates=obj(j.chDates)||{};
- ["callsDone","answers","likedIG","likedTT","savedIG","savedTT","xbmk","callDur","newsBmk","newsCmts","newsLikes","favs","noff","moLike","moCmts"].forEach(k=>{o[k]=obj(j[k])||{};});
+ ["callsDone","answers","likedIG","likedTT","savedIG","savedTT","xbmk","callDur","newsBmk","newsCmts","newsLikes","favs","noff","moLike","moCmts","ttCmts","xLikes","xReposts"].forEach(k=>{o[k]=obj(j[k])||{};});
+ o.ttFol=j.ttFol!==false;o.xFol=j.xFol!==false;
  o.htfavs=(arr(j.htfavs)||[]).filter(x=>typeof x==="string").slice(0,200);
  o.ig=int(j.ig,0,0,999);o.tt=int(j.tt,0,0,999);o.x=int(j.x,0,0,999);o.news=int(j.news,0,0,999);o.freeCount=int(j.freeCount,0,0,1000000);
  o.ended=j.ended===true;o.endId=str(j.endId,"");o.act=str(j.act,"");o.viewIG=str(j.viewIG,"grid");o.wall=str(j.wall,"");
@@ -2341,7 +2345,7 @@ function igLiveStart(){if(window._igT){clearInterval(window._igT);window._igT=nu
 /* ================= TIKTOK ================= */
 let ttView="feed";
 function fmtTT(n){n=+n||0;if(n>=10000){const w=n/10000;return (Math.floor(w*10)/10).toString().replace(/\.0$/,"")+"万";}return String(n);}
-let ttProfTab="grid",ttFollowing=true;const TTCAPOPEN={};
+let ttProfTab="grid";const TTCAPOPEN={};
 function ttGridBtn(x){const p=x.p,ai=x.ai;return `<button data-ttopen="${ai}"><video src="${p.video}" poster="${p.poster}" muted playsinline preload="none"></video><span class="gv">${ic("play","s13")} ${fmtTT(p.likes)}</span></button>`;}
 function ttProfHTML(){const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt);const totLikes=posts.reduce((a,x)=>a+x.p.likes,0);
  const likedPosts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>S.likedTT[x.ai]);
@@ -2352,8 +2356,8 @@ function ttProfHTML(){const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g
  return `<div class="ttp"><div class="ttp-head"><span style="width:24px"></span><span class="ttu">@nctwish_official ${VB}</span><span style="display:flex;gap:6px"><button class="ttp-hic" data-ttpbell aria-label="通知">${ic("bell","s21")}</button><button class="ttp-hic" data-ttpmenu aria-label="メニュー">${ic("menu","s21")}</button></span></div>
  <img class="ttp-av" src="assets/group.jpg" alt="">
  <div class="ttp-id">@nctwish_official</div>
- <div class="ttp-stats"><div><b>12</b><span>フォロー中</span></div><div><b>${fmtTT(4862314)}</b><span>フォロワー</span></div><div><b>${fmtTT(totLikes)}</b><span>いいね</span></div></div>
- <div class="ttp-btns"><button data-ttpfol class="${ttFollowing?"fol2":"fol-on"}">${ttFollowing?"フォロー中":"フォローする"}</button><button data-ttshare>シェア</button></div>
+ <div class="ttp-stats"><div><b>12</b><span>フォロー中</span></div><div><b>${fmtTT(4862314-(S.ttFol===false?1:0))}</b><span>フォロワー</span></div><div><b>${fmtTT(totLikes)}</b><span>いいね</span></div></div>
+ <div class="ttp-btns"><button data-ttpfol class="${S.ttFol===false?"fol-on":"fol2"}">${S.ttFol===false?"フォローする":"フォロー中"}</button><button data-ttshare>シェア</button></div>
  <div class="ttp-bio">NCT WISH 公式アカウント💫<br>2nd TOUR『INTO THE WISH : Face Our WISH』開催中</div>
  <div class="ttp-tabs"><span data-ttptab="grid" class="${ttProfTab==="grid"?"on":""}">${ic("grid","s21")}</span><span data-ttptab="lock" class="${ttProfTab==="lock"?"on":""}">${ic("lock","s20")}</span><span data-ttptab="liked" class="${ttProfTab==="liked"?"on":""}">${ic("heart-o","s20")}</span></div>
  <div class="ttp-grid">${grid}</div></div>`;}
@@ -2373,7 +2377,7 @@ function ttSearchHTML(){
  return `<div class="ttd"><div class="tt-search-head"><button class="tts-back" id="tts-back" aria-label="戻る">‹</button><label class="xs-inwrap">${ic("search","s15")}<input id="tts-in" type="text" placeholder="検索" value="${esc(ttQuery).replace(/"/g,"&quot;")}" autocomplete="off"></label></div><div id="tts-results">${ttSearchResultsHTML()}</div></div>`;}
 function bindTTSearchRes(root){root.querySelectorAll("[data-ttopen]").forEach(b=>b.addEventListener("click",()=>{ttView="feed";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="home"));renderTT();setTimeout(()=>{const t=$("#ttv-"+b.dataset.ttopen);if(t)t.scrollIntoView({block:"start"});},80);}));root.querySelectorAll("[data-tttag]").forEach(b=>b.addEventListener("click",()=>{ttQuery=b.dataset.tttag||"";const i2=$("#tts-in");if(i2)i2.value=ttQuery;const r=$("#tts-results");if(r){r.innerHTML=ttSearchResultsHTML();bindTTSearchRes(r);}}));}
 function openTTShare(ai){const p=TT_POSTS[ai];if(!p)return;const saved=S.savedTT&&S.savedTT[ai];
- sheetList("シェア",`<button class="sh-row" data-shact="copy"><span class="ric">${ic("copy","s19")}</span>リンクをコピー</button><button class="sh-row" data-shact="save"><span class="ric">${ic(saved?"bmk-f":"bmk","s19")}</span>${saved?"保存を取り消す":"あとで見る（保存）"}</button><button class="sh-row" data-shact="cmt"><span class="ric">${ic("cmt","s19")}</span>コメントを見る（${fmtTT(p.cmts)}件）</button>`);
+ sheetList("シェア",`<button class="sh-row" data-shact="copy"><span class="ric">${ic("copy","s19")}</span>リンクをコピー</button><button class="sh-row" data-shact="save"><span class="ric">${ic(saved?"bmk-f":"bmk","s19")}</span>${saved?"保存を取り消す":"あとで見る（保存）"}</button><button class="sh-row" data-shact="cmt"><span class="ric">${ic("cmt","s19")}</span>コメントを見る（${fmtTT(ttCmtTotal(p,ai))}件）</button>`);
  $$("#sheet-body [data-shact]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.shact;closeSheet();
   if(k==="copy")ttCopyLink(location.href.split("#")[0]+"#tt-"+ai);
   else if(k==="save"){S.savedTT=S.savedTT||{};S.savedTT[ai]=!S.savedTT[ai];save();toast(S.savedTT[ai]?"保存したよ":"保存を取り消したよ");renderTT();}
@@ -2386,7 +2390,7 @@ function renderTT(){const el=$("#tt-feed");
  if(ttView==="prof"){el.style.scrollSnapType="none";el.innerHTML=ttProfHTML();el.scrollTop=0;
   el.querySelectorAll("[data-ttopen]").forEach(b=>b.addEventListener("click",()=>{ttView="feed";renderTT();setTimeout(()=>{const t=$("#ttv-"+b.dataset.ttopen);if(t)t.scrollIntoView({block:"start"});},80);}));
   el.querySelectorAll("[data-ttptab]").forEach(b=>b.addEventListener("click",()=>{ttProfTab=b.dataset.ttptab;renderTT();}));
-  const fb=el.querySelector("[data-ttpfol]");if(fb)fb.addEventListener("click",()=>{ttFollowing=!ttFollowing;toast(ttFollowing?"フォローしたよ":"フォローを外したよ");renderTT();});
+  const fb=el.querySelector("[data-ttpfol]");if(fb)fb.addEventListener("click",()=>{S.ttFol=(S.ttFol===false);save();toast(S.ttFol?"フォローしたよ":"フォローを外したよ");renderTT();});
   const sh=el.querySelector("[data-ttshare]");if(sh)sh.addEventListener("click",()=>{ttCopyLink("https://www.tiktok.com/@nctwish_official","プロフィールのリンクをコピーしたよ");});
   el.querySelectorAll("[data-ttpbell],[data-ttpmenu]").forEach(b=>b.addEventListener("click",()=>toast("その機能は物語では使わないよ")));
   return;}
@@ -2401,9 +2405,9 @@ function renderTT(){const el=$("#tt-feed");
  <video class="bgv${p.wide?" wide":""}" id="ttv-${ai}" src="${p.video}" poster="${p.poster}" muted loop playsinline preload="${ix===0?'auto':'metadata'}"></video>
  <div class="grad"></div><div class="tt-top"><span class="live">LIVE</span><span>フォロー中</span><span class="on">おすすめ</span><span class="srch" data-ttsearch>${ic("search","s21")}</span></div>
  <button class="tt-mute" data-mute="${ai}" aria-label="ミュート切替">${ic("volx","s19")}</button>
- <div class="tt-rail"><span><img class="tav" src="assets/group.jpg"><span class="plus" style="display:flex">＋</span></span>
+ <div class="tt-rail"><span data-ttprof role="button" aria-label="プロフィールを開く"><img class="tav" src="assets/group.jpg"><span class="plus" style="display:flex">＋</span></span>
  <button class="rb" data-ttlike="${ai}"><span class="ric ${liked?"liked":""}">${ic("heart","s28")}</span><span class="rct">${fmtTT(likes)}</span></button>
- <button class="rb" data-ttcmt="${ai}"><span class="ric">${ic("cmt","s28")}</span>${fmtTT(p.cmts)}</button>
+ <button class="rb" data-ttcmt="${ai}"><span class="ric">${ic("cmt","s28")}</span>${fmtTT(ttCmtTotal(p,ai))}</button>
  <button class="rb" data-ttsave="${ai}"><span class="ric" style="${saved?"color:#facc15":""}">${ic(saved?"bmk-f":"bmk","s26")}</span>${fmtTT((p.saves||0)+(saved?1:0))}</button>
  <button class="rb" data-ttshare2="${ai}"><span class="ric">${ic("send","s26")}</span>${fmtTT(p.shares)}</button>
  <span class="tt-disc" data-disc="${ai}"><img src="assets/group.jpg"></span></div>
@@ -2414,6 +2418,7 @@ function renderTT(){const el=$("#tt-feed");
  <div class="tt-prog"><i id="ttpg-${ai}"></i></div></div>`;}).join("");
  el.querySelectorAll("[data-ttlike]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const i=b.dataset.ttlike;S.likedTT[i]=!S.likedTT[i];if(S.likedTT[i])sfx("like");save();renderTT();}));
  el.querySelectorAll("[data-ttcmt]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();openTTComments(+b.dataset.ttcmt);}));
+ el.querySelectorAll("[data-ttprof]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();ttView="prof";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="prof"));renderTT();}));
  el.querySelectorAll("[data-ttsave]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const i=b.dataset.ttsave;S.savedTT=S.savedTT||{};S.savedTT[i]=!S.savedTT[i];save();toast(S.savedTT[i]?"保存したよ":"保存を取り消したよ");renderTT();}));
  el.querySelectorAll("[data-ttsearch]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();ttView="search";ttQuery="";renderTT();const i2=$("#tts-in");if(i2)i2.focus();}));
  el.querySelectorAll("[data-ttshare2]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();openTTShare(+b.dataset.ttshare2);}));
@@ -2430,24 +2435,26 @@ $$("#v-tt .tt-tabs button").forEach(b=>b.addEventListener("click",()=>{const t=b
  if(t==="home"||t==="prof"||t==="discover"){$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x===b));ttView=t==="prof"?"prof":(t==="discover"?"disc":"feed");renderTT();}
  else toast("そのタブは物語では使わないよ");}));
 /* ================= X ================= */
-let xTab="feed";let xView="feed";let xProfTab="posts";let xFol=true;
+let xTab="feed";let xView="feed";let xProfTab="posts";
 const XHEAT={};function parseCnt(s){if(!s)return 0;const v=parseFloat(String(s).replace(/,/g,""));return String(s).includes("万")?Math.round(v*10000):(v||0);}
 function xBadge(){return '<span class="xbadge gold">'+ic("badge")+'</span>';}
-function xPostHTML(p,idx,post,heat){return `<div class="xpost"><img class="xav" src="${p.av}" data-xav="${esc(p.handle)}"><div class="xb"><div class="xh"><b>${esc(p.user)}</b>${p.handle==="@nctwish_jp"?xBadge():""}<span>${esc(p.handle)} ・ ${esc(p.time)}</span><span class="xdots">•••</span></div><div class="xt">${esc(p.text)}</div>${p.img?`<img class="ximg" src="${p.img}">`:""}<div class="xa"><span>${ic("cmt","s17")} <b>${esc(p.cm||"―")}</b></span><span>${ic("repeat","s17")} <b>${esc(p.rp)}</b></span><span>${ic("heart-o","s17")} <b ${heat?`data-xlk="${idx}"`:""}>${heat?fmtLikes(parseCnt(p.lk)+(XHEAT[idx]||0)):esc(p.lk)}</b></span><span>${ic("chart","s17")}</span><button class="xbmkb ${S.xbmk&&S.xbmk[xKey(p)]?"on":""}" data-xbmk="${xKey(p)}" aria-label="ブックマーク">${ic(S.xbmk&&S.xbmk[xKey(p)]?"bmk-f":"bmk","s17")}</button><span>${ic("upload","s17")}</span></div></div></div>`;}
+function xPostHTML(p,idx,post,heat){const key=xKey(p);const liked=!!(S.xLikes&&S.xLikes[key]);const rped=!!(S.xReposts&&S.xReposts[key]);const lkN=parseCnt(p.lk)+(heat?(XHEAT[idx]||0):0)+(liked?1:0);const rpN=parseCnt(p.rp)+(rped?1:0);return `<div class="xpost"><img class="xav" src="${p.av}" data-xav="${esc(p.handle)}"><div class="xb"><div class="xh"><b>${esc(p.user)}</b>${p.handle==="@nctwish_jp"?xBadge():""}<span>${esc(p.handle)} ・ ${esc(p.time)}</span><span class="xdots">•••</span></div><div class="xt">${esc(p.text)}</div>${p.img?`<img class="ximg" src="${p.img}">`:""}<div class="xa"><span>${ic("cmt","s17")} <b>${esc(p.cm||"―")}</b></span><span class="xact${rped?" on-rp":""}" data-xrp="${key}" role="button" aria-label="リポスト">${ic("repeat","s17")} <b>${fmtLikes(rpN)}</b></span><span class="xact${liked?" on-like":""}" data-xlike="${key}" role="button" aria-label="いいね">${ic(liked?"heart":"heart-o","s17")} <b ${heat?`data-xlk="${idx}"`:""}>${fmtLikes(lkN)}</b></span><span>${ic("chart","s17")}</span><button class="xbmkb ${S.xbmk&&S.xbmk[xKey(p)]?"on":""}" data-xbmk="${xKey(p)}" aria-label="ブックマーク">${ic(S.xbmk&&S.xbmk[xKey(p)]?"bmk-f":"bmk","s17")}</button><span>${ic("upload","s17")}</span></div></div></div>`;}
 function xKey(p){return p.handle+"|"+p.time;}
 function bindXAv(root){root.querySelectorAll("[data-xav]").forEach(a=>a.addEventListener("click",()=>{if(a.dataset.xav==="@nctwish_jp"){xView="prof";xTab="feed";renderX();}else toast("このアカウントのプロフィールは物語では開かないよ");}));}
 function bindXBmk(root){root.querySelectorAll("[data-xbmk]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const k=b.dataset.xbmk;S.xbmk=S.xbmk||{};if(S.xbmk[k])delete S.xbmk[k];else S.xbmk[k]=1;save();renderX();toast(S.xbmk[k]?"ブックマークに追加したよ":"ブックマークを取り消したよ");}));}
+/* v42: X like/repost are real toggles, persisted (xLikes/xReposts) */
+function bindXActs(root){root.querySelectorAll("[data-xlike]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const k=b.dataset.xlike;S.xLikes=S.xLikes||{};if(S.xLikes[k])delete S.xLikes[k];else{S.xLikes[k]=1;sfx("like");}save();renderX();}));root.querySelectorAll("[data-xrp]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const k=b.dataset.xrp;S.xReposts=S.xReposts||{};if(S.xReposts[k])delete S.xReposts[k];else S.xReposts[k]=1;save();renderX();}));}
 let xQuery="";
 function xAllPosts(post){return post?X_POSTS_POST:X_POSTS_PRE.filter(p=>(p.after||0)<=S.scene);}
 function xSearchResHTML(post){const q=xQuery.trim();const all=xAllPosts(post);const toks=q.split(/\s+/).filter(Boolean);const res=toks.length?all.filter(p=>toks.every(t=>(p.text+p.user+p.handle).includes(t))):all;return res.length?res.map(p=>xPostHTML(p,all.indexOf(p),post,false)).join(""):`<div class="locknote">「${esc(q)}」に一致するポストはないよ</div>`;}
 function renderXSearch(el,post){const tr=post?X_TRENDS_POST:(S.scene>=3?X_TRENDS_PRE:X_TRENDS_SEOUL);
  el.innerHTML=`<div class="xs-head"><button class="xs-back" id="xs-back" aria-label="戻る">‹</button><label class="xs-inwrap">${ic("search","s15")}<input id="xs-in" type="text" placeholder="検索" value="${esc(xQuery)}" autocomplete="off"></label></div><div class="xs-chips">${tr.map(t=>`<button data-xsq="${esc(t[1])}">${esc(t[1])}</button>`).join("")}</div><div id="xs-res">${xSearchResHTML(post)}</div>`;
  $("#xs-back").addEventListener("click",()=>{xView="feed";renderX();});
- const inp=$("#xs-in");inp.addEventListener("input",()=>{xQuery=inp.value;const r=$("#xs-res");if(r){r.innerHTML=xSearchResHTML(post);bindXBmk(r);bindXAv(r);}});
+ const inp=$("#xs-in");inp.addEventListener("input",()=>{xQuery=inp.value;const r=$("#xs-res");if(r){r.innerHTML=xSearchResHTML(post);bindXBmk(r);bindXAv(r);bindXActs(r);}});
  el.querySelectorAll("[data-xsq]").forEach(b=>b.addEventListener("click",()=>{xQuery=b.dataset.xsq;renderXSearch(el,post);const i2=$("#xs-in");if(i2)i2.focus();}));
- bindXBmk(el);bindXAv(el);}
+ bindXBmk(el);bindXAv(el);bindXActs(el);}
 function renderX(){const el=$("#x-body");const post=S.scene>=7;if(window._xT){clearInterval(window._xT);window._xT=null;}
- if(xView==="prof"){const offs=X_POSTS_PRE.filter(p=>p.handle==="@nctwish_jp");
+ if(xView==="prof"){const offs=X_POSTS_PRE.filter(p=>p.handle==="@nctwish_jp"&&(p.after||0)<=S.scene);const xFol=S.xFol!==false;
   let xbody="";
   if(xProfTab==="media"){const pl=offs.filter(p=>p.img);xbody=pl.length?pl.map(p=>xPostHTML(p,0,false,false)).join(""):`<div class="locknote">メディア付きの投稿はまだありません</div>`;}
   else if(xProfTab==="reply"){xbody=`<div class="x-empty"><b>返信はまだありません</b><span>@nctwish_jp の返信がここに表示されます</span></div>`;}
@@ -2455,17 +2462,17 @@ function renderX(){const el=$("#x-body");const post=S.scene>=7;if(window._xT){cl
   else{xbody=offs.map(p=>xPostHTML(p,0,false,false)).join("");}
   el.innerHTML=`<button class="xprof-back" id="xprof-back">‹ タイムラインへ</button><img class="xprof-banner" src="assets/stage2.jpg"><div class="xprof-main"><div class="xprof-avrow"><img class="xprof-av" src="assets/group.jpg" alt=""><button class="xprof-folbtn${xFol?"":" off"}" id="x-fol">${xFol?"フォロー中":"フォローする"}</button></div><div class="xprof-name">NCT WISH 公式 ${xBadge()}</div><div class="xprof-handle">@nctwish_jp</div><div class="xprof-bio">NCT WISH 公式アカウント💫<br>2nd TOUR『INTO THE WISH : Face Our WISH』開催中</div><div class="xprof-meta">日本 ・ nctwish.jp ・ 2023年11月から利用しています</div><div class="xprof-fol"><b>12</b> フォロー中　<b>486万</b> フォロワー</div></div><div class="xprof-tabs"><span class="${xProfTab==="posts"?"on":""}" data-xptab="posts">投稿</span><span class="${xProfTab==="reply"?"on":""}" data-xptab="reply">返信</span><span class="${xProfTab==="media"?"on":""}" data-xptab="media">メディア</span><span class="${xProfTab==="like"?"on":""}" data-xptab="like">いいね</span></div>`+xbody;
   $("#xprof-back").addEventListener("click",()=>{xView="feed";renderX();});
-  const xf=$("#x-fol");xf.addEventListener("click",()=>{xFol=!xFol;xf.textContent=xFol?"フォロー中":"フォローする";xf.classList.toggle("off",!xFol);toast(xFol?"フォローしたよ":"フォローを解除したよ");});
+  const xf=$("#x-fol");xf.addEventListener("click",()=>{S.xFol=(S.xFol===false);save();const xFol=S.xFol;xf.textContent=xFol?"フォロー中":"フォローする";xf.classList.toggle("off",!xFol);toast(xFol?"フォローしたよ":"フォローを解除したよ");});
   el.querySelectorAll("[data-xptab]").forEach(s=>s.addEventListener("click",()=>{const t=s.dataset.xptab;{xProfTab=t;renderX();}}));
-  bindXBmk(el);
+  bindXBmk(el);bindXActs(el);
   el.scrollTop=0;return;}
  if(xView==="search"){renderXSearch(el,post);return;}
  if(xTab==="trend"){const tr=post?X_TRENDS_POST:(S.scene>=3?X_TRENDS_PRE:X_TRENDS_SEOUL);el.innerHTML=`<button class="x-search" id="x-search-open">${ic("search")} 検索</button><div style="padding:12px 16px 4px;font-size:16px;font-weight:900">トレンド</div>`+tr.map(t=>`<div class="trend ${post&&t[1].includes("熱愛")?"hot":""}"><div class="tk">${esc(t[0])} ・ トレンド</div><div class="tt2">${esc(t[1])}</div><div class="tc">${esc(t[2])}</div></div>`).join("");const _so=$("#x-search-open");if(_so)_so.addEventListener("click",()=>{xView="search";renderX();});return;}
- if(xTab==="bmk"){const all=X_POSTS_POST.concat(X_POSTS_PRE);const mine=all.filter(p=>S.xbmk&&S.xbmk[xKey(p)]);el.innerHTML=mine.length?mine.map(p=>xPostHTML(p,0,false,false)).join(""):`<div class="locknote">ブックマークしたポストはまだありません<br>ポストのブックマークアイコンから追加できます</div>`;bindXBmk(el);bindXAv(el);return;}
+ if(xTab==="bmk"){const all=X_POSTS_POST.concat(X_POSTS_PRE);const mine=all.filter(p=>S.xbmk&&S.xbmk[xKey(p)]);el.innerHTML=mine.length?mine.map(p=>xPostHTML(p,0,false,false)).join(""):`<div class="locknote">ブックマークしたポストはまだありません<br>ポストのブックマークアイコンから追加できます</div>`;bindXBmk(el);bindXAv(el);bindXActs(el);return;}
  const posts=post?X_POSTS_POST:X_POSTS_PRE.filter(p=>(p.after||0)<=S.scene).sort((a,b)=>(b.after||0)-(a.after||0));const pidx=p=>posts.indexOf(p);
  el.innerHTML=posts.map(p=>xPostHTML(p,pidx(p),post,post)).join("")+`<div class="locknote">${post?"炎上中 ― 数値はまだ増え続けている":"平和なタイムライン。……今のところは"}</div>`;
- bindXAv(el);bindXBmk(el);
- if(post){window._xT=setInterval(()=>{if(!document.querySelector("#v-x.on")){clearInterval(window._xT);window._xT=null;return;}const i=Math.floor(Math.random()*X_POSTS_POST.length);XHEAT[i]=(XHEAT[i]||0)+Math.floor(800+Math.random()*3400);const b=el.querySelector(`[data-xlk="${i}"]`);if(b)b.textContent=fmtLikes(parseCnt(X_POSTS_POST[i].lk)+XHEAT[i]);},2600);}}
+ bindXAv(el);bindXBmk(el);bindXActs(el);
+ if(post){window._xT=setInterval(()=>{if(!document.querySelector("#v-x.on")){clearInterval(window._xT);window._xT=null;return;}const i=Math.floor(Math.random()*X_POSTS_POST.length);XHEAT[i]=(XHEAT[i]||0)+Math.floor(800+Math.random()*3400);const b=el.querySelector(`[data-xlk="${i}"]`);if(b)b.textContent=fmtLikes(parseCnt(X_POSTS_POST[i].lk)+XHEAT[i]+((S.xLikes&&S.xLikes[xKey(X_POSTS_POST[i])])?1:0));},2600);}}
 function setXTab(t){xTab=t;xView="feed";$("#x-tab-feed").classList.toggle("on",t==="feed");$("#x-tab-trend").classList.toggle("on",t==="trend");$("#x-tab-bmk").classList.toggle("on",t==="bmk");renderX();}
 $("#x-tab-trend").addEventListener("click",()=>setXTab("trend"));
 $("#x-tab-feed").addEventListener("click",()=>setXTab("feed"));
@@ -2640,7 +2647,10 @@ $("#sheet-input").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isCompos
 const CMT_EXTRA=[["wish_daily","現地で見てたけど本当にすごかった…"],["sakuya_thoughts","言葉選びが今日も素敵"],["wish_archive","保存しました📌"]];
 function igCapRow(post){const av=post.ini?`<span class="sc-av">${esc(post.ini)}</span>`:`<img class="sc-av" src="assets/group.jpg" style="object-fit:cover">`;return `<div class="sc-row cap-first">${av}<div class="sc-main"><b>${esc(post.user)}</b> <span>${esc(post.cap)}</span><div class="sc-meta"><span>${esc(post.time||"")}</span></div></div></div>`;}
 function openIGComments(id){const post=IG_POSTS.find(x=>x.id===id)||TAGGED_POSTS.find(x=>x.id===id);if(!post)return;const extra=IG_POSTS.indexOf(post)>=0?CMT_EXTRA:[];const items=post.cm.concat(extra);openSheet("コメント",items,v=>{post.cm.push(["nao",v]);$("#sheet-body").innerHTML=igCapRow(post)+post.cm.concat(extra).map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;});$("#sheet-body").insertAdjacentHTML("afterbegin",igCapRow(post));}
-function openTTComments(i){const post=TT_POSTS[i];if(!post)return;openSheet(fmtTT(post.cmts)+"件のコメント",post.cm,v=>{post.cm.push(["nao",v]);$("#sheet-body").innerHTML=post.cm.map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;});}
+/* v42: TT comments — own posts persist (ttCmts) and counts include them */
+function ttMyCmts(ai){const a=S.ttCmts&&S.ttCmts[ai];return Array.isArray(a)?a.filter(x=>typeof x==="string"):[];}
+function ttCmtTotal(p,ai){return (p.cmts||0)+ttMyCmts(ai).length;}
+function openTTComments(i){const post=TT_POSTS[i];if(!post)return;const items=()=>post.cm.concat(ttMyCmts(i).map(t=>["nao",t]));openSheet(fmtTT(ttCmtTotal(post,i))+"件のコメント",items(),v=>{S.ttCmts=S.ttCmts||{};if(!Array.isArray(S.ttCmts[i]))S.ttCmts[i]=[];S.ttCmts[i].push(v);save();$("#sheet-body").innerHTML=items().map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;const sh=$("#sheet-head");if(sh&&sh.childNodes[0])sh.childNodes[0].textContent=fmtTT(ttCmtTotal(post,i))+"件のコメント";const cb=document.querySelector('[data-ttcmt="'+i+'"]');if(cb)Array.from(cb.childNodes).forEach(n=>{if(n.nodeType===3)n.textContent=fmtTT(ttCmtTotal(post,i));});});}
 function openIGActivity(){const posts=IG_POSTS.slice(0,S.ig);const rows=posts.slice().reverse().map(p=>lkRow(p.img,"","nctwish_official","新しい投稿をシェアしました ・ "+p.time,false)).join("");sheetList("アクティビティ",rows||`<div class="locknote">新しいアクティビティはないよ</div>`);}
 function openIGSuggest(){const rows=FAN_ACC.map(a=>lkRow("","W",a[0],a[1]+" ・ おすすめ",true)).join("")+`<div class="locknote">おすすめ＝フォロワーや投稿の傾向から表示されるアカウント（実物仕様）。物語の相手は公式アカウントだけだよ</div>`;sheetList("おすすめ",rows);}
 function openIGDM(){sheetList("メッセージ",`<div class="sc-row"><img class="av" src="assets/group.jpg" style="width:44px;height:44px"><div class="sc-main"><b>nctwish_official</b> ${VB}<div style="color:#8e8e93;font-size:12px;margin-top:1px">公式アカウント ・ DMは受け付けていません</div></div></div><div class="locknote">公式アカウントはDMを受け付けていないよ（物語の連絡はLINEだよ）</div>`);}
