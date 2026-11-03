@@ -1582,7 +1582,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v47.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v48.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -2051,7 +2051,7 @@ function sfx(name){if(!S.snd||!S.snd.on)return;if(!sfxCtx())return;const base=(t
 }
 function buzz(p){if(S.snd&&S.snd.vib&&navigator.vibrate){try{navigator.vibrate(p);}catch(e){}}}
 let _ringT=null;
-function ringStart(){ringStop();const cyc=()=>{sfx("ring");buzz([280,160,280]);};cyc();_ringT=setInterval(cyc,2400);}
+function ringStart(){ringStop();const cyc=()=>{if(document.hidden)return;sfx("ring");buzz([280,160,280]);};cyc();_ringT=setInterval(cyc,2400);}
 function ringStop(){if(_ringT){clearInterval(_ringT);_ringT=null;}if(navigator.vibrate){try{navigator.vibrate(0);}catch(e){}}}
 function esc(s){if(s===undefined||s===null)return "";return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
 function avHTML(key,size,sq){const m=M[key];if(m&&m.av)return `<img class="${sq?"avsq":"av"}" src="${m.av}" style="width:${size}px;height:${size}px" alt="">`;return `<span class="sil" style="width:${size}px;height:${size}px;background:${m?m.c:"#999"};font-size:${Math.round(size*0.38)}px">${m?m.n[0]:"?"}</span>`;}
@@ -2539,9 +2539,9 @@ function openNews(n){const key=newsKey(n);const baseCmts=n===NEWS_SCOOP?NCMT_SCO
  const _nsh=$("#news-body [data-nshare]");if(_nsh)_nsh.addEventListener("click",()=>{ttCopyLink(location.href.split("#")[0],"記事のリンクをコピーしたよ");});
  const _nbk=$("#news-body [data-nbmk]");if(_nbk)_nbk.addEventListener("click",()=>{S.newsBmk=S.newsBmk||{};if(S.newsBmk[key])delete S.newsBmk[key];else S.newsBmk[key]=1;save();openNews(n);toast(S.newsBmk[key]?"保存したよ":"保存を取り消したよ");});
  const _ncm=$("#news-body [data-ncmt]");if(_ncm)_ncm.addEventListener("click",()=>{const t=document.querySelector(".ncmt-h")||$("#ncmt-in");if(t)t.scrollIntoView({block:"center"});const i2=$("#ncmt-in");if(i2)i2.focus();});
- $$("#news-body [data-nlike]").forEach(b=>b.addEventListener("click",()=>{S.newsLikes=S.newsLikes||{};const lk=key+":"+b.dataset.nlike;const base=parseInt(b.dataset.base||"0",10)||0;if(S.newsLikes[lk])delete S.newsLikes[lk];else S.newsLikes[lk]=1;save();const on=!!S.newsLikes[lk];b.classList.toggle("on",on);b.innerHTML=ic(on?"heart":"heart-o")+" "+(base+(on?1:0));}));
+ $$("#news-body [data-nlike]").forEach(b=>b.addEventListener("click",()=>{S.newsLikes=S.newsLikes||{};const lk=key+":"+b.dataset.nlike;const base=parseInt(b.dataset.base||"0",10)||0;if(S.newsLikes[lk])delete S.newsLikes[lk];else{S.newsLikes[lk]=1;sfx("like");}save();const on=!!S.newsLikes[lk];b.classList.toggle("on",on);b.innerHTML=ic(on?"heart":"heart-o")+" "+(base+(on?1:0));}));
  $$("#news-body [data-nreply]").forEach(b=>b.addEventListener("click",()=>{const i2=$("#ncmt-in");if(i2){i2.scrollIntoView({block:"center"});i2.focus();}}));
- const _nsd=$("#ncmt-send");if(_nsd)_nsd.addEventListener("click",()=>{const i2=$("#ncmt-in");const v=i2?i2.value.trim():"";if(!v)return;S.newsCmts=S.newsCmts||{};(S.newsCmts[key]=S.newsCmts[key]||[]).push(v);save();openNews(n);setTimeout(()=>{const h=document.querySelector(".ncmt-h");if(h)h.scrollIntoView({block:"start"});},40);});
+ const _nsd=$("#ncmt-send");if(_nsd)_nsd.addEventListener("click",()=>{const i2=$("#ncmt-in");const v=i2?i2.value.trim():"";if(!v)return;S.newsCmts=S.newsCmts||{};(S.newsCmts[key]=S.newsCmts[key]||[]).push(v);save();sfx("send");openNews(n);setTimeout(()=>{const h=document.querySelector(".ncmt-h");if(h)h.scrollIntoView({block:"start"});},40);});
  const _nin=$("#ncmt-in");if(_nin)_nin.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing&&e.keyCode!==229&&$("#ncmt-send"))$("#ncmt-send").click();});$("#news-body").querySelectorAll("[data-rel]").forEach(b=>b.addEventListener("click",()=>openNews(rel[+b.dataset.rel])));$("#news-body").scrollTop=0;}
 /* ================= CALENDAR ================= */
 function calMonth(y,m,events,td){const first=new Date(y,m-1,1).getDay(),days=new Date(y,m,0).getDate();let cells=["日","月","火","水","木","金","土"].map(d=>`<div class="dw">${d}</div>`).join("");for(let i=0;i<first;i++)cells+=`<div class="cd dim"></div>`;for(let d=1;d<=days;d++){const ev=events[d];cells+=`<div class="cd${td&&td[0]===m&&td[1]===d?" today":""}"><b>${d}</b>${ev?ev.map(e=>`<span class="ev ${e[1]}">${e[0]}</span>`).join(""):""}</div>`;}return `<div class="cal-grid">${cells}</div>`;}
@@ -2655,7 +2655,7 @@ function storyNav(d){const n=storyIdx+d;if(n<0){closeStory();return;}if(n>=story
 $("#story-x").addEventListener("click",ev=>{ev.stopPropagation();closeStory();});
 $("#story-next").addEventListener("click",()=>storyNav(1));
 $("#story-prev").addEventListener("click",()=>storyNav(-1));
-$("#story-heart").addEventListener("click",ev=>{ev.stopPropagation();const b=$("#story-heart");const on=b.classList.toggle("liked");b.innerHTML=on?ic("heart","s26"):ic("heart-o","s26");if(on)toast("いいねを送ったよ");});
+$("#story-heart").addEventListener("click",ev=>{ev.stopPropagation();const b=$("#story-heart");const on=b.classList.toggle("liked");b.innerHTML=on?ic("heart","s26"):ic("heart-o","s26");if(on){sfx("like");toast("いいねを送ったよ");}});
 function storySendMsg(){const inp=$("#story-reply-in");if(inp&&inp.value.trim()){inp.value="";toast("メッセージを送信したよ");}}
 $("#story-send").addEventListener("click",ev=>{ev.stopPropagation();storySendMsg();});
 $("#story-reply-in").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing&&e.keyCode!==229)storySendMsg();});
@@ -2664,7 +2664,7 @@ $("#story-reply-in").addEventListener("click",ev=>ev.stopPropagation());
 let _sheetSend=null;
 const SC_TIMES=["2時間前","4時間前","6時間前","9時間前","13時間前","1日前"];
 function sheetRow(c,i){i=i||0;const ini=c[0]==="nao"?"N":c[0][0].toUpperCase();const lk=(c[0].length*37+i*13)%180;return `<div class="sc-row"><span class="sc-av" style="${c[0]==="nao"?"background:#06c755":""}">${ini}</span><div class="sc-main"><b>${esc(c[0])}</b> <span>${esc(c[1])}</span><div class="sc-meta"><span>${SC_TIMES[i%SC_TIMES.length]}</span><span>いいね！${lk}件</span><button class="sc-reply" data-reply="${esc(c[0])}">返信する</button></div></div><button class="sc-heart" aria-label="いいね">${ic("heart-o","s17")}</button></div>`;}
-document.addEventListener("click",e=>{const h=e.target.closest(".sc-heart");if(h){const on=h.classList.toggle("liked");h.innerHTML=ic(on?"heart":"heart-o","s17");return;}const eb=e.target.closest("[data-emo]");if(eb){const inp=$("#sheet-input");if(inp){inp.value+=eb.dataset.emo;inp.focus();}return;}const rp=e.target.closest("[data-reply]");if(rp){const inp=$("#sheet-input");if(inp){inp.value="@"+rp.dataset.reply+" ";inp.focus();}return;}const f=e.target.closest(".lk-fol");if(f){const off=f.classList.toggle("off");f.textContent=off?"フォローする":"フォロー中";}});
+document.addEventListener("click",e=>{const h=e.target.closest(".sc-heart");if(h){const on=h.classList.toggle("liked");h.innerHTML=ic(on?"heart":"heart-o","s17");if(on)sfx("like");return;}const eb=e.target.closest("[data-emo]");if(eb){const inp=$("#sheet-input");if(inp){inp.value+=eb.dataset.emo;inp.focus();}return;}const rp=e.target.closest("[data-reply]");if(rp){const inp=$("#sheet-input");if(inp){inp.value="@"+rp.dataset.reply+" ";inp.focus();}return;}const f=e.target.closest(".lk-fol");if(f){const off=f.classList.toggle("off");f.textContent=off?"フォローする":"フォロー中";}});
 const FAN_ACC=[["wish_daily","ウィシズニ"],["sakuya_thoughts","サクヤの言葉を集める人"],["wish_archive","公演アーカイブ"],["ispy_fan","I SPY期から応援"],["color_fan","COLOR期ペン"],["dance_cover_jp","振りコピ勢"]];
 function sheetList(title,rows){const _sh=$("#sheet");clearTimeout(_sh._ct);_sh.classList.remove("bye");$("#sheet-head").childNodes[0].textContent=title;$("#sheet-body").innerHTML=rows;$("#sheet").classList.add("on","nopost");$("#sheet").classList.remove("emo");$("#sheet-body").scrollTop=0;}
 const EMOQ=["❤️","🙌","🔥","👏","😢","😍","😮","😂"];
@@ -2676,7 +2676,7 @@ function openSheet(title,items,onSend){const _sh=$("#sheet");clearTimeout(_sh._c
 function closeSheet(){const sh=$("#sheet");if(!sh.classList.contains("on"))return;sh.classList.add("bye");clearTimeout(sh._ct);sh._ct=setTimeout(()=>{sh.classList.remove("on","bye");},190);}
 $("#sheet").addEventListener("click",e=>{if(e.target.id==="sheet")closeSheet();});
 $("#sheet-x").addEventListener("click",closeSheet);
-$("#sheet-send").addEventListener("click",()=>{const inp=$("#sheet-input");const v=inp.value.trim();if(!v)return;inp.value="";if(_sheetSend)_sheetSend(v);inp.focus();});
+$("#sheet-send").addEventListener("click",()=>{const inp=$("#sheet-input");const v=inp.value.trim();if(!v)return;inp.value="";if(_sheetSend){_sheetSend(v);sfx("send");}inp.focus();});
 $("#sheet-input").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing&&e.keyCode!==229)$("#sheet-send").click();});
 const CMT_EXTRA=[["wish_daily","現地で見てたけど本当にすごかった…"],["sakuya_thoughts","言葉選びが今日も素敵"],["wish_archive","保存しました📌"]];
 function igCapRow(post){const av=post.ini?`<span class="sc-av">${esc(post.ini)}</span>`:`<img class="sc-av" src="assets/group.jpg" style="object-fit:cover">`;return `<div class="sc-row cap-first">${av}<div class="sc-main"><b>${esc(post.user)}</b> <span>${esc(post.cap)}</span><div class="sc-meta"><span>${esc(post.time||"")}</span></div></div></div>`;}
@@ -2747,7 +2747,7 @@ function renderHT(){const el=$("#ht-body");$$("#ht-tabs button").forEach(b=>b.cl
   <div class="locknote">モーメンツ＝HelloTalkのタイムライン。投稿には言語タグが付き、翻訳・訂正がその場で使える（実物仕様）。<br>なおは彼のこの投稿を見つけて、メッセージを送った。</div>`;
   const tb=el.querySelector("[data-trm]");if(tb)tb.addEventListener("click",()=>{const box=el.querySelector(".tr-box");const on=box.classList.toggle("on");tb.querySelector("span").textContent=on?"翻訳を隠す":"翻訳を見る";});
   const mb=$("#ht-mo-msg");if(mb)mb.addEventListener("click",openHTChat);
-  el.querySelectorAll("[data-molike]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.molike;S.moLike=S.moLike||{};if(S.moLike[id])delete S.moLike[id];else S.moLike[id]=1;save();renderHT();}));
+  el.querySelectorAll("[data-molike]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.molike;S.moLike=S.moLike||{};if(S.moLike[id])delete S.moLike[id];else{S.moLike[id]=1;sfx("like");}save();renderHT();}));
   el.querySelectorAll("[data-mocmt]").forEach(b=>b.addEventListener("click",()=>openMoComments(b.dataset.mocmt)));
   const cor1=$("#mo-cor1");if(cor1)cor1.addEventListener("click",()=>toast("訂正はチャットの中で進むよ"));}
  else if(htTab==="search"){
@@ -2853,7 +2853,7 @@ $("#chat-body").addEventListener("contextmenu",e=>{if(cur&&cur.thread==="ht")e.p
 $$("[data-pvtool]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.pvtool;
  if(!pvCtx){toast("写真を開いてから操作してね");return;}
  if(k==="del"){toast("物語の写真は削除できないよ");return;}
- if(k==="fav"){if(pvCtx.t!=="lib"){toast("この写真はお気に入りにできないよ");return;}S.favs=S.favs||{};if(S.favs[pvCtx.i])delete S.favs[pvCtx.i];else S.favs[pvCtx.i]=1;save();updPvFav();toast(S.favs[pvCtx.i]?"お気に入りに追加したよ":"お気に入りを取り消したよ");return;}
+ if(k==="fav"){if(pvCtx.t!=="lib"){toast("この写真はお気に入りにできないよ");return;}S.favs=S.favs||{};if(S.favs[pvCtx.i])delete S.favs[pvCtx.i];else{S.favs[pvCtx.i]=1;sfx("like");}save();updPvFav();toast(S.favs[pvCtx.i]?"お気に入りに追加したよ":"お気に入りを取り消したよ");return;}
  if(k==="share"){openPvShare();return;}
  if(k==="info"){openPvInfo();return;}
 }));
