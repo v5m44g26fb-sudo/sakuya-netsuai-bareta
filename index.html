@@ -1582,7 +1582,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v51.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v52.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -1700,9 +1700,9 @@ const SCENES=[
  {me:"全然大丈夫です。ソウル、初めて来たんですけどごはんが全部おいしくて"},
  {f:"saku",t:"それがいちばんの感想だと思います。……何が一番おいしかったですか"},
  {choice:[
-  {t:"「カンジャンセウ。エビの醤油漬けが忘れられない」と正直に",e:{trust:4},r:[["saku","いいですね。海の味がするやつ。……僕もエビ、好きです"]]},
-  {t:"「パン屋さんが最高だった。朝から3軒はしごした」とパン話を",e:{trust:6},r:[["saku","……！ パンの話、もっと聞かせてください。ソウルのパンは、朝の匂いがするんです"]]},
-  {t:"「まだ決められないくらい全部」と無難に",e:{trust:2},r:[["saku","ふふ、優しい答えですね"]]}
+  {t:"「カンジャンセウ。エビの醤油漬けが忘れられない」と正直に",e:{trust:4},r:[["saku","いいですね。海の味がするやつ。……僕もエビ、好きです"],["saku","海の味、ですか。……その言い方、好きです"]]},
+  {t:"「パン屋さんが最高だった。朝から3軒はしごした」とパン話を",e:{trust:6},r:[["saku","……！ パンの話、もっと聞かせてください。ソウルのパンは、朝の匂いがするんです"],["saku","3軒はしご、ですか。……朝のソウルを、ちゃんと楽しんでますね"]]},
+  {t:"「まだ決められないくらい全部」と無難に",e:{trust:2},r:[["saku","ふふ、優しい答えですね"],["saku","決められない、も立派な感想です。……ゆっくり聞かせてください"]]}
  ]},
  {f:"saku",t:"僕のプロフィール、写真なくて怪しかったですよね"},
  {me:"正直、ちょっとだけ。でも文章が丁寧な人は信用できる気がして"},
@@ -1726,6 +1726,9 @@ const SCENES=[
   {t:"「正直ちょっと怖い。でも会いたい」と本音で",e:{trust:6},r:[["saku","怖がらせてごめんなさい。……でも、本音を言ってくれる人でよかった。無理のない場所にします"]]},
   {t:"「考えさせて」と保留する",e:{trust:-3},r:[["saku","もちろんです。返事はいつでも。……待ってます"]]}
  ]},
+ {f:"saku",t:"明日の今ごろは、知らない人同士じゃなくなってますね"},
+ {me:"……楽しみと、緊張が半分ずつ"},
+ {f:"saku",t:"僕もです。……おやすみなさい、なおさん。良い夢を"},
  {sys:"翌日。指定されたのは、観光客の少ない裏通りの小さなカフェだった"}
 ]},
 {id:"s2",thread:"ht",date:"1月14日(木)",title:"第2話 ― 初めて会う日",ig:1,tt:0,photo:1,memo:{t:"観察メモ② 正体",b:"カフェで待っていたのは、帽子を深く被った同い年くらいの男の子。顔を上げた瞬間、息が止まった。NCT WISHのサクヤ。私の推しが、빵돌이 だった。動揺する私に彼は言った。『驚かせたかったわけじゃない。ただ、先に言葉で知ってほしかった』。"},steps:[
@@ -1736,11 +1739,14 @@ const SCENES=[
  {me:"まって、頭が追いつかない。本物……だよね？ NCT WISHの、サクヤ"},
  {f:"sakuya",t:"はい。……なおさんの好きなグループの、サクヤです"},
  {choice:[
-  {t:"「ファンだって先に言う。隠したくない」と正直に",e:{trust:6},r:[["sakuya","……ありがとうございます。そう言ってもらえると、僕も隠さなくていい"]]},
-  {t:"「ファンとか関係なく、빵돌이 として会いに来た」と伝える",e:{trust:5},r:[["sakuya","빵돌이 として。……その言い方、すごく嬉しいです"]]},
-  {t:"「ごめん、やっぱり無理かも」と席を立とうとする",e:{trust:-4},r:[["sakuya","無理に止めません。……でも一つだけ。今日の紅茶、飲んでからでもいいですか。温かいうちが、おいしいので"]]}
+  {t:"「ファンだって先に言う。隠したくない」と正直に",e:{trust:6},r:[["sakuya","……ありがとうございます。そう言ってもらえると、僕も隠さなくていい"],["sakuya","僕も、もう隠さなくていいんですよね。……楽に、なりました"]]},
+  {t:"「ファンとか関係なく、빵돌이 として会いに来た」と伝える",e:{trust:5},r:[["sakuya","빵돌이 として。……その言い方、すごく嬉しいです"],["sakuya","……その呼び方で呼ばれるの、今日が最後かもしれませんね。少し、寂しいです"]]},
+  {t:"「ごめん、やっぱり無理かも」と席を立とうとする",e:{trust:-4},r:[["sakuya","無理に止めません。……でも一つだけ。今日の紅茶、飲んでからでもいいですか。温かいうちが、おいしいので"],["sakuya","温かいうちに。……急がなくて、いいですよ"]]}
  ]},
  {sys:"結局、閉店まで話した。公演のこと、パンのこと、言葉のこと。彼は画面の中よりずっと静かで、ずっと丁寧だった"},
+ {f:"sakuya",t:"……時間、忘れてました。こんなに長く人と話したの、久しぶりです"},
+ {me:"私も。……ねえ、最後に一つだけ。빵돌이 の名前の由来、聞いてもいい？"},
+ {f:"sakuya",t:"パンが好きな人、って意味です。……単純でしょう"},
  {f:"sakuya",t:"明日と明後日、高尺スカイドームでツアーが始まります。……よかったら、来ませんか。チケットは完売してるけど、僕から渡せる分があって"},
  {me:"え、いいの……？ 私、ただのファンだよ"},
  {f:"sakuya",t:"ただの、じゃないです。言葉で知り合った人です。……ステージの僕も、見てほしい"},
@@ -1755,9 +1761,9 @@ const SCENES=[
  {f:"sakuya",t:"僕もです。客席のどこかになおさんがいるって思うと、いつもより丁寧に歌えました"},
  {f:"sakuya",t:"ねえ、ルールを決めませんか。僕たちのための、約束"},
  {choice:[
-  {t:"「写真は撮らない。会っても短く。嘘だけはつかない」と提案",e:{trust:6,fan:2},r:[["sakuya","……いいルールだと思います。特に最後の。僕、嘘は下手なので助かります"]]},
-  {t:"「連絡は毎日じゃなくていい。無理しない範囲で」と気遣う",e:{trust:4},r:[["sakuya","優しいですね。でも僕は、毎日少しでも声が聞きたい派です"]]},
-  {t:"「ルールより気持ちを大事にしたい」と言う",e:{trust:1,fire:8},r:[["sakuya","気持ちは大事。……でも気持ちだけだと、守れないものもあって。両方、持ちましょう"]]}
+  {t:"「写真は撮らない。会っても短く。嘘だけはつかない」と提案",e:{trust:6,fan:2},r:[["sakuya","……いいルールだと思います。特に最後の。僕、嘘は下手なので助かります"],["sakuya","……約束です。破ったら、パンの奢りで許してもらいます"]]},
+  {t:"「連絡は毎日じゃなくていい。無理しない範囲で」と気遣う",e:{trust:4},r:[["sakuya","優しいですね。でも僕は、毎日少しでも声が聞きたい派です"],["sakuya","……でも、約束がないと僕は毎日送ってしまいそうで。それも、困りますか"]]},
+  {t:"「ルールより気持ちを大事にしたい」と言う",e:{trust:1,fire:8},r:[["sakuya","気持ちは大事。……でも気持ちだけだと、守れないものもあって。両方、持ちましょう"],["sakuya","両方、大事に。……なおさんの言い方、僕は好きです"]]}
  ]},
  {day:"1月21日（木）深夜"},
  {f:"sakuya",t:"起きてますか。……声、聞きたいです"},
@@ -1768,7 +1774,11 @@ const SCENES=[
  {f:"sakuya",t:"はい。「見る」から来てるんです。会えない時間も、相手を見てる、っていう言葉"},
  {f:"sakuya",t:"じゃあ僕も、言葉を一つ探したい。「遠距離」って、遠い、だけじゃない言い方、ありますか"},
  {me:"うーん。「遠距離」は遠距離だよ。でも「遠くて近い」って言い方ならある"},
- {f:"sakuya",t:"遠くて近い。……いいですね。それ、僕たちの単語にします"}
+ {f:"sakuya",t:"遠くて近い。……いいですね。それ、僕たちの単語にします"},
+ {day:"2月半ば"},
+ {f:"sakuya",t:"今日のレッスンは応用編。「また会える日まで」は、다시 만날 날까지"},
+ {me:"だし まんなる なるかじ。……長い。でも、いい言葉だね"},
+ {f:"sakuya",t:"長い言葉は、覚える理由になります。……会える日が、近づいてる証拠です"}
 ]},
 {id:"s4",thread:"sakuya",date:"2月27日(土)",title:"第4話 ― 代々木再会",ig:3,tt:2,photo:3,memo:{t:"観察メモ④ 代々木の客席から",b:"代々木第一体育館、3日間ソールドアウト。私はスタッフでも関係者でもなく、ただの客席の一人。MCで彼が言った。『遠くて近い人がいます』――客席がざわつく中、私だけが意味を知っていた。"},steps:[
  {day:"2027年2月27日（土）― 代々木2日目"},
@@ -1790,7 +1800,9 @@ const SCENES=[
  {sys:"代々木3日間は完売・大盛況で終了。公式SNSの投稿は一晩で200万いいねを超えた"},
  {f:"sakuya",t:"次は神戸ですね。なおさんの街の近く"},
  {me:"うん。GLION ARENA KOBE、3日間とも行くよ。……大阪から近いから、なんだか実感ある"},
- {f:"sakuya",t:"神戸では、海が見えます。……海のそばで、少し長く話せたらいいな"}
+ {f:"sakuya",t:"神戸では、海が見えます。……海のそばで、少し長く話せたらいいな"},
+ {me:"……ねえ、今日のMCのあれ。もう一回だけ言うね。怒ってない。……ありがと"},
+ {f:"sakuya",t:"……はい。神戸では、もっと上手に隠します。なおさんにだけ届くように"}
 ]},
 {id:"s5",thread:"sakuya",date:"3月4日(木)",title:"第5話 ― 神戸前夜",ig:4,tt:2,photo:4,memo:{t:"観察メモ⑤ 神戸前夜の手紙",b:"公演前夜、彼に手紙を書いた。ファンレターじゃない、빵돌이 宛の手紙。『言葉で知り合ったこと、後悔してない』とだけ。返事は短かった。『僕の宝物が増えました』。"},steps:[
  {day:"2027年3月4日（木）― 神戸公演前夜"},
@@ -1808,7 +1820,9 @@ const SCENES=[
  ]},
  {f:"sakuya",t:"明日から3日間、全部のステージになおさんがいますね"},
  {me:"うん、全部行く。最終日は特に、ちゃんと見届ける"},
- {f:"sakuya",t:"じゃあ僕も、全部ちゃんと歌います。……おやすみなさい、なおさん"}
+ {f:"sakuya",t:"じゃあ僕も、全部ちゃんと歌います。……おやすみなさい、なおさん"},
+ {me:"おやすみ。……明日の初日、客席からちゃんと見てるよ"},
+ {f:"sakuya",t:"はい。……見つけます。神戸でも、必ず"}
 ]},
 {id:"s6",thread:"members",date:"3月6日(土)",title:"第6話 ― メンバーに知られた日",ig:4,tt:3,photo:4,memo:{t:"観察メモ⑥ メンバーの温度",b:"神戸2日目、リョウにスマホの待ち受け（手紙の写真）を見られて交際が発覚。シオンは心配しつつ『隠すのを手伝う』と言った。ジェヒの関西弁の上達が異常に早い。ユウシは一言『守れよ』だけ。リクは『応援するけど、食事は奢れ』。"},steps:[
  {day:"2027年3月6日（土）― 神戸2日目・公演後、メンバーのグループLINE"},
@@ -1825,6 +1839,9 @@ const SCENES=[
   {t:"（サクヤの返信案）「まだ誰にも言わないで」とだけ送らせる",e:{trust:0},r:[["riku","言わねえよ。……でもサクヤ、お前は少し顔に出てるぞ"],["sion","分かった。とにかく明日、最終日を無事に終えよう"]]}
  ]},
  {f:"sakuya",t:"みんな、ありがとう。……明日、最終日。僕はちゃんと歌います"},
+ {f:"ryo",t:"で、その手紙の写真の待ち受け、まだ変えてないんやろ？ ……バレバレやで、サクヤ"},
+ {f:"riku",t:"食事の件は本気だからな。……あと、相手の子、泣かすなよ"},
+ {f:"jaehee",t:"うち、応援する側につきます。……関西弁の練習相手も、ついでに探しときますわ"},
  {sys:"その夜、サクヤから個人LINE。「メンバーが味方になってくれた。……明日、海のそばで会いましょう。短く、でもちゃんと」"}
 ]},
 {id:"s7",thread:"sakuya",date:"3月7日(日)",title:"第7話 ― 神戸の夜",ig:5,tt:3,photo:6,fx:{fire:14},memo:{t:"観察メモ⑦ 神戸の夜",b:"最終公演、満員のGLION ARENA KOBE。アンコールで彼は客席を長く見つめていた。公演後、海のそばの暗い道。帽子越しに聞いた『今日も、遠くて近い』という言葉。――その直後、遠くでフラッシュが光った。"},steps:[
@@ -1844,6 +1861,9 @@ const SCENES=[
  {f:"sakuya",t:"……今の、見ましたか"},
  {me:"……気のせい、だよね"},
  {f:"sakuya",t:"帰りましょう。別々に。……ごめんなさい、なおさん"},
+ {f:"sakuya",t:"着きましたか。……僕は今、ホテルに戻りました"},
+ {me:"着いたよ。……ねえ、さっきの、本当に気のせいだよね"},
+ {f:"sakuya",t:"……そう、思いたいです。何かあったら、すぐ連絡します。今日は、もう休んでください"},
  {sys:"翌朝。なおのスマホに、ゆいからのLINEが何十件も届いていた――"}
 ]},
 {id:"s8",thread:"mgr",date:"3月8日(月)",title:"炎上編 ― スクープの朝",ig:5,tt:3,photo:6,fx:{fire:22,fan:-14},call:{who:"mgr",lines:["なおさん、マネージャーの佐伯です。……今朝の記事は見ましたか","NCT WISHサクヤに熱愛報道が出ました。神戸の公演後、海沿いで女性と歩く写真です","事務所は現在、事実確認中です。本人とはこれから話します","なおさんにお願いがあります。SNSへの投稿、知人への説明、一切しないでください。コメントは事務所が一括で出します","……個人的なことを言えば、彼、あんなに穏やかな顔の写真、初めて見ました。でも今は守り方が先です"]},memo:{t:"観察メモ⑧ スクープ",b:"『NCT WISHサクヤ、神戸の夜に一般女性と密会』――週刊誌とネットニュースが一斉に報じた。Xのトレンド1位は『サクヤ 熱愛』。公式IGの最新投稿には、擁護と批判のコメントが同じ速さで増えていく。"},steps:[
@@ -1857,6 +1877,8 @@ const SCENES=[
   {t:"「サクヤは大丈夫ですか」と彼の様子を聞く",e:{trust:3},r:[["mgr","……動揺はしてます。でも、なおさんのことを心配してましたよ"]]}
  ]},
  {f:"mgr",t:"声明の方向性は今日中に決めます。彼の意思を確認してから"},
+ {f:"mgr",t:"あと一つ。彼の携帯は、今は事務所で預かっています。連絡がつかなくても、心配しないでください"},
+ {f:"mgr",t:"……本人からは『なおさんに、無事だと伝えてほしい』と。それだけ、預かりました"},
  {sys:"Xでは「サクヤ 熱愛」がトレンド1位のまま。公式IGのコメント欄は、擁護と批判で溢れている"}
 ]},
 {id:"s9",thread:"yui",date:"3月8日(月)",title:"炎上編 ― 友達のLINE",ig:5,tt:3,photo:6,fx:{fan:3},memo:{t:"観察メモ⑨ ゆいの沈黙",b:"ゆいは写真を見て、私だとすぐ気づいたらしい。でも誰にも言っていない。『あんたの恋は、あんたが決めること』。うるさいくらい騒ぐ子が、今日だけ静かだった。"},steps:[
@@ -1869,7 +1891,9 @@ const SCENES=[
   {t:"「ありがとう。ゆいだけが味方な気がする」と泣きそうに返す",e:{trust:2,fan:2},r:[["yui","味方はあんたの推しもやろ。……ちゃんと守ってもらえよ"]]},
   {t:"「心配かけてごめん」と謝る",e:{fan:2},r:[["yui","謝るのは事務所の人にしとき。私は、お茶でも飲んで待ちなって言いたいだけ"]]}
  ]},
- {f:"yui",t:"とにかく今日はスマホ置きや。見るな、とは言わへんけど、ほどほどにね"}
+ {f:"yui",t:"とにかく今日はスマホ置きや。見るな、とは言わへんけど、ほどほどにね"},
+ {me:"……ありがとう、ゆい。落ち着いたら、全部話す"},
+ {f:"yui",t:"待ってる。……あんたの選んだ人やもん。私も、信じとくわ"}
 ]},
 {id:"s10",thread:"sakuya",date:"3月9日(火)",title:"声明編 ― 翌朝",ig:6,tt:3,photo:6,fx:{fire:-12},memo:{t:"観察メモ⑩ 翌朝の言葉",b:"事務所の声明は、ふたりの言葉で決まった。サクヤは言った。『隠してきたのは、嘘が好きだからじゃない。言葉が届く順番を、間違えたくなかったんです』。"},steps:[
  {day:"2027年3月9日（火）― 翌朝"},
@@ -1878,12 +1902,15 @@ const SCENES=[
  {f:"sakuya",t:"はい。声明の出し方、僕の意思も聞いてもらえました。……だから最後は、ふたりで決めたいんです"},
  {f:"sakuya",t:"なおさんは、どうしたいですか"},
  {choice:[
-  {t:"「公表したい。隠し続けるのは、もう嘘みたいで嫌だ」",e:{trust:6,fan:4,fire:7},act:"public",r:[["sakuya","……分かりました。僕も、同じ気持ちでした。言葉は、僕が選びます。丁寧に、正直に"]]},
-  {t:"「今は静かに。ノーコメントで、時間が解決するのを待とう」",e:{trust:4,fan:6,fire:-6},act:"silent",r:[["sakuya","はい。……騒ぎが収まるまで、会うのは控えましょう。でも、終わりじゃないです"]]},
-  {t:"「距離を置こう。あなたの活動を壊したくない」",e:{trust:0,fan:3},act:"distance",r:[["sakuya","……なおさん。それが本音ですか。……分かりました。今日は、それで進めます"]]}
+  {t:"「公表したい。隠し続けるのは、もう嘘みたいで嫌だ」",e:{trust:6,fan:4,fire:7},act:"public",r:[["sakuya","……分かりました。僕も、同じ気持ちでした。言葉は、僕が選びます。丁寧に、正直に"],["sakuya","手紙、書きます。……長くなっても、読んでください"]]},
+  {t:"「今は静かに。ノーコメントで、時間が解決するのを待とう」",e:{trust:4,fan:6,fire:-6},act:"silent",r:[["sakuya","はい。……騒ぎが収まるまで、会うのは控えましょう。でも、終わりじゃないです"],["sakuya","静かに、でも確かに。……僕たちのやり方で、続けましょう"]]},
+  {t:"「距離を置こう。あなたの活動を壊したくない」",e:{trust:0,fan:3},act:"distance",r:[["sakuya","……なおさん。それが本音ですか。……分かりました。今日は、それで進めます"],["sakuya","……でも、言葉だけは残させてください。いつか、届く順番が来ると信じてます"]]}
  ]},
  {f:"sakuya",t:"どの道でも、一つだけ。ソウルで交わした言葉は、全部本当でした"},
  {me:"うん。私も。……結果が出たら、また連絡して"},
+ {f:"sakuya",t:"はい。……何があっても、午後には全部決まります"},
+ {me:"うん。待ってる。……サクヤの言葉で、出してね"},
+ {f:"sakuya",t:"もちろんです。……言葉は、僕が選びます"},
  {sys:"その日の午後。事務所から声明が出た――"}
 ]}
 ];
@@ -1893,23 +1920,23 @@ const ENDINGS={
  bitter:{t:"ほろ苦いEND ― 距離を置く、という選択",bg:"assets/kobe-night.jpg",tx:"ふたりは距離を置くことを選んだ。\n事務所の声明は簡潔で、炎上はうそのように収まっていった。ツアーは完走し、彼は何事もなかったように笑った。\n――ただ、愛知公演のMCで一度だけ、彼は言った。\n『大事な言葉ほど、届くのに時間がかかる』\nソウルのカフェの紅茶の味を、なおはまだ覚えている。"}
 };
 const IG_POSTS=[
- {id:1,img:"assets/group.jpg",user:"nctwish_official",loc:"Gocheok Sky Dome, Seoul",likes:"2,384,392",cap:"INTO THE WISH : Face Our WISH ― SEOUL 💫 ツアーが始まりました。高尺スカイドーム2日間、皆さんに会えるのを楽しみにしています！",cm:[["wish_archive","開幕おめでとう😭"],["sion_daily","完売公演さすが"]],time:"1月15日"},
- {id:2,img:"assets/sakuya-ig1.jpg",user:"nctwish_official",loc:"Seoul, South Korea",likes:"1,932,774",cap:"SAKUYA 🧸 ソウルの休日。言葉を大事にする人の、静かな一日。",cm:[["sakuya_thoughts","このクマになりたい人生だった"],["wish_jp_fan","サクヤの表情、柔らかくて好き"]],time:"1月18日"},
- {id:3,img:"assets/stage1.jpg",user:"nctwish_official",loc:"国立代々木競技場第一体育館",likes:"2,431,208",cap:"TOKYO DAY1 💫 満員の代々木、ありがとうございました。メントの言葉、一つひとつ届きましたか？",cm:[["wish_archive","代々木最高だった"],["ryo_tonton","遠くて近い、って名言すぎる"]],time:"2月26日"},
- {id:4,video:"assets/video/mv-steady-wide.mp4",img:"assets/stage-steady.jpg",user:"nctwish_official",loc:"Tokyo, Japan",likes:"3,104,556",cap:"リール🎬 『Steady』ステージ映像ダイジェスト。TOKYO 3DAYS完走！ 次は神戸で会いましょう⚓",cm:[["dance_cover_jp","振り完璧すぎる"],["wish_daily","神戸参戦します！"]],time:"2月28日"},
- {id:5,img:"assets/av-sakuya2.jpg",slides:["assets/av-sakuya2.jpg","assets/kobe.jpg"],user:"nctwish_official",loc:"Kobe, Japan",likes:"2,764,913",cap:"KOBE ⚓ 到着しました。リョウ＆サクヤの神戸散策（お菓子は確保済み）。3日間よろしくお願いします！",cm:[["kobe_wish","神戸へようこそ！"],["sakuya_thoughts","同学年コンビ尊い"]],time:"3月5日"},
- {id:6,img:"assets/stage2.jpg",user:"nctwish_official",loc:"GLION ARENA KOBE",likes:"2,958,340",cap:"KOBE FINAL DAY 💫 海のそばのアリーナ、3日間ありがとうございました。ツアーはこのあと福岡・愛知へ続きます。",cm:[["wish_archive","神戸お疲れさまでした😭"],["wish_jp_fan","アンコールの景色忘れない"]],time:"3月7日"}
+ {id:1,img:"assets/group.jpg",user:"nctwish_official",loc:"Gocheok Sky Dome, Seoul",likes:"2,384,392",cap:"INTO THE WISH : Face Our WISH ― SEOUL 💫 ツアーが始まりました。高尺スカイドーム2日間、皆さんに会えるのを楽しみにしています！",cm:[["wish_archive","開幕おめでとう😭"],["sion_daily","完売公演さすが"],["ryo_tonton","開幕の空気、忘れられない"]],time:"1月15日"},
+ {id:2,img:"assets/sakuya-ig1.jpg",user:"nctwish_official",loc:"Seoul, South Korea",likes:"1,932,774",cap:"SAKUYA 🧸 ソウルの休日。言葉を大事にする人の、静かな一日。",cm:[["sakuya_thoughts","このクマになりたい人生だった"],["wish_jp_fan","サクヤの表情、柔らかくて好き"],["wish_daily","静かな日のサクヤもいい"]],time:"1月18日"},
+ {id:3,img:"assets/stage1.jpg",user:"nctwish_official",loc:"国立代々木競技場第一体育館",likes:"2,431,208",cap:"TOKYO DAY1 💫 満員の代々木、ありがとうございました。メントの言葉、一つひとつ届きましたか？",cm:[["wish_archive","代々木最高だった"],["ryo_tonton","遠くて近い、って名言すぎる"],["sakuya_thoughts","メントの言葉、保存しました"]],time:"2月26日"},
+ {id:4,video:"assets/video/mv-steady-wide.mp4",img:"assets/stage-steady.jpg",user:"nctwish_official",loc:"Tokyo, Japan",likes:"3,104,556",cap:"リール🎬 『Steady』ステージ映像ダイジェスト。TOKYO 3DAYS完走！ 次は神戸で会いましょう⚓",cm:[["dance_cover_jp","振り完璧すぎる"],["wish_daily","神戸参戦します！"],["color_fan","Steadyの空気感が好き"]],time:"2月28日"},
+ {id:5,img:"assets/av-sakuya2.jpg",slides:["assets/av-sakuya2.jpg","assets/kobe.jpg"],user:"nctwish_official",loc:"Kobe, Japan",likes:"2,764,913",cap:"KOBE ⚓ 到着しました。リョウ＆サクヤの神戸散策（お菓子は確保済み）。3日間よろしくお願いします！",cm:[["kobe_wish","神戸へようこそ！"],["sakuya_thoughts","同学年コンビ尊い"],["wish_archive","お菓子確保、さすがです"]],time:"3月5日"},
+ {id:6,img:"assets/stage2.jpg",user:"nctwish_official",loc:"GLION ARENA KOBE",likes:"2,958,340",cap:"KOBE FINAL DAY 💫 海のそばのアリーナ、3日間ありがとうございました。ツアーはこのあと福岡・愛知へ続きます。",cm:[["wish_archive","神戸お疲れさまでした😭"],["wish_jp_fan","アンコールの景色忘れない"],["kobe_local","最終日のアンコール、海の風まで覚えてる"]],time:"3月7日"}
 ];
 const TT_POSTS=[
- {g:1,video:"assets/video/mv-poppop.mp4",poster:"assets/group.jpg",user:"nctwish_official",cap:"『poppop』🫧 公式MVクリップ #NCTWISH #poppop #ダンスチャレンジ",music:"poppop - NCT WISH",likes:1842031,cmts:9321,shares:40213,saves:398214,cm:[["wish_jp","かっこよすぎる😭"],["dance_cover_jp","振りコピしました！"],["sakuya_thoughts","poppop大好き"]]},
+ {g:1,video:"assets/video/mv-poppop.mp4",poster:"assets/group.jpg",user:"nctwish_official",cap:"『poppop』🫧 公式MVクリップ #NCTWISH #poppop #ダンスチャレンジ",music:"poppop - NCT WISH",likes:1842031,cmts:9321,shares:40213,saves:398214,cm:[["wish_jp","かっこよすぎる😭"],["dance_cover_jp","振りコピしました！"],["sakuya_thoughts","poppop大好き"],["wish_daily","サビが頭から離れない"]]},
  {g:1,video:"assets/video/tt-ispy-teaser.mp4",poster:"assets/sakuya-ig1.jpg",user:"nctwish_official",cap:"『I SPY』M/V Teaser 🕵️ 10.12 Release #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:1932844,cmts:8431,shares:31208,saves:402317,cm:[["ispy_fan","ティーザーだけで鳥肌…"],["wish_daily","MV本編が楽しみすぎる"]]},
  {g:1,video:"assets/video/tt-short-ispy.mp4",poster:"assets/sakuya-ig1.jpg",user:"nctwish_official",cap:"👀 I SPY 👀 #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:2411907,cmts:10233,shares:44981,saves:512480,cm:[["ispy_fan","サビの中毒性やばい"],["wish_jp","全員ビジュ優勝"]]},
  {g:2,video:"assets/video/mv-color.mp4",poster:"assets/stage-steady.jpg",user:"nctwish_official",cap:"『COLOR』ダンスブレイク🎨 #NCTWISH #COLOR",music:"COLOR - NCT WISH",likes:1204882,cmts:6102,shares:22140,saves:261705,cm:[["color_fan","ダンスブレイク鳥肌"],["wish_archive","COLOR期のビジュ優勝"]]},
  {g:2,video:"assets/video/tt-short-pixelup.mp4",poster:"assets/group.jpg",user:"nctwish_official",cap:"pixel up ˖‧⁺ #SION #YUSHI #SAKUYA #NCTWISH",music:"オリジナル音源 - nctwish_official",likes:986412,cmts:5214,shares:12047,saves:204318,cm:[["wish_archive","年長組と末っ子の空気感が好き"],["sakuya_thoughts","サクヤの表情管理すごい"]]},
  {g:2,video:"assets/video/tt-ispy-mv.mp4",poster:"assets/sakuya-ig1.jpg",user:"nctwish_official",cap:"『I SPY』M/V 🎬 サビの振りに注目 #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:2688419,cmts:11980,shares:50336,saves:573902,cm:[["dance_cover_jp","サビの振り、コピしました"],["ispy_fan","I SPY回してる手が止まらない"]]},
- {g:3,video:"assets/video/mv-ispy.mp4",poster:"assets/sakuya-ig1.jpg",user:"nctwish_official",cap:"『I SPY』🕵️ 最新ミニアルバムから #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:2276510,cmts:12044,shares:51872,saves:486120,cm:[["ispy_fan","I SPYの中毒性やばい"],["wish_daily","サクヤ回、再生が止まらない"]]},
+ {g:3,video:"assets/video/mv-ispy.mp4",poster:"assets/sakuya-ig1.jpg",user:"nctwish_official",cap:"『I SPY』🕵️ 最新ミニアルバムから #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:2276510,cmts:12044,shares:51872,saves:486120,cm:[["ispy_fan","I SPYの中毒性やばい"],["wish_daily","サクヤ回、再生が止まらない"],["dance_cover_jp","サビの振り、練習中です"]]},
  {g:3,video:"assets/video/tt-short-ispy-yujin.mp4",poster:"assets/av-sakuya.jpg",user:"nctwish_official",cap:"I SPY with 한유진 #SAKUYA #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:1755330,cmts:9102,shares:28754,saves:371845,cm:[["wish_daily","他グループのメンバーとのコラボ新鮮"],["sakuya_thoughts","サクヤ、少し緊張してる顔もいい"]]},
- {g:3,wide:true,video:"assets/video/tt-ispy-dance.mp4",poster:"assets/stage1.jpg",user:"nctwish_official",cap:"『I SPY』Dance Practice 🕺 フルフォーメーション #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:1502773,cmts:7645,shares:19830,saves:318660,cm:[["dance_cover_jp","フォーメーション移動が綺麗すぎる"],["wish_archive","練習室ver.が一番好き"]]}
+ {g:3,wide:true,video:"assets/video/tt-ispy-dance.mp4",poster:"assets/stage1.jpg",user:"nctwish_official",cap:"『I SPY』Dance Practice 🕺 フルフォーメーション #NCTWISH #ISPY",music:"I SPY - NCT WISH",likes:1502773,cmts:7645,shares:19830,saves:318660,cm:[["dance_cover_jp","フォーメーション移動が綺麗すぎる"],["wish_archive","練習室ver.が一番好き"],["ispy_fan","練習室の本気度がすごい"]]}
 ];
 const X_TRENDS_SEOUL=[["音楽","#NCTWISH","9.8万件のポスト"],["エンターテイメント","高尺スカイドーム","8.1万件のポスト"],["音楽","#FaceOurWISH","4.2万件のポスト"],["ジャパン","ソウル公演 完売","2.7万件のポスト"],["エンターテイメント","ウィシズニ","1.9万件のポスト"]];
 const X_TRENDS_PRE=[["エンターテイメント","#NCTWISH","12.4万件のポスト"],["音楽","高尺スカイドーム","8.1万件のポスト"],["ジャパン","代々木 完売","5.6万件のポスト"],["音楽","#FaceOurWISH","4.2万件のポスト"],["ジャパン","GLION ARENA KOBE","3.3万件のポスト"]];
@@ -1919,17 +1946,20 @@ const X_POSTS_PRE=[
  {user:"NCT WISH 公式",handle:"@nctwish_jp",av:"assets/group.jpg",time:"1月13日",after:0,text:"『INTO THE WISH : Face Our WISH』いよいよ明後日、ソウル・高尺スカイドームで開幕💫 全席完売、ありがとうございます！ #NCTWISH #FaceOurWISH",img:"assets/stage2.jpg",rp:"3.1万",lk:"15.2万",cm:"9,800"},
  {user:"NCT WISH 公式",handle:"@nctwish_jp",av:"assets/group.jpg",time:"2月28日",after:4,text:"『INTO THE WISH : Face Our WISH』代々木3日間、満員御礼ありがとうございました💫 次は神戸・GLION ARENA KOBE（3/5〜7）でお会いしましょう！ #NCTWISH #FaceOurWISH",img:"assets/stage1.jpg",rp:"4.2万",lk:"18.6万",cm:"1.2万"},
  {user:"ウィッシュ速報",handle:"@wish_news_jp",av:"assets/stage-steady.jpg",time:"3月5日",after:5,text:"NCT WISH、神戸公演初日も完売の大盛況。2026年は『I SPY』初日120万枚など4作連続ミリオン、音楽番組通算12冠と破竹の勢い。",rp:"8,412",lk:"3.9万",cm:"964"},
- {user:"サクヤの言葉bot",handle:"@sakuya_words",av:"assets/av-sakuya.jpg",time:"3月6日",after:6,text:"今日のサクヤの言葉：「遠くて近い人がいます」…代々木MC。誰に向けた言葉なんだろう、ってずっと考えてる",rp:"1.1万",lk:"6.4万",cm:"2,208"}
+ {user:"サクヤの言葉bot",handle:"@sakuya_words",av:"assets/av-sakuya.jpg",time:"3月6日",after:6,text:"今日のサクヤの言葉：「遠くて近い人がいます」…代々木MC。誰に向けた言葉なんだろう、ってずっと考えてる",rp:"1.1万",lk:"6.4万",cm:"2,208"},
+ {user:"神戸のウィシズニ",handle:"@kobe_wishuni",av:"assets/kobe.jpg",time:"3月7日",after:6,text:"神戸最終日、アンコールでサクヤが客席を長く見つめてたのが忘れられない。何か言いたそうで、言わない顔だった",rp:"6,204",lk:"4.1万",cm:"1,102"}
 ];
 const X_POSTS_POST=[
  {user:"芸能速報",handle:"@geino_sokuhou",av:"assets/kobe.jpg",time:"3月8日",text:"【熱愛報道】NCT WISHサクヤ（19）、神戸公演後に一般女性と海沿いデートか。週刊誌が写真付きで報道。事務所は「確認中」。 #サクヤ熱愛",img:"assets/kobe-night.jpg",rp:"12.8万",lk:"9.3万",cm:"4.6万"},
  {user:"ウィッシュ速報",handle:"@wish_news_jp",av:"assets/stage-steady.jpg",time:"3月8日",text:"サクヤ熱愛報道を受け、公式IG最新投稿のコメントは擁護派と批判派で二分。事務所の声明発表待ちの状態が続いている。",rp:"3.6万",lk:"2.1万",cm:"8,931"},
- {user:"サクヤペンの日常",handle:"@sakuya_pen_life",av:"assets/sakuya-selca.jpg",time:"3月8日",text:"複雑な気持ちはある。でも神戸のアンコールで見せた顔が本物だったのも知ってる。本人の言葉を待ちます。 #SakuyaWeLoveYou",rp:"2.2万",lk:"11.4万",cm:"3,877"}
+ {user:"サクヤペンの日常",handle:"@sakuya_pen_life",av:"assets/sakuya-selca.jpg",time:"3月8日",text:"複雑な気持ちはある。でも神戸のアンコールで見せた顔が本物だったのも知ってる。本人の言葉を待ちます。 #SakuyaWeLoveYou",rp:"2.2万",lk:"11.4万",cm:"3,877"},
+ {user:"言葉を待つ人",handle:"@matsu_kotoba",av:"assets/av-sakuya.jpg",time:"3月8日",text:"擁護でも批判でもなく、本人の言葉を待ちたい。あの人は、言葉を雑に使う人じゃないから。 #SakuyaWeLoveYou",rp:"1.8万",lk:"9.6万",cm:"2,431"}
 ];
 const NEWS_PRE=[
  {k:"ツアー",t:"NCT WISH、2ndツアーがソウルで開幕 高尺スカイドーム2日間は完売",m:"スポルティバ芸能部 ・ 1月15日",after:0,body:"NCT WISHの2ndコンサートツアー『INTO THE WISH : Face Our WISH』が、ソウル・高尺スカイドームで開幕した。2日間のチケットは完売し、会場はウィシズニの歓声に包まれた。\n\n日本公演は2月26〜28日に国立代々木競技場第一体育館、3月5〜7日に神戸・GLION ARENA KOBEで開催される。"},
  {k:"ツアー",t:"NCT WISH、2ndツアー日本公演が開幕 代々木・神戸は全日程完売",m:"スポルティバ芸能部 ・ 2月26日",after:3,body:"NCT WISHの2ndコンサートツアー『INTO THE WISH : Face Our WISH』日本公演が、国立代々木競技場第一体育館で開幕した。1月のソウル・高尺スカイドーム公演に続く日本編で、代々木3日間と神戸・GLION ARENA KOBE 3日間は全て完売。\n\n2026年は日本1stミニアルバム『WISHLIST』、韓国1stフル『Ode to Love』（累計約187万枚）、日本シングル『YO-I-DON!』のダブルプラチナ、韓国4thミニ『I SPY』（初日約120万枚）で4作連続ミリオンセラーを記録し、音楽番組1位は通算12冠。若手トップクラスの勢いそのままに、満員の観客を魅了した。\n\nツアーはこの後、福岡・北九州メッセ（3/13〜14）、愛知・ポートメッセなごや（3/21〜22）へと続く。"},
- {k:"コラム",t:"「言葉の人」サクヤ――MCのひと言がファンの心を掴む理由",m:"ミュージックマガジン ・ 3月1日",after:4,body:"NCT WISHの最年少メンバー、サクヤのMCが静かな話題だ。代々木公演で放った「遠くて近い人がいます」という一節は、SNSで何度も引用された。\n\n不思議な感性と丁寧な言葉選び。彼の言葉は短いのに、長く残る。専門家は「飾らない誠実さが、若いファン層の言語感覚に合っている」と分析する。"}
+ {k:"コラム",t:"「言葉の人」サクヤ――MCのひと言がファンの心を掴む理由",m:"ミュージックマガジン ・ 3月1日",after:4,body:"NCT WISHの最年少メンバー、サクヤのMCが静かな話題だ。代々木公演で放った「遠くて近い人がいます」という一節は、SNSで何度も引用された。\n\n不思議な感性と丁寧な言葉選び。彼の言葉は短いのに、長く残る。専門家は「飾らない誠実さが、若いファン層の言語感覚に合っている」と分析する。"},
+ {k:"公演",t:"NCT WISH神戸公演が開幕 GLION ARENA KOBEにウィシズニ集結",m:"スポルティバ芸能部 ・ 3月5日",after:5,body:"NCT WISHの2ndツアー神戸公演が、GLION ARENA KOBEで開幕した。海に面したアリーナには初日から多くのファンが詰めかけ、メンバーは「神戸の海が見える会場は初めて」と笑顔を見せた。\n\n公演は3月7日まで3日間。ツアーはこの後、福岡・愛知へと続く。"}
 ];
 const NEWS_SCOOP={k:"スクープ",t:"NCT WISHサクヤ、神戸の夜に一般女性と「密会」 週刊誌が写真掲載",m:"週刊スコープ ・ 3月8日",img:"assets/kobe-night.jpg",body:"人気グループNCT WISHのサクヤ（19）が、神戸公演最終日の夜、一般女性と海沿いを歩く姿を週刊スコープが捉えた。\n\n関係者によれば、女性は以前から公演に通うファンとみられ、ふたりは人目を避けるように帽子とマスク姿。短時間の逢瀬ののち、別々に帰路についたという。\n\n所属事務所は本誌の取材に「事実関係を確認中」とコメント。SNSでは「サクヤ 熱愛」がトレンド1位となり、ファンの間では動揺と擁護の声が交錯している。\n\n※本記事は創作フィクション内の架空記事です。"};
 const NEWS_STMT={k:"公式発表",t:"NCT WISHサクヤ熱愛報道、所属事務所が声明を発表",m:"スポルティバ芸能部 ・ 3月9日",body:"所属事務所は9日午後、サクヤの熱愛報道について声明を発表した。声明の詳細と全文は公式サイトに掲載されている。\n\n事務所は「アーティストの活動に影響のないよう、温かく見守っていただければ」とし、ツアーの福岡・愛知公演は予定通り開催される。\n\n※本記事は創作フィクション内の架空記事です。"};
@@ -1979,9 +2009,33 @@ const FREE=[
  {k:["コーラ","カフェオレ","飲み"],r:"カフェオレですね。覚えてます。……甘いのが好きな人"},
  {k:["旅行","釜山","プサン"],r:"釜山、いいですね。海と、エビと。……いつか案内してください"},
  {k:["どうして","なぜ"],r:"うーん。言葉にするのが難しいことは、時間をかけて言います。待ってもらえますか"},
- {k:["大丈夫"],r:"大丈夫です。……なおさんがそう言うなら、信じます"}
+ {k:["大丈夫"],r:"大丈夫です。……なおさんがそう言うなら、信じます"},
+ {k:["声"],r:"聞こえてます。……僕は言葉から好きになった人ですけど、声も、もう特別です"},
+ {k:["電話","でんわ"],r:"電話、しましょうか。文字の速さじゃ足りない日は、声で"},
+ {k:["夢","ゆめ"],r:"夢で会えたら、遠距離じゃなくなりますね。……おやすみなさい、また夢で"},
+ {k:["写真","しゃしん"],r:"写真は、約束どおり慎重に扱ってます。……でも僕の記憶のフォルダは、増える一方です"},
+ {k:["猫","ねこ"],r:"相棒さん、元気ですか。留守番のお礼に、いいものをあげてくださいね"},
+ {k:["寒い","さむい"],r:"寒い日は温かい飲み物を。……ソウルの冬、耳がちぎれそうだった日のことを思い出します"},
+ {k:["暑い","あつい"],r:"暑さには弱いほうです。なおさんも、無理しないでくださいね"},
+ {k:["雨","雪","ゆき"],r:"天気の話、好きです。同じ空の下にいる証拠みたいで"},
+ {k:["誕生日","プレゼント"],r:"贈り物は言葉がいい、って前にも言いましたね。……僕からは、選んだ言葉を贈ります"},
+ {k:["映画","ドラマ"],r:"映画の感想を言い合うの、好きです。……いつか隣で観ましょう"},
+ {k:["読書","小説","本を読"],r:"本の話、しましょう。心に残った一文を、教えてください"},
+ {k:["星","夜空"],r:"同じ空ですね。……遠くて近い、のいちばん簡単な証拠だと思います"},
+ {k:["ダンス","振り"],r:"振りは、言葉のない文章だと思ってます。……届いてますか"},
+ {k:["練習","れんしゅう"],r:"練習は嘘をつかないので好きです。今日も、少しだけ上手くなりました"},
+ {k:["美味しい","おいしい","ごはん"],r:"おいしい、は正直な言葉ですね。なおさんの感想は、いつも楽しみです"},
+ {k:["笑","わら"],r:"笑ってくれると安心します。……文字でも、笑顔は伝わるんです"},
+ {k:["泣","涙"],r:"泣きたい日は、泣いていいと思います。……僕は聞く側にいます"},
+ {k:["元気","げんき"],r:"元気です。なおさんの言葉をもらうと、もう少し元気になります"},
+ {k:["心配","しんぱい"],r:"心配してくれてありがとうございます。……大丈夫。ちゃんと、届いてます"},
+ {k:["約束","やくそく"],r:"約束は増えていくものですね。……全部、覚えてますよ"},
+ {k:["福岡"],r:{public:"福岡でも客席のなおさんを探します。……もう、隠さなくていいので",silent:"福岡、来てくれますか。……見つけても、合図は小さくしますね",bitter:"福岡のステージ、届くように歌います。……遠くからでも、見ていてください",def:"福岡でも歌います。……届くといいな"}},
+ {k:["これから","将来","未来"],r:{public:"これからは、隠さない側の景色を一緒に見ましょう",silent:"これからも、静かに続きます。……終わりじゃ、ないです",bitter:"……これからのことは、時間をください。言葉にするまで、待っててください",def:"これからも、言葉を大事にしていきましょう"}},
+ {k:["今日"],r:"今日のなおさんは、どんな一日でしたか。……聞かせてください"},
+ {k:["明日"],r:"明日のことは、明日考えましょう。……今日は、もう少しだけ話しませんか"}
 ];
-const FREE_DEFAULT=["うん、聞いてます","……そうですね。もう少しだけ、聞かせてください","ふふ、なおさんらしいですね","その話、覚えておきます","言葉って、届く順番が大事ですね"];
+const FREE_DEFAULT=["うん、聞いてます","……はい、続けてください。聞いてます","ふふ。なおさんらしい言い方ですね","その話、覚えておきます。……大事に、しまう場所に","言葉は、届く順番が大事だと思うんです","うん。……もう少しだけ、聞かせてください","そうなんですね。……続き、気になります","はい。僕はここにいます"];
 const NOTIFS=[
  {after:1,ic:"💬",bg:"#06c755",title:"LINE",body:"サクヤとLINEを交換しました",go:"line"},
  {after:3,ic:"📸",bg:"linear-gradient(45deg,#feda75,#d62976,#962fbf)",title:"Instagram",body:"nctwish_official が代々木公演の投稿をシェアしました",go:"ig"},
@@ -2667,7 +2721,7 @@ let _sheetSend=null;
 const SC_TIMES=["2時間前","4時間前","6時間前","9時間前","13時間前","1日前"];
 function sheetRow(c,i){i=i||0;const ini=c[0]==="nao"?"N":c[0][0].toUpperCase();const lk=(c[0].length*37+i*13)%180;return `<div class="sc-row"><span class="sc-av" style="${c[0]==="nao"?"background:#06c755":""}">${ini}</span><div class="sc-main"><b>${esc(c[0])}</b> <span>${esc(c[1])}</span><div class="sc-meta"><span>${SC_TIMES[i%SC_TIMES.length]}</span><span>いいね！${lk}件</span><button class="sc-reply" data-reply="${esc(c[0])}">返信する</button></div></div><button class="sc-heart" aria-label="いいね">${ic("heart-o","s17")}</button></div>`;}
 document.addEventListener("click",e=>{const h=e.target.closest(".sc-heart");if(h){const on=h.classList.toggle("liked");h.innerHTML=ic(on?"heart":"heart-o","s17");if(on)sfx("like");return;}const eb=e.target.closest("[data-emo]");if(eb){const inp=$("#sheet-input");if(inp){inp.value+=eb.dataset.emo;inp.focus();}return;}const rp=e.target.closest("[data-reply]");if(rp){const inp=$("#sheet-input");if(inp){inp.value="@"+rp.dataset.reply+" ";inp.focus();}return;}const f=e.target.closest(".lk-fol");if(f){const off=f.classList.toggle("off");f.textContent=off?"フォローする":"フォロー中";}});
-const FAN_ACC=[["wish_daily","ウィシズニ"],["sakuya_thoughts","サクヤの言葉を集める人"],["wish_archive","公演アーカイブ"],["ispy_fan","I SPY期から応援"],["color_fan","COLOR期ペン"],["dance_cover_jp","振りコピ勢"]];
+const FAN_ACC=[["wish_daily","ウィシズニ"],["sakuya_thoughts","サクヤの言葉を集める人"],["wish_archive","公演アーカイブ"],["ispy_fan","I SPY期から応援"],["color_fan","COLOR期ペン"],["dance_cover_jp","振りコピ勢"],["kobe_wish","神戸のウィシズニ"],["matsu_kotoba","本人の言葉を待つ人"]];
 function sheetList(title,rows){const _sh=$("#sheet");clearTimeout(_sh._ct);_sh.classList.remove("bye");$("#sheet-head").childNodes[0].textContent=title;$("#sheet-body").innerHTML=rows;$("#sheet").classList.add("on","nopost");$("#sheet").classList.remove("emo");$("#sheet-body").scrollTop=0;}
 const EMOQ=["❤️","🙌","🔥","👏","😢","😍","😮","😂"];
 $("#emo-bar").innerHTML=EMOQ.map(e=>`<button data-emo="${e}" aria-label="絵文字">${e}</button>`).join("");
@@ -2680,7 +2734,7 @@ $("#sheet").addEventListener("click",e=>{if(e.target.id==="sheet")closeSheet();}
 $("#sheet-x").addEventListener("click",closeSheet);
 $("#sheet-send").addEventListener("click",()=>{const inp=$("#sheet-input");const v=inp.value.trim();if(!v)return;inp.value="";if(_sheetSend){_sheetSend(v);sfx("send");}inp.focus();});
 $("#sheet-input").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing&&e.keyCode!==229)$("#sheet-send").click();});
-const CMT_EXTRA=[["wish_daily","現地で見てたけど本当にすごかった…"],["sakuya_thoughts","言葉選びが今日も素敵"],["wish_archive","保存しました📌"]];
+const CMT_EXTRA=[["wish_daily","現地で見てたけど本当にすごかった…"],["sakuya_thoughts","言葉選びが今日も素敵"],["wish_archive","保存しました📌"],["kobe_wish","神戸から応援してます⚓"],["ispy_fan","言葉のチョイスが毎回すごい"]];
 function igCapRow(post){const av=post.ini?`<span class="sc-av">${esc(post.ini)}</span>`:`<img class="sc-av" src="assets/group.jpg" style="object-fit:cover">`;return `<div class="sc-row cap-first">${av}<div class="sc-main"><b>${esc(post.user)}</b> <span>${esc(post.cap)}</span><div class="sc-meta"><span>${esc(post.time||"")}</span></div></div></div>`;}
 /* v43: own IG comments persist (igCmts) and every count uses the effective list */
 function igMyCmts(id){const a=S.igCmts&&S.igCmts[id];return Array.isArray(a)?a.filter(x=>typeof x==="string"):[];}
