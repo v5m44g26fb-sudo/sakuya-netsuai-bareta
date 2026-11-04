@@ -1271,6 +1271,38 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 /* v56: app realism — 1:1 chats drop per-bubble name labels (LINE/HelloTalk spec; group keeps them), like/repost pop */
 #v-chat:not(.grp) .msg .who,#v-free .msg .who{display:none}
 .post-act button.pop svg,.xact.pop svg{animation:hb .35s ease}
+/* v57: app realism 2 — TikTok comment rows (name on its own line, like count under the heart), share sheet circles, LINE home tab, HT interest tags */
+.ttc-row{display:flex;gap:10px;padding:11px 2px;align-items:flex-start}
+.ttc-av{width:36px;height:36px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex:none;object-fit:cover}
+.ttc-main{flex:1;min-width:0}
+.ttc-name{font-size:12.5px;font-weight:700;color:#6e6e76;display:flex;align-items:center;gap:3px}
+.ttc-text{font-size:14px;line-height:1.45;color:#16161a;margin-top:1px;word-break:break-word}
+.ttc-meta{display:flex;gap:14px;font-size:12px;color:#9a9aa2;margin-top:4px;align-items:center}
+.ttc-meta button{color:#9a9aa2;font-size:12px;padding:2px 0}
+.ttc-likew{display:flex;flex-direction:column;align-items:center;flex:none;padding-top:2px;min-width:30px}
+.ttc-heart{color:#b9b9c0;display:flex;padding:2px}
+.ttc-heart.liked{color:#fe2c55}
+.ttc-heart.liked svg{animation:hb .35s ease}
+.ttc-ln{font-size:11.5px;color:#9a9aa2;margin-top:1px}
+.shr-sec{font-size:12px;font-weight:700;color:#8e8e96;padding:10px 2px 2px}
+.shr-scroll{display:flex;gap:14px;overflow-x:auto;padding:8px 2px 4px;scrollbar-width:none}
+.shr-scroll::-webkit-scrollbar{display:none}
+.shr-c{display:flex;flex-direction:column;align-items:center;gap:5px;flex:none;width:58px;color:#26262b}
+.shr-c .shr-ic{width:50px;height:50px;border-radius:50%;background:#f1f1f4;display:flex;align-items:center;justify-content:center;overflow:hidden;color:#26262b}
+.shr-c .shr-ic img{width:100%;height:100%;object-fit:cover}
+.shr-c .shr-ic.on{background:#ffe9ef;color:#fe2c55}
+.shr-c small{font-size:10.5px;color:#55555e;max-width:58px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lh-sec{font-size:13px;font-weight:800;color:#111;padding:16px 2px 8px}
+.lh-svc{display:grid;grid-template-columns:repeat(4,1fr);gap:12px 4px;padding:2px 0}
+.lh-tile{display:flex;flex-direction:column;align-items:center;gap:5px;color:#26262b}
+.lh-tile .lh-ic{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff}
+.lh-tile small{font-size:10.5px;color:#3a3a40}
+.lh-card{display:flex;gap:11px;width:100%;text-align:left;background:#f5f5f7;border-radius:14px;padding:10px;align-items:center;margin-bottom:8px}
+.lh-card img{width:58px;height:58px;border-radius:10px;object-fit:cover;flex:none}
+.lh-card b{font-size:13.5px;display:block;color:#16161a}
+.lh-card span{font-size:11.5px;color:#6e6e76;display:block;margin-top:2px;line-height:1.5}
+.ht-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.ht-tags span{font-size:12px;background:#eef4f3;color:#0b7a71;border-radius:999px;padding:5px 10px;font-weight:600}
 </style>
 </head>
 <body>
@@ -1449,9 +1481,9 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 
 <!-- LINE LIST -->
 <div class="view" id="v-line">
-<div class="ll-head"><h2>トーク</h2><div class="ll-icons"><button aria-label="検索"><svg class="uic s21"><use href="#i-search"/></svg></button><button aria-label="新規トーク"><svg class="uic s22"><use href="#i-chatplus"/></svg></button></div></div>
+<div class="ll-head"><h2 id="ll-title">トーク</h2><div class="ll-icons"><button aria-label="検索"><svg class="uic s21"><use href="#i-search"/></svg></button><button aria-label="新規トーク"><svg class="uic s22"><use href="#i-chatplus"/></svg></button></div></div>
 <div class="abody" id="line-list"></div>
-<div class="ll-tabs"><button><svg class="uic s23"><use href="#i-home"/></svg><span>ホーム</span></button><button class="on"><svg class="uic s23"><use href="#i-cmt"/></svg><span>トーク</span></button><button><svg class="uic s23"><use href="#i-file"/></svg><span>ニュース</span></button><button><svg class="uic s23"><use href="#i-card"/></svg><span>ウォレット</span></button></div>
+<div class="ll-tabs"><button data-ltab="home"><svg class="uic s23"><use href="#i-home"/></svg><span>ホーム</span></button><button data-ltab="talk" class="on"><svg class="uic s23"><use href="#i-cmt"/></svg><span>トーク</span></button><button data-ltab="voom"><svg class="uic s23"><use href="#i-play"/></svg><span>VOOM</span></button><button data-ltab="news"><svg class="uic s23"><use href="#i-file"/></svg><span>ニュース</span></button><button data-ltab="wallet"><svg class="uic s23"><use href="#i-card"/></svg><span>ウォレット</span></button></div>
 </div>
 
 <!-- CHAT -->
@@ -1587,7 +1619,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v56.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v57.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -2197,7 +2229,7 @@ function syncVideos(){setTimeout(()=>{$$("video").forEach(v=>{const view=v.close
 document.addEventListener("visibilitychange",()=>{if(document.hidden){save();$$("video").forEach(v=>{try{v.pause()}catch(e){}});try{if(typeof VAUDIO!=="undefined"&&VAUDIO)VAUDIO.pause();}catch(e){}}else{syncVideos();}});
 window.addEventListener("pagehide",()=>save());
 window.addEventListener("pageshow",e=>{if(e.persisted)syncVideos();});
-function show(id){if(id!=="call"){ringStop();if(callTimer){clearInterval(callTimer);callTimer=null;}stopVoice();}if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set","ht","htprof","chat","free"].includes(id));window.scrollTo(0,0);if(id==="tt"){ttView="feed";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="home"));}if(id==="x")xView="feed";if(id==="lock")renderLock();if(id==="home")renderHome();if(id==="set")renderSetRec();if(id==="ht")renderHT();if(id==="line")renderLineList();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();tick();if(window._nbDrain)window._nbDrain();}
+function show(id){if(id!=="call"){ringStop();if(callTimer){clearInterval(callTimer);callTimer=null;}stopVoice();}if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set","ht","htprof","chat","free"].includes(id));window.scrollTo(0,0);if(id==="tt"){ttView="feed";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="home"));}if(id==="x")xView="feed";if(id==="lock")renderLock();if(id==="home")renderHome();if(id==="set")renderSetRec();if(id==="ht")renderHT();if(id==="line")renderLine();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();tick();if(window._nbDrain)window._nbDrain();}
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){show(g.dataset.go);return;}const b=e.target.closest("[data-back]");if(b)show(b.dataset.back);});
 $("#homebar").addEventListener("click",()=>show("home"));
 $("#v-lock").addEventListener("click",e=>{if(e.target.closest("[data-go]"))return;show("home");});
@@ -2300,6 +2332,20 @@ $$("#sheet-body [data-a11ytog]").forEach(r=>r.addEventListener("click",()=>{cons
 applyA11y();
 
 /* ================= LINE LIST ================= */
+/* v57: LINE home tab (real LINE layout: profile card, service grid, おすすめ, friends) */
+let lineTab="talk";
+function renderLine(){$$("#v-line .ll-tabs button").forEach(b=>b.classList.toggle("on",b.dataset.ltab===lineTab));const t=$("#ll-title");if(t)t.textContent=lineTab==="home"?"ホーム":"トーク";if(lineTab==="home")renderLineHome();else renderLineList();}
+function renderLineHome(){const el=$("#line-list");
+ const svc=[["file","#f43f5e","ニュース","news"],["photo","#0a84ff","写真","photos"],["pencil","#f9d854","メモ","notes"],["music","#06c755","MUSIC",null],["smile","#ffb340","スタンプ",null],["image","#8e6cc8","テーマ",null],["sparkle","#ff7ab0","ギフト",null],["sliders","#8e8e93","設定","set"]];
+ let h=`<button class="me-row" id="line-me"><img class="av" src="assets/nao-face.jpg" style="width:56px;height:56px" alt=""><span><span class="nm">なお</span><div class="st">サクヤペン💗 神戸公演が楽しみ</div></span><span style="margin-left:auto;color:#c7c7cc;font-size:19px">›</span></button>`;
+ h+=`<div class="lh-sec">サービス</div><div class="lh-svc">${svc.map(s=>`<button class="lh-tile" data-lsvc="${s[3]||""}" data-lsvc-n="${s[2]}"><span class="lh-ic" style="background:${s[1]};${s[2]==="メモ"?"color:#8a6d00":""}">${ic(s[0],"s22")}</span><small>${s[2]}</small></button>`).join("")}</div>`;
+ h+=`<div class="lh-sec">おすすめ</div><button class="lh-card" data-lsvc="news"><img src="assets/stage1.jpg" alt=""><span><b>NCT WISH 2nd TOUR『INTO THE WISH : Face Our WISH』</b><span>ツアー情報と関連ニュースはニュースタブからチェック</span></span></button><button class="lh-card" data-lsvc="photos"><img src="assets/kobe.jpg" alt=""><span><b>思い出の写真</b><span>ソウル・代々木・神戸…旅の記録は写真アプリに</span></span></button>`;
+ h+=`<div class="lh-sec">友だち</div>`+["sakuya","members","yui","mgr"].map(tid=>{const th=THREADS[tid];const av=th.av?`<img class="av" src="${th.av}" style="width:44px;height:44px" alt="">`:`<span class="sil" style="width:44px;height:44px;background:${th.c};font-size:16px">${th.ini}</span>`;return `<button class="thread" data-thread="${tid}">${av}<span class="tt"><span class="tn"><span>${th.title}</span></span><span class="tp">${tid==="sakuya"?"遠くて近い、が合言葉。":tid==="members"?"NCT WISH メンバー":tid==="yui"?"いつもの友達":"所属マネージャー"}</span></span></button>`;}).join("");
+ h+=`<div class="locknote">ホーム＝LINEの入口（実物の構成：プロフィール／サービス／おすすめ／友だち）。<br>物語はトークタブから進むよ。</div>`;
+ el.innerHTML=h;
+ const mr=el.querySelector("#line-me");if(mr)mr.addEventListener("click",()=>openProfile("nao"));
+ el.querySelectorAll("[data-thread]").forEach(b=>b.addEventListener("click",()=>openThread(b.dataset.thread)));
+ el.querySelectorAll("[data-lsvc]").forEach(b=>b.addEventListener("click",()=>{const go=b.dataset.lsvc;if(go){show(go);}else toast("LINE "+b.dataset.lsvcN+"は物語では使わないよ");}));}
 function renderLineList(){const el=$("#line-list");let h=`<div class="line-search">${ic("search")} 検索</div><button class="me-row" id="line-me"><img class="av" src="assets/nao-face.jpg" style="width:50px;height:50px" alt=""><span><span class="nm">なお</span><div class="st">サクヤペン💗 神戸公演が楽しみ</div></span></button><div class="sec-t">トーク</div>`;
  const order=["sakuya","members","yui","mgr"];
  const curSc=!S.ended?SCENES[S.scene]:null;
@@ -2540,11 +2586,17 @@ function ttSearchHTML(){
  return `<div class="ttd"><div class="tt-search-head"><button class="tts-back" id="tts-back" aria-label="戻る">‹</button><label class="xs-inwrap">${ic("search","s15")}<input id="tts-in" type="text" placeholder="検索" value="${esc(ttQuery).replace(/"/g,"&quot;")}" autocomplete="off"></label></div><div id="tts-results">${ttSearchResultsHTML()}</div></div>`;}
 function bindTTSearchRes(root){root.querySelectorAll("[data-ttopen]").forEach(b=>b.addEventListener("click",()=>{ttView="feed";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="home"));renderTT();setTimeout(()=>{const t=$("#ttv-"+b.dataset.ttopen);if(t)t.scrollIntoView({block:"start"});},80);}));root.querySelectorAll("[data-tttag]").forEach(b=>b.addEventListener("click",()=>{ttQuery=b.dataset.tttag||"";const i2=$("#tts-in");if(i2)i2.value=ttQuery;const r=$("#tts-results");if(r){r.innerHTML=ttSearchResultsHTML();bindTTSearchRes(r);}}));}
 function openTTShare(ai){const p=TT_POSTS[ai];if(!p)return;const saved=S.savedTT&&S.savedTT[ai];
- sheetList("シェア",`<button class="sh-row" data-shact="copy"><span class="ric">${ic("copy","s19")}</span>リンクをコピー</button><button class="sh-row" data-shact="save"><span class="ric">${ic(saved?"bmk-f":"bmk","s19")}</span>${saved?"保存を取り消す":"あとで見る（保存）"}</button><button class="sh-row" data-shact="cmt"><span class="ric">${ic("cmt","s19")}</span>コメントを見る（${fmtTT(ttCmtTotal(p,ai))}件）</button>`);
+ /* v57: real TikTok share sheet — contact circles, action circles, then utility rows */
+ const who=[["sakuya","サクヤ"],["sion","シオン"],["riku","リク"],["yushi","ユウシ"],["ryo","リョウ"],["jaehee","ジェヒ"]];
+ const whoH=who.map(w=>`<button class="shr-c" data-shwho="${w[1]}"><span class="shr-ic"><img src="${M[w[0]].av}" alt=""></span><small>${w[1]}</small></button>`).join("")+`<button class="shr-c" data-shwho="ゆい"><span class="shr-ic" style="background:#f0a04b;color:#fff;font-weight:800;font-size:17px">ゆ</span><small>ゆい</small></button>`;
+ const actH=`<button class="shr-c" data-shact="copy"><span class="shr-ic">${ic("copy","s21")}</span><small>リンクをコピー</small></button><button class="shr-c" data-shact="save"><span class="shr-ic${saved?" on":""}">${ic(saved?"bmk-f":"bmk","s21")}</span><small>${saved?"保存済み":"保存する"}</small></button><button class="shr-c" data-shact="cmt"><span class="shr-ic">${ic("cmt","s21")}</span><small>コメント</small></button><button class="shr-c" data-shact="duo"><span class="shr-ic">${ic("users","s21")}</span><small>デュエット</small></button><button class="shr-c" data-shact="stitch"><span class="shr-ic">${ic("film","s21")}</span><small>リミックス</small></button>`;
+ sheetList("シェア",`<div class="shr-sec">送信先</div><div class="shr-scroll">${whoH}</div><div class="shr-sec">アクション</div><div class="shr-scroll">${actH}</div><button class="sh-row" data-shact="notint"><span class="ric">${ic("eye","s19")}</span>興味なし</button><button class="sh-row" data-shact="report"><span class="ric">${ic("info","s19")}</span>報告する</button>`);
+ $$("#sheet-body [data-shwho]").forEach(b=>b.addEventListener("click",()=>{closeSheet();toast(b.dataset.shwho+"に送信したよ");}));
  $$("#sheet-body [data-shact]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.shact;closeSheet();
   if(k==="copy")ttCopyLink(location.href.split("#")[0]+"#tt-"+ai);
   else if(k==="save"){S.savedTT=S.savedTT||{};S.savedTT[ai]=!S.savedTT[ai];save();toast(S.savedTT[ai]?"保存したよ":"保存を取り消したよ");renderTT();}
-  else if(k==="cmt")setTimeout(()=>openTTComments(ai),210);}));}
+  else if(k==="cmt")setTimeout(()=>openTTComments(ai),210);
+  else toast("その機能は物語では使わないよ");}));}
 function renderTT(){const el=$("#tt-feed");
  if(ttView==="search"){el.style.scrollSnapType="none";el.innerHTML=ttSearchHTML();el.scrollTop=0;
   $("#tts-back").addEventListener("click",()=>{ttView="disc";renderTT();});
@@ -2793,7 +2845,9 @@ $("#story-reply-in").addEventListener("click",ev=>ev.stopPropagation());
 /* ================= COMMENT SHEET ================= */
 let _sheetSend=null;
 const SC_TIMES=["2時間前","4時間前","6時間前","9時間前","13時間前","1日前"];
-function sheetRow(c,i){i=i||0;const ini=c[0]==="nao"?"N":c[0][0].toUpperCase();const lk=(c[0].length*37+i*13)%180;return `<div class="sc-row"><span class="sc-av" style="${c[0]==="nao"?"background:#06c755":""}">${ini}</span><div class="sc-main"><b>${esc(c[0])}</b> <span>${esc(c[1])}</span><div class="sc-meta"><span>${SC_TIMES[i%SC_TIMES.length]}</span><span>いいね！${lk}件</span><button class="sc-reply" data-reply="${esc(c[0])}">返信する</button></div></div><button class="sc-heart" aria-label="いいね">${ic("heart-o","s17")}</button></div>`;}
+const CMT_PAL=["#4a90d9","#d95f7b","#149990","#7b61c9","#f0a04b","#3aa655"];
+function cmtAvHTML(name){if(name==="nao"||name==="なお")return `<img class="sc-av" src="assets/nao-face.jpg" style="object-fit:cover" alt="">`;const mk=Object.keys(M).find(k=>M[k].n===name);if(mk&&M[mk].av)return `<img class="sc-av" src="${M[mk].av}" style="object-fit:cover" alt="">`;if(name==="빵돌이")return `<span class="sc-av" style="background:#b08968">빵</span>`;let s=0;for(const ch of name)s+=ch.charCodeAt(0);return `<span class="sc-av" style="background:${CMT_PAL[s%CMT_PAL.length]}">${esc(name[0].toUpperCase())}</span>`;}
+function sheetRow(c,i){i=i||0;const lk=(c[0].length*37+i*13)%180;return `<div class="sc-row">${cmtAvHTML(c[0])}<div class="sc-main"><b>${esc(c[0])}</b> <span>${esc(c[1])}</span><div class="sc-meta"><span>${SC_TIMES[i%SC_TIMES.length]}</span><span>いいね！${lk}件</span><button class="sc-reply" data-reply="${esc(c[0])}">返信する</button></div></div><button class="sc-heart" aria-label="いいね">${ic("heart-o","s17")}</button></div>`;}
 document.addEventListener("click",e=>{const h=e.target.closest(".sc-heart");if(h){const on=h.classList.toggle("liked");h.innerHTML=ic(on?"heart":"heart-o","s17");if(on)sfx("like");return;}const eb=e.target.closest("[data-emo]");if(eb){const inp=$("#sheet-input");if(inp){inp.value+=eb.dataset.emo;inp.focus();}return;}const rp=e.target.closest("[data-reply]");if(rp){const inp=$("#sheet-input");if(inp){inp.value="@"+rp.dataset.reply+" ";inp.focus();}return;}const f=e.target.closest(".lk-fol");if(f){const off=f.classList.toggle("off");f.textContent=off?"フォローする":"フォロー中";}});
 const FAN_ACC=[["wish_daily","ウィシズニ"],["sakuya_thoughts","サクヤの言葉を集める人"],["wish_archive","公演アーカイブ"],["ispy_fan","I SPY期から応援"],["color_fan","COLOR期ペン"],["dance_cover_jp","振りコピ勢"],["kobe_wish","神戸のウィシズニ"],["matsu_kotoba","本人の言葉を待つ人"]];
 function sheetList(title,rows){const _sh=$("#sheet");clearTimeout(_sh._ct);_sh.classList.remove("bye");$("#sheet-head").childNodes[0].textContent=title;$("#sheet-body").innerHTML=rows;$("#sheet").classList.add("on","nopost");$("#sheet").classList.remove("emo");$("#sheet-body").scrollTop=0;}
@@ -2823,7 +2877,11 @@ function openIGComments(id){const post=IG_POSTS.find(x=>x.id===id)||TAGGED_POSTS
 /* v42: TT comments — own posts persist (ttCmts) and counts include them */
 function ttMyCmts(ai){const a=S.ttCmts&&S.ttCmts[ai];return Array.isArray(a)?a.filter(x=>typeof x==="string"):[];}
 function ttCmtTotal(p,ai){return (p.cmts||0)+ttMyCmts(ai).length;}
-function openTTComments(i){const post=TT_POSTS[i];if(!post)return;const items=()=>post.cm.concat(ttMyCmts(i).map(t=>["nao",t]));openSheet(fmtTT(ttCmtTotal(post,i))+"件のコメント",items(),v=>{S.ttCmts=S.ttCmts||{};if(!Array.isArray(S.ttCmts[i]))S.ttCmts[i]=[];S.ttCmts[i].push(v);save();$("#sheet-body").innerHTML=items().map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;const sh=$("#sheet-head");if(sh&&sh.childNodes[0])sh.childNodes[0].textContent=fmtTT(ttCmtTotal(post,i))+"件のコメント";const cb=document.querySelector('[data-ttcmt="'+i+'"]');if(cb)Array.from(cb.childNodes).forEach(n=>{if(n.nodeType===3)n.textContent=fmtTT(ttCmtTotal(post,i));});});}
+/* v57: TikTok comments get their own row layout (real TT spec: name line, body, heart with count beneath on the right) */
+const TTCLIKES={};
+function ttCmtRow(c,ai,ci){const key=ai+":"+ci;const liked=!!TTCLIKES[key];const base=(c[0].length*41+ci*29)%860;let s=0;for(const ch of c[0])s+=ch.charCodeAt(0);const av=c[0]==="nao"?`<img class="ttc-av" src="assets/nao-face.jpg" alt="">`:`<span class="ttc-av" style="background:${CMT_PAL[s%CMT_PAL.length]}">${esc(c[0][0].toUpperCase())}</span>`;return `<div class="ttc-row">${av}<div class="ttc-main"><div class="ttc-name">${esc(c[0])}</div><div class="ttc-text">${esc(c[1])}</div><div class="ttc-meta"><span>${SC_TIMES[ci%SC_TIMES.length]}</span><button data-reply="${esc(c[0])}">返信する</button></div></div><span class="ttc-likew"><button class="ttc-heart${liked?" liked":""}" data-ttlk="${key}" data-base="${base}" aria-label="いいね">${ic(liked?"heart":"heart-o","s18")}</button><span class="ttc-ln">${base+(liked?1:0)}</span></span></div>`;}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-ttlk]");if(!b)return;const k=b.dataset.ttlk;TTCLIKES[k]=!TTCLIKES[k];if(TTCLIKES[k])sfx("like");b.classList.toggle("liked",TTCLIKES[k]);b.innerHTML=ic(TTCLIKES[k]?"heart":"heart-o","s18");const ln=b.parentElement?b.parentElement.querySelector(".ttc-ln"):null;if(ln)ln.textContent=(+b.dataset.base||0)+(TTCLIKES[k]?1:0);});
+function openTTComments(i){const post=TT_POSTS[i];if(!post)return;const items=()=>post.cm.concat(ttMyCmts(i).map(t=>["nao",t]));const draw=()=>{$("#sheet-body").innerHTML=items().map((c,ci)=>ttCmtRow(c,i,ci)).join("");};openSheet(fmtTT(ttCmtTotal(post,i))+"件のコメント",items(),v=>{S.ttCmts=S.ttCmts||{};if(!Array.isArray(S.ttCmts[i]))S.ttCmts[i]=[];S.ttCmts[i].push(v);save();draw();$("#sheet-body").scrollTop=1e6;const sh=$("#sheet-head");if(sh&&sh.childNodes[0])sh.childNodes[0].textContent=fmtTT(ttCmtTotal(post,i))+"件のコメント";const cb=document.querySelector('[data-ttcmt="'+i+'"]');if(cb)Array.from(cb.childNodes).forEach(n=>{if(n.nodeType===3)n.textContent=fmtTT(ttCmtTotal(post,i));});});draw();}
 function openIGActivity(){const posts=IG_POSTS.slice(0,S.ig);const rows=posts.slice().reverse().map(p=>lkRow(p.img,"","nctwish_official","新しい投稿をシェアしました ・ "+p.time,false)).join("");sheetList("アクティビティ",rows||`<div class="locknote">新しいアクティビティはないよ</div>`);}
 function openIGSuggest(){const rows=FAN_ACC.map(a=>lkRow("","W",a[0],a[1]+" ・ おすすめ",true)).join("")+`<div class="locknote">おすすめ＝フォロワーや投稿の傾向から表示されるアカウント（実物仕様）。物語の相手は公式アカウントだけだよ</div>`;sheetList("おすすめ",rows);}
 function openIGDM(){sheetList("メッセージ",`<div class="sc-row"><img class="av" src="assets/group.jpg" style="width:44px;height:44px"><div class="sc-main"><b>nctwish_official</b> ${VB}<div style="color:#8e8e93;font-size:12px;margin-top:1px">公式アカウント ・ DMは受け付けていません</div></div></div><div class="locknote">公式アカウントはDMを受け付けていないよ（物語の連絡はLINEだよ）</div>`);}
@@ -2913,6 +2971,7 @@ function renderHT(){const el=$("#ht-body");$$("#ht-tabs button").forEach(b=>b.cl
   <div style="font-size:11.5px;color:#8a8a92;margin-top:9px">レベル <b style="color:#5a3ee0">中級 Lv.3</b> ― 次のレベルまで 55%</div><div class="me-lvbar"><i style="width:55%"></i></div>
   <div class="me-badges"><span class="me-badge"><i>${ic("pencil")}</i>初投稿</span><span class="me-badge"><i>${ic("zap")}</i>7日連続</span><span class="me-badge"><i>${ic("book")}</i>単語100</span><span class="me-badge off"><i>${ic("mic")}</i>初VoiceRoom</span></div></div>
   <div class="gauge-sec"><div class="gs-t">自己紹介</div><p style="font-size:13.5px;line-height:1.7;margin-top:4px;color:#333">韓国語勉強中です。1月にソウルへ旅行します。現地の人と話してみたいです🙏</p></div>
+  <div class="gauge-sec"><div class="gs-t">興味・関心</div><div class="ht-tags"><span>🎵 音楽</span><span>🐈 猫</span><span>✈️ 旅行</span><span>🍰 カフェ</span><span>🇰🇷 韓国語</span></div></div>
   <div class="gauge-sec"><div class="gs-t">プロフィール写真</div><img src="assets/nao-wink.jpg" style="width:100%;border-radius:13px;margin-top:8px;display:block" alt=""></div>
   <div class="gauge-sec"><div class="gs-t">アルバム</div><div class="nao-alb">${NAO_ALBUM.map((p,ai)=>`<button data-naoph="${ai}"><img src="${p[0]}"${p[2]?` style="object-position:${p[2]}"`:""} alt=""></button>`).join("")}</div></div>
   <button class="set-row2" id="me-favs">お気に入り（訂正コレクション）<span>${(SCENES[0].steps.filter(s=>s.corr).length)+((S.htfavs||[]).length)}件 ›</span></button>
@@ -2933,10 +2992,13 @@ function renderHTProf(){const el=$("#htprof-body");
  <div style="font-size:11.5px;opacity:.72;margin-top:3px">プロフィール写真は設定していません</div></div>
  <div class="gauge-sec"><div class="gs-t">話せる言語</div>${gaugeHTML("🇯🇵","日本語",100,"堪能")}<div class="gs-t" style="margin-top:11px">学習中の言語</div>${gaugeHTML("🇰🇷","韓国語",92,"堪能")}<div style="font-size:11px;color:#9aa5a3;margin-top:5px">※日本語ネイティブ。ソウル在住で、韓国語も堪能寄り</div></div>
  <div class="gauge-sec"><div class="gs-t">自己紹介</div><p style="font-size:14px;line-height:1.75;margin-top:4px;color:#333">言葉は、少なくていい。合う人には届くから。<br><span style="color:#6e6e73;font-size:12.5px">ソウルのパン屋に詳しいです。韓国語の練習相手を探しています。</span></p></div>
+ <div class="gauge-sec"><div class="gs-t">興味・関心</div><div class="ht-tags"><span>🎵 音楽</span><span>🥐 パン屋巡り</span><span>🎬 映画</span><span>✈️ 旅行</span><span>📚 言葉・詩</span><span>🌃 夜の散歩</span></div></div>
+ <button class="set-row2" id="htp-moments" style="margin:0 0 4px">モーメンツを見る<span>3件 ›</span></button>
  <div class="gauge-sec" style="display:flex;text-align:center"><div style="flex:1"><b style="font-size:16px">3</b><div class="gs-s">モーメンツ</div></div><div style="flex:1"><b style="font-size:16px">12</b><div class="gs-s">フォロー中</div></div><div style="flex:1"><b style="font-size:16px" id="htp-folnum">${48+(S.htFol?1:0)}</b><div class="gs-s">フォロワー</div></div></div>
  <div style="display:flex;gap:8px;padding:13px 14px 4px"><button class="ht-pb sub${S.htFol?" on":""}" id="htp-fol">${S.htFol?"フォロー中":"フォローする"}</button><button class="ht-pb main" id="htp-msg">送信する</button></div>
  <div class="locknote">顔写真なし・自己紹介は一言だけ。人気者なのに、このアプリの中では無名――それが 빵돌이 。</div>`;
  $("#htp-msg").addEventListener("click",openHTChat);
+ const hm=$("#htp-moments");if(hm)hm.addEventListener("click",()=>{htTab="moments";show("ht");});
  const f=$("#htp-fol");f.addEventListener("click",()=>{S.htFol=!S.htFol;save();f.textContent=S.htFol?"フォロー中":"フォローする";f.classList.toggle("on",S.htFol);const fn=$("#htp-folnum");if(fn)fn.textContent=48+(S.htFol?1:0);toast(S.htFol?"フォローしたよ":"フォローを外したよ");});}
 /* ================= NOTIF BANNER ================= */
 let _nbTimer=null,_nbGo="line",_nbQueue=[],_nbShowing=false;
@@ -3000,7 +3062,7 @@ $$("[data-pvtool]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset
 $$("#v-photos .ph-seg span").forEach((s,i)=>s.addEventListener("click",()=>{if(i<3)toast("並び替えは『すべての写真』表示だけだよ");}));
 const _hf=$("#ht-filter");if(_hf)_hf.addEventListener("click",()=>toast("絞り込みは物語では使わないよ"));
 /* v26: dead-control wiring (audit round 2) */
-$$("#v-line .ll-tabs button").forEach((b,i)=>b.addEventListener("click",()=>{if(i!==1)toast("そのタブは物語では使わないよ");}));
+$$("#v-line .ll-tabs button").forEach(b=>b.addEventListener("click",()=>{const t=b.dataset.ltab;if(t==="home"||t==="talk"){lineTab=t;renderLine();}else toast("そのタブは物語では使わないよ");}));
 $$("#v-line .ll-icons button").forEach((b,i)=>b.addEventListener("click",()=>toast(i===0?"その機能は物語では使わないよ":"物語の相手は 빵돌이 だけだよ")));
 const _chSearch=$("#v-chat .chat-head .hic");if(_chSearch)_chSearch.addEventListener("click",()=>toast("その機能は物語では使わないよ"));
 const _chMenu=$("#chat-menuic");if(_chMenu)_chMenu.addEventListener("click",()=>toast(cur&&cur.thread==="ht"?"絞り込みは物語では使わないよ":"その機能は物語では使わないよ"));
