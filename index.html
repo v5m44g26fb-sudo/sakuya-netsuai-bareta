@@ -572,6 +572,13 @@ img{max-width:100%}
 .trend .tt2{font-size:15px;font-weight:800;margin-top:1px}
 .trend .tc{font-size:12px;color:#536471;margin-top:1px}
 .trend.hot .tt2{color:#e0245e}
+/* v59: X trends — rank line, per-row menu dots, category filter chips (real explore layout) */
+.trend{position:relative}
+.trend .tdots{position:absolute;top:10px;right:14px;color:#536471;font-size:11px;letter-spacing:1.5px}
+.trend-chips{display:flex;gap:2px;padding:8px 10px 0;overflow-x:auto;scrollbar-width:none}
+.trend-chips::-webkit-scrollbar{display:none}
+.trend-chips button{flex:none;font-size:13.5px;font-weight:700;color:#536471;padding:7px 11px;border-bottom:2.5px solid transparent;font-family:inherit}
+.trend-chips button.on{color:#0f1419;border-bottom-color:#1d9bf0}
 /* news */
 .news-item{display:block;width:100%;text-align:left;background:#fff;border-bottom:1px solid #eee;padding:13px 16px}
 .news-item .nk{font-size:11px;color:#e0245e;font-weight:800;letter-spacing:.05em}
@@ -814,6 +821,26 @@ img{max-width:100%}
 .htm-rows button:last-child{border-bottom:none}
 .htm-rows button .uic{margin-left:auto;color:#8a8a92}
 .htm-tx{margin-left:auto;font-size:12px;font-weight:800;color:#8a8a92}
+/* v59: LINE long-press menu + reactions (real LINE: reaction bar floats over the bubble, menu card under it) */
+#lpmenu{position:absolute;inset:0;z-index:346;background:rgba(15,20,15,.38);display:none}
+#lpmenu.on{display:block}
+.lp-wrap{position:absolute;left:0;right:0;padding:0 14px;display:flex;flex-direction:column}
+.lp-react{display:flex;gap:2px;background:#fff;border-radius:999px;padding:5px 7px;box-shadow:0 8px 26px rgba(0,0,0,.28);align-self:flex-start;animation:sheetup .3s cubic-bezier(.32,1.3,.36,1)}
+.lp-react button{font-size:21px;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.lp-react button:active{background:#f0f0f3;transform:scale(1.18)}
+.lp-card{background:#fff;color:#111;border-radius:16px;margin-top:8px;width:218px;box-shadow:0 14px 38px rgba(0,0,0,.3);overflow:hidden;animation:sheetup .3s cubic-bezier(.32,1.3,.36,1);align-self:flex-start}
+.lp-wrap.me{align-items:flex-end}
+.lp-wrap.me .lp-react,.lp-wrap.me .lp-card{align-self:flex-end}
+.lp-card button{display:flex;align-items:center;gap:11px;width:100%;padding:12px 15px;font-size:13.5px;color:#1c1c22;border-bottom:1px solid #f4f4f6;text-align:left;font-family:inherit}
+.lp-card button:last-child{border-bottom:none}
+.lp-card button .uic{color:#3a3a3c}
+.lp-card button.danger{color:#e5484d}
+.lp-card button.danger .uic{color:#e5484d}
+.msg{position:relative}
+.lp-pill{position:absolute;bottom:-8px;z-index:3;background:#fff;border:1px solid #e6e6ea;border-radius:999px;font-size:11px;line-height:1;padding:2.5px 6px;box-shadow:0 1px 4px rgba(0,0,0,.14)}
+.msg:not(.me) .lp-pill{left:47px}
+.msg.me .lp-pill{right:3px}
+.msg.has-lp{margin-bottom:11px}
 /* moments extras */
 .mo-chips{display:flex;gap:7px;padding:10px 12px 4px;background:#f7f7fa;overflow-x:auto;scrollbar-width:none}
 .mo-chips::-webkit-scrollbar{display:none}
@@ -896,6 +923,10 @@ img{max-width:100%}
 .set-prof img{width:52px;height:52px;border-radius:50%;object-fit:cover}
 .set-prof b{font-size:16.5px;display:block;color:#111}
 .set-prof small{font-size:12px;color:#8e8e93}
+.set-prof .set-chev{margin-left:auto;color:#c7c7cc;font-size:20px;flex:none}
+/* v59: iOS Settings search pill (real Settings layout: search field under the title) */
+.set-search{margin:12px 16px 0;background:#e3e3e8;border-radius:10px;color:#8e8e93;font-size:14px;display:flex;align-items:center;justify-content:center;gap:5px;padding:7px 0}
+.set-search .uic{width:15px;height:15px}
 .ios-grp{background:#fff;margin:14px 16px 0;border-radius:16px;overflow:hidden}
 .set-row2i{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding:12.5px 14px;font-size:14px;color:#111;border-bottom:1px solid #f0f0f3;text-align:left;background:#fff}
 .set-row2i:last-child{border-bottom:none}
@@ -1009,11 +1040,15 @@ img{max-width:100%}
 .x-bellwrap{position:relative;display:flex}
 .x-bellwrap .bdot{position:absolute;top:-1px;right:-1px;width:8px;height:8px;border-radius:50%;background:#f4212e;border:1.5px solid #fff}
 .xn-row{display:flex;gap:10px;padding:9px 0;font-size:13px;line-height:1.55}
-.xn-row .xn-ic{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;color:#fff}
-.xn-row .xn-ic .uic{width:17px;height:17px}
+.xn-row .xn-ic{width:22px;height:22px;display:flex;align-items:flex-start;justify-content:center;flex:none;padding-top:1px}
+.xn-row .xn-ic .uic{width:20px;height:20px}
 .xn-row .xn-b{flex:1;min-width:0}
 .xn-row .xn-b span{color:#333}
 .xn-row time{font-size:11px;color:#9aa5a3;display:block;margin-top:1px}
+/* v59: X notifications — actor avatar row above the text (real X notifications layout) */
+.xn-avs{display:flex;gap:4px;margin-bottom:3px}
+.xn-avs img{width:26px;height:26px;border-radius:50%;object-fit:cover}
+.xn-avs .sil{width:26px;height:26px;font-size:11px}
 .xprof-folbtn{margin-left:auto;background:#0f1419;color:#fff;font-size:13px;font-weight:800;border-radius:999px;padding:7px 16px;align-self:flex-start}
 .xprof-folbtn.off{background:#fff;color:#0f1419;border:1px solid #cfd9de}
 .xprof-avrow{display:flex;align-items:flex-end}
@@ -1663,7 +1698,8 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="view" id="v-set">
 <div class="ahead"><button class="back" data-back="home">‹</button><h2>設定</h2></div>
 <div class="abody" style="background:#f2f2f7">
-<div class="set-prof"><img src="assets/nao-face.jpg" alt=""><span><b>なお</b><small>サクヤペン💗 ― プレイヤー</small></span></div>
+<div class="set-search"><svg class="uic"><use href="#i-search"/></svg>検索</div>
+<div class="set-prof"><img src="assets/nao-face.jpg" alt=""><span><b>なお</b><small>サクヤペン💗 ― プレイヤー</small></span><span class="set-chev">›</span></div>
 <div class="ios-grp">
 <div class="set-row2i"><span class="set-lab"><span class="set-ric" style="background:#ff9500"><svg class="uic s14"><use href="#i-plane"/></svg></span>機内モード</span><span class="ios-sw" id="sw-air"><i></i></span></div>
 <button class="set-row2i" id="set-wifi"><span class="set-lab"><span class="set-ric" style="background:#0a84ff"><svg class="uic s14"><use href="#i-wifi"/></svg></span>Wi-Fi</span><span id="wifi-val">Home-5G ›</span></button>
@@ -1690,7 +1726,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v58.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v59.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -1764,6 +1800,16 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <button data-htm="trans"><span>Translation（翻訳）</span><svg class="uic s20"><use href="#i-translate"/></svg></button>
 <button data-htm="corr"><span>Correction（訂正）</span><span class="htm-tx">Abc✓</span></button>
 <button data-htm="ai"><span>AI Grammar</span><span class="htm-tx">AI</span></button>
+</div>
+</div></div>
+
+<!-- LINE LONG-PRESS MENU (v59) -->
+<div id="lpmenu"><div class="lp-wrap" id="lp-wrap">
+<div class="lp-react" id="lp-react"></div>
+<div class="lp-card">
+<button data-lp="copy"><svg class="uic s19"><use href="#i-copy"/></svg>コピー</button>
+<button data-lp="keep"><svg class="uic s19"><use href="#i-bmk"/></svg>Keepメモに保存</button>
+<button data-lp="del" class="danger"><svg class="uic s19"><use href="#i-trash"/></svg>削除</button>
 </div>
 </div></div>
 
@@ -2514,6 +2560,7 @@ function renderChat(){tick();const body=$("#chat-body");const sc=cur;let h="";co
  body.querySelectorAll(".msg.me .rd").forEach(rd=>{setTimeout(()=>{rd.style.opacity="1";},300+Math.random()*700);});
  if(sc.thread==="ht"){body.querySelectorAll(".msg.me .rd").forEach((rd,i)=>{rd.textContent="送信しました";setTimeout(()=>{rd.textContent="既読";},1500+i*150);});}
  if(sc.thread==="ht"){body.querySelectorAll(".bub,.corr").forEach(bub=>{let t=null;bub.addEventListener("pointerdown",()=>{t=setTimeout(()=>{window._lpSup=true;let tx=bub.textContent.trim();if(!tx&&bub.classList.contains("imgb")){const cp=bub.parentElement?bub.parentElement.querySelector(".bub:not(.imgb)"):null;if(cp)tx=cp.textContent.trim();}if(tx)openHTMenu(tx);},560);});["pointerup","pointerleave","pointercancel"].forEach(ev=>bub.addEventListener(ev,()=>{if(t)clearTimeout(t);}));});}
+ if(sc.thread!=="ht"){decorateLP(body);body.querySelectorAll(".bub").forEach(bub=>{let t=null;bub.addEventListener("pointerdown",()=>{t=setTimeout(()=>{window._lpSup=true;openLPMenu(bub);},560);});["pointerup","pointerleave","pointercancel"].forEach(ev=>bub.addEventListener(ev,()=>{if(t)clearTimeout(t);}));});}
  renderPanel();body.scrollTop=body.scrollHeight;}
 function renderPanel(){const p=$("#chat-panel");const sc=cur;const st=sc.steps[S.step];
  if(S.shown<S.step){p.innerHTML="";return;}
@@ -2788,7 +2835,7 @@ $$("#v-tt .tt-tabs button").forEach(b=>b.addEventListener("click",()=>{const t=b
  if(t==="home"||t==="prof"||t==="discover"){$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x===b));ttView=t==="prof"?"prof":(t==="discover"?"disc":"feed");renderTT();}
  else toast("そのタブは物語では使わないよ");}));
 /* ================= X ================= */
-let xTab="feed";let xView="feed";let xProfTab="posts";
+let xTab="feed";let xView="feed";let xProfTab="posts";let xTrendCat="すべて";
 const XHEAT={};function parseCnt(s){if(!s)return 0;const v=parseFloat(String(s).replace(/,/g,""));return String(s).includes("万")?Math.round(v*10000):(v||0);}
 function xBadge(){return '<span class="xbadge gold">'+ic("badge")+'</span>';}
 function xPostHTML(p,idx,post,heat){const key=xKey(p);const liked=!!(S.xLikes&&S.xLikes[key]);const rped=!!(S.xReposts&&S.xReposts[key]);const lkN=parseCnt(p.lk)+(heat?(XHEAT[idx]||0):0)+(liked?1:0);const rpN=parseCnt(p.rp)+(rped?1:0);let _xh=0;for(const _c of key)_xh=(_xh*31+_c.charCodeAt(0))>>>0;const vwN=lkN*(9+_xh%23)+(_xh%997);return `<div class="xpost"><img class="xav" src="${p.av}" data-xav="${esc(p.handle)}"><div class="xb"><div class="xh"><b>${esc(p.user)}</b>${p.handle==="@nctwish_jp"?xBadge():""}<span>${esc(p.handle)} ・ ${esc(p.time)}</span><span class="xdots">•••</span></div><div class="xt">${esc(p.text)}</div>${p.img?`<img class="ximg" src="${p.img}">`:""}<div class="xa"><span>${ic("cmt","s17")} <b>${esc(p.cm||"―")}</b></span><span class="xact${rped?" on-rp":""}" data-xrp="${key}" role="button" aria-label="リポスト">${ic("repeat","s17")} <b>${fmtLikes(rpN)}</b></span><span class="xact${liked?" on-like":""}" data-xlike="${key}" role="button" aria-label="いいね">${ic(liked?"heart":"heart-o","s17")} <b ${heat?`data-xlk="${idx}"`:""}>${fmtLikes(lkN)}</b></span><span>${ic("chart","s17")} <b>${fmtLikes(vwN)}</b></span><button class="xbmkb ${S.xbmk&&S.xbmk[xKey(p)]?"on":""}" data-xbmk="${xKey(p)}" aria-label="ブックマーク">${ic(S.xbmk&&S.xbmk[xKey(p)]?"bmk-f":"bmk","s17")}</button><span>${ic("upload","s17")}</span></div></div></div>`;}
@@ -2820,7 +2867,10 @@ function renderX(){const el=$("#x-body");const post=S.scene>=7;if(window._xT){cl
   bindXBmk(el);bindXActs(el);
   el.scrollTop=0;return;}
  if(xView==="search"){renderXSearch(el,post);return;}
- if(xTab==="trend"){const tr=post?X_TRENDS_POST:(S.scene>=3?X_TRENDS_PRE:X_TRENDS_SEOUL);el.innerHTML=`<button class="x-search" id="x-search-open">${ic("search")} 検索</button><div style="padding:12px 16px 4px;font-size:16px;font-weight:900">トレンド</div>`+tr.map(t=>`<div class="trend ${post&&t[1].includes("熱愛")?"hot":""}"><div class="tk">${esc(t[0])} ・ トレンド</div><div class="tt2">${esc(t[1])}</div><div class="tc">${esc(t[2])}</div></div>`).join("");const _so=$("#x-search-open");if(_so)_so.addEventListener("click",()=>{xView="search";renderX();});return;}
+ if(xTab==="trend"){const trAll=post?X_TRENDS_POST:(S.scene>=3?X_TRENDS_PRE:X_TRENDS_SEOUL);const cats=["すべて","エンターテインメント","音楽","ジャパン"];if(!cats.includes(xTrendCat))xTrendCat="すべて";const tr=trAll.filter(t=>xTrendCat==="すべて"||t[0].includes(xTrendCat));
+  el.innerHTML=`<button class="x-search" id="x-search-open">${ic("search")} 検索</button><div class="trend-chips">${cats.map(c=>`<button data-xcat="${c}" class="${xTrendCat===c?"on":""}">${c==="すべて"?"トレンド":c}</button>`).join("")}</div>`+(tr.length?tr.map(t=>{const rk=trAll.indexOf(t);return `<div class="trend ${post&&t[1].includes("熱愛")?"hot":""}"><div class="tk">${t[0].includes("トレンド")?esc(t[0]):((rk+1)+" · "+esc(t[0])+" · トレンド")}</div><div class="tt2">${esc(t[1])}</div><div class="tc">${esc(t[2])}</div><span class="tdots">•••</span></div>`;}).join(""):`<div class="locknote">このカテゴリのトレンドはまだないよ</div>`);
+  const _so=$("#x-search-open");if(_so)_so.addEventListener("click",()=>{xView="search";renderX();});
+  el.querySelectorAll("[data-xcat]").forEach(b=>b.addEventListener("click",()=>{xTrendCat=b.dataset.xcat;renderX();}));return;}
  if(xTab==="bmk"){const all=X_POSTS_POST.concat(X_POSTS_PRE);const mine=all.filter(p=>S.xbmk&&S.xbmk[xKey(p)]);el.innerHTML=mine.length?mine.map(p=>xPostHTML(p,0,false,false)).join(""):`<div class="locknote">ブックマークしたポストはまだありません<br>ポストのブックマークアイコンから追加できます</div>`;bindXBmk(el);bindXAv(el);bindXActs(el);return;}
  const posts=post?X_POSTS_POST:X_POSTS_PRE.filter(p=>(p.after||0)<=S.scene).sort((a,b)=>(b.after||0)-(a.after||0));const pidx=p=>posts.indexOf(p);
  el.innerHTML=posts.map(p=>xPostHTML(p,pidx(p),post,post)).join("")+`<div class="locknote">${post?"炎上中 ― 数値はまだ増え続けている":"平和なタイムライン。……今のところは"}</div>`;
@@ -2830,10 +2880,12 @@ function setXTab(t){xTab=t;xView="feed";$("#x-tab-feed").classList.toggle("on",t
 $("#x-tab-trend").addEventListener("click",()=>setXTab("trend"));
 $("#x-tab-feed").addEventListener("click",()=>setXTab("feed"));
 $("#x-tab-bmk").addEventListener("click",()=>setXTab("bmk"));
-function xnRow(bg,icn,html,time){return `<div class="xn-row"><span class="xn-ic" style="background:${bg}">${ic(icn)}</span><span class="xn-b"><span>${html}</span>${time?`<time>${time}</time>`:""}</span></div>`;}
+/* v59: X notifications follow the real layout — small colored glyph at the left, actor avatars above the text */
+function xnAvs(list){return list.map(a=>a.img?`<img src="${a.img}" alt="">`:`<span class="sil" style="background:${a.c||"#8e8e93"}">${esc(a.ini||"")}</span>`).join("");}
+function xnRow(color,icn,html,time,avs){return `<div class="xn-row"><span class="xn-ic" style="color:${color}">${ic(icn)}</span><span class="xn-b">${avs?`<span class="xn-avs">${avs}</span>`:""}<span>${html}</span>${time?`<time>${time}</time>`:""}</span></div>`;}
 function openXNotif(){const post=S.scene>=7;let rows="";
- if(post){rows+=xnRow("#f4212e","zap",`<b>トレンド</b> ― 「サクヤ 熱愛」が日本のトレンド1位になりました`,"3月8日")+xnRow("#e0245e","heart",`<b>nctwish_official</b> の投稿への反応が急増しています`,"3月8日")+xnRow("#1d9bf0","cmt",`<b>wish_pen</b> さん他、多数のアカウントが公式の投稿に返信しました`,"3月8日");}
- else{const offs=X_POSTS_PRE.filter(p=>p.handle==="@nctwish_jp"&&(p.after||0)<=S.scene);rows+=offs.slice(0,2).map(p=>xnRow("#1d9bf0","bell",`<b>NCT WISH 公式</b> が新しい投稿をしました：${esc(p.text.slice(0,34))}…`,esc(p.time))).join("");rows+=xnRow("#794bc4","sparkle",`<b>おすすめ</b> ― NCT WISHの話題が、フォロー中の新着として表示されています`,"");}
+ if(post){rows+=xnRow("#794bc4","sparkle",`<b>トレンド</b> ― 「サクヤ 熱愛」が日本のトレンド1位になりました`,"3月8日")+xnRow("#e0245e","heart",`<b>nctwish_official</b> の投稿への反応が急増しています`,"3月8日",xnAvs([{img:"assets/group.jpg"},{ini:"W",c:"#4a90d9"},{ini:"S",c:"#d95f7b"}]))+xnRow("#1d9bf0","cmt",`<b>wish_pen</b> さん他、多数のアカウントが公式の投稿に返信しました`,"3月8日",xnAvs([{ini:"W",c:"#4a90d9"},{img:"assets/group.jpg"}]));}
+ else{const offs=X_POSTS_PRE.filter(p=>p.handle==="@nctwish_jp"&&(p.after||0)<=S.scene);rows+=offs.slice(0,2).map(p=>xnRow("#1d9bf0","bell",`<b>NCT WISH 公式</b> が新しい投稿をしました：${esc(p.text.slice(0,34))}…`,esc(p.time),xnAvs([{img:"assets/group.jpg"}]))).join("");rows+=xnRow("#794bc4","sparkle",`<b>おすすめ</b> ― NCT WISHの話題が、フォロー中の新着として表示されています`,"");}
  sheetList("通知",rows||`<div class="locknote">新しい通知はないよ</div>`);}
 $("#x-bell").addEventListener("click",openXNotif);
 /* ================= NEWS ================= */
@@ -3037,8 +3089,13 @@ function openHTChat(){const sc=!S.ended?SCENES[S.scene]:null;
 function moLiked(id){return !!(S.moLike&&S.moLike[id]);}
 function moCmtN(id){const a=S.moCmts&&S.moCmts[id];return Array.isArray(a)?a.filter(x=>typeof x==="string").length:0;}
 function moPostedHTML(id){const a=(S.moCmts&&S.moCmts[id])||[];return a.filter(x=>typeof x==="string").map(t=>`<div class="mo-cmt"><img class="av" src="assets/nao-face.jpg" style="width:30px;height:30px"><div class="mc-b"><b>なお</b> ${esc(t)}<div class="mc-meta"><span>いま</span><span>いいね 0</span><span>返信する</span></div></div></div>`).join("");}
-const MO_CMTS={m1:[["지민","소금빵 저도 좋아해요! 어느 빵집인지 궁금해요"],["yuki_jp","韓国語の言い回しが自然で、勉強になります"]],m2:[["빵돌이","한강, 좋죠. 너무 → 정말 のほうが、嬉しい気持ちには近いです"],["지수","한강 사진 예뻐요! 저도 주말에 갈래요"]],m3:[["지수","누구예요?? …내일, 잘 되길 바라요"],["なお","응원해요. 내일, 좋은 하루 되세요"]]};
-function openMoComments(id){const items=()=>MO_CMTS[id].concat(((S.moCmts&&S.moCmts[id])||[]).filter(x=>typeof x==="string").map(t=>["nao",t]));openSheet("コメント",items(),v=>{S.moCmts=S.moCmts||{};if(!Array.isArray(S.moCmts[id]))S.moCmts[id]=[];S.moCmts[id].push(v);save();$("#sheet-body").innerHTML=items().map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;renderHT();});}
+/* v59: MO_CMTS entries carry an optional Japanese translation (3rd element) — the HelloTalk
+   comment sheet is now HT-spec (date/いいね/返信する meta + per-comment 翻訳 toggle), not the IG-style sheet */
+const MO_CMTS={m1:[["지민","소금빵 저도 좋아해요! 어느 빵집인지 궁금해요","塩パン、私も大好きです！どこのパン屋さんか気になります"],["yuki_jp","韓国語の言い回しが自然で、勉強になります",null]],m2:[["빵돌이","한강, 좋죠. 너무 → 정말 のほうが、嬉しい気持ちには近いです","漢江、いいですよね。「너무」より「정말」のほうが、嬉しい気持ちには近いです"],["지수","한강 사진 예뻐요! 저도 주말에 갈래요","漢江の写真、きれいです！私も週末に行きます"]],m3:[["지수","누구예요?? …내일, 잘 되길 바라요","誰ですか？？ …明日、うまくいきますように"],["なお","응원해요. 내일, 좋은 하루 되세요","応援しています。明日、良い一日になりますように"]]};
+const MO_DATES={m1:"1月9日",m2:"1月10日",m3:"1月13日"};
+function htCmtRow(c,id,i){const mine=c[0]==="nao";const lk=(c[0].length*37+i*13)%180;return `<div class="mo-cmt" style="margin-bottom:13px">${cmtAvHTML(c[0])}<div class="mc-b"><b>${esc(c[0])}</b> ${esc(c[1])}<div class="mc-meta"><span>${mine?"いま":(MO_DATES[id]||"")}</span><span>いいね ${lk}</span><button data-reply="${esc(c[0])}" style="color:inherit;font:inherit;background:none">返信する</button></div>${c[2]?`<button class="tr-btn" data-httr style="margin-top:5px">${ic("translate")}<span>翻訳を見る</span></button><div class="tr-box">${esc(c[2])}</div>`:""}</div></div>`;}
+function bindHTCmtTr(root){root.querySelectorAll("[data-httr]").forEach(b=>b.addEventListener("click",()=>{const box=b.parentElement?b.parentElement.querySelector(".tr-box"):null;if(!box)return;const on=box.classList.toggle("on");const sp=b.querySelector("span");if(sp)sp.textContent=on?"翻訳を隠す":"翻訳を見る";}));}
+function openMoComments(id){const items=()=>MO_CMTS[id].concat(((S.moCmts&&S.moCmts[id])||[]).filter(x=>typeof x==="string").map(t=>["nao",t]));const draw=()=>{$("#sheet-body").innerHTML=items().map((c,i)=>htCmtRow(c,id,i)).join("");bindHTCmtTr($("#sheet-body"));};openSheet("コメント",items(),v=>{S.moCmts=S.moCmts||{};if(!Array.isArray(S.moCmts[id]))S.moCmts[id]=[];S.moCmts[id].push(v);save();draw();$("#sheet-body").scrollTop=1e6;renderHT();});draw();}
 function renderHT(){const el=$("#ht-body");$$("#ht-tabs button").forEach(b=>b.classList.toggle("on",b.dataset.httab===htTab));
  if(htTab==="chat"){const cs=SCENES[S.scene];const curHt=!S.ended&&cs&&cs.thread==="ht";
   el.innerHTML=`<div class="ht-tools">${[[ic("book","s20"),"#7b61c9","Courses"],['<b style="font-size:14.5px">Aa</b>',"#12b76a","HelloWords"],[ic("translate","s20"),"#0ea5b4","Translate"],[ic("sparkle","s20"),"#9dc41c","AI Grammar"]].map(t=>`<span class="ht-tool"><i style="background:${t[1]}22">${t[0]}</i>${t[2]}</span>`).join("")}<span class="ht-tool"><i style="background:#eef1f0">⌄</i>More</span></div>
@@ -3189,7 +3246,24 @@ $$("#htmenu [data-htm]").forEach(b=>b.addEventListener("click",()=>{const k=b.da
  else if(k==="corr"){const c=$("#chat-body .corr");if(c){c.scrollIntoView({block:"center"});toast("訂正カードはこれだよ");}else toast("このメッセージへの訂正はないよ");}
  else if(k==="trans")toast("翻訳はモーメンツの投稿で使えるよ");
  else toast("その機能は物語では使わないよ");}));
-$("#chat-body").addEventListener("contextmenu",e=>{if(cur&&cur.thread==="ht")e.preventDefault();});
+$("#chat-body").addEventListener("contextmenu",e=>{if(!cur)return;e.preventDefault();if(cur.thread!=="ht"){const bub=e.target.closest?e.target.closest(".bub"):null;if(bub)openLPMenu(bub);}});
+/* ================= LINE LONG-PRESS MENU / REACTIONS (v59) ================= */
+/* Session-only state (like VOOM likes): reactions and local deletes never touch the save format. */
+const LP_EMOJI=["❤️","😆","😮","😢","👍","🙏"];
+const lpReact={},lpHidden={};let _lpKey="",_lpTxt="",_lpOpenedAt=0;
+function decorateLP(body){if(!cur||cur.thread==="ht")return;body.querySelectorAll(".msg").forEach((m,di)=>{const bub=m.querySelector(".bub");if(!bub)return;const key=cur.id+":"+di;bub.dataset.lpk=key;if(lpHidden[key]){m.style.display="none";return;}const em=lpReact[key];if(em){const p=document.createElement("span");p.className="lp-pill";p.textContent=em;m.classList.add("has-lp");m.appendChild(p);}});}
+function openLPMenu(bub){if(!bub||!bub.dataset||!bub.dataset.lpk)return;_lpKey=bub.dataset.lpk;_lpTxt=bub.textContent.trim();const ov=$("#lpmenu"),wrap=$("#lp-wrap");const msg=bub.closest(".msg");wrap.classList.toggle("me",!!(msg&&msg.classList.contains("me")));
+ $("#lp-react").innerHTML=LP_EMOJI.map(e=>`<button data-lpe="${e}" aria-label="リアクション">${e}</button>`).join("");
+ const r=bub.getBoundingClientRect(),or=ov.getBoundingClientRect();const est=200;let top=r.top-or.top-est-10;if(top<54)top=r.bottom-or.top+12;top=Math.max(50,Math.min(top,Math.max(50,or.height-est-64)));wrap.style.top=top+"px";
+ ov.classList.add("on");_lpOpenedAt=Date.now();
+ wrap.querySelectorAll("[data-lpe]").forEach(b=>b.addEventListener("click",()=>{const e=b.dataset.lpe;if(lpReact[_lpKey]===e)delete lpReact[_lpKey];else{lpReact[_lpKey]=e;if(e==="❤️")sfx("like");}closeLPMenu();renderChat();}));}
+function closeLPMenu(){$("#lpmenu").classList.remove("on");}
+/* the click that ends the long-press itself lands on the backdrop — ignore backdrop taps in the first 400ms */
+$("#lpmenu").addEventListener("click",e=>{if(e.target.id==="lpmenu"&&Date.now()-_lpOpenedAt>=400)closeLPMenu();});
+$$("#lpmenu [data-lp]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.lp;closeLPMenu();
+ if(k==="copy")copyText(_lpTxt,"コピーしたよ");
+ else if(k==="keep")toast("Keepメモに保存したよ");
+ else if(k==="del"){lpHidden[_lpKey]=1;renderChat();toast("この端末の表示から削除したよ");}}));
 $$("[data-pvtool]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.pvtool;
  if(!pvCtx){toast("写真を開いてから操作してね");return;}
  if(k==="del"){toast("物語の写真は削除できないよ");return;}
