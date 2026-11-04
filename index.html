@@ -1409,6 +1409,43 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 .cd.today b{display:inline-flex;width:21px;height:21px;border-radius:50%;background:#ff3b30;color:#fff!important;align-items:center;justify-content:center;font-weight:700}
 .cd.sun b{color:#ff3b30}
 .cd.sat b{color:#0a84ff}
+/* v60: photos bottom tab bar (real iOS Photos: ライブラリ/あなたへ/アルバム/検索, glass) + For You / Albums / Search surfaces */
+.ph-tabs{display:flex;flex:none;background:rgba(252,252,254,.88);backdrop-filter:blur(22px) saturate(1.8);-webkit-backdrop-filter:blur(22px) saturate(1.8);border-top:1px solid rgba(60,60,80,.12);padding:6px 10px max(9px,env(safe-area-inset-bottom))}
+.ph-tabs button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2.5px;font-size:10px;font-weight:600;color:#8e8e93;padding:3px 0 1px;background:none;border:none;cursor:pointer}
+.ph-tabs button.on{color:#0a84ff}
+.ph-tabs .uic{width:23px;height:23px}
+.ph-sec{font-size:19px;font-weight:800;margin:16px 14px 4px;color:#111}
+.ph-mem{position:relative;border-radius:16px;overflow:hidden;margin:10px 14px 0;width:calc(100% - 28px);aspect-ratio:16/9.5;background:#111;border:none;padding:0;display:block;text-align:left;cursor:pointer}
+.ph-mem img{width:100%;height:100%;object-fit:cover;display:block}
+.ph-mem .pm-tx{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 11px;background:linear-gradient(transparent,rgba(0,0,0,.64));color:#fff}
+.ph-mem .pm-k{font-size:10.5px;font-weight:700;letter-spacing:.16em;opacity:.88}
+.ph-mem .pm-t{font-size:17.5px;font-weight:800;margin-top:1px}
+.ph-mem .pm-d{font-size:11.5px;opacity:.88;margin-top:1px}
+.alb-row{display:flex;align-items:center;gap:12px;width:100%;padding:10px 14px;background:#fff;border:none;border-bottom:1px solid #f2f2f5;text-align:left;cursor:pointer}
+.alb-row img,.alb-row video{width:56px;height:56px;border-radius:9px;object-fit:cover;flex:none;background:#e9e9ee;display:block}
+.alb-row .alb-th{width:56px;height:56px;border-radius:9px;flex:none;background:#e9e9ee;display:flex;align-items:center;justify-content:center;color:#ff3040}
+.alb-row .alb-m{flex:1;min-width:0}
+.alb-row .alb-m b{font-size:14.5px;display:block;color:#111}
+.alb-row .alb-m span{font-size:12px;color:#8e8e93}
+.alb-row .alb-ch{color:#c7c7cc;font-size:18px;flex:none}
+.alb-back{display:flex;align-items:center;gap:3px;font-size:14px;font-weight:600;color:#0a84ff;background:none;border:none;padding:12px 12px 2px;cursor:pointer}
+.ph-search{display:flex;align-items:center;gap:7px;background:#eef0f4;border-radius:11px;padding:8px 11px;margin:12px 14px 10px;color:#8e8e93}
+.ph-search input{flex:1;border:none;background:none;outline:none;font-size:16px;color:#111;font-family:inherit;min-width:0}
+.ph-search input::placeholder{color:#8e8e93}
+/* v60: lock-screen notification stack depth (real iOS: the next cards peek behind the top card) */
+.lnotif{position:relative}
+.lnotif.has-stack{box-shadow:0 16px 30px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.45),inset 0 -8px 18px rgba(255,255,255,.05)}
+.lnotif.has-stack::after{content:"";position:absolute;left:15px;right:15px;bottom:-6px;height:13px;border-radius:0 0 19px 19px;background:linear-gradient(160deg,rgba(92,92,108,.5),rgba(40,40,54,.52));border:1px solid rgba(255,255,255,.17);border-top:none;z-index:-1}
+.lnotif.stack{transform:scale(.94);opacity:.5;margin-top:6px}
+/* v60: incoming call unified to the in-app UI type (real LINE: round 応答/拒否 buttons; no lock-screen slide / remind row) */
+#v-call.htcall .cbtn .acc{background:#6c4cf1}
+#v-call .call-btns{margin-top:auto}
+/* v60: IG profile micro-spec (category sits under the display name; mutual-followers line under the buttons) */
+.ig-bio .ig-cat{margin:0 0 1px}
+.ig-mutual{display:flex;align-items:center;gap:7px;font-size:12px;color:#262626;margin:9px 0 1px;line-height:1.4}
+.ig-mutual .mu-av{display:flex;flex:none}
+.ig-mutual .mu-av img{width:19px;height:19px;border-radius:50%;border:1.6px solid #fff;object-fit:cover;display:block}
+.ig-mutual .mu-av img+img{margin-left:-6px}
 </style>
 </head>
 <body>
@@ -1658,8 +1695,9 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <!-- PHOTOS -->
 <div class="view" id="v-photos">
 <div class="ahead"><button class="back" data-back="home">‹</button><h2>写真 <span class="sub" id="ph-count"></span></h2><button class="hic" id="ph-more" aria-label="表示オプション">⋯</button></div>
-<div class="ph-seg"><span>年別</span><span>月別</span><span>日別</span><span class="on">すべての写真</span></div>
-<div class="abody"><div class="ph-grid" id="ph-grid"></div></div>
+<div class="ph-seg" id="ph-seg"><span>年別</span><span>月別</span><span>日別</span><span class="on">すべての写真</span></div>
+<div class="abody" id="ph-body"><div class="ph-grid" id="ph-grid"></div><div id="ph-alt" style="display:none"></div></div>
+<nav class="ph-tabs" id="ph-tabs"><button data-phtab="lib" class="on"><svg class="uic s23"><use href="#i-image"/></svg>ライブラリ</button><button data-phtab="foryou"><svg class="uic s23"><use href="#i-heart"/></svg>あなたへ</button><button data-phtab="albums"><svg class="uic s23"><use href="#i-copy"/></svg>アルバム</button><button data-phtab="search"><svg class="uic s23"><use href="#i-search"/></svg>検索</button></nav>
 </div>
 <div class="view" id="v-photoview">
 <div class="ahead" style="background:#000;color:#fff;border-color:#222"><button class="back" data-back="photos" style="color:#fff">‹</button><h2 id="pv-title">写真</h2></div>
@@ -1681,8 +1719,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="cb" data-cb="mute"><i><svg class="uic s24"><use href="#i-micoff"/></svg></i>消音</div><div class="cb" data-cb="keypad"><i><svg class="uic s24"><use href="#i-keypad"/></svg></i>キーパッド</div><div class="cb" data-cb="speaker"><i><svg class="uic s24"><use href="#i-vol"/></svg></i>スピーカー</div>
 <div class="cb" data-cb="add"><i><svg class="uic s24"><use href="#i-plusc"/></svg></i>追加</div><div class="cb" data-cb="video"><i><svg class="uic s24"><use href="#i-video"/></svg></i>FaceTime</div><div class="cb" data-cb="contacts"><i><svg class="uic s24"><use href="#i-user"/></svg></i>連絡先</div></div>
 <div class="call-pad" id="call-pad" style="display:none"><div class="cp-read" id="cp-read"></div><div class="cp-grid"><button class="cpk" data-k="1">1<small></small></button><button class="cpk" data-k="2">2<small>ABC</small></button><button class="cpk" data-k="3">3<small>DEF</small></button><button class="cpk" data-k="4">4<small>GHI</small></button><button class="cpk" data-k="5">5<small>JKL</small></button><button class="cpk" data-k="6">6<small>MNO</small></button><button class="cpk" data-k="7">7<small>PQRS</small></button><button class="cpk" data-k="8">8<small>TUV</small></button><button class="cpk" data-k="9">9<small>WXYZ</small></button><button class="cpk" data-k="*">*<small></small></button><button class="cpk" data-k="0">0<small>+</small></button><button class="cpk" data-k="#">#<small></small></button></div><button class="cp-hide" id="cp-hide">キーパッドを隠す</button></div>
-<div class="call-mini" id="call-mini"><span data-cm="remind"><svg class="uic s22"><use href="#i-bell"/></svg><small>リマインド</small></span><span data-cm="msg"><svg class="uic s22"><use href="#i-cmt"/></svg><small>メッセージ</small></span></div>
-<div class="call-btns" id="call-btns"><button class="cbtn" id="call-dec"><i class="dec"><svg class="uic s26"><use href="#i-phone-f"/></svg></i>拒否</button><div class="slide" id="call-acc" role="button"><span class="knob"><svg class="uic s26"><use href="#i-phone-f"/></svg></span><span class="slide-tx">スライドで応答</span></div></div>
+<div class="call-btns" id="call-btns"><button class="cbtn" id="call-dec"><i class="dec"><svg class="uic s26"><use href="#i-phone-f"/></svg></i>拒否</button><button class="cbtn" id="call-acc"><i class="acc"><svg class="uic s26"><use href="#i-phone-f"/></svg></i>応答</button></div>
 <div class="call-end" id="call-end" style="display:none"><button id="call-hang"><i><svg class="uic s26"><use href="#i-phone-f"/></svg></i></button><div style="font-size:11.5px;margin-top:5px">タップで次へ／終了</div></div>
 </div>
 
@@ -1726,7 +1763,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v59.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v60.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -2367,7 +2404,7 @@ function lockNotifList(){const L=[];const noff=S.noff||{};const sc=SCENES[S.scen
  if(S.news)L.push({go:"news",icn:"icn-news",app:"ニュース",body:"新着記事があるよ"});
  return L.filter(n=>!noff[n.go]);}
 function renderLock(){const c=storyClock();$("#lock-date").textContent=c.date;$("#lock-time").textContent=c.time;applyWall();const L=lockNotifList();const times=["今","1時間前","2時間前","4時間前","6時間前"];const groups=[];const seen={};L.forEach(n=>{if(seen[n.go])seen[n.go].cnt++;else{seen[n.go]={n:n,cnt:0};groups.push(seen[n.go]);}});
- $("#lock-notifs").innerHTML=groups.length?groups.slice(0,4).map((g,i)=>{const n=g.n;const main=`<button class="lnotif" data-go="${n.go}"><span class="ln-ic"><svg class="icsvg"><use href="#${n.icn}"/></svg></span><span style="flex:1"><span class="ln-h">${esc(n.app)} <span>${times[Math.min(i,times.length-1)]}</span></span><span class="ln-t">${n.body}</span></span></button>`;const stack=g.cnt>0?`<button class="lnotif stack" data-go="${n.go}"><span class="ln-h" style="font-size:12.5px">${esc(n.app)} の通知 あと${g.cnt}件</span></button>`:"";return main+stack;}).join(""):`<div class="lnotif"><span style="flex:1"><span class="ln-t">新しい通知はないよ</span></span></div>`;}
+ $("#lock-notifs").innerHTML=groups.length?groups.slice(0,4).map((g,i)=>{const n=g.n;const main=`<button class="lnotif${g.cnt>0?" has-stack":""}" data-go="${n.go}"><span class="ln-ic"><svg class="icsvg"><use href="#${n.icn}"/></svg></span><span style="flex:1"><span class="ln-h">${esc(n.app)} <span>${times[Math.min(i,times.length-1)]}</span></span><span class="ln-t">${n.body}</span></span></button>`;const stack=g.cnt>0?`<button class="lnotif stack" data-go="${n.go}"><span class="ln-h" style="font-size:12.5px">${esc(n.app)} の通知 あと${g.cnt}件</span></button>`:"";return main+stack;}).join(""):`<div class="lnotif"><span style="flex:1"><span class="ln-t">新しい通知はないよ</span></span></div>`;}
 /* ================= HOME EDIT MODE (v23) ================= */
 let homeEdit=false,_hLpT=null,_hLpFired=false;
 function setHomeEdit(on){homeEdit=on;$("#v-home").classList.toggle("editing",on);$("#home-done").style.display=on?"block":"none";}
@@ -2584,7 +2621,7 @@ function finishScene(){const sc=cur;if(sc.fx)applyE(sc.fx);if(sc.memo&&!S.memos.
  const n2=NOTIFS.find(n=>n.after===S.scene);if(n2&&!S.notified.includes(S.scene)){S.notified.push(S.scene);save();setTimeout(()=>pushNotif(n2),600);}}
 /* ================= CALL ================= */
 let callTimer=null,callSec=0,callScene=null,callLine=0;
-function startCall(sc){callScene=sc;callLine=0;const _cb=$("#call-voice");if(_cb)_cb.style.display="none";const who=sc.call.who;const _htc=sc.thread==="ht";$("#call-av").src=M[who].av||"";$("#call-av").style.display=(M[who].av&&!_htc)?"block":"none";const _csil=$("#call-sil");if(_csil)_csil.style.display=_htc?"flex":"none";$("#call-name").textContent=_htc?"빵돌이":M[who].n;$("#call-app").textContent=_htc?"HelloTalk":"LINE";$("#call-app").style.color=_htc?"#c4b5fd":"#7ee2a0";$("#v-call").classList.toggle("htcall",_htc);$$("#call-grid .cb").forEach(c=>c.classList.remove("on"));const _cpd=$("#call-pad");if(_cpd)_cpd.style.display="none";const _cpr=$("#cp-read");if(_cpr)_cpr.textContent="";$("#call-status").textContent="着信中…";$("#call-sub").textContent="";$("#call-btns").style.display="flex";const cm=$("#call-mini");if(cm)cm.style.display="flex";$("#call-grid").style.display="none";$("#call-end").style.display="none";show("call");ringStart();}
+function startCall(sc){callScene=sc;callLine=0;const _cb=$("#call-voice");if(_cb)_cb.style.display="none";const who=sc.call.who;const _htc=sc.thread==="ht";$("#call-av").src=M[who].av||"";$("#call-av").style.display=(M[who].av&&!_htc)?"block":"none";const _csil=$("#call-sil");if(_csil)_csil.style.display=_htc?"flex":"none";$("#call-name").textContent=_htc?"빵돌이":M[who].n;$("#call-app").textContent=_htc?"HelloTalk 音声通話":"LINE 音声通話";$("#call-app").style.color=_htc?"#c4b5fd":"#7ee2a0";$("#v-call").classList.toggle("htcall",_htc);$$("#call-grid .cb").forEach(c=>c.classList.remove("on"));const _cpd=$("#call-pad");if(_cpd)_cpd.style.display="none";const _cpr=$("#cp-read");if(_cpr)_cpr.textContent="";$("#call-status").textContent="着信中…";$("#call-sub").textContent="";$("#call-btns").style.display="flex";const cm=$("#call-mini");if(cm)cm.style.display="flex";$("#call-grid").style.display="none";$("#call-end").style.display="none";show("call");ringStart();}
 $("#call-acc").addEventListener("click",()=>{ringStop();sfx("tick");callSec=0;$("#call-status").textContent="00:00";$("#call-btns").style.display="none";const cm=$("#call-mini");if(cm)cm.style.display="none";$("#call-grid").style.display="grid";$("#call-pad").style.display="none";$("#call-end").style.display="block";$("#call-sub").textContent="タップで会話が進むよ";callTimer=setInterval(()=>{callSec++;$("#call-status").textContent=String(Math.floor(callSec/60)).padStart(2,"0")+":"+String(callSec%60).padStart(2,"0");},1000);});
 $("#call-dec").addEventListener("click",()=>{toast("かけ直してきたよ（応答してね）");});
 $$("#call-mini [data-cm]").forEach(s=>s.addEventListener("click",()=>{toast(s.dataset.cm==="remind"?"リマインドは物語では使わないよ":"メッセージはトークで送れるよ");}));
@@ -2645,9 +2682,9 @@ function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);co
  if(view==="reelsfeed"){renderIGReels(el);return;}
  let h="";
  h+=`<div class="ig-prof"><div class="ig-top"><span class="ring"><img src="assets/group.jpg"></span><div class="ig-stats"><div><b>${Math.max(S.ig,0)}</b><span>投稿</span></div><div data-followers style="cursor:pointer">${igFolHTML()}<span>フォロワー</span></div><div><b>12</b><span>フォロー中</span></div></div></div>
- <div class="ig-cat">アーティスト</div>
- <div class="ig-bio"><b>nctwish_official</b> ${VB}<br>NCT WISH 公式アカウント<br>2nd TOUR『INTO THE WISH : Face Our WISH』開催中💫<br><span class="lnk">nctwish.jp/tour2027</span><br><span class="ig-threads"><i>🧵</i> nctwish_official</span></div>
+ <div class="ig-bio"><b>NCT WISH</b> ${VB}<div class="ig-cat">アーティスト</div>NCT WISH 公式アカウント<br>2nd TOUR『INTO THE WISH : Face Our WISH』開催中💫<br><span class="lnk">nctwish.jp/tour2027</span><br><span class="ig-threads"><i>🧵</i> nctwish_official</span></div>
  <div class="ig-btns"><button id="ig-fol" class="${S.igFol===false?"fol":""}">${S.igFol===false?"フォローする":"フォロー中 ▾"}</button><button id="ig-msg">メッセージ</button><button id="ig-sug" style="flex:none;padding:7px 11px;display:flex;align-items:center;justify-content:center" aria-label="おすすめ">${ic("userplus","s17")}</button></div>
+ <div class="ig-mutual"><span class="mu-av"><img src="assets/av-riku.jpg"><img src="assets/av-sakuya.jpg"></span><span><b>リク</b>さん、<b>サクヤ</b>さんがフォロー中</span></div>
  <div class="hl-row">${HIGHLIGHTS.map((hl,i)=>`<button class="hl" data-hl="${i}"><span class="hlc"><img src="${hl.img}"></span>${hl.t}</button>`).join("")}</div></div>`;
  const savedPosts=posts.filter(p=>S.savedIG&&S.savedIG[p.id]);
  if(savedPosts.length)h+=`<button class="saved-row" id="ig-t-saved">${ic("bmk","s15")} 保存済み（${savedPosts.length}件）<span style="margin-left:auto;color:#8e8e93">›</span></button>`;
@@ -2943,14 +2980,48 @@ function bindChapRows(root){(root||document).querySelectorAll("[data-chap]").for
 function renderSetRec(){const ev=$("#ends-val");if(ev)ev.textContent=endCount()+" / "+Object.keys(ENDINGS).length+" ›";const cv=$("#chaps-val");if(cv)cv.textContent=clearedChaps().length+" / "+SCENES.length+" ›";}
 /* ================= PHOTOS (v23: fav / share / info / music player) ================= */
 let pvCtx=null,phFavOnly=false;
+/* v60: photos tab state (session-only; the save format is untouched) */
+let phTab="lib",phAlbum="all",phNaoOpen=false,phQuery="";
 function phUnlocked(p){return S.scene>p.unlock||S.ended||p.unlock===0;}
-function renderPhotos(){const el=$("#ph-grid");const unlocked=PHOTOS.filter(phUnlocked);
- el.innerHTML=PHOTOS.map((p,i)=>{const un=phUnlocked(p);if(phFavOnly&&!(S.favs&&S.favs[i]))return "";return `<button data-ph="${i}">${un?(p.video?`<video src="${p.src}" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover"></video><span class="pin" style="position:absolute;top:5px;right:6px;color:#fff">${ic("play","s13")}</span>`:`<img src="${p.src}"${p.pos?` style="object-position:${p.pos}"`:""} loading="lazy" decoding="async">`)+(S.favs&&S.favs[i]?`<span class="ph-fav">${ic("heart","s11")}</span>`:""):`<span class="lk">${ic("lock","s20")}</span>`}</button>`;}).join("")||`<div class="locknote">お気に入りの写真はまだないよ</div>`;
- $("#ph-count").textContent=phFavOnly?(el.querySelectorAll("[data-ph]").length+" 件 ・ お気に入り"):(unlocked.length+" / "+PHOTOS.length+" 件");
- el.querySelectorAll("[data-ph]").forEach(b=>b.addEventListener("click",()=>{const i=+b.dataset.ph;if(!phUnlocked(PHOTOS[i])){toast("まだ解放されていない写真だよ");return;}openPhoto(i);}));}
+function phShowIdx(i){const p=PHOTOS[i];if(phAlbum==="fav")return !!(S.favs&&S.favs[i]);if(phAlbum==="video")return !!p.video;if(phFavOnly)return !!(S.favs&&S.favs[i]);return true;}
+function phTileHTML(p,i){const un=phUnlocked(p);return `<button data-ph="${i}">${un?(p.video?`<video src="${p.src}" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover"></video><span class="pin" style="position:absolute;top:5px;right:6px;color:#fff">${ic("play","s13")}</span>`:`<img src="${p.src}"${p.pos?` style="object-position:${p.pos}"`:""} loading="lazy" decoding="async">`)+(S.favs&&S.favs[i]?`<span class="ph-fav">${ic("heart","s11")}</span>`:""):`<span class="lk">${ic("lock","s20")}</span>`}</button>`;}
+function bindPhTiles(root){if(!root)return;root.querySelectorAll("[data-ph]").forEach(b=>b.addEventListener("click",()=>{const i=+b.dataset.ph;if(!phUnlocked(PHOTOS[i])){toast("まだ解放されていない写真だよ");return;}openPhoto(i);}));}
+function phForYouHTML(){const unl=PHOTOS.map((p,i)=>({p,i})).filter(x=>phUnlocked(x.p)&&!x.p.video);const groups=[];const seen={};unl.forEach(x=>{const k=x.p.loc;if(!seen[k]){seen[k]={loc:k,items:[]};groups.push(seen[k]);}seen[k].items.push(x);});
+ let h=`<div class="ph-sec">あなたへ</div>`;
+ h+=groups.map(g=>{const f=g.items[0];return `<button class="ph-mem" data-mem="${f.i}"><img src="${f.p.src}"${f.p.pos?` style="object-position:${f.p.pos}"`:""} loading="lazy" decoding="async"><span class="pm-tx"><span class="pm-k">メモリー</span><span class="pm-t" style="display:block">${esc(g.loc)}</span><span class="pm-d">${esc(f.p.d.split(" ")[0])}${g.items.length>1?(" ・ "+g.items.length+"件"):""}</span></span></button>`;}).join("");
+ const favs=PHOTOS.map((p,i)=>({p,i})).filter(x=>S.favs&&S.favs[x.i]&&phUnlocked(x.p));
+ if(favs.length)h+=`<div class="ph-sec">お気に入り</div><div class="ph-grid" style="padding:0 2px">${favs.map(x=>phTileHTML(x.p,x.i)).join("")}</div>`;
+ return h||`<div class="locknote">おすすめはまだないよ</div>`;}
+function phAlbumsHTML(){const favN=PHOTOS.filter((p,i)=>S.favs&&S.favs[i]).length;const vidN=PHOTOS.filter(p=>p.video).length;const fv=PHOTOS.find((p,i)=>S.favs&&S.favs[i]);
+ const row=(key,thumb,name,count)=>`<button class="alb-row" data-alb="${key}">${thumb}<span class="alb-m"><b>${name}</b><span>${count}</span></span><span class="alb-ch">›</span></button>`;
+ let h=`<div class="ph-sec">アルバム</div>`;
+ h+=row("all",`<img src="${PHOTOS[0].src}" alt="">`,"すべての写真",PHOTOS.length+"件");
+ h+=row("fav",fv?`<img src="${fv.src}" alt="">`:`<span class="alb-th">${ic("heart","s24")}</span>`,"お気に入り",favN+"件");
+ h+=row("video",`<video src="${PHOTOS.find(p=>p.video).src}" muted playsinline preload="metadata"></video>`,"ビデオ",vidN+"件");
+ h+=row("nao",`<img src="${NAO_ALBUM[0][0]}" alt="">`,"プロフィール写真（なお）",NAO_ALBUM.length+"件");
+ return h;}
+function phNaoHTML(){return `<button class="alb-back" id="ph-nao-back">‹ アルバム</button><div class="ph-sec" style="margin-top:8px">プロフィール写真（なお）</div><div class="ph-grid" style="padding:0 2px">${NAO_ALBUM.map((a,i)=>`<button data-naoalb="${i}"><img src="${a[0]}"${a[2]?` style="object-position:${a[2]}"`:""} loading="lazy" decoding="async"></button>`).join("")}</div>`;}
+function phSearchResultsHTML(){const q=phQuery.trim().toLowerCase();if(!q)return `<div class="locknote">場所・説明・日付で検索できるよ</div>`;const hit=PHOTOS.map((p,i)=>({p,i})).filter(x=>(x.p.cap+" "+x.p.loc+" "+x.p.d).toLowerCase().includes(q));return hit.length?hit.map(x=>phTileHTML(x.p,x.i)).join(""):`<div class="locknote">「${esc(phQuery.trim())}」に一致する写真はないよ</div>`;}
+function renderPhotos(){const el=$("#ph-grid"),alt=$("#ph-alt"),seg=$("#ph-seg");const unlocked=PHOTOS.filter(phUnlocked);
+ $$("#ph-tabs [data-phtab]").forEach(b=>b.classList.toggle("on",b.dataset.phtab===phTab));
+ $("#ph-more").style.visibility=phTab==="lib"?"visible":"hidden";
+ if(phTab==="lib"){seg.style.display="flex";el.style.display="grid";alt.style.display="none";alt.innerHTML="";
+  el.innerHTML=PHOTOS.map((p,i)=>phShowIdx(i)?phTileHTML(p,i):"").join("")||`<div class="locknote">${phAlbum==="video"?"ビデオはまだないよ":"お気に入りの写真はまだないよ"}</div>`;
+  $("#ph-count").textContent=(phAlbum==="fav"||phFavOnly)?(el.querySelectorAll("[data-ph]").length+" 件 ・ お気に入り"):phAlbum==="video"?(el.querySelectorAll("[data-ph]").length+" 件 ・ ビデオ"):(unlocked.length+" / "+PHOTOS.length+" 件");
+  bindPhTiles(el);return;}
+ seg.style.display="none";el.style.display="none";alt.style.display="block";
+ if(phTab==="foryou"){$("#ph-count").textContent="";alt.innerHTML=phForYouHTML();alt.querySelectorAll("[data-mem]").forEach(b=>b.addEventListener("click",()=>openPhoto(+b.dataset.mem)));bindPhTiles(alt);return;}
+ if(phTab==="albums"){
+  if(phNaoOpen){$("#ph-count").textContent="";alt.innerHTML=phNaoHTML();const bk=$("#ph-nao-back");if(bk)bk.addEventListener("click",()=>{phNaoOpen=false;renderPhotos();});alt.querySelectorAll("[data-naoalb]").forEach(b=>b.addEventListener("click",()=>openNaoPhoto(+b.dataset.naoalb)));return;}
+  $("#ph-count").textContent="";alt.innerHTML=phAlbumsHTML();
+  alt.querySelectorAll("[data-alb]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.alb;if(k==="nao"){phNaoOpen=true;renderPhotos();return;}phAlbum=k;phFavOnly=false;phTab="lib";renderPhotos();}));return;}
+ /* search */
+ $("#ph-count").textContent="";alt.innerHTML=`<label class="ph-search">${ic("search","s16")}<input id="ph-q" type="text" placeholder="場所・説明・日付で検索" value="${esc(phQuery).replace(/"/g,"&quot;")}" autocomplete="off"></label><div class="ph-grid" id="ph-sres" style="padding:0 2px">${phSearchResultsHTML()}</div>`;
+ const res=$("#ph-sres");bindPhTiles(res);const q=$("#ph-q");if(q)q.addEventListener("input",()=>{phQuery=q.value;res.innerHTML=phSearchResultsHTML();bindPhTiles(res);});}
+$$("#ph-tabs [data-phtab]").forEach(b=>b.addEventListener("click",()=>{phTab=b.dataset.phtab;if(phTab==="lib")phAlbum="all";if(phTab!=="albums")phNaoOpen=false;const bd=$("#ph-body");if(bd)bd.scrollTop=0;renderPhotos();}));
 const NAO_ALBUM=[["assets/nao-wink.jpg","プロフィール写真（白ニット・ウインク）"],["assets/nao-jacket.jpg","ソウルの街角で"],["assets/nao-cat.jpg","相棒の猫と"],["assets/nao-shirt.jpg","白シャツでピース","50% 0%"],["assets/nao-cafe.jpg","カフェ（cafe murmur）で"]];
 let pvList=null;
-function pvLibList(){return PHOTOS.map((p,i)=>i).filter(i=>phUnlocked(PHOTOS[i])&&(!phFavOnly||(S.favs&&S.favs[i])));}
+function pvLibList(){return PHOTOS.map((p,i)=>i).filter(i=>phUnlocked(PHOTOS[i])&&phShowIdx(i));}
 function pvSetMedia(){const m=$("#pv-media");if(!m||!pvCtx)return;
  if(pvCtx.t==="lib"){const p=PHOTOS[pvCtx.i];$("#pv-title").textContent=p.d;$("#pv-cap").textContent=p.cap;
   if(p.video){m.innerHTML=mpHTML(p);bindMP(p);}else{m.innerHTML=`<img src="${p.src}" style="width:100%;flex:1;object-fit:contain;min-height:0;background:#000">`;}}
