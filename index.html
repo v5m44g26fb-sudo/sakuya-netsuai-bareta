@@ -1763,7 +1763,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v63.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v64.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -2232,7 +2232,11 @@ const PHOTOS=[
  {src:"assets/scene-kobe-day.jpg",cap:"神戸・メリケンパークの昼",unlock:5,d:"2027年3月6日 15:20",loc:"神戸市・メリケンパーク"},
  {src:"assets/sakuya-bmg.jpg",cap:"公式写真：サクヤ（プロフィール掲載カット）",unlock:9,d:"2027年3月9日 9:41",loc:"公式写真"},
  {src:"assets/scene-gyeongbok.jpg",cap:"景福宮 ― ひとり観光の午前",unlock:1,d:"2027年1月12日 11:15",loc:"ソウル特別市・景福宮"},
- {src:"assets/scene-nakasu.jpg",cap:"福岡・中洲の夜",unlock:9,d:"2027年3月14日 21:40",loc:"福岡市・中洲"}
+ {src:"assets/scene-nakasu.jpg",cap:"福岡・中洲の夜",unlock:9,d:"2027年3月14日 21:40",loc:"福岡市・中洲"},
+ {src:"assets/scene-bread.jpg",cap:"焼きたての塩パン ― 彼のおすすめ",unlock:1,d:"2027年1月11日 9:12",loc:"ソウル特別市・近所のパン屋"},
+ {src:"assets/scene-gwangjang.jpg",cap:"広蔵市場の屋台ごはん",unlock:1,d:"2027年1月12日 18:40",loc:"ソウル特別市・広蔵市場"},
+ {src:"assets/scene-hongdae.jpg",cap:"弘大の夜 ― 帰る前日の散歩",unlock:1,d:"2027年1月16日 20:05",loc:"ソウル特別市・弘大"},
+ {src:"assets/scene-nagoya.jpg",cap:"愛知公演の会場 ― ツアーの続き",unlock:9,d:"2027年3月21日 15:10",loc:"名古屋市・ポートメッセなごや"}
 ];
 const STORIES=[{k:"sion",img:"assets/stage2.jpg",h:"2時間前"},{k:"yushi",img:"assets/group.jpg",h:"3時間前"},{k:"riku",img:"assets/stage1.jpg",h:"5時間前"},{k:"jaehee",img:"assets/kobe.jpg",h:"6時間前"},{k:"ryo",img:"assets/av-ryo.jpg",h:"8時間前"},{k:"sakuya",img:"assets/sakuya-selca.jpg",h:"9時間前"}];
 const PROF={
@@ -2382,7 +2386,9 @@ const BGM_DEF={
  cafe:{bar:2.8,vol:.9,pad:true,arp:[0,2,1,3],chords:[[48,[60,64,67,71]],[45,[57,60,64,67]],[50,[62,65,69,72]],[43,[59,62,65,71]]]},
  night:{bar:3.4,vol:.9,pad:false,arp:[0,1,2,1],chords:[[45,[57,60,64]],[41,[53,57,60]],[48,[55,60,64]],[40,[52,56,59]]]},
  tense:{bar:2.0,vol:.65,pad:true,arp:[0,1,2,1],chords:[[50,[62,65,69]],[50,[62,65,69]],[46,[58,62,65]],[45,[57,61,64]]]},
- finale:{bar:3.6,vol:.95,pad:true,arp:[0,2,1,3,2,1],chords:[[48,[60,64,67,72]],[45,[57,60,64,69]],[41,[53,57,60,65]],[43,[55,59,62,67]]]}
+ finale:{bar:3.6,vol:.95,pad:true,arp:[0,2,1,3,2,1],chords:[[48,[60,64,67,72]],[45,[57,60,64,69]],[41,[53,57,60,65]],[43,[55,59,62,67]]]},
+ seoul:{bar:2.4,vol:1,pad:true,arp:[0,1,2,3,2,3],chords:[[50,[62,66,69,74]],[47,[59,62,66,71]],[45,[57,61,64,69]],[48,[60,64,67,72]]]},
+ spring:{bar:3.2,vol:.95,pad:true,arp:[0,2,1,2,3,1],chords:[[41,[53,57,60,65]],[48,[55,60,64,67]],[45,[57,60,64,69]],[43,[55,59,62,67]]]}
 };
 function _bgmNote(midi,t0,dur,type,vol){if(!_ac||!_bgmG)return;const o=_ac.createOscillator(),g=_ac.createGain();o.type=type;o.frequency.value=440*Math.pow(2,(midi-69)/12);g.gain.setValueAtTime(0.0001,t0);g.gain.exponentialRampToValueAtTime(Math.max(vol,0.0002),t0+Math.min(.09,dur*.3));g.gain.exponentialRampToValueAtTime(0.0001,t0+dur);o.connect(g);g.connect(_bgmG);o.start(t0);o.stop(t0+dur+.05);}
 function _bgmBar(){if(!_bgmOn||!_ac)return;const def=BGM_DEF[_bgmName];if(!def)return;const t0=_ac.currentTime+.06;const ch=def.chords[_bgmStep%def.chords.length];_bgmStep++;
@@ -2397,8 +2403,11 @@ function bgmSync(view){if(view)window._curView=view;const v=window._curView||"ti
  if(v==="call"){bgmStop();return;}
  let name;
  if(v==="title")name="title";
- else if(v==="ending"||S.ended)name="finale";
- else if(S.scene<=1)name="cafe";
+ else if(v==="ending")name="finale";
+ else if(S.ended&&(v==="free"||v==="home"))name="spring";
+ else if(S.ended)name="finale";
+ else if(S.scene===0)name="seoul";
+ else if(S.scene===1)name="cafe";
  else if(S.scene===6)name="night";
  else if(S.scene===7||S.scene===8)name="tense";
  else if(S.scene>=9)name="night";
@@ -2407,6 +2416,18 @@ function bgmSync(view){if(view)window._curView=view;const v=window._curView||"ti
  _bgmName=name;
  if(!_bgmOn){bgmStart();return;}
  if(_bgmT)clearInterval(_bgmT);_bgmStep=0;_bgmBar();_bgmT=setInterval(_bgmBar,BGM_DEF[name].bar*1000);}
+let _jglG=null;
+function playJingle(kind){try{
+ if(!S.snd||S.snd.bgm===false)return false;
+ if(!sfxCtx())return false;
+ if(_voiceBusy())return false;
+ if(!_jglG){_jglG=_ac.createGain();_jglG.gain.value=1;_jglG.connect(_ac.destination);}
+ const V=(typeof S.snd.bgmv==="number"?S.snd.bgmv:.5);if(V<=0.01)return false;
+ const seq=kind==="ending"?[[72,0,.5],[76,.17,.5],[79,.34,.6],[84,.54,1.0],[79,1.05,.45],[81,1.22,.45],[84,1.39,1.7]]:[[69,0,.34],[72,.13,.34],[76,.26,.4],[81,.43,.85]];
+ const t0=_ac.currentTime+.05,total=kind==="ending"?2.3:1.15;
+ if(_bgmG&&_bgmOn){const g=_bgmG.gain,now=_ac.currentTime;g.cancelScheduledValues(now);g.setValueAtTime(g.value,now);g.linearRampToValueAtTime(.3,now+.08);g.linearRampToValueAtTime(1,t0+total);}
+ seq.forEach(n=>{const m=n[0],dt=n[1],dur=n[2];const o=_ac.createOscillator(),g=_ac.createGain();o.type="triangle";o.frequency.value=440*Math.pow(2,(m-69)/12);const st=t0+dt;g.gain.setValueAtTime(0.0001,st);g.gain.exponentialRampToValueAtTime(.17*V,st+.03);g.gain.exponentialRampToValueAtTime(0.0001,st+dur);o.connect(g);g.connect(_jglG);o.start(st);o.stop(st+dur+.05);});
+ return true;}catch(e){return false;}}
 document.addEventListener("pointerdown",()=>{try{bgmSync(window._curView||"title");}catch(e){}},{passive:true});
 document.addEventListener("visibilitychange",()=>{try{if(document.hidden)bgmStop();else bgmSync(window._curView||"title");}catch(e){}});
 
@@ -2500,7 +2521,7 @@ $("#set-snd").addEventListener("click",()=>{sheetList("サウンドと触覚",
 `<div class="sc-row ntog" data-sndtog="on"><div class="sc-main"><b>効果音</b><div style="color:#8e8e93;font-size:12px;margin-top:1px">送信・受信・通知・いいね等の小さな音</div></div><span class="ios-sw ${S.snd.on?"on":""}"><i></i></span></div>`
 +`<div class="snd-volrow"><span style="flex:none">音量</span><input type="range" id="snd-vol-r" min="0" max="100" step="1" value="${Math.round((typeof S.snd.vol==="number"?S.snd.vol:.6)*100)}" aria-label="効果音の音量"><span class="sv-val" id="snd-vol-v">${Math.round((typeof S.snd.vol==="number"?S.snd.vol:.6)*100)}%</span></div>`
 +`<div class="sc-row ntog" data-sndtog="vib"><div class="sc-main"><b>触感フィードバック</b><div style="color:#8e8e93;font-size:12px;margin-top:1px">対応環境でのみ、節目に軽く振動するよ</div></div><span class="ios-sw ${S.snd.vib?"on":""}"><i></i></span></div>`
-+`<div class="sc-row ntog" data-sndtog="bgm"><div class="sc-main"><b>BGM</b><div style="color:#8e8e93;font-size:12px;margin-top:1px">場面に合わせた小さな音楽（タイトル／カフェ／夜／通常／緊迫／エンディング）。端末の中で合成したオリジナル</div></div><span class="ios-sw ${S.snd.bgm!==false?"on":""}"><i></i></span></div>`
++`<div class="sc-row ntog" data-sndtog="bgm"><div class="sc-main"><b>BGM</b><div style="color:#8e8e93;font-size:12px;margin-top:1px">場面に合わせた小さな音楽（タイトル／ソウル／カフェ／通常／夜／緊迫／エンディング／春＋章クリアとエンディングのジングル）。端末の中で合成したオリジナル</div></div><span class="ios-sw ${S.snd.bgm!==false?"on":""}"><i></i></span></div>`
 +`<div class="snd-volrow"><span style="flex:none">BGM音量</span><input type="range" id="bgm-vol-r" min="0" max="100" step="1" value="${Math.round((typeof S.snd.bgmv==="number"?S.snd.bgmv:.5)*100)}" aria-label="BGMの音量"><span class="sv-val" id="bgm-vol-v">${Math.round((typeof S.snd.bgmv==="number"?S.snd.bgmv:.5)*100)}%</span></div>`
 +`<button class="sh-row" data-sndtest="send"><span class="ric">${ic("send","s19")}</span>試聴：送信音</button>`
 +`<button class="sh-row" data-sndtest="recv"><span class="ric">${ic("cmt","s19")}</span>試聴：受信音</button>`
@@ -2665,7 +2686,7 @@ function pickChoice(i){if(busy)return;const sc=cur;if(!sc)return;const st=sc.ste
 function finishScene(){const sc=cur;if(sc.fx)applyE(sc.fx);if(sc.memo&&!S.memos.includes(sc.id))S.memos.push(sc.id);S.chDates=S.chDates||{};if(!S.chDates[sc.id])S.chDates[sc.id]=todayJp();if(sc.ig)S.ig=Math.max(S.ig,sc.ig);if(sc.tt)S.tt=Math.max(S.tt,sc.tt);S.scene++;S.step=0;S.shown=0;save();cur=null;
  if(S.scene>=SCENES.length){doEnding();return;}
  if(S.scene>=7){S.x=1;S.news=1;save();}
- sfx("chime");buzz(15);toast("「"+SCENES[S.scene].title+"」が届いたよ");show(SCENES[S.scene].thread==="ht"?"ht":"line");
+ if(!playJingle("chapter"))sfx("chime");buzz(15);toast("「"+SCENES[S.scene].title+"」が届いたよ");show(SCENES[S.scene].thread==="ht"?"ht":"line");
  const n2=NOTIFS.find(n=>n.after===S.scene);if(n2&&!S.notified.includes(S.scene)){S.notified.push(S.scene);save();setTimeout(()=>pushNotif(n2),600);}}
 /* ================= CALL ================= */
 let callTimer=null,callSec=0,callScene=null,callLine=0;
@@ -2680,7 +2701,7 @@ function openCallContacts(){const rows=["sakuya","members","yui","mgr"].map(tid=
 $("#call-end").addEventListener("click",()=>{ringStop();stopVoice();const lines=callScene.call.lines;if(callLine<lines.length){$("#call-sub").textContent="「"+lines[callLine]+"」";const cvb=$("#call-voice");const cv=(CALL_VOICE[callScene.id]||{})[callLine];if(cvb){if(cv&&VOICE_OK[cv]){cvb.style.display="inline-block";cvb.dataset.v=cv;}else{cvb.style.display="none";}}callLine++;return;}clearInterval(callTimer);S.callsDone[callScene.id]=true;S.callDur=S.callDur||{};S.callDur[callScene.id]=callSec;save();const _dur=String(Math.floor(callSec/60)).padStart(2,"0")+":"+String(callSec%60).padStart(2,"0");$("#call-status").textContent="通話を終了しました";$("#call-sub").textContent="通話時間 "+_dur;$("#call-grid").style.display="none";$("#call-end").style.display="none";const _cs=callScene;setTimeout(()=>{if(_cs)openChat(_cs);},750);});
 $("#call-hang").addEventListener("click",ev=>{ev.stopPropagation();$("#call-end").click();});
 /* ================= ENDING ================= */
-function doEnding(){sfx("fanfare");buzz([40,60,40,60,80]);const g=S.gauges;let id;
+function doEnding(){sfx("fanfare");buzz([40,60,40,60,80]);setTimeout(()=>playJingle("ending"),650);const g=S.gauges;let id;
  if(S.act==="distance"||g.fire>=88)id="bitter";
  else if(S.act==="public"&&g.trust>=58)id="public";
  else id="silent";
@@ -2695,7 +2716,8 @@ const HIGHLIGHTS=[{t:"TOUR 2027",img:"assets/stage2.jpg"},{t:"SEOUL",img:"assets
 const TAGGED_POSTS=[
  {id:101,after:7,img:"assets/kobe-night.jpg",user:"wish_daily",ini:"W",loc:"GLION ARENA KOBE",likes:"84,213",cap:"神戸最終日、海のそばのアリーナが綺麗すぎた⚓ #NCTWISH #FaceOurWISH",cm:[["wish_archive","同じ空間にいました…！"]],time:"3月7日"},
  {id:102,after:4,img:"assets/stage1.jpg",user:"sakuya_thoughts",ini:"S",loc:"国立代々木競技場第一体育館",likes:"61,540",cap:"代々木3日間完走おつかれさま💫 言葉の一つひとつが届いた公演だった",cm:[["ispy_fan","代々木参戦勢です、最高でした"]],time:"2月28日"},
- {id:103,after:9,img:"assets/sakuya-bmg.jpg",user:"sakuya_thoughts",ini:"S",loc:"Tokyo, Japan",likes:"92,317",cap:"声明の朝に、もう一度この顔を見た。本人の言葉を待つって決めた人の、推しの顔。#SakuyaWeLoveYou",cm:[["wish_daily","同じ気持ちで待ってる人、たくさんいるはず"],["ispy_fan","言葉の人の言葉を、待ちます"]],time:"3月9日"}
+ {id:103,after:9,img:"assets/sakuya-bmg.jpg",user:"sakuya_thoughts",ini:"S",loc:"Tokyo, Japan",likes:"92,317",cap:"声明の朝に、もう一度この顔を見た。本人の言葉を待つって決めた人の、推しの顔。#SakuyaWeLoveYou",cm:[["wish_daily","同じ気持ちで待ってる人、たくさんいるはず"],["ispy_fan","言葉の人の言葉を、待ちます"]],time:"3月9日"},
+ {id:104,after:9,img:"assets/scene-nagoya.jpg",user:"wish_daily",ini:"W",loc:"ポートメッセなごや",likes:"47,208",cap:"愛知公演の会場、ポートメッセなごや⚓ ツアーはまだ続いてる。ドーム型の屋根が目印。#NCTWISH #FaceOurWISH",cm:[["wish_archive","愛知参戦です！"],["ispy_fan","ツアー完走まで見届けます"]],time:"3月21日"}
 ];
 const CARIDX={};const CAPOPEN={};
 function igLiveId(){return S.ig>0?IG_POSTS[Math.min(S.ig,IG_POSTS.length)-1].id:0;}
@@ -3239,6 +3261,7 @@ function renderHT(){const el=$("#ht-body");$$("#ht-tabs button").forEach(b=>b.cl
   </div></div>`:""}
   <div class="mo-card"><div class="mo-head">${htAvHTML(40)}<span><div class="mn">빵돌이</div><div class="ms">ソウル · 1月9日</div></span><span class="langtag">한국어</span></div>
   <div class="mo-pair">🇰🇷 KR <span class="lvbar"><i style="width:100%"></i></span> ⇄ 🇯🇵 JP <span class="lvbar"><i style="width:92%"></i></span></div>
+  <img class="mo-img" src="assets/scene-bread.jpg" alt="">
   <div class="mo-body">서울의 아침. 동네 빵집에서 갓 구운 빵을 사면 하루가 조금 다정해진다. 오늘은 소금빵이 특히 좋았다.</div>
   <button class="tr-btn" data-trm>${ic("translate")}<span>翻訳を見る</span></button><div class="tr-box">ソウルの朝。近所のパン屋で焼きたてのパンを買うと、一日が少し優しくなる。今日は塩パンが特に良かった。</div>
   <div class="mo-acts"><button class="mo-like${moLiked("m1")?" liked":""}" data-molike="m1">${ic(moLiked("m1")?"heart":"heart-o","s18")} <b>${23+(moLiked("m1")?1:0)}</b></button><button data-mocmt="m1">${ic("cmt","s18")} <b>${2+moCmtN("m1")}</b></button><span>${ic("eye","s18")} <b>312</b></span><button id="mo-cor1" style="margin-left:auto">${ic("pencil","s15")} 訂正する</button></div>
