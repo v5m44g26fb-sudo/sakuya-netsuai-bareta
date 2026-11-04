@@ -361,6 +361,8 @@ img{user-select:none;-webkit-user-drag:none}
 #v-ending .et{font-size:13.5px;line-height:1.95;margin-top:16px;color:#f0eef8;white-space:pre-wrap}
 #v-ending .gs{margin-top:18px;background:rgba(255,255,255,.13);backdrop-filter:blur(8px);border-radius:15px;padding:11px 18px;font-size:12.5px;line-height:1.9;width:100%}
 .fin{margin-top:auto;font-family:Georgia,serif;font-style:italic;font-size:19px;color:#ffd76a}
+#end-epi{width:100%;max-width:360px;margin:18px auto 6px;text-align:left}
+#end-epi:empty{display:none}
 /* free chat */
 .free-in{flex:1;background:#fff;border:1px solid #e2e2e8;border-radius:19px;padding:8px 13px;font-size:16px;color:#111;outline:none;width:100%}
 /* toast */
@@ -1546,7 +1548,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <!-- ENDING -->
 <div class="view" id="v-ending">
 <img class="wallbg" id="end-bg" src="assets/stage2.jpg" alt=""><div class="shade"></div>
-<div class="ec"><div class="ek">ENDING</div><h3 id="end-title"></h3><div class="et" id="end-text"></div><div class="gs" id="end-gauges"></div><div class="fin" id="end-fin">- fin -</div>
+<div class="ec"><div class="ek">ENDING</div><h3 id="end-title"></h3><div class="et" id="end-text"></div><div class="gs" id="end-gauges"></div><div id="end-epi"></div><div class="fin" id="end-fin">- fin -</div>
 <button class="bigbtn" id="end-home" style="max-width:260px">ホームへ戻る</button>
 <div style="font-size:11.5px;color:#cfc9e6;margin-top:10px">クリア特典：サクヤとのフリーチャットが解放されたよ（LINEから）</div></div>
 </div>
@@ -1582,7 +1584,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v52.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v53.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -1726,6 +1728,12 @@ const SCENES=[
   {t:"「正直ちょっと怖い。でも会いたい」と本音で",e:{trust:6},r:[["saku","怖がらせてごめんなさい。……でも、本音を言ってくれる人でよかった。無理のない場所にします"]]},
   {t:"「考えさせて」と保留する",e:{trust:-3},r:[["saku","もちろんです。返事はいつでも。……待ってます"]]}
  ]},
+ {f:"saku",t:"場所、決めました。観光客の少ない裏通りの、小さなカフェです。……静かなところが、好きで"},
+ {me:"ありがとう。……ねえ、明日使える韓国語、ひとつだけ教えて"},
+ {f:"saku",t:"「楽しみにしてます」は、기대돼요。……僕の今の気持ち、そのままです"},
+ {me:"韓国語で言ってみる。저도 기대돼요. 내일 만납시다！"},
+ {corr:{from:"saku",orig:[["저도 기대돼요. 내일 ",0],["만납시다",2],["！",0]],fixed:[["저도 기대돼요. 내일 ",0],["만나요",1],["！",0]],memo:"「만납시다」は『会いましょう』の、少し硬い形。友達同士なら「만나요」で十分です。……でも、言おうとしてくれたことが嬉しい"}},
+ {f:"saku",t:"……上手です。明日は、その声で聞けるんですね"},
  {f:"saku",t:"明日の今ごろは、知らない人同士じゃなくなってますね"},
  {me:"……楽しみと、緊張が半分ずつ"},
  {f:"saku",t:"僕もです。……おやすみなさい、なおさん。良い夢を"},
@@ -1743,6 +1751,13 @@ const SCENES=[
   {t:"「ファンとか関係なく、빵돌이 として会いに来た」と伝える",e:{trust:5},r:[["sakuya","빵돌이 として。……その言い方、すごく嬉しいです"],["sakuya","……その呼び方で呼ばれるの、今日が最後かもしれませんね。少し、寂しいです"]]},
   {t:"「ごめん、やっぱり無理かも」と席を立とうとする",e:{trust:-4},r:[["sakuya","無理に止めません。……でも一つだけ。今日の紅茶、飲んでからでもいいですか。温かいうちが、おいしいので"],["sakuya","温かいうちに。……急がなくて、いいですよ"]]}
  ]},
+ {f:"sakuya",t:"……紅茶、好きなんですね。カップの持ち方が、丁寧で"},
+ {me:"え、分かる？ ……サクヤこそ、話すとき言葉をすごく選ぶよね。画面の中でも、外でも"},
+ {f:"sakuya",t:"言葉は、選ばないと届かないので。……特に、大事な話ほど"},
+ {me:"じゃあ韓国語でひとつ。今の私の気持ち。「꿈 같아요」……夢みたい、って合ってる？"},
+ {f:"sakuya",t:"合ってます。……僕も、同じ気持ちです"},
+ {me:"ねえ、빵돌이 のままでいてほしかった気持ちも、少しだけあるんだ"},
+ {f:"sakuya",t:"……じゃあ、今日だけは。カフェを出るまでは、빵돌이 でいます"},
  {sys:"結局、閉店まで話した。公演のこと、パンのこと、言葉のこと。彼は画面の中よりずっと静かで、ずっと丁寧だった"},
  {f:"sakuya",t:"……時間、忘れてました。こんなに長く人と話したの、久しぶりです"},
  {me:"私も。……ねえ、最後に一つだけ。빵돌이 の名前の由来、聞いてもいい？"},
@@ -1866,7 +1881,7 @@ const SCENES=[
  {f:"sakuya",t:"……そう、思いたいです。何かあったら、すぐ連絡します。今日は、もう休んでください"},
  {sys:"翌朝。なおのスマホに、ゆいからのLINEが何十件も届いていた――"}
 ]},
-{id:"s8",thread:"mgr",date:"3月8日(月)",title:"炎上編 ― スクープの朝",ig:5,tt:3,photo:6,fx:{fire:22,fan:-14},call:{who:"mgr",lines:["なおさん、マネージャーの佐伯です。……今朝の記事は見ましたか","NCT WISHサクヤに熱愛報道が出ました。神戸の公演後、海沿いで女性と歩く写真です","事務所は現在、事実確認中です。本人とはこれから話します","なおさんにお願いがあります。SNSへの投稿、知人への説明、一切しないでください。コメントは事務所が一括で出します","……個人的なことを言えば、彼、あんなに穏やかな顔の写真、初めて見ました。でも今は守り方が先です"]},memo:{t:"観察メモ⑧ スクープ",b:"『NCT WISHサクヤ、神戸の夜に一般女性と密会』――週刊誌とネットニュースが一斉に報じた。Xのトレンド1位は『サクヤ 熱愛』。公式IGの最新投稿には、擁護と批判のコメントが同じ速さで増えていく。"},steps:[
+{id:"s8",thread:"mgr",date:"3月8日(月)",title:"炎上編 ― スクープの朝",ig:5,tt:3,photo:6,fx:{fire:22,fan:-14},call:{who:"mgr",lines:["なおさん、マネージャーの佐伯です。……今朝の記事は見ましたか","NCT WISHサクヤに熱愛報道が出ました。神戸の公演後、海沿いで女性と歩く写真です","事務所は現在、事実確認中です。本人とはこれから話します","なおさんにお願いがあります。SNSへの投稿、知人への説明、一切しないでください。コメントは事務所が一括で出します","……個人的なことを言えば、彼、あんなに穏やかな顔の写真、初めて見ました。でも今は守り方が先です","なおさんも、今日は無理をしないでください。食事と睡眠だけは、ちゃんと","彼の伝言、もう一つだけ預かっていました。『ごはん、ちゃんと食べて』……だそうです。あの子らしいでしょう","今日の夕方には、声明の文面が固まります。それまでは、どうか静かに","では、失礼します。……彼は、いい人を選びましたね。それだけは、僕も思います"]},memo:{t:"観察メモ⑧ スクープ",b:"『NCT WISHサクヤ、神戸の夜に一般女性と密会』――週刊誌とネットニュースが一斉に報じた。Xのトレンド1位は『サクヤ 熱愛』。公式IGの最新投稿には、擁護と批判のコメントが同じ速さで増えていく。"},steps:[
  {day:"2027年3月8日（月）― スクープの朝"},
  {sys:"ネットニュース速報『NCT WISHサクヤに熱愛報道』。Xのトレンド1位に「サクヤ 熱愛」が躍り出た"},
  {sys:"マネージャーから電話がかかってきた（このあと通話画面へ）"},
@@ -1919,6 +1934,41 @@ const ENDINGS={
  silent:{t:"静かな完走END ― ノーコメントの向こう側",bg:"assets/stage1.jpg",tx:"事務所は『プライベートについてはお答えできません』とだけ発表した。\n憶測はしばらく続いたけれど、ツアーは福岡、愛知へと進み、ステージの彼は何も変わらなかった。\n騒ぎが収まった頃、短いLINEが届く。『海の続きは、また今度。待っててください』\n会えない時間は増えた。でも「遠くて近い」は、まだ続いている。"},
  bitter:{t:"ほろ苦いEND ― 距離を置く、という選択",bg:"assets/kobe-night.jpg",tx:"ふたりは距離を置くことを選んだ。\n事務所の声明は簡潔で、炎上はうそのように収まっていった。ツアーは完走し、彼は何事もなかったように笑った。\n――ただ、愛知公演のMCで一度だけ、彼は言った。\n『大事な言葉ほど、届くのに時間がかかる』\nソウルのカフェの紅茶の味を、なおはまだ覚えている。"}
 };
+/* v53: エンディング後の後日談（LINEのやり取り）。到達したエンディング分だけ、コレクション読み返しとフリーチャットに表示する */
+const EPILOGUES={
+ public:{date:"3月13日（土）",time:"21:47",steps:[
+  {f:"sakuya",t:"福岡、終わりました。……今日の客席、見つけましたよ"},
+  {me:"お疲れさま。今日は隠れなくていいから、すぐ分かったでしょ"},
+  {f:"sakuya",t:"はい。MCで言いました。『遠くて近い、じゃなくなりました』って"},
+  {me:"聞いてた。ざわついてたけど、笑顔の人も多かったよ"},
+  {f:"sakuya",t:"手紙、まだ届いてます。応援の言葉も、怒った言葉も。……全部、読みました"},
+  {me:"無理しないでね。全部を受け止めなくていいんだよ"},
+  {f:"sakuya",t:"大丈夫です。言葉は、届く順番があるって、なおさんに教わったので"},
+  {f:"sakuya",t:"次は愛知。……そのあとは、少し休めます。紅茶の美味しい店、探しておきますね"},
+  {me:"約束。……今日はもう寝な。おやすみ、サクヤ"},
+  {f:"sakuya",t:"おやすみなさい、なおさん。……隠さない夜は、静かですね"}]},
+ silent:{date:"3月21日（日）",time:"22:15",steps:[
+  {f:"sakuya",t:"愛知、終わりました。ツアー、完走です"},
+  {me:"お疲れさま。……全部、見届けたよ"},
+  {f:"sakuya",t:"ありがとうございます。騒ぎのほうも、だいぶ静かになりました"},
+  {me:"うん。こっちも、普通の日々に戻りつつある"},
+  {f:"sakuya",t:"前に言った『海の続き』、覚えてますか"},
+  {me:"覚えてる。神戸の海の、続きだね"},
+  {f:"sakuya",t:"もう少しだけ、待ってください。……今度は、フラッシュのない場所で"},
+  {me:"待つよ。私たち、待つの上手くなったもんね"},
+  {f:"sakuya",t:"はい。……遠くて近い、はまだ続いてます。でも、悪くない距離です"}]},
+ bitter:{date:"3月22日（月）",time:"20:03",steps:[
+  {f:"sakuya",t:"……久しぶりです。ツアー、完走しました"},
+  {me:"お疲れさま。愛知のMC、配信で聞いたよ"},
+  {f:"sakuya",t:"『大事な言葉ほど、届くのに時間がかかる』……あれは、僕の本音です"},
+  {me:"うん。……届いたよ。時間は、かかったけど"},
+  {f:"sakuya",t:"ありがとうございます。……それだけで、十分です"},
+  {me:"サクヤは、元気でやってる？"},
+  {f:"sakuya",t:"はい。歌ってます。……なおさんも、元気でいてください"},
+  {f:"sakuya",t:"ソウルのカフェの紅茶、僕もまだ覚えてます。……いつか、届く順番が来たら"},
+  {me:"……うん。その日まで、元気で"}]}
+};
+function epiHTML(id){const ep=EPILOGUES[id];if(!ep)return "";return `<div class="day-pill"><span>後日談 ― ${esc(ep.date)}</span></div>`+ep.steps.map(st=>msgHTML(st,ep.time)).join("");}
 const IG_POSTS=[
  {id:1,img:"assets/group.jpg",user:"nctwish_official",loc:"Gocheok Sky Dome, Seoul",likes:"2,384,392",cap:"INTO THE WISH : Face Our WISH ― SEOUL 💫 ツアーが始まりました。高尺スカイドーム2日間、皆さんに会えるのを楽しみにしています！",cm:[["wish_archive","開幕おめでとう😭"],["sion_daily","完売公演さすが"],["ryo_tonton","開幕の空気、忘れられない"]],time:"1月15日"},
  {id:2,img:"assets/sakuya-ig1.jpg",user:"nctwish_official",loc:"Seoul, South Korea",likes:"1,932,774",cap:"SAKUYA 🧸 ソウルの休日。言葉を大事にする人の、静かな一日。",cm:[["sakuya_thoughts","このクマになりたい人生だった"],["wish_jp_fan","サクヤの表情、柔らかくて好き"],["wish_daily","静かな日のサクヤもいい"]],time:"1月18日"},
@@ -2321,7 +2371,7 @@ function doEnding(){sfx("fanfare");buzz([40,60,40,60,80]);const g=S.gauges;let i
  else id="silent";
  S.ended=true;S.endId=id;window._endBack=null;const eg=endingsGot();eg[id]={d:todayJp(),g:{trust:g.trust,fire:g.fire,fan:g.fan}};try{localStorage.setItem(EKEY,JSON.stringify(eg));}catch(e){}
  const last=SCENES[SCENES.length-1];if(last.memo&&!S.memos.includes(last.id))S.memos.push(last.id);S.ig=6;S.tt=3;S.news=1;save();
- const E=ENDINGS[id];$("#end-title").textContent=E.t;$("#end-text").textContent=E.tx;$("#end-bg").src=E.bg;$("#end-gauges").innerHTML="最終ゲージ ― 信頼度 "+g.trust+" ／ 炎上度 "+g.fire+" ／ ファンの温度 "+g.fan;show("ending");}
+ const E=ENDINGS[id];$("#end-title").textContent=E.t;$("#end-text").textContent=E.tx;$("#end-bg").src=E.bg;$("#end-epi").innerHTML="";$("#end-gauges").innerHTML="最終ゲージ ― 信頼度 "+g.trust+" ／ 炎上度 "+g.fire+" ／ ファンの温度 "+g.fan;show("ending");}
 $("#end-home").addEventListener("click",()=>{const b=window._endBack;window._endBack=null;$("#end-home").textContent="ホームへ戻る";show(b||"home");});
 /* ================= IG ================= */
 const IGHEAT={fol:0,likes:{},added:0};
@@ -2619,8 +2669,8 @@ function renderNotes(){const el=$("#notes-body");const eg=endingsGot();let h=`<l
  h+=`<div class="end-coll"><div style="font-size:13px;font-weight:800;margin-bottom:8px">エンディングコレクション</div>`+endCollHTML()+`</div><div class="end-coll"><div style="font-size:13px;font-weight:800;margin-bottom:8px">チャプター振り返り</div><div class="ch-list">`+chapReviewHTML()+`</div></div>`;
  el.innerHTML=h;const _ni=$("#notes-in");if(_ni)_ni.addEventListener("input",()=>{notesQuery=_ni.value;const r=$("#notes-list");if(r)r.innerHTML=notesListHTML();});bindEndCards(el,"notes");bindChapRows(el);}
 /* ================= RECORDS (v25) ================= */
-function endCollHTML(){return Object.keys(ENDINGS).map(id=>{const r=endRec(id);const mt=ENDMETA[id];if(!r)return `<div class="end-card lock"><b>？？？</b>未到達のエンディング</div>`;const meta=r.legacy?"到達済み（このセーブでは日付・ゲージ未記録）":("到達日 "+esc(r.d||"")+(r.g?(" ― 信頼度 "+r.g.trust+" ／ 炎上度 "+r.g.fire+" ／ ファンの温度 "+r.g.fan):""));return `<button class="end-card" data-end="${id}" style="background:${mt[1]}"><b>${ic(mt[0],"s15")} ${esc(ENDINGS[id].t)}</b><span class="end-meta">${meta}</span><span class="end-rd">結末を読み返す ›</span></button>`;}).join("");}
-function openEndingReview(id){const E=ENDINGS[id];const r=endRec(id);if(!E||!r)return;window._endBack=window._endFrom||"notes";$("#end-title").textContent=E.t;$("#end-text").textContent=E.tx;$("#end-bg").src=E.bg;$("#end-gauges").innerHTML=r.g?("最終ゲージ ― 信頼度 "+r.g.trust+" ／ 炎上度 "+r.g.fire+" ／ ファンの温度 "+r.g.fan+(r.d?("　・　到達日 "+esc(r.d)):"")):"到達済み ― おつかれさま";$("#end-home").textContent="戻る";show("ending");}
+function endCollHTML(){return Object.keys(ENDINGS).map(id=>{const r=endRec(id);const mt=ENDMETA[id];if(!r)return `<div class="end-card lock"><b>？？？</b>未到達のエンディング</div>`;const meta=r.legacy?"到達済み（このセーブでは日付・ゲージ未記録）":("到達日 "+esc(r.d||"")+(r.g?(" ― 信頼度 "+r.g.trust+" ／ 炎上度 "+r.g.fire+" ／ ファンの温度 "+r.g.fan):""));return `<button class="end-card" data-end="${id}" style="background:${mt[1]}"><b>${ic(mt[0],"s15")} ${esc(ENDINGS[id].t)}</b><span class="end-meta">${meta}</span><span class="end-rd">結末と後日談を読み返す ›</span></button>`;}).join("");}
+function openEndingReview(id){const E=ENDINGS[id];const r=endRec(id);if(!E||!r)return;window._endBack=window._endFrom||"notes";$("#end-title").textContent=E.t;$("#end-text").textContent=E.tx;$("#end-bg").src=E.bg;$("#end-gauges").innerHTML=r.g?("最終ゲージ ― 信頼度 "+r.g.trust+" ／ 炎上度 "+r.g.fire+" ／ ファンの温度 "+r.g.fan+(r.d?("　・　到達日 "+esc(r.d)):"")):"到達済み ― おつかれさま";$("#end-epi").innerHTML=epiHTML(id);$("#end-home").textContent="戻る";show("ending");}
 function bindEndCards(root,from){(root||document).querySelectorAll("[data-end]").forEach(b=>b.addEventListener("click",()=>{window._endFrom=from||"notes";if(from==="set")closeSheet();openEndingReview(b.dataset.end);}));}
 function chapReviewHTML(){const cl=clearedChaps();if(!cl.length)return `<div class="note-lock">${ic("lock")} クリアしたチャプターはまだないよ。物語を進めると、ここで振り返れるようになる</div>`;return cl.map(sc=>{const d=(S.chDates||{})[sc.id];return `<button class="ch-row" data-chap="${sc.id}"><span class="ch-main"><b>${esc(sc.title)}</b><small>${esc(sc.date)}${d?(" ・ 到達日 "+esc(d)):""}</small></span><span class="ch-memo">${ic("pencil","s13")} メモ ›</span></button>`;}).join("");}
 function bindChapRows(root){(root||document).querySelectorAll("[data-chap]").forEach(b=>b.addEventListener("click",()=>{const sc=SCENES.find(x=>x.id===b.dataset.chap);if(!sc||!sc.memo)return;sheetList("観察メモ",`<div class="note-item" style="margin:0"><div class="nt">${esc(sc.memo.t)}<span>${esc(sc.date)}</span></div><p>${esc(sc.memo.b)}</p></div>`);}));}
@@ -2767,7 +2817,7 @@ function openHTChat(){const sc=!S.ended?SCENES[S.scene]:null;
 function moLiked(id){return !!(S.moLike&&S.moLike[id]);}
 function moCmtN(id){const a=S.moCmts&&S.moCmts[id];return Array.isArray(a)?a.filter(x=>typeof x==="string").length:0;}
 function moPostedHTML(id){const a=(S.moCmts&&S.moCmts[id])||[];return a.filter(x=>typeof x==="string").map(t=>`<div class="mo-cmt"><img class="av" src="assets/nao-face.jpg" style="width:30px;height:30px"><div class="mc-b"><b>なお</b> ${esc(t)}<div class="mc-meta"><span>いま</span><span>いいね 0</span><span>返信する</span></div></div></div>`).join("");}
-const MO_CMTS={m1:[["지민","소금빵 저도 좋아해요! 어느 빵집인지 궁금해요"],["yuki_jp","韓国語の言い回しが自然で、勉強になります"]],m2:[["빵돌이","한강, 좋죠. 너무 → 정말 のほうが、嬉しい気持ちには近いです"],["지수","한강 사진 예뻐요! 저도 주말에 갈래요"]]};
+const MO_CMTS={m1:[["지민","소금빵 저도 좋아해요! 어느 빵집인지 궁금해요"],["yuki_jp","韓国語の言い回しが自然で、勉強になります"]],m2:[["빵돌이","한강, 좋죠. 너무 → 정말 のほうが、嬉しい気持ちには近いです"],["지수","한강 사진 예뻐요! 저도 주말에 갈래요"]],m3:[["지수","누구예요?? …내일, 잘 되길 바라요"],["なお","응원해요. 내일, 좋은 하루 되세요"]]};
 function openMoComments(id){const items=()=>MO_CMTS[id].concat(((S.moCmts&&S.moCmts[id])||[]).filter(x=>typeof x==="string").map(t=>["nao",t]));openSheet("コメント",items(),v=>{S.moCmts=S.moCmts||{};if(!Array.isArray(S.moCmts[id]))S.moCmts[id]=[];S.moCmts[id].push(v);save();$("#sheet-body").innerHTML=items().map(sheetRow).join("");$("#sheet-body").scrollTop=1e6;renderHT();});}
 function renderHT(){const el=$("#ht-body");$$("#ht-tabs button").forEach(b=>b.classList.toggle("on",b.dataset.httab===htTab));
  if(htTab==="chat"){const cs=SCENES[S.scene];const curHt=!S.ended&&cs&&cs.thread==="ht";
@@ -2780,7 +2830,17 @@ function renderHT(){const el=$("#ht-body");$$("#ht-tabs button").forEach(b=>b.cl
   $("#ht-open-chat").addEventListener("click",openHTChat);
   el.querySelectorAll("[data-htdeco]").forEach(b=>b.addEventListener("click",()=>toast("物語の相手は 빵돌이 だけだよ")));}
  else if(htTab==="moments"){
-  el.innerHTML=`<div class="mo-chips"><span class="on">Recent</span><span>Recommend</span><span>Learning</span><span>Following</span><span class="flt">${ic("filter","s17")}</span></div><div class="mo-card"><div class="mo-head">${htAvHTML(40)}<span><div class="mn">빵돌이</div><div class="ms">ソウル · 1月9日</div></span><span class="langtag">한국어</span></div>
+  el.innerHTML=`<div class="mo-chips"><span class="on">Recent</span><span>Recommend</span><span>Learning</span><span>Following</span><span class="flt">${ic("filter","s17")}</span></div><div class="mo-card"><div class="mo-head">${htAvHTML(40)}<span><div class="mn">빵돌이</div><div class="ms">ソウル · 1月13日</div></span><span class="langtag">한국어</span></div>
+  <div class="mo-pair">🇰🇷 KR <span class="lvbar"><i style="width:100%"></i></span> ⇄ 🇯🇵 JP <span class="lvbar"><i style="width:92%"></i></span></div>
+  <div class="mo-body">서울의 밤. 내일, 처음 만나는 사람이 있다. 말로만 알던 사람을 만나는 건, 생각보다 용기가 필요하다.</div>
+  <button class="tr-btn" data-trm>${ic("translate")}<span>翻訳を見る</span></button><div class="tr-box">ソウルの夜。明日、初めて会う人がいる。言葉だけで知っていた人に会うのは、思ったより勇気がいる。</div>
+  <div class="mo-acts"><button class="mo-like${moLiked("m3")?" liked":""}" data-molike="m3">${ic(moLiked("m3")?"heart":"heart-o","s18")} <b>${17+(moLiked("m3")?1:0)}</b></button><button data-mocmt="m3">${ic("cmt","s18")} <b>${2+moCmtN("m3")}</b></button><span>${ic("eye","s18")} <b>203</b></span></div>
+  <div class="mo-cmts">
+  <div class="mo-cmt"><span class="sil" style="width:30px;height:30px;background:#7b61c9;font-size:12px">지</span><div class="mc-b"><b>지수</b> 누구예요?? …내일, 잘 되길 바라요<div class="mc-meta"><span>1月13日</span><span>いいね 1</span><span>返信する</span></div></div></div>
+  <div class="mo-cmt"><img class="av" src="assets/nao-face.jpg" style="width:30px;height:30px"><div class="mc-b"><b>なお</b> 응원해요. 내일, 좋은 하루 되세요<div class="mc-meta"><span>1月13日</span><span>いいね 0</span><span>返信する</span></div></div></div>${moPostedHTML("m3")}
+  <div class="mc-all" data-mocmt="m3">コメント${2+moCmtN("m3")}件をすべて見る</div>
+  </div></div>
+  <div class="mo-card"><div class="mo-head">${htAvHTML(40)}<span><div class="mn">빵돌이</div><div class="ms">ソウル · 1月9日</div></span><span class="langtag">한국어</span></div>
   <div class="mo-pair">🇰🇷 KR <span class="lvbar"><i style="width:100%"></i></span> ⇄ 🇯🇵 JP <span class="lvbar"><i style="width:92%"></i></span></div>
   <div class="mo-body">서울의 아침. 동네 빵집에서 갓 구운 빵을 사면 하루가 조금 다정해진다. 오늘은 소금빵이 특히 좋았다.</div>
   <button class="tr-btn" data-trm>${ic("translate")}<span>翻訳を見る</span></button><div class="tr-box">ソウルの朝。近所のパン屋で焼きたてのパンを買うと、一日が少し優しくなる。今日は塩パンが特に良かった。</div>
@@ -2801,7 +2861,7 @@ function renderHT(){const el=$("#ht-body");$$("#ht-tabs button").forEach(b=>b.cl
   <div class="mo-cmt"><span class="sil" style="width:30px;height:30px;background:#7b61c9;font-size:12px">지</span><div class="mc-b"><b>지수</b> 한강 사진 예뻐요! 저도 주말에 갈래요<div class="mc-meta"><span>1月10日</span><span>いいね 2</span><span>返信する</span></div></div></div>${moPostedHTML("m2")}
   </div></div>
   <div class="locknote">モーメンツ＝HelloTalkのタイムライン。投稿には言語タグが付き、翻訳・訂正がその場で使える（実物仕様）。<br>なおは彼のこの投稿を見つけて、メッセージを送った。</div>`;
-  const tb=el.querySelector("[data-trm]");if(tb)tb.addEventListener("click",()=>{const box=el.querySelector(".tr-box");const on=box.classList.toggle("on");tb.querySelector("span").textContent=on?"翻訳を隠す":"翻訳を見る";});
+  el.querySelectorAll("[data-trm]").forEach(tb2=>{tb2.addEventListener("click",()=>{const card=tb2.closest(".mo-card");const box=card?card.querySelector(".tr-box"):null;if(!box)return;const on=box.classList.toggle("on");const sp=tb2.querySelector("span");if(sp)sp.textContent=on?"翻訳を隠す":"翻訳を見る";});});
   const mb=$("#ht-mo-msg");if(mb)mb.addEventListener("click",openHTChat);
   el.querySelectorAll("[data-molike]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.molike;S.moLike=S.moLike||{};if(S.moLike[id])delete S.moLike[id];else{S.moLike[id]=1;sfx("like");}save();renderHT();}));
   el.querySelectorAll("[data-mocmt]").forEach(b=>b.addEventListener("click",()=>openMoComments(b.dataset.mocmt)));
@@ -2865,7 +2925,7 @@ function _nbHideBanner(){$("#nbanner").classList.remove("show");clearTimeout(_nb
 window._nbDrain=_nbDrain;
 $("#nbanner").addEventListener("click",()=>{clearTimeout(_nbTimer);$("#nbanner").classList.remove("show");_nbShowing=false;const t=_nbGo;if(t==="ig")S._igSeen=S.ig;if(t==="tt")S._ttSeen=S.tt;if(t==="notes")S._memoSeen=S.memos.length;if(t==="x")S.x=0;if(t==="news")S.news=0;save();show(t);});
 /* ================= FREE CHAT ================= */
-function openFree(){show("free");const b=$("#free-body");if(!b.dataset.init){const greet={public:"なおさん。……隠さなくていいって、やっぱり嬉しいですね",silent:"なおさん、お疲れさまです。……少しだけ、話せますか",bitter:"……久しぶりですね。元気でしたか"}[S.endId]||"なおさん、お疲れさまです";b.innerHTML=`<div class="day-pill"><span>エンディング後 ― フリーチャット</span></div>`+msgHTML({f:"sakuya",t:greet},nowTimeStr());b.dataset.init="1";}}
+function openFree(){show("free");const b=$("#free-body");if(!b.dataset.init){const greet={public:"なおさん。……隠さなくていいって、やっぱり嬉しいですね",silent:"なおさん、お疲れさまです。……少しだけ、話せますか",bitter:"……久しぶりですね。元気でしたか"}[S.endId]||"なおさん、お疲れさまです";b.innerHTML=epiHTML(S.endId)+`<div class="day-pill"><span>エンディング後 ― フリーチャット</span></div>`+msgHTML({f:"sakuya",t:greet},nowTimeStr());b.dataset.init="1";}}
 let _freeBusy=false;
 function freeRespond(v){let r=null;for(const f of FREE){if(f.k.some(k=>(v||"").includes(k))){r=typeof f.r==="string"?f.r:(f.r[S.endId]||f.r.def);break;}}if(!r)r=FREE_DEFAULT[S.freeCount%FREE_DEFAULT.length];S.freeCount++;save();const b=$("#free-body");const tp=document.createElement("div");tp.className="msg";tp.innerHTML=avHTML("sakuya",38)+`<div class="col"><div class="who">サクヤ</div><span class="typing"><i></i><i></i><i></i></span></div>`;b.appendChild(tp);b.scrollTop=b.scrollHeight;_freeBusy=true;setTimeout(()=>{_freeBusy=false;const _d=document.createElement("div");_d.innerHTML=msgHTML({f:"sakuya",t:r},nowTimeStr());const _node=_d.firstElementChild;if(_node){if(tp.isConnected)tp.replaceWith(_node);else b.appendChild(_node);}tp.remove();$$("#free-body .msg.me .rd").forEach(rd=>{rd.style.opacity="1";});b.scrollTop=b.scrollHeight;sfx("recv");},800);}
 function freeSend(){const inp=$("#free-input");const v=inp.value.trim();if(!v)return;inp.value="";const b=$("#free-body");b.insertAdjacentHTML("beforeend",msgHTML({me:true,t:v},nowTimeStr()));b.scrollTop=b.scrollHeight;sfx("send");freeRespond(v);}
