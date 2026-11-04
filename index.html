@@ -1763,7 +1763,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v62.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v63.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -2167,7 +2167,7 @@ const EPILOGUES={
   {f:"sakuya",t:"ソウルのカフェの紅茶、僕もまだ覚えてます。……いつか、届く順番が来たら"},
   {me:"……うん。その日まで、元気で"}]}
 };
-function epiHTML(id){const ep=EPILOGUES[id];if(!ep)return "";return `<div class="day-pill"><span>後日談 ― ${esc(ep.date)}</span></div>`+ep.steps.map(st=>msgHTML(st,ep.time)).join("");}
+function epiHTML(id){const ep=EPILOGUES[id];if(!ep)return "";const _pv=VOICE_CTX;VOICE_CTX=(typeof VOICE_EPI!=="undefined"&&VOICE_EPI)?(VOICE_EPI[id]||null):null;const h=`<div class="day-pill"><span>後日談 ― ${esc(ep.date)}</span></div>`+ep.steps.map(st=>msgHTML(st,ep.time)).join("");VOICE_CTX=_pv;return h;}
 const IG_POSTS=[
  {id:1,img:"assets/group.jpg",user:"nctwish_official",loc:"Gocheok Sky Dome, Seoul",likes:"2,384,392",cap:"INTO THE WISH : Face Our WISH ― SEOUL 💫 ツアーが始まりました。高尺スカイドーム2日間、皆さんに会えるのを楽しみにしています！",cm:[["wish_archive","開幕おめでとう😭"],["sion_daily","完売公演さすが"],["ryo_tonton","開幕の空気、忘れられない"]],time:"1月15日"},
  {id:2,img:"assets/sakuya-ig1.jpg",user:"nctwish_official",loc:"Seoul, South Korea",likes:"1,932,774",cap:"SAKUYA 🧸 ソウルの休日。言葉を大事にする人の、静かな一日。",cm:[["sakuya_thoughts","このクマになりたい人生だった"],["wish_jp_fan","サクヤの表情、柔らかくて好き"],["wish_daily","静かな日のサクヤもいい"]],time:"1月18日"},
@@ -2633,7 +2633,8 @@ function msgHTML(st,tm){
  const htM=(typeof cur!=="undefined"&&cur&&cur.thread==="ht");
  const dk=(htM&&st.f==="sakuya")?"saku":st.f;const dm=M[dk];
  if(st.img)return `<div class="msg">${avHTML(dk,38)}<div class="col"><div class="who">${esc(dm.n)}</div><div class="bub imgb"><img src="${st.img}" alt=""></div>${st.cap?`<div class="bub" style="margin-top:4px">${esc(st.cap)}</div>`:""}</div><span class="tm">${esc(tmDisp(tm))}</span></div>`;
- const vc=(st.f==="sakuya"&&typeof cur!=="undefined"&&cur&&VOICE_CHAT[cur.id])?VOICE_CHAT[cur.id][st.t]:null;
+ const _vm=(typeof VOICE_CTX!=="undefined"&&VOICE_CTX)?VOICE_CTX:((typeof cur!=="undefined"&&cur&&VOICE_CHAT[cur.id])?VOICE_CHAT[cur.id]:null);
+ const vc=(st.f==="sakuya"&&_vm)?(_vm[st.t]||null):null;
  if(st.vm)return `<div class="msg">${avHTML(dk,38)}<div class="col"><div class="who">${esc(dm.n)}</div><div class="bub vmb"><div class="vmsg"><span class="pl">▶</span><span class="wave">${[6,10,14,9,16,12,7,13,10,15,8,12].map(h=>`<i style="height:${h}px"></i>`).join("")}</span><span class="vdur">${esc(st.vm)}</span></div><div class="tsc"><b>文字起こし</b>${esc(st.t)}</div></div></div><span class="tm">${esc(tmDisp(tm))}</span></div>`;
  return `<div class="msg">${avHTML(dk,38)}<div class="col"><div class="who">${esc(dm.n)}</div><div class="bub">${esc(st.t)}</div>${vc&&VOICE_OK[vc]?`<button class="vbtn" data-v="${vc}">▶ ボイス</button>`:""}</div><span class="tm">${esc(tmDisp(tm))}</span></div>`;}
 function renderChat(){tick();const body=$("#chat-body");const sc=cur;let h="";const n=Math.min(S.shown,sc.steps.length);
@@ -3336,7 +3337,9 @@ $("#free-stamp").addEventListener("click",()=>$("#stamp-wrap").classList.toggle(
 $$("#stamp-wrap [data-stamp]").forEach(b=>b.addEventListener("click",()=>freeStamp(b.dataset.stamp)));
 $("#free-input").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing&&e.keyCode!==229)freeSend();});
 /* ================= VOICE (AnyVoice サクヤ) ================= */
-const VOICE_CHAT={"s2":{"はい。……なおさんの好きなグループの、サクヤです":"sk1"},"s7":{"……今の、見ましたか":"sk5","帰りましょう。別々に。……ごめんなさい、なおさん":"sk6"},"s10":{"どの道でも、一つだけ。ソウルで交わした言葉は、全部本当でした":"sk7"}};
+const VOICE_CHAT={"s2":{"はい。……なおさんの好きなグループの、サクヤです":"sk1"},"s7":{"……今の、見ましたか":"sk5","帰りましょう。別々に。……ごめんなさい、なおさん":"sk6"},"s10":{"どの道でも、一つだけ。ソウルで交わした言葉は、全部本当でした":"sk7"},"s3":{"遠くて近い。……いいですね。それ、僕たちの単語にします":"sk13"},"s4":{"ごめんなさい。言いたくなったんです。誰にも伝わらない言い方で、なおさんにだけ":"sk11"},"s5":{"はい。……見つけます。神戸でも、必ず":"sk12"}};
+const VOICE_EPI={"public":{"大丈夫です。言葉は、届く順番があるって、なおさんに教わったので":"sk8"},"silent":{"はい。……遠くて近い、はまだ続いてます。でも、悪くない距離です":"sk9"},"bitter":{"『大事な言葉ほど、届くのに時間がかかる』……あれは、僕の本音です":"sk10"}};
+let VOICE_CTX=null;
 const CALL_VOICE={"s3":{0:"sk2",3:"sk3",4:"sk4"}};
 const VOICE_OK={};let VAUDIO=null;
 function stopVoice(){try{if(typeof VAUDIO!=="undefined"&&VAUDIO&&!VAUDIO.paused)VAUDIO.pause();}catch(e){}}
