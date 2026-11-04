@@ -1763,7 +1763,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v60.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v61.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -2225,7 +2225,12 @@ const PHOTOS=[
  {src:"assets/kobe-night.jpg",cap:"神戸の夜景 ― 最終日の思い出",unlock:6,d:"2027年3月7日 21:05",loc:"神戸市"},
  {src:"assets/video/mv-steady-wide.mp4",video:true,cap:"動画：『Steady』MV公式プレビュー（IGリール）",unlock:3,d:"2024年9月",loc:"ミュージックビデオ"},
  {src:"assets/stage2.jpg",cap:"GLION ARENA KOBE 最終日",unlock:6,d:"2027年3月7日 18:44",loc:"GLION ARENA KOBE"},
- {src:"assets/av-sakuya2.jpg",cap:"公式投稿：リョウ＆サクヤ in 神戸",unlock:4,d:"2027年3月6日 22:10",loc:"神戸市"}
+ {src:"assets/av-sakuya2.jpg",cap:"公式投稿：リョウ＆サクヤ in 神戸",unlock:4,d:"2027年3月6日 22:10",loc:"神戸市"},
+ {src:"assets/scene-yeonnam.jpg",cap:"ソウルのカフェ通り（延南洞）",unlock:1,d:"2027年1月11日 14:26",loc:"ソウル特別市・延南洞"},
+ {src:"assets/scene-banpo.jpg",cap:"漢江の夜 ― 会えた日の帰り道",unlock:1,d:"2027年1月14日 21:30",loc:"ソウル特別市・盤浦大橋"},
+ {src:"assets/scene-yoyogi.jpg",cap:"代々木第一体育館 ― 到着の日",unlock:3,d:"2027年2月27日 13:05",loc:"国立代々木競技場第一体育館"},
+ {src:"assets/scene-kobe-day.jpg",cap:"神戸・メリケンパークの昼",unlock:5,d:"2027年3月6日 15:20",loc:"神戸市・メリケンパーク"},
+ {src:"assets/sakuya-bmg.jpg",cap:"公式写真：サクヤ（プロフィール掲載カット）",unlock:9,d:"2027年3月9日 9:41",loc:"公式写真"}
 ];
 const STORIES=[{k:"sion",img:"assets/stage2.jpg",h:"2時間前"},{k:"yushi",img:"assets/group.jpg",h:"3時間前"},{k:"riku",img:"assets/stage1.jpg",h:"5時間前"},{k:"jaehee",img:"assets/kobe.jpg",h:"6時間前"},{k:"ryo",img:"assets/av-ryo.jpg",h:"8時間前"},{k:"sakuya",img:"assets/sakuya-selca.jpg",h:"9時間前"}];
 const PROF={
@@ -2304,9 +2309,9 @@ const NOTIFS=[
 ];
 /* ================= STATE ================= */
 const KEY="sakuya_scandal_v1",EKEY="sakuya_scandal_ends_v1";
-function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],chDates:{},ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{},newsLikes:{},favs:{},wall:"",air:false,wifi:"Home-5G",noff:{},snd:{on:true,vol:.6,vib:true},a11y:{fs:0,bold:false,contrast:false,rm:false},htfavs:[],moLike:{},moCmts:{},ttCmts:{},xLikes:{},xReposts:{},ttFol:true,xFol:true,igCmts:{},igReposts:{},igFol:true,htFol:false};}
+function defState(){return {scene:0,step:0,shown:0,gauges:{trust:45,fire:10,fan:55},memos:[],chDates:{},ig:0,tt:0,x:0,news:0,ended:false,endId:"",act:"",callsDone:{},freeCount:0,answers:{},likedIG:{},likedTT:{},savedIG:{},savedTT:{},viewIG:"grid",notified:[],xbmk:{},callDur:{},newsBmk:{},newsCmts:{},newsLikes:{},favs:{},wall:"",air:false,wifi:"Home-5G",noff:{},snd:{on:true,vol:.6,vib:true,bgm:true,bgmv:.5},a11y:{fs:0,bold:false,contrast:false,rm:false},htfavs:[],moLike:{},moCmts:{},ttCmts:{},xLikes:{},xReposts:{},ttFol:true,xFol:true,igCmts:{},igReposts:{},igFol:true,htFol:false};}
 let S=load();
-S.snd=Object.assign({on:true,vol:.6,vib:true},S.snd||{});
+S.snd=Object.assign({on:true,vol:.6,vib:true,bgm:true,bgmv:.5},S.snd||{});
 S.a11y=Object.assign({fs:0,bold:false,contrast:false,rm:false},S.a11y||{});
 S.chDates=S.chDates||{};
 /* v27: save hardening — validate/repair every known field so a damaged or partial save still boots and resumes */
@@ -2331,7 +2336,7 @@ function sanitizeSave(j){
  o.ig=int(j.ig,0,0,999);o.tt=int(j.tt,0,0,999);o.x=int(j.x,0,0,999);o.news=int(j.news,0,0,999);o.freeCount=int(j.freeCount,0,0,1000000);
  o.ended=j.ended===true;o.endId=str(j.endId,"");o.act=str(j.act,"");o.viewIG=str(j.viewIG,"grid");o.wall=str(j.wall,"");
  o.air=j.air===true;o.wifi=["Home-5G","Cafe murmur Wi-Fi","KIX Free Wi-Fi","ホテル神戸 Wi-Fi"].includes(j.wifi)?j.wifi:"Home-5G";
- const sj=obj(j.snd)||{};o.snd={on:typeof sj.on==="boolean"?sj.on:true,vol:num(sj.vol,.6,0,1),vib:typeof sj.vib==="boolean"?sj.vib:true};
+ const sj=obj(j.snd)||{};o.snd={on:typeof sj.on==="boolean"?sj.on:true,vol:num(sj.vol,.6,0,1),vib:typeof sj.vib==="boolean"?sj.vib:true,bgm:typeof sj.bgm==="boolean"?sj.bgm:true,bgmv:num(sj.bgmv,.5,0,1)};
  const aj=obj(j.a11y)||{};o.a11y={fs:(aj.fs===1||aj.fs===2)?aj.fs:0,bold:aj.bold===true,contrast:aj.contrast===true,rm:aj.rm===true};
  return o;
 }
@@ -2367,6 +2372,41 @@ function buzz(p){if(S.snd&&S.snd.vib&&navigator.vibrate){try{navigator.vibrate(p
 let _ringT=null;
 function ringStart(){ringStop();const cyc=()=>{if(document.hidden)return;sfx("ring");buzz([280,160,280]);};cyc();_ringT=setInterval(cyc,2400);}
 function ringStop(){if(_ringT){clearInterval(_ringT);_ringT=null;}if(navigator.vibrate){try{navigator.vibrate(0);}catch(e){}}}
+/* ================= BGM (v61: Web Audio generative, all-original loops; no audio files) ================= */
+let _bgmG=null,_bgmT=null,_bgmName="",_bgmStep=0,_bgmOn=false;
+const BGM_DEF={
+ title:{bar:2.6,vol:1,pad:true,arp:[0,1,2,3,2,1],chords:[[48,[60,64,67,72]],[45,[57,60,64,69]],[41,[53,57,60,65]],[43,[55,59,62,67]]]},
+ day:{bar:2.2,vol:1,pad:true,arp:[0,1,2,3,2,3],chords:[[48,[60,64,67,71]],[43,[55,59,62,67]],[45,[57,60,64,69]],[41,[53,57,60,65]]]},
+ cafe:{bar:2.8,vol:.9,pad:true,arp:[0,2,1,3],chords:[[48,[60,64,67,71]],[45,[57,60,64,67]],[50,[62,65,69,72]],[43,[59,62,65,71]]]},
+ night:{bar:3.4,vol:.9,pad:false,arp:[0,1,2,1],chords:[[45,[57,60,64]],[41,[53,57,60]],[48,[55,60,64]],[40,[52,56,59]]]},
+ tense:{bar:2.0,vol:.65,pad:true,arp:[0,1,2,1],chords:[[50,[62,65,69]],[50,[62,65,69]],[46,[58,62,65]],[45,[57,61,64]]]}
+};
+function _bgmNote(midi,t0,dur,type,vol){if(!_ac||!_bgmG)return;const o=_ac.createOscillator(),g=_ac.createGain();o.type=type;o.frequency.value=440*Math.pow(2,(midi-69)/12);g.gain.setValueAtTime(0.0001,t0);g.gain.exponentialRampToValueAtTime(Math.max(vol,0.0002),t0+Math.min(.09,dur*.3));g.gain.exponentialRampToValueAtTime(0.0001,t0+dur);o.connect(g);g.connect(_bgmG);o.start(t0);o.stop(t0+dur+.05);}
+function _bgmBar(){if(!_bgmOn||!_ac)return;const def=BGM_DEF[_bgmName];if(!def)return;const t0=_ac.currentTime+.06;const ch=def.chords[_bgmStep%def.chords.length];_bgmStep++;
+ const V=(typeof S.snd.bgmv==="number"?S.snd.bgmv:.5)*(def.vol||1)*(_voiceBusy()?0.3:1);if(V<=0.001)return;
+ _bgmNote(ch[0],t0,def.bar,"sine",.20*V);
+ if(def.pad)ch[1].forEach(m=>_bgmNote(m,t0,def.bar,"triangle",.045*V));
+ const pat=def.arp;pat.forEach((ix,i)=>{const m=ch[1][ix%ch[1].length]+(ix>=ch[1].length?12:0);_bgmNote(m,t0+i*(def.bar/pat.length),Math.min(.9,def.bar/pat.length*1.7),"triangle",.11*V);});}
+function bgmStart(){if(_bgmOn)return;if(!S.snd||S.snd.bgm===false)return;if(!sfxCtx())return;if(!_bgmG){_bgmG=_ac.createGain();_bgmG.gain.value=1;_bgmG.connect(_ac.destination);}if(!BGM_DEF[_bgmName])_bgmName="title";_bgmOn=true;_bgmStep=0;_bgmBar();_bgmT=setInterval(_bgmBar,BGM_DEF[_bgmName].bar*1000);}
+function bgmStop(){_bgmOn=false;if(_bgmT){clearInterval(_bgmT);_bgmT=null;}}
+function bgmSync(view){if(view)window._curView=view;const v=window._curView||"title";
+ if(!S.snd||S.snd.bgm===false){bgmStop();return;}
+ if(v==="call"){bgmStop();return;}
+ let name;
+ if(v==="title"||v==="ending")name="title";
+ else if(S.ended)name="day";
+ else if(S.scene<=1)name="cafe";
+ else if(S.scene===6)name="night";
+ else if(S.scene===7||S.scene===8)name="tense";
+ else if(S.scene>=9)name="night";
+ else name="day";
+ if(_bgmOn&&name===_bgmName)return;
+ _bgmName=name;
+ if(!_bgmOn){bgmStart();return;}
+ if(_bgmT)clearInterval(_bgmT);_bgmStep=0;_bgmBar();_bgmT=setInterval(_bgmBar,BGM_DEF[name].bar*1000);}
+document.addEventListener("pointerdown",()=>{try{bgmSync(window._curView||"title");}catch(e){}},{passive:true});
+document.addEventListener("visibilitychange",()=>{try{if(document.hidden)bgmStop();else bgmSync(window._curView||"title");}catch(e){}});
+
 function esc(s){if(s===undefined||s===null)return "";return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
 function avHTML(key,size,sq){const m=M[key];if(m&&m.av)return `<img class="${sq?"avsq":"av"}" src="${m.av}" style="width:${size}px;height:${size}px" alt="">`;return `<span class="sil" style="width:${size}px;height:${size}px;background:${m?m.c:"#999"};font-size:${Math.round(size*0.38)}px">${m?m.n[0]:"?"}</span>`;}
 function clamp(v){return Math.max(0,Math.min(100,v));}
@@ -2383,7 +2423,7 @@ function syncVideos(){setTimeout(()=>{$$("video").forEach(v=>{const view=v.close
 document.addEventListener("visibilitychange",()=>{if(document.hidden){save();$$("video").forEach(v=>{try{v.pause()}catch(e){}});try{if(typeof VAUDIO!=="undefined"&&VAUDIO)VAUDIO.pause();}catch(e){}}else{syncVideos();}});
 window.addEventListener("pagehide",()=>save());
 window.addEventListener("pageshow",e=>{if(e.persisted)syncVideos();});
-function show(id){if(id!=="call"){ringStop();if(callTimer){clearInterval(callTimer);callTimer=null;}stopVoice();}if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set","ht","htprof","chat","free"].includes(id));window.scrollTo(0,0);if(id==="tt"){ttView="feed";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="home"));}if(id==="x")xView="feed";if(id==="lock")renderLock();if(id==="home")renderHome();if(id==="set")renderSetRec();if(id==="ht")renderHT();if(id==="line")renderLine();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();tick();if(window._nbDrain)window._nbDrain();}
+function show(id){if(id!=="call"){ringStop();if(callTimer){clearInterval(callTimer);callTimer=null;}stopVoice();}if(window._igT){clearInterval(window._igT);window._igT=null;}$$(".view").forEach(v=>v.classList.remove("on"));$("#v-"+id).classList.add("on");$("#statusbar").classList.toggle("dark",["line","ig","x","news","cal","notes","photos","set","ht","htprof","chat","free"].includes(id));window.scrollTo(0,0);if(id==="tt"){ttView="feed";$$("#v-tt .tt-tabs button").forEach(x=>x.classList.toggle("on",x.dataset.tttab==="home"));}if(id==="x")xView="feed";if(id==="lock")renderLock();if(id==="home")renderHome();if(id==="set")renderSetRec();if(id==="ht")renderHT();if(id==="line")renderLine();if(id==="ig")renderIG();if(id==="tt")renderTT();if(id==="x")renderX();if(id==="news")renderNews();if(id==="cal")renderCal();if(id==="notes")renderNotes();if(id==="photos")renderPhotos();syncVideos();tick();if(window._nbDrain)window._nbDrain();try{bgmSync(id);}catch(e){}}
 document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){show(g.dataset.go);return;}const b=e.target.closest("[data-back]");if(b)show(b.dataset.back);});
 $("#homebar").addEventListener("click",()=>show("home"));
 $("#v-lock").addEventListener("click",e=>{if(e.target.closest("[data-go]"))return;show("home");});
@@ -2457,6 +2497,8 @@ $("#set-snd").addEventListener("click",()=>{sheetList("サウンドと触覚",
 `<div class="sc-row ntog" data-sndtog="on"><div class="sc-main"><b>効果音</b><div style="color:#8e8e93;font-size:12px;margin-top:1px">送信・受信・通知・いいね等の小さな音</div></div><span class="ios-sw ${S.snd.on?"on":""}"><i></i></span></div>`
 +`<div class="snd-volrow"><span style="flex:none">音量</span><input type="range" id="snd-vol-r" min="0" max="100" step="1" value="${Math.round((typeof S.snd.vol==="number"?S.snd.vol:.6)*100)}" aria-label="効果音の音量"><span class="sv-val" id="snd-vol-v">${Math.round((typeof S.snd.vol==="number"?S.snd.vol:.6)*100)}%</span></div>`
 +`<div class="sc-row ntog" data-sndtog="vib"><div class="sc-main"><b>触感フィードバック</b><div style="color:#8e8e93;font-size:12px;margin-top:1px">対応環境でのみ、節目に軽く振動するよ</div></div><span class="ios-sw ${S.snd.vib?"on":""}"><i></i></span></div>`
++`<div class="sc-row ntog" data-sndtog="bgm"><div class="sc-main"><b>BGM</b><div style="color:#8e8e93;font-size:12px;margin-top:1px">場面に合わせた小さな音楽（タイトル／カフェ／夜／通常／緊迫）。端末の中で合成したオリジナル</div></div><span class="ios-sw ${S.snd.bgm!==false?"on":""}"><i></i></span></div>`
++`<div class="snd-volrow"><span style="flex:none">BGM音量</span><input type="range" id="bgm-vol-r" min="0" max="100" step="1" value="${Math.round((typeof S.snd.bgmv==="number"?S.snd.bgmv:.5)*100)}" aria-label="BGMの音量"><span class="sv-val" id="bgm-vol-v">${Math.round((typeof S.snd.bgmv==="number"?S.snd.bgmv:.5)*100)}%</span></div>`
 +`<button class="sh-row" data-sndtest="send"><span class="ric">${ic("send","s19")}</span>試聴：送信音</button>`
 +`<button class="sh-row" data-sndtest="recv"><span class="ric">${ic("cmt","s19")}</span>試聴：受信音</button>`
 +`<button class="sh-row" data-sndtest="notif"><span class="ric">${ic("bell","s19")}</span>試聴：通知音</button>`
@@ -2465,6 +2507,8 @@ $("#set-snd").addEventListener("click",()=>{sheetList("サウンドと触覚",
 $$("#sheet-body [data-sndtog]").forEach(r=>r.addEventListener("click",()=>{const k=r.dataset.sndtog;S.snd[k]=!S.snd[k];save();r.querySelector(".ios-sw").classList.toggle("on",!!S.snd[k]);updSndVal();if(k==="on"&&S.snd.on)sfx("recv");if(k==="vib"&&S.snd.vib)buzz(20);}));
 const vr=$("#snd-vol-r");if(vr){vr.addEventListener("input",()=>{S.snd.vol=(+vr.value)/100;const vv=$("#snd-vol-v");if(vv)vv.textContent=vr.value+"%";save();});vr.addEventListener("change",()=>{if(S.snd.on)sfx("tick");});}
 $$("#sheet-body [data-sndtest]").forEach(b=>b.addEventListener("click",()=>{if(!S.snd.on){toast("効果音がオフだよ");return;}sfx(b.dataset.sndtest);}));
+const _bt=document.querySelector('#sheet-body [data-sndtog="bgm"]');if(_bt)_bt.addEventListener("click",()=>{try{bgmSync(window._curView||"title");}catch(e){}});
+const br=$("#bgm-vol-r");if(br){br.addEventListener("input",()=>{S.snd.bgmv=(+br.value)/100;const bv=$("#bgm-vol-v");if(bv)bv.textContent=br.value+"%";save();});}
 });
 updSndVal();
 
@@ -2646,7 +2690,8 @@ const IG_FLOOD=[["匿名","公式は早く声明出して"],["wish_pen","本人�
 const HIGHLIGHTS=[{t:"TOUR 2027",img:"assets/stage2.jpg"},{t:"SEOUL",img:"assets/group.jpg"},{t:"TOKYO",img:"assets/stage1.jpg"},{t:"KOBE",img:"assets/kobe.jpg"}];
 const TAGGED_POSTS=[
  {id:101,after:7,img:"assets/kobe-night.jpg",user:"wish_daily",ini:"W",loc:"GLION ARENA KOBE",likes:"84,213",cap:"神戸最終日、海のそばのアリーナが綺麗すぎた⚓ #NCTWISH #FaceOurWISH",cm:[["wish_archive","同じ空間にいました…！"]],time:"3月7日"},
- {id:102,after:4,img:"assets/stage1.jpg",user:"sakuya_thoughts",ini:"S",loc:"国立代々木競技場第一体育館",likes:"61,540",cap:"代々木3日間完走おつかれさま💫 言葉の一つひとつが届いた公演だった",cm:[["ispy_fan","代々木参戦勢です、最高でした"]],time:"2月28日"}
+ {id:102,after:4,img:"assets/stage1.jpg",user:"sakuya_thoughts",ini:"S",loc:"国立代々木競技場第一体育館",likes:"61,540",cap:"代々木3日間完走おつかれさま💫 言葉の一つひとつが届いた公演だった",cm:[["ispy_fan","代々木参戦勢です、最高でした"]],time:"2月28日"},
+ {id:103,after:9,img:"assets/sakuya-bmg.jpg",user:"sakuya_thoughts",ini:"S",loc:"Tokyo, Japan",likes:"92,317",cap:"声明の朝に、もう一度この顔を見た。本人の言葉を待つって決めた人の、推しの顔。#SakuyaWeLoveYou",cm:[["wish_daily","同じ気持ちで待ってる人、たくさんいるはず"],["ispy_fan","言葉の人の言葉を、待ちます"]],time:"3月9日"}
 ];
 const CARIDX={};const CAPOPEN={};
 function igLiveId(){return S.ig>0?IG_POSTS[Math.min(S.ig,IG_POSTS.length)-1].id:0;}
