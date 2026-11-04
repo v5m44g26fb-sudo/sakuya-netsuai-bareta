@@ -114,7 +114,7 @@ img{user-select:none;-webkit-user-drag:none}
 .thread .tn{font-size:14.5px;font-weight:600;display:flex;justify-content:space-between;align-items:baseline}
 .thread .tn time{font-size:10.5px;color:var(--sub);font-weight:400;flex:none;margin-left:8px}
 .thread .tp{display:block;font-size:12.5px;color:#777;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;max-width:100%}
-.thread .ub{background:var(--red);color:#fff;font-size:11px;font-weight:700;min-width:19px;height:19px;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:0 5px;flex:none}
+.thread .ub{background:#06c755;color:#fff;font-size:11px;font-weight:700;min-width:19px;height:19px;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:0 5px;flex:none}
 .thread .done{font-size:11px;color:var(--wish);font-weight:700;flex:none}
 .ll-tabs{flex:none;display:flex;border-top:1px solid var(--line);background:rgba(250,250,252,.96);padding:7px 6px 20px}
 .ll-tabs button{flex:1;font-size:19px;color:#a3a3ab;display:flex;flex-direction:column;align-items:center;gap:2px}
@@ -151,10 +151,10 @@ img{user-select:none;-webkit-user-drag:none}
 .typing i{width:6px;height:6px;border-radius:50%;background:#b9b9c0;animation:tp 1s infinite}
 .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
 @keyframes tp{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-3px);opacity:1}}
-.chat-foot{flex:none;background:#f7f7f9;border-top:1px solid #ddd;padding:8px 10px max(24px,env(safe-area-inset-bottom));display:flex;gap:8px;align-items:center}
-.chat-foot .plus{font-size:23px;color:#555}
-.chat-in{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#fff;border:1px solid #e2e2e8;border-radius:19px;padding:8px 13px;font-size:16px;color:#999}
-.send-b{background:var(--green);color:#fff;font-weight:700;font-size:13px;border-radius:16px;padding:8px 13px}
+.chat-foot{flex:none;background:#f7f7f9;border-top:1px solid #ddd;padding:8px 8px max(24px,env(safe-area-inset-bottom));display:flex;gap:5px;align-items:center}
+.chat-foot .plus{font-size:20px;color:#555}
+.chat-in{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#fff;border:1px solid #e2e2e8;border-radius:19px;padding:8px 11px;font-size:15px;color:#999}
+.send-b{background:var(--green);color:#fff;font-weight:700;font-size:13px;border-radius:16px;padding:8px 10px}
 .panel{flex:none;background:#fff;border-top:1px solid var(--line);padding:12px 14px 26px;animation:msgin .18s ease;max-height:46%;overflow-y:auto}
 .panel .pt{font-size:12px;color:var(--sub);font-weight:700;margin-bottom:8px;letter-spacing:.03em}
 .choice{display:block;width:100%;text-align:left;background:#f2f7ee;border:1.5px solid #bfe3a8;color:#1d3a12;font-size:14px;line-height:1.5;border-radius:14px;padding:10px 13px;margin:7px 0;font-weight:600}
@@ -485,8 +485,8 @@ img{max-width:100%}
 .prof-av.sil{position:absolute;inset:0}
 .prof-name{font-size:22px;font-weight:800;margin-top:13px;text-shadow:0 2px 10px rgba(0,0,0,.5)}
 .prof-status{font-size:13.5px;color:#e6e4f2;line-height:1.65;margin-top:6px;overflow-wrap:anywhere}
-.prof-btns{display:flex;gap:10px;margin-top:20px}
-.prof-btns .pb{padding:10px 20px;border-radius:20px;background:rgba(255,255,255,.18);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:13.5px;font-weight:700}
+.prof-btns{display:flex;gap:8px;margin-top:20px}
+.prof-btns .pb{padding:10px 13px;border-radius:20px;white-space:nowrap;background:rgba(255,255,255,.18);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:12.5px;font-weight:700}
 .prof-btns .pb.main{background:#06c755;border-color:transparent}
 /* story */
 #v-story{background:#000;color:#fff;z-index:120}
@@ -1001,8 +1001,8 @@ img{max-width:100%}
 .calllog-row .cl-b b{font-size:14px;display:block}
 .calllog-row .cl-b small{font-size:11.5px;color:#8e8e93}
 .calllog-row time{font-size:11px;color:#b0b0b8;flex:none}
-.prof-tabs{display:flex;gap:0;margin-top:22px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:13px;overflow:hidden;backdrop-filter:blur(12px)}
-.prof-tabs span{flex:1;text-align:center;padding:8px 0;font-size:12.5px;font-weight:700;color:#fff}
+.prof-tabs{display:flex;gap:0;width:100%;margin-top:22px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:13px;overflow:hidden;backdrop-filter:blur(12px)}
+.prof-tabs span{flex:1;text-align:center;padding:8px 0;font-size:12.5px;font-weight:700;color:#fff;white-space:nowrap}
 .prof-tabs span.on{background:rgba(255,255,255,.85);color:#173b36}
 .x-search{margin:10px 14px 2px;background:#eff3f4;border-radius:999px;padding:8px 13px;display:flex;align-items:center;gap:7px;color:#536471;font-size:13.5px}
 .x-search .uic{width:16px;height:16px}
@@ -1252,7 +1252,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 .sheet-head #sheet-x{width:32px;height:32px}
 .igx-clear{width:30px;height:30px}
 .ll-icons button{min-width:40px;min-height:40px;align-items:center;justify-content:center}
-.chat-foot .fic{padding:7px 3px}
+.chat-foot .fic{padding:7px 1px}
 .sc-row .sc-heart{padding:7px 6px 7px 12px}
 .ttp-hic{min-width:40px;min-height:40px;display:inline-flex;align-items:center;justify-content:center;color:inherit}
 .sec-t{color:#76767c}
@@ -1268,6 +1268,9 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 .title-note{margin-top:16px;width:100%;max-width:300px}
 .tbtn{transition:transform .12s ease}
 .tbtn:active{transform:scale(.975)}
+/* v56: app realism — 1:1 chats drop per-bubble name labels (LINE/HelloTalk spec; group keeps them), like/repost pop */
+#v-chat:not(.grp) .msg .who,#v-free .msg .who{display:none}
+.post-act button.pop svg,.xact.pop svg{animation:hb .35s ease}
 </style>
 </head>
 <body>
@@ -1584,7 +1587,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v55.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v56.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -2330,7 +2333,7 @@ function stepInc(st){if(!st)return 1;if(st.choice)return 4;if(st.sys||st.day)ret
 function clockMin(si,upto){let m=T0[Math.min(si,T0.length-1)];const sc=SCENES[si];if(!sc)return m;const n=Math.min(upto,sc.steps.length);for(let i=0;i<n;i++)m+=stepInc(sc.steps[i]);return m;}
 function fmtMin(m){m=((m%1440)+1440)%1440;return Math.floor(m/60)+":"+String(m%60).padStart(2,"0");}
 function nowTimeStr(){return fmtMin(clockMin(SCENES.length-1,SCENES[SCENES.length-1].steps.length)+(S.freeCount||0)*5);}
-function openChat(sc){cur=sc;const ct=$("#chat-title");ct.childNodes[0].textContent=THREADS[sc.thread].title;$("#chat-sub").textContent=sc.thread==="ht"?"🇯🇵 日本語 · 🇰🇷 한국어":"";ct.onclick=()=>openProfile(sc.thread);const _vc=$("#v-chat");_vc.classList.toggle("htmode",sc.thread==="ht");_vc.querySelector(".chat-head .back").dataset.back=sc.thread==="ht"?"ht":"line";$("#chat-call").style.display=sc.thread==="ht"?"":"none";const _mi=$("#chat-menuic");if(_mi)_mi.innerHTML=sc.thread==="ht"?ic("sliders","s21"):ic("menu","s21");show("chat");renderChat();}
+function openChat(sc){cur=sc;const ct=$("#chat-title");ct.childNodes[0].textContent=THREADS[sc.thread].title;$("#chat-sub").textContent=sc.thread==="ht"?"🇯🇵 日本語 · 🇰🇷 한국어":"";ct.onclick=()=>openProfile(sc.thread);const _vc=$("#v-chat");_vc.classList.toggle("htmode",sc.thread==="ht");_vc.classList.toggle("grp",sc.thread==="members");_vc.querySelector(".chat-head .back").dataset.back=sc.thread==="ht"?"ht":"line";$("#chat-call").style.display=sc.thread==="ht"?"":"none";const _mi=$("#chat-menuic");if(_mi)_mi.innerHTML=sc.thread==="ht"?ic("sliders","s21"):ic("menu","s21");show("chat");renderChat();}
 function segHTML(segs){return segs.map(s=>s[1]===2?`<del>${esc(s[0])}</del>`:s[1]===1?`<ins>${esc(s[0])}</ins>`:esc(s[0])).join("");}
 function msgHTML(st,tm){
  if(typeof st.day==="string")return `<div class="day-pill"><span>${esc(st.day)}</span></div>`;
@@ -2411,7 +2414,7 @@ function igFolHTML(){return `<b id="ig-fol-num">${fmtNum(igFolNum())}</b>`;}
 function taggedPosts(){return TAGGED_POSTS.filter(p=>S.ended||S.scene>=(p.after||0));}
 function igTabsHTML(view){const on=v=>(view===v||(view==="feed"&&v==="grid")||(view==="tagfeed"&&v==="tagged"))?"on":"";return `<div class="ig-tabs"><button class="${on("grid")}" id="ig-t-grid">${ic("grid","s21")}</button><button class="${on("reels")}" id="ig-t-reels">${ic("film","s21")}</button><button class="${on("tagged")}" id="ig-t-tagged">${ic("tag","s21")}</button></div>`;}
 function igTile(p){let badge="";if(p.slides)badge='<span class="grid-multi">'+ic("copy","s13")+'</span>';else if(p.video)badge='<span class="pin">'+ic("play","s13")+'</span>';else if(p.id===1)badge='<span class="pin">'+ic("bmk-f","s13")+'</span>';const views=p.video?`<span class="grid-views">${ic("play","s11")} ${fmtLikes(p.likes)}</span>`:"";return `<button data-post="${p.id}"><img src="${p.img}" loading="lazy" decoding="async">${badge}${views}</button>`;}
-function igStoriesHTML(){return `<div class="stories">${Object.keys(M).filter(k=>M[k].av).map(k=>`<button class="story" data-story="${k}"><span class="ring ${S.ig>0?"":"seen"}"><img src="${M[k].av}"></span>${M[k].n}</button>`).join("")}<button class="story" data-story="me"><span class="ring seen"><img src="assets/nao-face.jpg"><span class="story-plus">＋</span></span>あなた</button></div>`;}
+function igStoriesHTML(){return `<div class="stories"><button class="story" data-story="me"><span class="ring seen"><img src="assets/nao-face.jpg"><span class="story-plus">＋</span></span>あなた</button>${Object.keys(M).filter(k=>M[k].av).map(k=>`<button class="story" data-story="${k}"><span class="ring ${S.ig>0?"":"seen"}"><img src="${M[k].av}"></span>${M[k].n}</button>`).join("")}</div>`;}
 function bindIGTiles(el){el.querySelectorAll("[data-post]").forEach(b=>b.addEventListener("click",()=>{S.viewIG="feed";save();renderIG();setTimeout(()=>{const t=$("#igpost-"+b.dataset.post);if(t)t.scrollIntoView({block:"start"});},60);}));el.querySelectorAll("[data-tpost]").forEach(b=>b.addEventListener("click",()=>{S.viewIG="tagfeed";save();renderIG();setTimeout(()=>{const t=$("#igpost-"+b.dataset.tpost);if(t)t.scrollIntoView({block:"start"});},60);}));}
 function bindIGStories(el){el.querySelectorAll("[data-story]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.story;const i=STORIES.findIndex(s=>s.k===k);if(i>=0)openStory(i);else toast("あなたのストーリーはまだないよ");}));}
 let igQuery="";
@@ -2482,7 +2485,7 @@ function postHTML(p){const liked=S.likedIG[p.id];const saved=S.savedIG&&S.savedI
  <div class="post-cap"><b>${esc(p.user)}</b>${capHTML}</div><div class="post-cmts" id="cmts-${p.id}">${cmts}</div>
  ${moreBtn}
  <div class="post-time">${p.time}</div></div>`;}
-function bindPostActs(root){root.querySelectorAll("[data-like]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.like;S.likedIG[id]=!S.likedIG[id];if(S.likedIG[id])sfx("like");save();renderIG();}));
+function bindPostActs(root){root.querySelectorAll("[data-like]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.like;S.likedIG[id]=!S.likedIG[id];if(S.likedIG[id])sfx("like");save();renderIG();if(S.likedIG[id]){const _nb=document.querySelector('[data-like="'+id+'"]');if(_nb)_nb.classList.add("pop");}}));
  root.querySelectorAll("[data-cmt]").forEach(b=>b.addEventListener("click",()=>openIGComments(+b.dataset.cmt)));
  root.querySelectorAll("[data-likers]").forEach(b=>b.addEventListener("click",()=>openLikers(+b.dataset.likers)));
  root.querySelectorAll("[data-rp]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.rp;S.igReposts=S.igReposts||{};if(S.igReposts[id])delete S.igReposts[id];else S.igReposts[id]=1;save();b.classList.toggle("rp-on",!!S.igReposts[id]);toast(S.igReposts[id]?"リポストしたよ":"リポストを取り消したよ");}));
@@ -2598,12 +2601,12 @@ $$("#v-tt .tt-tabs button").forEach(b=>b.addEventListener("click",()=>{const t=b
 let xTab="feed";let xView="feed";let xProfTab="posts";
 const XHEAT={};function parseCnt(s){if(!s)return 0;const v=parseFloat(String(s).replace(/,/g,""));return String(s).includes("万")?Math.round(v*10000):(v||0);}
 function xBadge(){return '<span class="xbadge gold">'+ic("badge")+'</span>';}
-function xPostHTML(p,idx,post,heat){const key=xKey(p);const liked=!!(S.xLikes&&S.xLikes[key]);const rped=!!(S.xReposts&&S.xReposts[key]);const lkN=parseCnt(p.lk)+(heat?(XHEAT[idx]||0):0)+(liked?1:0);const rpN=parseCnt(p.rp)+(rped?1:0);return `<div class="xpost"><img class="xav" src="${p.av}" data-xav="${esc(p.handle)}"><div class="xb"><div class="xh"><b>${esc(p.user)}</b>${p.handle==="@nctwish_jp"?xBadge():""}<span>${esc(p.handle)} ・ ${esc(p.time)}</span><span class="xdots">•••</span></div><div class="xt">${esc(p.text)}</div>${p.img?`<img class="ximg" src="${p.img}">`:""}<div class="xa"><span>${ic("cmt","s17")} <b>${esc(p.cm||"―")}</b></span><span class="xact${rped?" on-rp":""}" data-xrp="${key}" role="button" aria-label="リポスト">${ic("repeat","s17")} <b>${fmtLikes(rpN)}</b></span><span class="xact${liked?" on-like":""}" data-xlike="${key}" role="button" aria-label="いいね">${ic(liked?"heart":"heart-o","s17")} <b ${heat?`data-xlk="${idx}"`:""}>${fmtLikes(lkN)}</b></span><span>${ic("chart","s17")}</span><button class="xbmkb ${S.xbmk&&S.xbmk[xKey(p)]?"on":""}" data-xbmk="${xKey(p)}" aria-label="ブックマーク">${ic(S.xbmk&&S.xbmk[xKey(p)]?"bmk-f":"bmk","s17")}</button><span>${ic("upload","s17")}</span></div></div></div>`;}
+function xPostHTML(p,idx,post,heat){const key=xKey(p);const liked=!!(S.xLikes&&S.xLikes[key]);const rped=!!(S.xReposts&&S.xReposts[key]);const lkN=parseCnt(p.lk)+(heat?(XHEAT[idx]||0):0)+(liked?1:0);const rpN=parseCnt(p.rp)+(rped?1:0);let _xh=0;for(const _c of key)_xh=(_xh*31+_c.charCodeAt(0))>>>0;const vwN=lkN*(9+_xh%23)+(_xh%997);return `<div class="xpost"><img class="xav" src="${p.av}" data-xav="${esc(p.handle)}"><div class="xb"><div class="xh"><b>${esc(p.user)}</b>${p.handle==="@nctwish_jp"?xBadge():""}<span>${esc(p.handle)} ・ ${esc(p.time)}</span><span class="xdots">•••</span></div><div class="xt">${esc(p.text)}</div>${p.img?`<img class="ximg" src="${p.img}">`:""}<div class="xa"><span>${ic("cmt","s17")} <b>${esc(p.cm||"―")}</b></span><span class="xact${rped?" on-rp":""}" data-xrp="${key}" role="button" aria-label="リポスト">${ic("repeat","s17")} <b>${fmtLikes(rpN)}</b></span><span class="xact${liked?" on-like":""}" data-xlike="${key}" role="button" aria-label="いいね">${ic(liked?"heart":"heart-o","s17")} <b ${heat?`data-xlk="${idx}"`:""}>${fmtLikes(lkN)}</b></span><span>${ic("chart","s17")} <b>${fmtLikes(vwN)}</b></span><button class="xbmkb ${S.xbmk&&S.xbmk[xKey(p)]?"on":""}" data-xbmk="${xKey(p)}" aria-label="ブックマーク">${ic(S.xbmk&&S.xbmk[xKey(p)]?"bmk-f":"bmk","s17")}</button><span>${ic("upload","s17")}</span></div></div></div>`;}
 function xKey(p){return p.handle+"|"+p.time;}
 function bindXAv(root){root.querySelectorAll("[data-xav]").forEach(a=>a.addEventListener("click",()=>{if(a.dataset.xav==="@nctwish_jp"){xView="prof";xTab="feed";renderX();}else toast("このアカウントのプロフィールは物語では開かないよ");}));}
 function bindXBmk(root){root.querySelectorAll("[data-xbmk]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const k=b.dataset.xbmk;S.xbmk=S.xbmk||{};if(S.xbmk[k])delete S.xbmk[k];else S.xbmk[k]=1;save();renderX();toast(S.xbmk[k]?"ブックマークに追加したよ":"ブックマークを取り消したよ");}));}
 /* v42: X like/repost are real toggles, persisted (xLikes/xReposts) */
-function bindXActs(root){root.querySelectorAll("[data-xlike]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const k=b.dataset.xlike;S.xLikes=S.xLikes||{};if(S.xLikes[k])delete S.xLikes[k];else{S.xLikes[k]=1;sfx("like");}save();renderX();}));root.querySelectorAll("[data-xrp]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const k=b.dataset.xrp;S.xReposts=S.xReposts||{};if(S.xReposts[k])delete S.xReposts[k];else S.xReposts[k]=1;save();renderX();}));}
+function bindXActs(root){root.querySelectorAll("[data-xlike]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const k=b.dataset.xlike;S.xLikes=S.xLikes||{};if(S.xLikes[k])delete S.xLikes[k];else{S.xLikes[k]=1;sfx("like");}save();renderX();if(S.xLikes[k])root.querySelectorAll("[data-xlike]").forEach(x=>{if(x.dataset.xlike===k)x.classList.add("pop");});}));root.querySelectorAll("[data-xrp]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const k=b.dataset.xrp;S.xReposts=S.xReposts||{};if(S.xReposts[k])delete S.xReposts[k];else S.xReposts[k]=1;save();renderX();if(S.xReposts[k])root.querySelectorAll("[data-xrp]").forEach(x=>{if(x.dataset.xrp===k)x.classList.add("pop");});}));}
 let xQuery="";
 function xAllPosts(post){return post?X_POSTS_POST:X_POSTS_PRE.filter(p=>(p.after||0)<=S.scene);}
 function xSearchResHTML(post){const q=xQuery.trim();const all=xAllPosts(post);const toks=q.split(/\s+/).filter(Boolean);const res=toks.length?all.filter(p=>toks.every(t=>(p.text+p.user+p.handle).includes(t))):all;return res.length?res.map(p=>xPostHTML(p,all.indexOf(p),post,false)).join(""):`<div class="locknote">「${esc(q)}」に一致するポストはないよ</div>`;}
