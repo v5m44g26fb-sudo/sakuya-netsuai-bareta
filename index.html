@@ -1303,6 +1303,77 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 .lh-card span{font-size:11.5px;color:#6e6e76;display:block;margin-top:2px;line-height:1.5}
 .ht-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
 .ht-tags span{font-size:12px;background:#eef4f3;color:#0b7a71;border-radius:999px;padding:5px 10px;font-weight:600}
+/* v58: app realism 3 — LINE VOOM feed + LINE news tab (both were dead tabs), IG immersive reels feed, iOS calendar today/weekend spec */
+#v-line.voom-on .ll-head{display:none}
+#v-line.voom-on #line-list{background:#000;padding:0}
+#v-line.voom-on .ll-tabs{background:rgba(10,10,12,.92);border-top:1px solid rgba(255,255,255,.14)}
+#v-line.voom-on .ll-tabs button{color:#6d6d75}
+#v-line.voom-on .ll-tabs button.on{color:#fff}
+#v-line.voom-on .ll-tabs button span{color:#a3a3ab}
+.vm-item{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;background:#000;overflow:hidden}
+.vm-item video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vm-item .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.34),transparent 26%,transparent 58%,rgba(0,0,0,.55));pointer-events:none}
+.vm-top{position:absolute;top:52px;left:0;right:0;display:flex;justify-content:center;gap:26px;z-index:3;font-size:16.5px;font-weight:700;color:rgba(255,255,255,.62);text-shadow:0 1px 6px rgba(0,0,0,.45)}
+.vm-top span{padding:2px 1px;cursor:pointer}
+.vm-top span.on{color:#fff;border-bottom:2.5px solid #fff}
+.vm-mute{position:absolute;top:96px;right:12px;z-index:3;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.38);color:#fff;display:flex;align-items:center;justify-content:center}
+.vm-rail{position:absolute;right:8px;bottom:86px;display:flex;flex-direction:column;align-items:center;gap:17px;z-index:3;color:#fff}
+.vm-rail .tav{width:47px;height:47px;border-radius:50%;border:2px solid #fff;object-fit:cover;display:block}
+.vm-rail .plus{position:absolute;left:50%;transform:translateX(-50%);bottom:-9px;width:18px;height:18px;border-radius:50%;background:#06c755;color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;line-height:1}
+.vm-rail .rb{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11.5px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+.vm-rail .rb .ric{color:#fff;display:flex}
+.vm-rail .rb .ric.liked{color:#fe2c55}
+.vm-rail .rb .ric.liked svg{animation:hb .35s ease}
+.vm-disc{width:42px;height:42px;border-radius:50%;overflow:hidden;border:9px solid #1c1c20;animation:spin 3.4s linear infinite;flex:none}
+.vm-disc img{width:100%;height:100%;object-fit:cover;display:block}
+.vm-info{position:absolute;left:12px;right:78px;bottom:20px;z-index:3;color:#fff}
+.vm-info .at{font-size:15.5px;font-weight:800;display:flex;align-items:center;gap:5px;text-shadow:0 1px 5px rgba(0,0,0,.5)}
+.vm-info .cap{font-size:13.5px;line-height:1.5;margin-top:6px;text-shadow:0 1px 5px rgba(0,0,0,.5)}
+.vm-info .cap .hash{font-weight:700}
+.vm-music{display:flex;align-items:center;gap:6px;font-size:12.5px;margin-top:7px;max-width:230px;text-shadow:0 1px 5px rgba(0,0,0,.5)}
+.vm-music .marq{overflow:hidden;white-space:nowrap;flex:1;mask-image:linear-gradient(90deg,#000 82%,transparent)}
+.vm-music .marq span{display:inline-block;animation:marq 7s linear infinite}
+.vm-play{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:2;color:rgba(255,255,255,.85);pointer-events:none}
+.vm-play.show{display:flex}
+.vm-play svg{width:64px;height:64px;filter:drop-shadow(0 2px 10px rgba(0,0,0,.5))}
+.vm-lock{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#c9c9d1;background:#000;font-size:13px;text-align:center;padding:0 30px;line-height:1.7}
+.ln-chips{display:flex;gap:7px;overflow-x:auto;padding:12px 14px 10px;scrollbar-width:none;background:#fff;position:sticky;top:0;z-index:2}
+.ln-chips::-webkit-scrollbar{display:none}
+.ln-chips button{flex:none;font-size:13.5px;font-weight:700;color:#3a3a40;padding:6px 13px;border-radius:999px;background:#f1f1f4}
+.ln-chips button.on{background:#111;color:#fff}
+.ln-hero{display:block;width:100%;text-align:left;background:#fff;padding:0 14px 13px;border-bottom:8px solid #f2f2f5}
+.ln-hero img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;display:block}
+.ln-hero h4{font-size:16.5px;line-height:1.45;margin-top:9px;color:#16161a}
+.ln-hero .nm,.ln-row .nm{font-size:11.5px;color:#8e8e96;margin-top:5px}
+.ln-row{display:flex;gap:11px;width:100%;text-align:left;background:#fff;padding:12px 14px;border-bottom:1px solid #f0f0f3;align-items:flex-start}
+.ln-row h4{font-size:14.5px;line-height:1.5;font-weight:600;color:#16161a;flex:1}
+.ln-row .tx{flex:1;min-width:0}
+.ln-row img{width:76px;height:76px;border-radius:8px;object-fit:cover;flex:none}
+.ln-scoop{display:inline-block;background:#f43f5e;color:#fff;font-size:10px;font-weight:800;border-radius:4px;padding:1.5px 6px;margin-bottom:4px}
+#ig-body.reels-on{background:#000;padding:0}
+.rl-item{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;background:#000;overflow:hidden}
+.rl-item video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rl-item .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.3),transparent 24%,transparent 60%,rgba(0,0,0,.55));pointer-events:none}
+.rl-top{position:absolute;top:10px;left:14px;right:14px;display:flex;align-items:center;z-index:3;color:#fff}
+.rl-top b{font-size:19px;font-weight:800;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+.rl-top .cam{margin-left:auto;display:flex}
+.rl-rail{position:absolute;right:8px;bottom:78px;display:flex;flex-direction:column;align-items:center;gap:19px;z-index:3;color:#fff}
+.rl-rail button{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11.5px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+.rl-rail .liked{color:#ff3040}
+.rl-rail .pop svg{animation:hb .35s ease}
+.rl-info{position:absolute;left:12px;right:76px;bottom:16px;z-index:3;color:#fff}
+.rl-urow{display:flex;align-items:center;gap:8px}
+.rl-urow img{width:33px;height:33px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,.7)}
+.rl-urow b{font-size:14px;text-shadow:0 1px 5px rgba(0,0,0,.5)}
+.rl-folb{font-size:12.5px;font-weight:700;border:1.5px solid rgba(255,255,255,.85);border-radius:9px;padding:4px 10px;color:#fff}
+.rl-cap{font-size:13.5px;line-height:1.5;margin-top:8px;text-shadow:0 1px 5px rgba(0,0,0,.5)}
+.rl-music{display:flex;align-items:center;gap:7px;font-size:12.5px;margin-top:7px;text-shadow:0 1px 5px rgba(0,0,0,.5)}
+.rl-music img{width:24px;height:24px;border-radius:50%;object-fit:cover;animation:spin 3.4s linear infinite;border:4px solid #222}
+.rl-lock{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#c9c9d1;background:#000;font-size:13px;text-align:center;padding:0 30px;line-height:1.7}
+.cd.today{background:#fff;color:#333;font-weight:600}
+.cd.today b{display:inline-flex;width:21px;height:21px;border-radius:50%;background:#ff3b30;color:#fff!important;align-items:center;justify-content:center;font-weight:700}
+.cd.sun b{color:#ff3b30}
+.cd.sat b{color:#0a84ff}
 </style>
 </head>
 <body>
@@ -1619,7 +1690,7 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 <div class="ios-grp">
 <div class="set-row2i">ボイス <span>収録済み（サクヤの声・重要場面7箇所）</span></div>
 <div class="set-row2i">セーブ <span>自動（この端末内）</span></div>
-<div class="set-row2i">バージョン <span>v57.0（iOS 26 / Liquid Glass）</span></div>
+<div class="set-row2i">バージョン <span>v58.0（iOS 26 / Liquid Glass）</span></div>
 </div>
 <div class="ios-grp"><button class="set-row2i danger" id="set-reset">最初からプレイし直す <span>セーブ削除 ›</span></button></div>
 <div style="padding:16px 14px;font-size:12px;color:#6e6e73;line-height:1.8">
@@ -2334,7 +2405,7 @@ applyA11y();
 /* ================= LINE LIST ================= */
 /* v57: LINE home tab (real LINE layout: profile card, service grid, おすすめ, friends) */
 let lineTab="talk";
-function renderLine(){$$("#v-line .ll-tabs button").forEach(b=>b.classList.toggle("on",b.dataset.ltab===lineTab));const t=$("#ll-title");if(t)t.textContent=lineTab==="home"?"ホーム":"トーク";if(lineTab==="home")renderLineHome();else renderLineList();}
+function renderLine(){$$("#v-line .ll-tabs button").forEach(b=>b.classList.toggle("on",b.dataset.ltab===lineTab));const t=$("#ll-title");if(t)t.textContent=lineTab==="home"?"ホーム":lineTab==="news"?"ニュース":"トーク";const lv=$("#v-line");if(lv)lv.classList.toggle("voom-on",lineTab==="voom");const ll=$("#line-list");if(ll&&lineTab!=="voom"){ll.style.scrollSnapType="none";if(window._vmIO){window._vmIO.disconnect();window._vmIO=null;}ll.querySelectorAll("video").forEach(v=>{try{v.pause();}catch(e){}});}if(lineTab==="voom"){renderLineVoom();return;}if(lineTab==="news"){renderLineNews();return;}if(lineTab==="home")renderLineHome();else renderLineList();}
 function renderLineHome(){const el=$("#line-list");
  const svc=[["file","#f43f5e","ニュース","news"],["photo","#0a84ff","写真","photos"],["pencil","#f9d854","メモ","notes"],["music","#06c755","MUSIC",null],["smile","#ffb340","スタンプ",null],["image","#8e6cc8","テーマ",null],["sparkle","#ff7ab0","ギフト",null],["sliders","#8e8e93","設定","set"]];
  let h=`<button class="me-row" id="line-me"><img class="av" src="assets/nao-face.jpg" style="width:56px;height:56px" alt=""><span><span class="nm">なお</span><div class="st">サクヤペン💗 神戸公演が楽しみ</div></span><span style="margin-left:auto;color:#c7c7cc;font-size:19px">›</span></button>`;
@@ -2366,6 +2437,48 @@ function renderLineList(){const el=$("#line-list");let h=`<div class="line-searc
  el.innerHTML=h;
  el.querySelectorAll("[data-thread]").forEach(b=>b.addEventListener("click",()=>openThread(b.dataset.thread)));
  const mr=el.querySelector("#line-me");if(mr)mr.addEventListener("click",()=>openProfile("nao"));}
+/* v58: LINE VOOM — real vertical short-video feed (was a dead tab). Carries the same official clips as TikTok, in VOOM's surface spec. Likes are session-only so the save format is untouched. */
+let voomTab="rec";const voomLiked={};let voomMuted=true;const VOOMCAPOPEN={};
+function voomCapHTML(p,ai){const bold=s=>esc(s).replace(/#([^\s#]+)/g,'<b class="hash">#$1</b>');if(p.cap.length<=56||VOOMCAPOPEN[ai])return `<div class="cap">${bold(p.cap)}</div>`;return `<div class="cap">${bold(p.cap.slice(0,56))} <button class="tt-more" data-vmmore="${ai}">もっと見る</button></div>`;}
+function openVoomComments(ai){const p=TT_POSTS[ai];if(!p)return;const cols=["#4a90d9","#d95f7b","#149990","#7b61c9","#f0a04b"];sheetList("コメント",p.cm.map((c,i)=>`<div class="ncmt2"><span class="sc-av" style="background:${cols[i%5]}">${esc(c[0][0].toUpperCase())}</span><div class="nc-b"><div class="nc-h"><b>${esc(c[0])}</b></div>${esc(c[1])}</div></div>`).join("")+`<div class="locknote">VOOMのコメントは表示だけだよ（コメント投稿はTikTok側でできるよ）</div>`);}
+function renderLineVoom(){const el=$("#line-list");el.style.scrollSnapType="y mandatory";el.scrollTop=0;
+ if(window._vmIO)window._vmIO.disconnect();
+ const posts=TT_POSTS.map((p,ai)=>({p,ai})).filter(x=>x.p.g<=S.tt);
+ const top=`<div class="vm-top"><span data-vmtab="fol" class="${voomTab==="fol"?"on":""}">フォロー中</span><span data-vmtab="rec" class="${voomTab==="rec"?"on":""}">おすすめ</span></div>`;
+ if(!posts.length){el.innerHTML=`<div class="vm-lock">${ic("lock","s20")}<span>物語を進めると、公式の動画がVOOMにも届くよ</span></div>`;return;}
+ el.innerHTML=posts.map(({p,ai},ix)=>{const liked=!!voomLiked[ai];return `<div class="vm-item">
+ <video id="vmv-${ai}" src="${p.video}" poster="${p.poster}" ${voomMuted?"muted":""} loop playsinline preload="${ix===0?"auto":"metadata"}"></video>
+ <div class="grad"></div>${top}
+ <button class="vm-mute" data-vmmute="${ai}" aria-label="ミュート切替">${ic(voomMuted?"volx":"vol","s17")}</button>
+ <div class="vm-rail"><span style="position:relative;display:block"><img class="tav" src="assets/group.jpg" alt=""><span class="plus">＋</span></span>
+ <button class="rb" data-vmlike="${ai}"><span class="ric ${liked?"liked":""}">${ic("heart","s29")}</span><span>${fmtTT(p.likes+(liked?1:0))}</span></button>
+ <button class="rb" data-vmcmt="${ai}"><span class="ric">${ic("cmt","s27")}</span><span>${fmtTT(ttCmtTotal(p,ai))}</span></button>
+ <button class="rb" data-vmshare="${ai}"><span class="ric">${ic("send","s25")}</span><span>${fmtTT(p.shares)}</span></button>
+ <span class="vm-disc"><img src="assets/group.jpg" alt=""></span></div>
+ <div class="vm-info"><div class="at">@${p.user} ${VB}</div>${voomCapHTML(p,ai)}
+ <div class="vm-music"><span>${ic("music","s13")}</span><span class="marq"><span>${esc(p.music)} ♪ ${esc(p.music)} ♪ </span></span></div></div>
+ <div class="vm-play" id="vmp-${ai}">${ic("play","")}</div></div>`;}).join("");
+ el.querySelectorAll("[data-vmtab]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();voomTab=b.dataset.vmtab;renderLineVoom();}));
+ el.querySelectorAll("[data-vmmute]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();voomMuted=!voomMuted;el.querySelectorAll("video").forEach(v=>{v.muted=voomMuted;});el.querySelectorAll("[data-vmmute]").forEach(x=>x.innerHTML=ic(voomMuted?"volx":"vol","s17"));}));
+ el.querySelectorAll("[data-vmlike]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const ai=+b.dataset.vmlike;voomLiked[ai]=!voomLiked[ai];if(voomLiked[ai])sfx("like");b.innerHTML=`<span class="ric ${voomLiked[ai]?"liked":""}">${ic("heart","s29")}</span><span>${fmtTT(TT_POSTS[ai].likes+(voomLiked[ai]?1:0))}</span>`;}));
+ el.querySelectorAll("[data-vmcmt]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();openVoomComments(+b.dataset.vmcmt);}));
+ el.querySelectorAll("[data-vmshare]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();ttCopyLink(location.href.split("#")[0]+"#voom-"+b.dataset.vmshare);}));
+ el.querySelectorAll("[data-vmmore]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const ai=b.dataset.vmmore;VOOMCAPOPEN[ai]=true;renderLineVoom();setTimeout(()=>{const t=$("#vmv-"+ai);if(t)t.scrollIntoView({block:"start"});},60);}));
+ el.querySelectorAll(".vm-item").forEach(it=>{it.addEventListener("click",()=>{const v=it.querySelector("video");if(!v)return;const ai=v.id.replace("vmv-","");if(v.paused){v.play().catch(()=>{});const pp=$("#vmp-"+ai);if(pp)pp.classList.remove("show");}else{v.pause();const pp=$("#vmp-"+ai);if(pp)pp.classList.add("show");}});});
+ window._vmIO=new IntersectionObserver(es=>{es.forEach(en=>{const v=en.target.querySelector("video");if(!v)return;if(en.intersectionRatio>=0.6)v.play().catch(()=>{});else v.pause();});},{root:el,threshold:[0,0.6,1]});
+ el.querySelectorAll(".vm-item").forEach(it=>window._vmIO.observe(it));}
+/* v58: LINE news tab — real LINE NEWS layout (category chips, hero story + rows). Same articles and availability gates as the news app; opening one goes to the article surface. */
+let lnCat="トップ";
+function lnItems(){const arr=[];if(S.ended)arr.push({n:NEWS_STMT,thumb:"assets/stage2.jpg",key:"stmt",i:0});if(S.scene>=7)arr.push({n:NEWS_SCOOP,thumb:"assets/kobe-night.jpg",key:"scoop",i:0});NEWS_PRE.map((n,i)=>({n,i})).filter(x=>(x.n.after||0)<=S.scene).sort((a,b)=>(b.n.after||0)-(a.n.after||0)).forEach(x=>arr.push({n:x.n,thumb:NEWS_THUMB[x.i%NEWS_THUMB.length],key:"pre",i:x.i}));return arr;}
+function renderLineNews(){const el=$("#line-list");const all=lnItems();const cats=["トップ"].concat([...new Set(all.map(x=>x.n.k))]);if(!cats.includes(lnCat))lnCat="トップ";const items=lnCat==="トップ"?all:all.filter(x=>x.n.k===lnCat);
+ let h=`<div class="ln-chips">${cats.map(c=>`<button data-lncat="${esc(c)}" class="${lnCat===c?"on":""}">${esc(c)}</button>`).join("")}</div>`;
+ if(!items.length)h+=`<div class="locknote">このカテゴリの記事はまだないよ</div>`;
+ items.forEach((x,j)=>{const scoop=x.key==="scoop";if(j===0&&lnCat==="トップ")h+=`<button class="ln-hero" data-lnopen="${x.key}:${x.i}"><img src="${x.thumb}" alt=""><h4>${scoop?'<span class="ln-scoop">スクープ</span><br>':""}${esc(x.n.t)}</h4><div class="nm">${esc(x.n.m)}</div></button>`;
+ else h+=`<button class="ln-row" data-lnopen="${x.key}:${x.i}"><span class="tx"><h4>${scoop?'<span class="ln-scoop">スクープ</span> ':""}${esc(x.n.t)}</h4><div class="nm">${esc(x.n.m)}</div></span><img src="${x.thumb}" alt=""></button>`;});
+ h+=`<div class="locknote">LINEのニュースタブ。記事はニュースアプリと同じものが届いているよ。</div>`;
+ el.innerHTML=h;
+ el.querySelectorAll("[data-lncat]").forEach(b=>b.addEventListener("click",()=>{lnCat=b.dataset.lncat;renderLineNews();el.scrollTop=0;}));
+ el.querySelectorAll("[data-lnopen]").forEach(b=>b.addEventListener("click",()=>{const pr=b.dataset.lnopen.split(":");const n=pr[0]==="scoop"?NEWS_SCOOP:pr[0]==="stmt"?NEWS_STMT:NEWS_PRE[+pr[1]];if(!n)return;show("news");openNews(n);}));}
 function openThread(tid){
  if(S.ended&&tid==="sakuya"){openFree();return;}
  const sc=!S.ended?SCENES[S.scene]:null;
@@ -2477,10 +2590,12 @@ function igExploreHTML(posts){
  return `<label class="igx-search">${ic("search","s15")}<input id="igx-in" type="text" placeholder="検索" value="${esc(igQuery).replace(/"/g,"&quot;")}" autocomplete="off"><button class="igx-clear${igQuery?" show":""}" id="igx-clear" aria-label="クリア">${ic("close","s13")}</button></label><div id="igx-results">${igExploreResultsHTML(posts)}</div>`;}
 
 function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);const view=S.viewIG||"grid";
- const un=document.querySelector(".ig-uname");if(un)un.innerHTML=view==="feed"?"Instagram":view==="explore"?"検索":`nctwish_official ${VB}`;
- $$("#v-ig .ig-nav button").forEach(b=>b.classList.toggle("on",b.dataset.ignav===(view==="feed"?"feed":view==="explore"?"explore":view==="reels"?"reels":"grid")));
+ el.classList.toggle("reels-on",view==="reelsfeed");el.style.scrollSnapType=view==="reelsfeed"?"y mandatory":"none";if(view!=="reelsfeed"&&window._rlIO){window._rlIO.disconnect();window._rlIO=null;}
+ const un=document.querySelector(".ig-uname");if(un)un.innerHTML=view==="feed"?"Instagram":view==="explore"?"検索":view==="reelsfeed"?"リール":`nctwish_official ${VB}`;
+ $$("#v-ig .ig-nav button").forEach(b=>b.classList.toggle("on",b.dataset.ignav===(view==="feed"?"feed":view==="explore"?"explore":(view==="reels"||view==="reelsfeed")?"reels":"grid")));
  if(view==="explore"){el.innerHTML=igExploreHTML(posts);const _in=$("#igx-in");if(_in)_in.addEventListener("input",()=>{igQuery=_in.value;const r=$("#igx-results");if(r){r.innerHTML=igExploreResultsHTML(posts);bindIGTiles(r);}const c=$("#igx-clear");if(c)c.classList.toggle("show",!!igQuery);});const _cl=$("#igx-clear");if(_cl)_cl.addEventListener("click",ev=>{ev.preventDefault();igQuery="";renderIG();const i2=$("#igx-in");if(i2)i2.focus();});bindIGTiles(el);igLiveStart();return;}
  if(view==="feed"){el.innerHTML=igStoriesHTML()+(posts.length?posts.map(p=>postHTML(p)).join(""):`<div class="ig-lock">${ic("lock","s15")} 物語を進めると公式投稿が解放されるよ</div>`);bindIGStories(el);bindPostActs(el);igLiveStart();return;}
+ if(view==="reelsfeed"){renderIGReels(el);return;}
  let h="";
  h+=`<div class="ig-prof"><div class="ig-top"><span class="ring"><img src="assets/group.jpg"></span><div class="ig-stats"><div><b>${Math.max(S.ig,0)}</b><span>投稿</span></div><div data-followers style="cursor:pointer">${igFolHTML()}<span>フォロワー</span></div><div><b>12</b><span>フォロー中</span></div></div></div>
  <div class="ig-cat">アーティスト</div>
@@ -2506,7 +2621,7 @@ function renderIG(){const el=$("#ig-body");const posts=IG_POSTS.slice(0,S.ig);co
  bindIGTiles(el);
  el.querySelectorAll("[data-hl]").forEach(b=>b.addEventListener("click",()=>openHL(+b.dataset.hl)));
  bindPostActs(el);igLiveStart();}
-$$("#v-ig .ig-nav button").forEach(b=>b.addEventListener("click",()=>{S.viewIG=b.dataset.ignav;save();renderIG();const _bd=$("#ig-body");if(_bd)_bd.scrollTop=0;}));
+$$("#v-ig .ig-nav button").forEach(b=>b.addEventListener("click",()=>{S.viewIG=b.dataset.ignav==="reels"?"reelsfeed":b.dataset.ignav;save();renderIG();const _bd=$("#ig-body");if(_bd)_bd.scrollTop=0;}));
 function postHTML(p){const liked=S.likedIG[p.id];const saved=S.savedIG&&S.savedIG[p.id];
  let media="";
  if(p.slides){const ci=CARIDX[p.id]||0;media=`<div class="car-wrap"><div class="car-track" style="transform:translateX(-${ci*100}%)">${p.slides.map(s=>`<img src="${s}">`).join("")}</div><span class="car-cnt">${ci+1}/${p.slides.length}</span><button class="car-zone l" data-car="${p.id}|-1" aria-label="前へ"></button><button class="car-zone r" data-car="${p.id}|1" aria-label="次へ"></button><div class="car-dots">${p.slides.map((s,j)=>`<i class="${j===ci?"on":""}"></i>`).join("")}</div></div>`;}
@@ -2549,6 +2664,29 @@ function igLiveStart(){if(window._igT){clearInterval(window._igT);window._igT=nu
   const fe=document.getElementById("ig-fol-num");if(fe){IGHEAT.fol+=S.ended?Math.floor(Math.random()*46):-Math.floor(5+Math.random()*30);if(IGHEAT.fol<-26000)IGHEAT.fol=-26000;fe.textContent=fmtNum(igFolNum());}
   if(!S.ended&&IGHEAT.added<IG_FLOOD.length&&Math.random()<0.65){const c=IG_FLOOD[IGHEAT.added++];post.cm.push(c);const box=document.getElementById("cmts-"+pid);if(box){const d=document.createElement("div");d.className="post-cmt";d.innerHTML=`<b>${esc(c[0])}</b> ${esc(c[1])}`;box.appendChild(d);}}
  },2800);}
+/* v58: IG reels nav now opens the real immersive reels feed (it used to land on the profile grid). The profile's own reels tab stays a grid, as in the real app. */
+function renderIGReels(el){const vids=IG_POSTS.slice(0,S.ig).filter(p=>p.video);
+ if(window._rlIO)window._rlIO.disconnect();
+ if(!vids.length){el.innerHTML=`<div class="rl-lock">${ic("lock","s20")}<span>物語を進めると公式リールが解放されるよ</span></div>`;return;}
+ el.innerHTML=vids.map(p=>{const liked=S.likedIG[p.id];const saved=S.savedIG&&S.savedIG[p.id];const likesN=parseCnt(p.likes)+(liked?1:0);const cmN=igEffCm(p).length+CMT_EXTRA.length;return `<div class="rl-item">
+ <video id="rlv-${p.id}" src="${p.video}" poster="${p.img}" muted loop playsinline preload="auto"></video>
+ <div class="grad"></div>
+ <div class="rl-top"><b>リール</b><span class="cam">${ic("camera","s24")}</span></div>
+ <div class="rl-rail"><button data-rllike="${p.id}"><span class="${liked?"liked":""}">${ic(liked?"heart":"heart-o","s29")}</span><span>${fmtNum(likesN)}</span></button>
+ <button data-rlcmt="${p.id}">${ic("cmt","s27")}<span>${fmtNum(cmN)}</span></button>
+ <button data-rlshare="${p.id}">${ic("send","s25")}<span>共有</span></button>
+ <button data-rlsave="${p.id}">${ic(saved?"bmk-f":"bmk","s24")}</button></div>
+ <div class="rl-info"><div class="rl-urow"><img src="assets/group.jpg" alt=""><b>${esc(p.user)}</b>${VB}<button class="rl-folb" data-rlfol>${S.igFol===false?"フォローする":"フォロー中"}</button></div>
+ <div class="rl-cap">${esc(p.cap)}</div>
+ <div class="rl-music">${ic("music","s13")}<span>${esc(p.user)} ・ オリジナル音源</span><img src="${p.img}" alt=""></div></div></div>`;}).join("");
+ el.querySelectorAll("[data-rllike]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const id=b.dataset.rllike;S.likedIG[id]=!S.likedIG[id];if(S.likedIG[id])sfx("like");save();renderIG();if(S.likedIG[id]){const nb=el.querySelector('[data-rllike="'+id+'"]');if(nb)nb.classList.add("pop");}}));
+ el.querySelectorAll("[data-rlcmt]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();openIGComments(+b.dataset.rlcmt);}));
+ el.querySelectorAll("[data-rlshare]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();openIGShare(+b.dataset.rlshare);}));
+ el.querySelectorAll("[data-rlsave]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();const id=b.dataset.rlsave;S.savedIG=S.savedIG||{};S.savedIG[id]=!S.savedIG[id];save();toast(S.savedIG[id]?"保存したよ":"保存を取り消したよ");renderIG();}));
+ el.querySelectorAll("[data-rlfol]").forEach(b=>b.addEventListener("click",ev=>{ev.stopPropagation();S.igFol=S.igFol===false?true:false;save();toast(S.igFol?"フォローしたよ":"フォローを外したよ（公式は泣かない）");renderIG();}));
+ el.querySelectorAll(".rl-item").forEach(it=>{it.addEventListener("click",()=>{const v=it.querySelector("video");if(!v)return;if(v.paused)v.play().catch(()=>{});else v.pause();});});
+ window._rlIO=new IntersectionObserver(es=>{es.forEach(en=>{const v=en.target.querySelector("video");if(!v)return;if(en.intersectionRatio>=0.6)v.play().catch(()=>{});else v.pause();});},{root:el,threshold:[0,0.6,1]});
+ el.querySelectorAll(".rl-item").forEach(it=>window._rlIO.observe(it));}
 /* ================= TIKTOK ================= */
 let ttView="feed";
 function fmtTT(n){n=+n||0;if(n>=10000){const w=n/10000;return (Math.floor(w*10)/10).toString().replace(/\.0$/,"")+"万";}return String(n);}
@@ -2726,7 +2864,7 @@ function openNews(n){const key=newsKey(n);const baseCmts=n===NEWS_SCOOP?NCMT_SCO
  const _nsd=$("#ncmt-send");if(_nsd)_nsd.addEventListener("click",()=>{const i2=$("#ncmt-in");const v=i2?i2.value.trim():"";if(!v)return;S.newsCmts=S.newsCmts||{};(S.newsCmts[key]=S.newsCmts[key]||[]).push(v);save();sfx("send");openNews(n);setTimeout(()=>{const h=document.querySelector(".ncmt-h");if(h)h.scrollIntoView({block:"start"});},40);});
  const _nin=$("#ncmt-in");if(_nin)_nin.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing&&e.keyCode!==229&&$("#ncmt-send"))$("#ncmt-send").click();});$("#news-body").querySelectorAll("[data-rel]").forEach(b=>b.addEventListener("click",()=>openNews(rel[+b.dataset.rel])));$("#news-body").scrollTop=0;}
 /* ================= CALENDAR ================= */
-function calMonth(y,m,events,td){const first=new Date(y,m-1,1).getDay(),days=new Date(y,m,0).getDate();let cells=["日","月","火","水","木","金","土"].map(d=>`<div class="dw">${d}</div>`).join("");for(let i=0;i<first;i++)cells+=`<div class="cd dim"></div>`;for(let d=1;d<=days;d++){const ev=events[d];cells+=`<div class="cd${td&&td[0]===m&&td[1]===d?" today":""}"><b>${d}</b>${ev?ev.map(e=>`<span class="ev ${e[1]}">${e[0]}</span>`).join(""):""}</div>`;}return `<div class="cal-grid">${cells}</div>`;}
+function calMonth(y,m,events,td){const first=new Date(y,m-1,1).getDay(),days=new Date(y,m,0).getDate();let cells=["日","月","火","水","木","金","土"].map(d=>`<div class="dw">${d}</div>`).join("");for(let i=0;i<first;i++)cells+=`<div class="cd dim"></div>`;for(let d=1;d<=days;d++){const ev=events[d];const dow=(first+d-1)%7;cells+=`<div class="cd${dow===0?" sun":dow===6?" sat":""}${td&&td[0]===m&&td[1]===d?" today":""}"><b>${d}</b>${ev?ev.map(e=>`<span class="ev ${e[1]}">${e[0]}</span>`).join(""):""}</div>`;}return `<div class="cal-grid">${cells}</div>`;}
 /* v44: personal calendar events unlock when their story day arrives; concert dates are the public tour schedule (announced in advance) and stay visible */
 function renderCal(){const evOk=f=>S.ended||S.scene>=f;const jan={10:[["出会い","ev-p"]],15:[["高尺①","ev-p"]],16:[["高尺②","ev-p"]]};if(evOk(1))jan[14]=[["初対面","ev-r"]];if(evOk(2))jan[17]=[["帰国","ev-b"]];const mar={5:[["神戸①","ev-p"]],6:[["神戸②","ev-p"]],7:[["神戸③","ev-p"]],13:[["福岡①","ev-g"]],14:[["福岡②","ev-g"]],21:[["愛知①","ev-g"]],22:[["愛知②","ev-g"]]};if(evOk(7))mar[8]=[["報道","ev-r"]];const _tds=(SCENES[Math.min(S.scene,SCENES.length-1)]||{}).date||"";const _tdm=_tds.match(/(\d+)月(\d+)日/);const _td=_tdm?[+_tdm[1],+_tdm[2]]:null;$("#cal-wrap").innerHTML=`
  <div class="cal-m">2027年1月 <span>ソウル編</span></div>${calMonth(2027,1,jan,_td)}
@@ -3062,7 +3200,7 @@ $$("[data-pvtool]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset
 $$("#v-photos .ph-seg span").forEach((s,i)=>s.addEventListener("click",()=>{if(i<3)toast("並び替えは『すべての写真』表示だけだよ");}));
 const _hf=$("#ht-filter");if(_hf)_hf.addEventListener("click",()=>toast("絞り込みは物語では使わないよ"));
 /* v26: dead-control wiring (audit round 2) */
-$$("#v-line .ll-tabs button").forEach(b=>b.addEventListener("click",()=>{const t=b.dataset.ltab;if(t==="home"||t==="talk"){lineTab=t;renderLine();}else toast("そのタブは物語では使わないよ");}));
+$$("#v-line .ll-tabs button").forEach(b=>b.addEventListener("click",()=>{const t=b.dataset.ltab;if(t==="home"||t==="talk"||t==="voom"||t==="news"){lineTab=t;renderLine();}else toast("そのタブは物語では使わないよ");}));
 $$("#v-line .ll-icons button").forEach((b,i)=>b.addEventListener("click",()=>toast(i===0?"その機能は物語では使わないよ":"物語の相手は 빵돌이 だけだよ")));
 const _chSearch=$("#v-chat .chat-head .hic");if(_chSearch)_chSearch.addEventListener("click",()=>toast("その機能は物語では使わないよ"));
 const _chMenu=$("#chat-menuic");if(_chMenu)_chMenu.addEventListener("click",()=>toast(cur&&cur.thread==="ht"?"絞り込みは物語では使わないよ":"その機能は物語では使わないよ"));
